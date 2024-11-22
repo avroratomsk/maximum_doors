@@ -1,0 +1,368 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load carts_tag %}
+{% load thumbnail %}
+{% block title %}{{ home_page.meta_title }}{% endblock %}
+{% block description %}{{ home_page.meta_description }}{% endblock %}
+{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+
+{% block content %}
+<main class="page">
+  {% include "../section/full-slider.html" %}
+
+  <section class="advantages section--padded">
+    <div class="advantages__container">
+      <div class="advantages__inner">
+        <h2 class="advantages__title _title">
+          <strong>Максимум</strong> — мы изготавливаем двери, отвечающие действующим стандартам качества.
+        </h2>
+        <div class="advantages__row">
+          <div class="advantages__col">
+            <div class="advantages__item item-advantages">
+              <div class="item-advantages__icon">
+                <img src="{% static 'theme/mb/images/icon/adv-1.svg' %}" alt="">
+              </div>
+              <h3 class="item-advantages__title">Любая сложность</h3>
+              <p class="item-advantages__text">
+                При производстве входных дверей мы используем современное оборудование.
+              </p>
+            </div>
+          </div>
+          <div class="advantages__col">
+            <div class="advantages__item item-advantages">
+              <div class="item-advantages__icon">
+                <img src="{% static 'theme/mb/images/icon/adv-2.svg' %}" alt="">
+              </div>
+              <h3 class="item-advantages__title">Качество</h3>
+              <p class="item-advantages__text">
+                Мы гарантируем долгий срок службы нашей продукции за счет качественных материалов.
+              </p>
+            </div>
+
+          </div>
+          <div class="advantages__col">
+            <div class="advantages__item item-advantages">
+              <div class="item-advantages__icon">
+                <img src="{% static 'theme/mb/images/icon/adv-3.svg' %}" alt="">
+              </div>
+              <h3 class="item-advantages__title">Безопасность</h3>
+              <p class="item-advantages__text">
+                Особое внимание мы уделяем взломостойкости и износостойкости двери — выбираем лучшие комплектующие,
+                фурнитуру и замки.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="best-choice section--padded">
+    <div class="container">
+      <div class="best-choice__inner">
+        <h2 class="best-choice__title title-h2">Лучший выбор</h2>
+        <div class="best-choice__grid">
+          {% for product in products %}
+          {% include "../components/card.html" with product=product %}
+          {% endfor %}
+        </div>
+        <a href="" class="best-choice__btn btn">Перейти в каталог</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="selection section--padded">
+    <div class="selection__inner">
+      <div class="selection__body">
+        <div class="selection__container">
+          <div class="selection__content">
+
+            <h2 class="selection__title">Подберите дверь уже сейчас</h2>
+            <a href="" class="selection__btn btn">Перейти в каталог</a>
+          </div>
+        </div>
+      </div>
+      <div class="selection__image">
+        <img src="{% static 'theme/mb/images/dveri-seichas.jpeg' %}" alt="">
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="index-work section--padded">
+    <div class="index-work__container">
+      <div class="index-work__inner">
+        <h2 class="index-work__title title-h2">Наши работы</h2>
+        <div class="index-work__slider swiper">
+          <div class="index-work__wrapper swiper-wrapper">
+            <div class="index-work__slide swiper-slide"
+              style="background-image: url({% static 'theme/mb/images/work-1.jpeg' %})">
+              <a href="" class="index-work__dot" style="top: 36%; left: 38%;">
+                <span></span>
+                <p>
+                  Какой то текст тут не большой чтобы понимать как сделать
+                </p>
+              </a>
+              <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>
+            </div>
+            <div class="index-work__slide swiper-slide"
+              style="background-image: url({% static 'theme/mb/images/work-2.jpeg' %})">
+              <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>
+            </div>
+            <div class="index-work__slide swiper-slide"
+              style="background-image: url({% static 'theme/mb/images/work-3.jpeg' %})">
+              <a href="" class="index-work__dot" style="top: 50%; left: 68%;"><span></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="index-work__buttons">
+          <button class="index-work__prev">
+            <img src="{% static 'theme/mb/images/icon/slider-prev.svg' %}" alt="">
+          </button>
+          <button class="index-work__next">
+            <img src="{% static 'theme/mb/images/icon/slider-next.svg' %}" alt="">
+          </button>
+        </div>
+        <a href="" class="index-work__btn btn">Смотреть все</a>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="index-reviews section--padded">
+    <div class="index-reviews__inner">
+      <h2 class="index-reviews__title title-h2">Люди выбирают нас</h2>
+      <div class="index-reviews__slider swiper">
+        <div class="index-reviews__wrapper swiper-wrapper">
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="" class="index-reviews__btn btn">Посмотреть все отызывы</a>
+    </div>
+  </section> -->
+
+  <!-- <section class="index-contact section--padded">
+    <div class="index-contact__container">
+      <div class="index-contact__inner">
+        <h2 class="index-contact__title title-h2">Мы ждем вас в наших салонах</h2>
+        <p class="index-contact__subtitle">
+          Будучи производителями, мы гарантируем бескомпромиссное качество изделий и конкурентные цены на весь
+          ассортимент. Мы не работаем с посредниками, не используем дополнительные коммерческие наценки - поиски более
+          выгодного предложения в Самаре равносильны потере времени.
+        </p>
+      </div>
+      <div id="map" style="width: 600px; height: 400px"></div>
+    </div>
+  </section> -->
+
+  <!-- <section class="index-questions" style="background-image: url({% static 'theme/mb/images/questions.jpeg' %})">
+    <div class="index-questions__container">
+      <div class="index-questions__inner">
+        <div class="index-questions__body">
+          <h2 class="index-questions__title">Остались <br>вопросы ?</h2>
+          <p class="index-questions__subtitle">
+            Закажите звонок или обратитесь в чат на нашем сайте, менеджеры помогут вам выбрать лучший вариант для вас
+          </p>
+          <div class="index-questions__buttons">
+            <button class="index-questions__btn index-questions--order">Оставить заявку</button>
+            <button class="index-questions__btn index-questions--callback">Заказать звонок</button>
+          </div>
+          <div class="index-questions__social">
+            <a href=""><img src="{% static 'theme/mb/images/icon/telegram.svg' %}" alt=""></a>
+            <a href=""><img src="{% static 'theme/mb/images/icon/vk.svg' %}" alt=""></a>
+            <p>
+              Подписывайтесь на нас, чтобы быть в курсе всех новостей и акций.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- <section class="index-news section--padded">
+    <div class="index-news__container">
+      <div class="index-news__inner">
+        <h2 class="index-news__title title-h2">Новости</h2>
+        <div class="index-news__slider swiper">
+          <div class="index-news__wrapper swiper-wrapper">
+            <article class="index-news__slide swiper-slide">
+              <div class="index-news__card card-news">
+                <a href="" class="card-news__image">
+                  <img src="{% static 'theme/mb/images/news.jpeg' %}" alt="">
+                </a>
+                <div class="card-news__content">
+                  <h3 class="card-news__title"><a href="" class="">
+                      Первая запись блога
+                    </a>
+                  </h3>
+                  <p class="card-news__descr">
+                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
+                  </p>
+                  <p class="card-news__date">28 сентября</p>
+                  <a href="#" class="card-news__link">
+                    <img src="{% static 'theme/mb/images/icon/arrow-long.svg' %}" alt="">
+                  </a>
+                </div>
+              </div>
+            </article>
+            <div class="index-news__slide swiper-slide">
+              <article class="index-news__card card-news">
+                <a class="card-news__image">
+                  <img src="{% static 'theme/mb/images/news.jpeg' %}" alt="">
+                </a>
+                <div class="card-news__content">
+                  <a href="">
+                    <h3 class="card-news__title">Первая запись блога на данной страницы</h3>
+                  </a>
+                  <p class="card-news__descr">
+                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
+                  </p>
+                  <p class="card-news__date">28 сентября</p>
+                  <a href="#" class="card-news__link">
+                    <img src="{% static 'theme/mb/images/icon/arrow-long.svg' %}" alt="">
+                  </a>
+                </div>
+              </article>
+            </div>
+            <div class="index-news__slide swiper-slide">
+              <article class="index-news__card card-news">
+                <a class="card-news__image">
+                  <img src="{% static 'theme/mb/images/slider-3.jpeg' %}" alt="">
+                </a>
+                <div class="card-news__content">
+                  <a href="">
+                    <h3 class="card-news__title">Первая запись блога на данной страницы</h3>
+                  </a>
+                  <p class="card-news__descr">
+                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
+                  </p>
+                  <p class="card-news__date">28 сентября</p>
+                  <a href="#" class="card-news__link">
+                    <img src="{% static 'theme/mb/images/icon/arrow-long.svg' %}" alt="">
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+</main>
+{% endblock %}

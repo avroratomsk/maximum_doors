@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load shop_tags %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}{{ shop_setup.meta_title }}{% endblock %}
+{% block description %}{{ shop_setup.meta_description }}{% endblock %}
+{% block keywords %}{{ shop_setup.meta_keywords }}{% endblock %}
+{% block content %}
+<main>
+  <section class="category">
+    <div class="container">
+
+      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <a href="/" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+          class="breadcrumbs__item">
+          Главная
+          <meta itemprop="position" content="1" />
+        </a>
+        <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+          class="breadcrumbs__item">
+          Каталог
+          <meta itemprop="position" content="2" />
+        </a>
+      </div>
+      <h1 class="category__title">Входные двери в Самаре</h1>
+      <div class="category__filter filter">
+        <div class="filter__inner">
+          <div class="filter__item _active">
+            <button type="button" class="filter__btn">
+              <span class="filter__indicator"></span>
+              <span>Цена</span>
+              <svg width="9.003906" height="5.208984" viewBox="0 0 9.00391 5.20898" fill="none"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path id="Vector 10" d="M0.5 0.5L4.5 4.5L8.5 0.5" stroke="" stroke-opacity="1.000000"
+                  stroke-width="1.000000" stroke-linecap="round" />
+              </svg>
+
+            </button>
+            <div class="filter__content _active">
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">до 35 000</label>
+              </div>
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">от 35 000 до 50 000</label>
+              </div>
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">от 50 000 до 80 000</label>
+              </div>
+              <div class="filter__content-btn">
+                <button type="button" class="filter__reset">Сбросить</button>
+                <button type="button" class="filter__done">Готово</button>
+              </div>
+            </div>
+          </div>
+          <div class="filter__item">
+            <button type="button" class="filter__btn">
+              <span class="filter__indicator"></span>
+              <span>Цвет</span>
+              <svg width="9.003906" height="5.208984" viewBox="0 0 9.00391 5.20898" fill="none"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path id="Vector 10" d="M0.5 0.5L4.5 4.5L8.5 0.5" stroke="" stroke-opacity="1.000000"
+                  stroke-width="1.000000" stroke-linecap="round" />
+              </svg>
+
+            </button>
+            <div class="filter__content">
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">до 35 000</label>
+              </div>
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">от 35 000 до 50 000</label>
+              </div>
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">от 50 000 до 80 000</label>
+              </div>
+              <div class="filter__content-btn">
+                <button type="button" class="filter__reset">Сбросить</button>
+                <button type="button" class="filter__done">Готово</button>
+              </div>
+            </div>
+          </div>
+          <div class="filter__item">
+            <button type="button" class="filter__btn">
+              <span class="filter__indicator"></span>
+              <span>Форма</span>
+              <svg width="9.003906" height="5.208984" viewBox="0 0 9.00391 5.20898" fill="none"
+                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path id="Vector 10" d="M0.5 0.5L4.5 4.5L8.5 0.5" stroke="" stroke-opacity="1.000000"
+                  stroke-width="1.000000" stroke-linecap="round" />
+              </svg>
+
+            </button>
+            <div class="filter__content">
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">до 35 000</label>
+              </div>
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">от 35 000 до 50 000</label>
+              </div>
+              <div class="filter__checkbox-wrap">
+                <input type="checkbox" class="filter__checkbox">
+                <label for="">от 50 000 до 80 000</label>
+              </div>
+              <div class="filter__content-btn">
+                <button type="button" class="filter__reset">Сбросить</button>
+                <button type="button" class="filter__done">Готово</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="best-choice__grid products-list">
+        <div class="best-choice__grid">
+          {% for product in products %}
+          {% include "../../components/card.html" with product=product %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% if products.paginator.count > 15 %}
+    <div class="pagging">
+      <a href="{% if products.has_previous %}?{% chenge_params page=products.previous_page_number %}{% else %}#{% endif %}"
+        class="pagging__arrow {% if not products.has_previous%}disabled{% endif %}">«</a>
+      <ul class="pagging__list">
+        {% for page in products.paginator.page_range %}
+        {% if page >= products.number|add:-2 and page <= products.number|add:2 %} <li>
+          <a href="?{% chenge_params page=page %}"
+            class="pagging__item {% if products.number == page %}_active{% endif %}">{{page}}</a>
+          </li>
+          {% endif %} {% endfor %}
+      </ul>
+      <a href="{% if products.has_next %}?{% chenge_params page=products.next_page_number %}{% else %}#{% endif %}"
+        class="pagging__arrow">»</a>
+    </div>
+    {% endif %}
+    </div>
+  </section>
+</main>
+{% endblock content %}

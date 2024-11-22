@@ -1,0 +1,27 @@
+{% load static %} {% load thumbnail %}
+<div class="best-choice__item card-product">
+  <div class="card-product__image">
+    {% if product.image %}
+    <img src="{{ product.image.url }}" alt="" class="image">
+    {% endif %}
+  </div>
+  <div class="card-product__colors">
+    <button class="card-product__color _active" style="background-color: #C2B46B"
+      data-image="{% static 'theme/mb/images/product/dm15-belenyi.png' %}"></button>
+    <button class="card-product__color" style="background-color: #E0CBCB"
+      data-image="{% static 'theme/mb/images/product/dm16-grey.png' %}"></button>
+    <button class="card-product__color" style="background-color: #C2B46B"
+      data-image="{% static 'theme/mb/images/product/dm17-blanko.png' %}"></button>
+    <button class="card-product__color" style="background-color: #7D7C56"
+      data-image="{% static 'theme/mb/images/product/dm18-moreny.png' %}"></button>
+    <button class="card-product__color" style="background-color: #E0CBCB"
+      data-image="{% static 'theme/mb/images/product/dm16-grey.png' %}"></button>
+    <div class="card-product__color-count">+5</div>
+  </div>
+  <h3 class="card-product__title">{{ product.name }}</h3>
+  <p class="card-product__descr">Серый металл бежевый дуб</p>
+  <div class="card-product__bottom">
+    <div class="card-product__price">32990 ₽ <s>40990 ₽</s></div>
+    <button class="card-product__btn">Оставить заявку</button>
+  </div>
+</div>

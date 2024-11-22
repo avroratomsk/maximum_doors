@@ -1,0 +1,25 @@
+{% load static %}{% load carts_tag %}{% user_carts request as carts %}
+<header class="header {% if request.path != '/' %}header--white{% endif %}" id="header">
+  <div class="container">
+    <div class="header__inner">
+      <div class="header__left">
+        <a href="/" class="header__logo logo"> </a>
+        <p class="header__city">г.Самара</p>
+        <a href="tel:+79999999999" class="header__phone phone">+7 (987) 955-10-22</a>
+      </div>
+      <nav class="header__right nav" id="nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="{% url 'category' %}" class="nav__link">Каталог</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Контакты</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">О компании</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Наши работы</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Отзывы</a></li>
+          <li class="nav__item"><a href="#" class="nav__link">Новости</a></li>
+        </ul>
+        <button class="header__close close" id="menu-close"></button>
+      </nav>
+      <button class="header__burger burger" id="burger"><span></span></button>
+    </div>
+  </div>
+</header>
+</header>
