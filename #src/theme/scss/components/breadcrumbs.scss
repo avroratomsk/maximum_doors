@@ -1,0 +1,23 @@
+.breadcrumbs{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+
+
+  //.breadcrumbs__item
+
+  &__item{
+    padding-right: 10px;
+    color: rgb(134, 134, 134);
+    font-size: 16px;
+    line-height: 150%;
+
+    & + &{
+      &::before{
+        content: "/";
+        font-size: inherit;
+        padding-right: 10px;
+      }
+    }
+  }
+}

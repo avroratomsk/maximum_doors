@@ -10,7 +10,6 @@
   <meta charset="UTF-8" />
   <meta name="format-detection" content="telephone=no" />
   <link rel="stylesheet" href="{% static 'theme/css/style.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'libs/venobox.min.css' %}" />
   <link rel="shortcut icon" href="{% if site_settings.favicon %} {{ site_settings.favicon.url }} {% endif%}" />
   <link rel="apple-touch-icon" href="{% static 'images/logo.png' %}" sizes="120x120" />
   <meta name="robots" content="all" />
@@ -99,7 +98,7 @@
     }
   </script> -->
 
-  <script type="module" src="{% static 'js/app.min.js' %}"></script>
+  <script type="module" src="{% static 'theme/js/app.min.js' %}"></script>
 </body>
 
 </html>

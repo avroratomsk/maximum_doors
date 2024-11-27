@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load carts_tag %}
+{% load thumbnail %}
+{% block title %}{{ home_page.meta_title }}{% endblock %}
+{% block description %}{{ home_page.meta_description }}{% endblock %}
+{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+
+{% block content %}
+<main class="page">
+  <section class="about section--padded">
+    <div class="container">
+      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+           class="breadcrumbs__item">
+          Каталог
+          <meta itemprop="position" content="1"/>
+        </a>
+        <a href="" itemprop="itemListElement" itemscope=""
+           itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+          О компании
+          <meta itemprop="position" content="2"/>
+        </a>
+      </div>
+      <div class="page-top">
+        <div class="page-text">
+          <h1>Компания по производству, <br> продаже и установке дверей</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum
+            quae
+            quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+            quidem.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum
+            quae
+            quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+            quidem.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum
+            quae
+            quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+            quidem.
+          </p>
+        </div>
+        <div class="page-nav">
+          <ul>
+            <li class="active"><a href="#">О компании</a></li>
+            <li><a href="#">Доставка и оплата</a></li>
+            <li><a href="#">Новости</a></li>
+            <li><a href="#">Наши работы</a></li>
+            <li><a href="#">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="image-full-screen" style="background-image: url({% static 'theme/img/slider-3.jpeg'  %})"></div>
+    <div class="container">
+      <div class="page-text">
+        <h2>Aut cum harum inventore iusto</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+        </p>
+        <h3>Aspernatur dignissimos earum illum minus</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+        </p>
+        <h3>Lorem ipsum dolor sit amet</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
+          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
+          quidem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="index-reviews section--padded">
+    <div class="index-reviews__inner">
+      <h2 class="index-reviews__title title-h2">Люди выбирают нас</h2>
+      <div class="index-reviews__slider swiper">
+        <div class="index-reviews__wrapper swiper-wrapper">
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__avatar">Василиса Назарова</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
+              </div>
+              <p>
+                Второй раз закупаемся в максимуме)) Первые двери уже стоят года 3, очень довольны качеством, ничего не
+                треснуло, не отклеилось. Определенно первоклассные двери! Магазин рекомендуем
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="" class="index-reviews__btn btn">Посмотреть все отызывы</a>
+    </div>
+  </section>
+
+  <section class="index-news section--padded">
+    <div class="container">
+      <div class="index-news__inner">
+        <h2 class="index-news__title title-h2">Новости</h2>
+        <div class="index-news__slider swiper">
+          <div class="index-news__wrapper swiper-wrapper">
+            <article class="index-news__slide swiper-slide">
+              <div class="index-news__card card-news">
+                <a href="" class="card-news__image">
+                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
+                </a>
+                <div class="card-news__content">
+                  <h3 class="card-news__title"><a href="" class="">
+                    Первая запись блога
+                  </a>
+                  </h3>
+                  <p class="card-news__descr">
+                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
+                  </p>
+                  <p class="card-news__date">28 сентября</p>
+                  <a href="#" class="card-news__link">
+                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+                  </a>
+                </div>
+              </div>
+            </article>
+            <div class="index-news__slide swiper-slide">
+              <article class="index-news__card card-news">
+                <a class="card-news__image">
+                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
+                </a>
+                <div class="card-news__content">
+                  <a href="">
+                    <h3 class="card-news__title">Первая запись блога на данной страницы</h3>
+                  </a>
+                  <p class="card-news__descr">
+                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
+                  </p>
+                  <p class="card-news__date">28 сентября</p>
+                  <a href="#" class="card-news__link">
+                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+                  </a>
+                </div>
+              </article>
+            </div>
+            <div class="index-news__slide swiper-slide">
+              <article class="index-news__card card-news">
+                <a class="card-news__image">
+                  <img src="{% static 'theme/img/slider-3.jpeg' %}" alt="">
+                </a>
+                <div class="card-news__content">
+                  <a href="">
+                    <h3 class="card-news__title">Первая запись блога на данной страницы</h3>
+                  </a>
+                  <p class="card-news__descr">
+                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
+                  </p>
+                  <p class="card-news__date">28 сентября</p>
+                  <a href="#" class="card-news__link">
+                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

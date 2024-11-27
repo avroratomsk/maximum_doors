@@ -1,3 +1,169 @@
 .footer {
-  flex: 0 0 auto;
+  padding: 60px 0px;
+  border-top: 1px solid rgb(203, 203, 203, .7);
+
+  // .footer__container
+
+  &__container {
+  }
+
+  // .footer__row
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    @media screen and (max-width: 620px) {
+      flex-direction: column;
+    }
+  }
+
+  // .footer__col
+
+  &__col {
+  }
+
+  // .footer__logo
+
+  &__logo {
+    width: 230px;
+    height: 102px;
+    margin-bottom: 31px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // .footer__contact-inner
+
+  &__contact-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  // .footer__name
+
+  &__name {
+    color: rgb(134, 134, 134);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  // .footer__street
+
+  &__street {
+    color: rgb(134, 134, 134);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  // .footer__contact
+
+  &__contact {
+    color: rgb(134, 134, 134);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 140%;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  // .footer__nav
+
+  &__nav {
+  }
+
+  // .footer__bottom
+
+  &__bottom {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    @media screen and (max-width: 425px) {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 50px;
+    }
+
+  }
+
+  // .footer__author
+
+  &__author {
+    color: rgb(134, 134, 134);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  // .footer__social
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  // .footer__col-inner
+
+  &__col-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(20px, 5vw, 100px);
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 620px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.footer-nav {
+  p {
+    color: rgb(134, 134, 134);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 140%;
+    margin-bottom: 20px;
+  }
+
+  // .footer-nav__list
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  // .footer-nav__item
+
+  &__item {
+    a {
+      display: block;
+      padding: 5px 0px;
+      color: rgb(134, 134, 134);
+      font-size: 16px;
+      font-weight: 400;
+      // line-height: 140%;
+      transition: $animation_speed;
+
+      @media (hover: hover) {
+        &:hover {
+          color: rgba($color: #000000, $alpha: 1.0);
+        }
+      }
+    }
+  }
 }

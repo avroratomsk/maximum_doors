@@ -1,5 +1,6 @@
 // Bootstrap
 @import '../../../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../../../node_modules/swiper/swiper';
 
 // Шрифты
 // Удалить файл fonts.scss, если произошли какие-то изменения со шрифтами
@@ -14,6 +15,13 @@
 @import "./includes/_footer";
 @import "global";
 @import "./pages/home";
+@import "./pages/about";
 @import "./catalog/category-details";
+
 // Стили секций
 @import "./section/slider-full";
+@import "./section/image-full-image";
+@import "./section/reviews";
+@import "./section/news";
+
+@import "./components/breadcrumbs";
