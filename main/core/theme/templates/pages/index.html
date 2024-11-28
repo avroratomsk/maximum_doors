@@ -20,7 +20,7 @@
           <div class="advantages__col">
             <div class="advantages__item item-advantages">
               <div class="item-advantages__icon">
-                <img src="{% static 'theme/mb/images/icon/adv-1.svg' %}" alt="">
+                <img src="{% static 'theme/img/icon/adv-1.svg' %}" alt="">
               </div>
               <h3 class="item-advantages__title">Любая сложность</h3>
               <p class="item-advantages__text">
@@ -31,7 +31,7 @@
           <div class="advantages__col">
             <div class="advantages__item item-advantages">
               <div class="item-advantages__icon">
-                <img src="{% static 'theme/mb/images/icon/adv-2.svg' %}" alt="">
+                <img src="{% static 'theme/img/icon/adv-2.svg' %}" alt="">
               </div>
               <h3 class="item-advantages__title">Качество</h3>
               <p class="item-advantages__text">
@@ -43,7 +43,7 @@
           <div class="advantages__col">
             <div class="advantages__item item-advantages">
               <div class="item-advantages__icon">
-                <img src="{% static 'theme/mb/images/icon/adv-3.svg' %}" alt="">
+                <img src="{% static 'theme/img/icon/adv-3.svg' %}" alt="">
               </div>
               <h3 class="item-advantages__title">Безопасность</h3>
               <p class="item-advantages__text">
@@ -66,36 +66,35 @@
           {% include "../components/card.html" with product=product %}
           {% endfor %}
         </div>
-        <a href="" class="best-choice__btn btn">Перейти в каталог</a>
+        <a href="{% url 'category' %}" class="best-choice__btn btn">Перейти в каталог</a>
       </div>
     </div>
   </section>
 
-  <!-- <section class="selection section--padded">
+  <section class="selection section--padded">
     <div class="selection__inner">
       <div class="selection__body">
-        <div class="selection__container">
+        <div class="container">
           <div class="selection__content">
-
             <h2 class="selection__title">Подберите дверь уже сейчас</h2>
-            <a href="" class="selection__btn btn">Перейти в каталог</a>
+            <a href="" class="selection__btn btn btn--shadow">Перейти в каталог</a>
           </div>
         </div>
       </div>
       <div class="selection__image">
-        <img src="{% static 'theme/mb/images/dveri-seichas.jpeg' %}" alt="">
+        <img src="{% static 'theme/img/dveri-seichas.jpeg' %}" alt="">
       </div>
     </div>
-  </section> -->
+  </section>
 
-  <!-- <section class="index-work section--padded">
-    <div class="index-work__container">
+  <section class="index-work section--padded">
+    <div class="container">
       <div class="index-work__inner">
         <h2 class="index-work__title title-h2">Наши работы</h2>
         <div class="index-work__slider swiper">
           <div class="index-work__wrapper swiper-wrapper">
             <div class="index-work__slide swiper-slide"
-              style="background-image: url({% static 'theme/mb/images/work-1.jpeg' %})">
+                 style="background-image: url({% static 'theme/img/work-1.jpeg' %})">
               <a href="" class="index-work__dot" style="top: 36%; left: 38%;">
                 <span></span>
                 <p>
@@ -105,29 +104,29 @@
               <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>
             </div>
             <div class="index-work__slide swiper-slide"
-              style="background-image: url({% static 'theme/mb/images/work-2.jpeg' %})">
+                 style="background-image: url({% static 'theme/img/work-2.jpeg' %})">
               <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>
             </div>
             <div class="index-work__slide swiper-slide"
-              style="background-image: url({% static 'theme/mb/images/work-3.jpeg' %})">
+                 style="background-image: url({% static 'theme/img/work-3.jpeg' %})">
               <a href="" class="index-work__dot" style="top: 50%; left: 68%;"><span></span></a>
             </div>
           </div>
         </div>
         <div class="index-work__buttons">
           <button class="index-work__prev">
-            <img src="{% static 'theme/mb/images/icon/slider-prev.svg' %}" alt="">
+            <img src="{% static 'theme/img/icon/slider-prev.svg' %}" alt="">
           </button>
           <button class="index-work__next">
-            <img src="{% static 'theme/mb/images/icon/slider-next.svg' %}" alt="">
+            <img src="{% static 'theme/img/icon/slider-next.svg' %}" alt="">
           </button>
         </div>
-        <a href="" class="index-work__btn btn">Смотреть все</a>
+        <a href="" class="index-work__btn btn btn--shadow">Смотреть все</a>
       </div>
     </div>
-  </section> -->
+  </section>
 
-  <!-- <section class="index-reviews section--padded">
+  <section class="index-reviews section--padded">
     <div class="index-reviews__inner">
       <h2 class="index-reviews__title title-h2">Люди выбирают нас</h2>
       <div class="index-reviews__slider swiper">
@@ -136,11 +135,11 @@
             <div class="index-reviews__item reviews">
               <div class="reviews__top">
                 <div class="reviews__info">
-                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
-                  <p class="reviews__avatar">Василиса Назарова</p>
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__name">Василиса Назарова</p>
                 </div>
                 <div class="reviews__logo">
-                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
                 </div>
               </div>
               <p>
@@ -153,11 +152,11 @@
             <div class="index-reviews__item reviews">
               <div class="reviews__top">
                 <div class="reviews__info">
-                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
-                  <p class="reviews__avatar">Василиса Назарова</p>
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__name">Василиса Назарова</p>
                 </div>
                 <div class="reviews__logo">
-                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
                 </div>
               </div>
               <p>
@@ -170,11 +169,11 @@
             <div class="index-reviews__item reviews">
               <div class="reviews__top">
                 <div class="reviews__info">
-                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
-                  <p class="reviews__avatar">Василиса Назарова</p>
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__name">Василиса Назарова</p>
                 </div>
                 <div class="reviews__logo">
-                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
                 </div>
               </div>
               <p>
@@ -187,11 +186,11 @@
             <div class="index-reviews__item reviews">
               <div class="reviews__top">
                 <div class="reviews__info">
-                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
-                  <p class="reviews__avatar">Василиса Назарова</p>
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__name">Василиса Назарова</p>
                 </div>
                 <div class="reviews__logo">
-                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
                 </div>
               </div>
               <p>
@@ -204,11 +203,11 @@
             <div class="index-reviews__item reviews">
               <div class="reviews__top">
                 <div class="reviews__info">
-                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
-                  <p class="reviews__avatar">Василиса Назарова</p>
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__name">Василиса Назарова</p>
                 </div>
                 <div class="reviews__logo">
-                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
                 </div>
               </div>
               <p>
@@ -221,11 +220,11 @@
             <div class="index-reviews__item reviews">
               <div class="reviews__top">
                 <div class="reviews__info">
-                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
-                  <p class="reviews__avatar">Василиса Назарова</p>
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__name">Василиса Назарова</p>
                 </div>
                 <div class="reviews__logo">
-                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
                 </div>
               </div>
               <p>
@@ -238,11 +237,11 @@
             <div class="index-reviews__item reviews">
               <div class="reviews__top">
                 <div class="reviews__info">
-                  <img src="{% static 'theme/mb/images/reviews-avatar.png' %}" class="reviews__avatar">
-                  <p class="reviews__avatar">Василиса Назарова</p>
+                  <img src="{% static 'theme/img/reviews-avatar.png' %}" class="reviews__avatar">
+                  <p class="reviews__name">Василиса Назарова</p>
                 </div>
                 <div class="reviews__logo">
-                  <img src="{% static 'theme/mb/images/icon/2gis.svg' %}" alt="">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
                 </div>
               </div>
               <p>
@@ -253,26 +252,30 @@
           </div>
         </div>
       </div>
-      <a href="" class="index-reviews__btn btn">Посмотреть все отызывы</a>
+      <a href="" class="index-reviews__btn btn btn--black">Посмотреть все отызывы</a>
     </div>
-  </section> -->
+  </section>
 
-  <!-- <section class="index-contact section--padded">
-    <div class="index-contact__container">
-      <div class="index-contact__inner">
-        <h2 class="index-contact__title title-h2">Мы ждем вас в наших салонах</h2>
-        <p class="index-contact__subtitle">
+  <section class="contact section--padded">
+    <div class="container">
+      <div class="contact__top">
+        <h2 class="contact__title title-h2">Мы ждем вас в наших салонах</h2>
+        <p class="contact__subtitle">
           Будучи производителями, мы гарантируем бескомпромиссное качество изделий и конкурентные цены на весь
           ассортимент. Мы не работаем с посредниками, не используем дополнительные коммерческие наценки - поиски более
-          выгодного предложения в Самаре равносильны потере времени.
+          выгодного предложения в Самаре равносильны потере времени
         </p>
       </div>
-      <div id="map" style="width: 600px; height: 400px"></div>
-    </div>
-  </section> -->
+      <div class="contact__inner">
 
-  <!-- <section class="index-questions" style="background-image: url({% static 'theme/mb/images/questions.jpeg' %})">
-    <div class="index-questions__container">
+        <div id="map" class="contact__map" style="width: 100%; height: 506px"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="index-questions" style="background-image: url({% static 'theme/img/questions.jpeg' %})">
+    <div class="container">
       <div class="index-questions__inner">
         <div class="index-questions__body">
           <h2 class="index-questions__title">Остались <br>вопросы ?</h2>
@@ -284,8 +287,8 @@
             <button class="index-questions__btn index-questions--callback">Заказать звонок</button>
           </div>
           <div class="index-questions__social">
-            <a href=""><img src="{% static 'theme/mb/images/icon/telegram.svg' %}" alt=""></a>
-            <a href=""><img src="{% static 'theme/mb/images/icon/vk.svg' %}" alt=""></a>
+            <a href=""><img src="{% static 'theme/img/icon/telegram.svg' %}" alt=""></a>
+            <a href=""><img src="{% static 'theme/img/icon/vk.svg' %}" alt=""></a>
             <p>
               Подписывайтесь на нас, чтобы быть в курсе всех новостей и акций.
             </p>
@@ -293,10 +296,10 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
-  <!-- <section class="index-news section--padded">
-    <div class="index-news__container">
+  <section class="index-news section--padded">
+    <div class="container">
       <div class="index-news__inner">
         <h2 class="index-news__title title-h2">Новости</h2>
         <div class="index-news__slider swiper">
@@ -304,65 +307,67 @@
             <article class="index-news__slide swiper-slide">
               <div class="index-news__card card-news">
                 <a href="" class="card-news__image">
-                  <img src="{% static 'theme/mb/images/news.jpeg' %}" alt="">
+                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
                 </a>
                 <div class="card-news__content">
                   <h3 class="card-news__title"><a href="" class="">
-                      Первая запись блога
-                    </a>
+                    Первая запись блога
+                  </a>
                   </h3>
                   <p class="card-news__descr">
                     Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
                   </p>
                   <p class="card-news__date">28 сентября</p>
                   <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/mb/images/icon/arrow-long.svg' %}" alt="">
+                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
                   </a>
                 </div>
               </div>
             </article>
-            <div class="index-news__slide swiper-slide">
-              <article class="index-news__card card-news">
-                <a class="card-news__image">
-                  <img src="{% static 'theme/mb/images/news.jpeg' %}" alt="">
+            <article class="index-news__slide swiper-slide">
+              <div class="index-news__card card-news">
+                <a href="" class="card-news__image">
+                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
                 </a>
                 <div class="card-news__content">
-                  <a href="">
-                    <h3 class="card-news__title">Первая запись блога на данной страницы</h3>
+                  <h3 class="card-news__title"><a href="" class="">
+                    Первая запись блога
                   </a>
+                  </h3>
                   <p class="card-news__descr">
                     Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
                   </p>
                   <p class="card-news__date">28 сентября</p>
                   <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/mb/images/icon/arrow-long.svg' %}" alt="">
+                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
                   </a>
                 </div>
-              </article>
-            </div>
-            <div class="index-news__slide swiper-slide">
-              <article class="index-news__card card-news">
-                <a class="card-news__image">
-                  <img src="{% static 'theme/mb/images/slider-3.jpeg' %}" alt="">
+              </div>
+            </article>
+            <article class="index-news__slide swiper-slide">
+              <div class="index-news__card card-news">
+                <a href="" class="card-news__image">
+                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
                 </a>
                 <div class="card-news__content">
-                  <a href="">
-                    <h3 class="card-news__title">Первая запись блога на данной страницы</h3>
+                  <h3 class="card-news__title"><a href="" class="">
+                    Первая запись блога
                   </a>
+                  </h3>
                   <p class="card-news__descr">
                     Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
                   </p>
                   <p class="card-news__date">28 сентября</p>
                   <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/mb/images/icon/arrow-long.svg' %}" alt="">
+                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
                   </a>
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 </main>
 {% endblock %}

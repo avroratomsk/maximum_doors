@@ -66,17 +66,21 @@
   &__info {
     @include flex.flex-container(center, space-between);
     gap: 10px;
-
-    p {
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 150%;
-    }
   }
 
   // .reviews__avatar
 
   &__avatar {
+  }
+
+  //.reviews__name
+
+  &__name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 150%;
+
+    @media screen and (max-width: 425px){}
   }
 
   // .reviews__logo

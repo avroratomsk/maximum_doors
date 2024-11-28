@@ -33,6 +33,7 @@ def unzip_archive():
 
 def import_products_from_excel(file_path):
     Product.objects.all().delete()
+
     # Загружаем данные из Excel
     df = pd.read_excel(file_path)
 
@@ -57,7 +58,7 @@ def import_products_from_excel(file_path):
       image = f"goods/{row[6]}"
       price = row[7]
       installment = row[8]
-      sale = row[9]
+      sale = 0
       
       
       
@@ -67,24 +68,24 @@ def import_products_from_excel(file_path):
         name=name,
         slug=slug,
         # category=category,
-        # manufacturer=manufacturer,
-        # manufacturer_description=manufacturer_description,
-        # colors=colors,
+        manufacturer=manufacturer,
+        manufacturer_description=manufacturer_description,
+        colors=colors,
         image=image,
-        # price=price,
-        # installment=installment,
-        # sale=sale
+        price=price,
+        installment=installment,
+        sale=sale
       )
 
 
 
       # Обработка характеристик
-      if pd.notna(row['Характеристики']):
-          properties = row['Характеристики'].split(';')
-          for prop in properties:
-              key, value = prop.split(':')
-              property_obj, _ = Properties.objects.get_or_create(name=key.strip(), value=value.strip())
-              product.properties.add(property_obj)
+#       if pd.notna(row['Характеристики']):
+#           properties = row['Характеристики'].split(';')
+#           for prop in properties:
+#               key, value = prop.split(':')
+#               property_obj, _ = Properties.objects.get_or_create(name=key.strip(), value=value.strip())
+#               product.properties.add(property_obj)
 
       print(f"Продукт '{name}' обработан.")
 

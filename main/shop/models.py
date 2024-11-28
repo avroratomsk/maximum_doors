@@ -40,7 +40,7 @@ class Properties(models.Model):
   name = models.CharField(max_length=250, null=True, blank=True, verbose_name="Название характеристки")
   value = models.CharField(max_length=250, null=True, blank=True, verbose_name="Значение характеристки")
 
-# Продукт 
+# Продукт
 class Product(models.Model):
   article = models.CharField(max_length=255, blank=True, null=True, verbose_name="Артикул")
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
@@ -62,28 +62,28 @@ class Product(models.Model):
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
   updated_at = models.DateTimeField(auto_now=True)  # Поле для даты последнего обновления
-  
+
 
   class Meta:
-    db_table = 'product' 
+    db_table = 'product'
     verbose_name = 'Продукт'
     verbose_name_plural = "Продукты"
     ordering = ("-id",)
-    
+
   def __str__(self):
     return f'{self.name} Кол-во - {self.quantity}'
-    
+
   """ Данный метод добавляет к id нули в начале """
   def display_id(self):
     return f'{self.id:05}' #self.id:05 - сделает так чтобы id состоял из 5 символов, если не хватате символов в начало добавить 0
-  
+
   """ Данный метод возвращает цену со скидкой"""
   def sell_price(self):
-    if self.discount:
-      return round(self.price - self.price * self.discount / 100, 2)
-    
+    if self.sale:
+      return round(self.price - self.price * self.sale / 100, 2)
+
     return self.price
-  
+
   def get_absolute_url(self):
         return reverse("product", kwargs={"slug": self.slug})
 

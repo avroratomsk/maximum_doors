@@ -3,17 +3,65 @@ import * as functions from "./modules/functions.js";
 functions.isWebp();
 
 import '../js/modules/menu/stickyMenu.js'
+import '../js/modules/map.js'
 
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import {Navigation, Pagination} from 'swiper/modules';
 
-const swiper = new Swiper('.index-reviews__slider', {
+const swiper_reviews = new Swiper('.index-reviews__slider', {
   modules: [Navigation, Pagination],
   slidesPerView: 4.5,
   spaceBetween: 30,
+
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    536: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    1500: {
+      slidesPerView: 4.5,
+      spaceBetween: 30
+    }
+  }
 });
+
 const swiper_news = new Swiper('.index-news__slider', {
   modules: [Navigation, Pagination],
   slidesPerView: 3,
   spaceBetween: 30,
+
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    536: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    }
+  }
+});
+
+const swiper_work = new Swiper('.index-work__slider', {
+  modules: [Navigation, Pagination],
+  slidesPerView: 3,
+  spaceBetween: 30,
+
+
 });
