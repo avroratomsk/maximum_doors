@@ -20,6 +20,12 @@ class BlogCategory(models.Model):
   image = models.ImageField(upload_to="blog-category", blank=True, null=True, verbose_name="Изображение статьи")
   updated_at = models.DateTimeField(auto_now=True)  # Поле для даты последнего обновления
 
+  def get_absolute_url(self):
+    return reverse("category_post", kwargs={"slug": self.slug})
+
+  def __str__(self):
+      return self.name
+
 class Post(models.Model):
   name = models.CharField(max_length=250, null=True, blank=True, db_index=True, verbose_name="Название статьи")
   slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
@@ -40,5 +46,8 @@ class Post(models.Model):
     return self.name
   
   def get_absolute_url(self):
-      return reverse("post", kwargs={"slug": self.slug})
+    return reverse('post', kwargs={
+              'category_slug': self.category.slug,
+              'slug': self.slug
+          })
   

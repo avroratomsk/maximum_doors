@@ -91,4 +91,11 @@ urlpatterns = [
     path('article/add/', views.article_add, name='article_add'),
     path('article/edit/<int:pk>/', views.article_edit, name='article_edit'),
     path('article/delete/<int:pk>/', views.article_delete, name='article_delete'),
+
+    path('category-blog-settings/', views.category_blog_settings, name='category_blog_settings'),
+    path('category-blog/', views.category_blog, name='category_blog'),
+    path('category-blog/add/', views.category_blog_add, name='category_blog_add'),
+    path('category-blog/edit/<int:pk>/', views.category_blog_edit, name='category_blog_edit'),
+    path('category-blog/delete/<int:pk>/', views.category_blog_remove, name='category_blog_remove'),
+
 ]

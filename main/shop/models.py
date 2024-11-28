@@ -34,11 +34,6 @@ class Category(models.Model):
   
   def get_absolute_url(self):
         return reverse("category_detail", kwargs={"slug": self.slug})
-      
-""" Характеристики товара """
-class Properties(models.Model):
-  name = models.CharField(max_length=250, null=True, blank=True, verbose_name="Название характеристки")
-  value = models.CharField(max_length=250, null=True, blank=True, verbose_name="Значение характеристки")
 
 # Продукт
 class Product(models.Model):
@@ -53,7 +48,6 @@ class Product(models.Model):
   price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Цена")
   installment = models.CharField(max_length=50, blank=True, null=True, verbose_name="Рассрочка")
   sale = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Скидка")
-  properties = models.ManyToManyField(Properties, related_name="products", verbose_name="Характеристики")
   quantity = models.PositiveIntegerField(default=0, verbose_name="Количество")
   quantity_purchase = models.IntegerField(default=0, verbose_name="Количество купленных")
   status = models.BooleanField(default=True, verbose_name="Опубликовать ?")
@@ -86,6 +80,12 @@ class Product(models.Model):
 
   def get_absolute_url(self):
         return reverse("product", kwargs={"slug": self.slug})
+
+""" Характеристики товара """
+class Properties(models.Model):
+    parent =  models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name="properties", verbose_name='Родитель')
+    name = models.CharField(max_length=250, null=True, blank=True, verbose_name="Название характеристки")
+    value = models.CharField(max_length=250, null=True, blank=True, verbose_name="Значение характеристки")
 
 class ProductImage(models.Model):
     parent = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images", verbose_name="Привязка к продукту")

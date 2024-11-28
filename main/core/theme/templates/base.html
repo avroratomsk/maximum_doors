@@ -24,11 +24,13 @@
 </head>
 
 <body>
-  <div class="wrapper">{% include "./includes/_header.html" %} {% block content %} {% endblock %}
+  <div class="wrapper">
+    {% include "./includes/_header.html" %}
+    {% block content %} {% endblock %}
     {% include "./includes/_footer.html" %}
     {% comment %}{% include "./components/notification/modal.html" %}{% endcomment %}
     {% comment %}{% include "./components/mini-cart.html" %}{% endcomment %}
-    {% comment %}{% include "./components/popup.html" %}{% endcomment %}
+    {% include "./includes/_popup.html" %}
   </div>
 
   <!-- <script>

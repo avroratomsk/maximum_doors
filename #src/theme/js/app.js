@@ -2,11 +2,13 @@ import * as functions from "./modules/functions.js";
 
 functions.isWebp();
 
-import '../js/modules/menu/stickyMenu.js'
-import '../js/modules/map.js'
+import '../js/modules/menu/stickyMenu.js';
+import '../js/modules/map.js';
+import '../js/modules/popup/popup.js';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
+
 
 const swiper_reviews = new Swiper('.index-reviews__slider', {
   modules: [Navigation, Pagination],
@@ -62,6 +64,4 @@ const swiper_work = new Swiper('.index-work__slider', {
   modules: [Navigation, Pagination],
   slidesPerView: 3,
   spaceBetween: 30,
-
-
 });

@@ -1,6 +1,6 @@
 from django import forms
 from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock
-from blog.models import BlogSettings, Post
+from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
 from reviews.models import Reviews
@@ -204,6 +204,24 @@ class PostForm(forms.ModelForm):
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASS,
                 
+            }),
+        }
+
+class BlogCategoryForm(forms.ModelForm):
+    """ Form, отвечает за создание категорий постов"""
+    # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = BlogCategory
+        fields = "__all__"
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+                "id":"name"
+            }),
+            'description': forms.Textarea(attrs={
+                'class': INPUT_CLASS,
+
             }),
         }
 

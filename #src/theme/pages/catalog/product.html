@@ -12,7 +12,7 @@
 
 <main class="page">
   <div class="product-details">
-    <div class="product-details__container">
+    <div class="container">
       <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
         <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
           class="breadcrumbs__item">
@@ -31,18 +31,22 @@
         </a>
       </div>
       <div class="product-details__card product-info">
-        <h1 class="product-info__title">Входная дверь Guardian 1234</h1>
-        <p class="product-info__subtitle">Guardian 1234. Серый металл бежевый дуб</p>
+        <h1 class="product-info__title">{{ product.name }}</h1>
+<!--        <p class="product-info__subtitle">Guardian 1234. Серый металл бежевый дуб</p>-->
         <div class="product-info__row">
           <div class="product-info__col">
             <div class="product-info__image">
-              <img src="{% static 'theme/mb/images/product/dm15-belenyi.png' %}" alt="">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
             </div>
             <div class="product-info__price-panel">
               <div class="product-info__price">
                 <div class="product-info__price-inner">
-                  <span class="product-info__price-value">32990 ₽</span>
-                  <s class="product-info__price--old-price">40990 ₽</s>
+                  {% if product.sale %}
+                  <span class="product-info__price-value">{{ product.sell_price }} ₽</span>
+                  <s class="product-info__price--old-price">{{ product.price }} ₽</s>
+                  {% else %}
+                  <span class="product-info__price-value">{{ product.price }} ₽</span>
+                  {% endif %}
                 </div>
                 <div class="product-info__price-sale">
                   <span>Акция</span>
@@ -52,8 +56,8 @@
                 </div>
               </div>
               <div class="product-info__actions">
-                <a type="button" class="product-info__btn _btn _btn--black-to-white">Оставить заявку</a>
-                <button type="button" class="product-info__btn _btn _btn--white-to-black">Заказать звонок</button>
+                <button type="button" class="product-info__btn _btn" data-popup="leave-request">Оставить заявку</button>
+                <button type="button" class="product-info__btn _btn">Заказать звонок</button>
               </div>
               <div class="product-info__properties">
                 <div class="product-info__properties-text">
@@ -79,16 +83,17 @@
             <div class="product-info__param tab-params">
               <div class="tab-params__trigger">
                 <div class="tab-params__trigger-inner">
-                  <button type="button" data-tab="1" class="tab-params__tab _active">Цвет</button>
-                  <button type="button" data-tab="2" class="tab-params__tab">Материал</button>
-                  <button type="button" data-tab="3" class="tab-params__tab">Отделка</button>
+                  <button type="button" data-tab="1" class="tab-params__tab _active">Характеристики</button>
                 </div>
                 <div class="line-active"><span id="line"></span></div>
               </div>
               <div class="tab-params__content">
-                <div class="tab-params__panel _active" data-tab="1">1</div>
-                <div class="tab-params__panel" data-tab="2">2</div>
-                <div class="tab-params__panel" data-tab="3">3</div>
+                <div class="tab-params__panel _active" data-tab="1">
+                  <p><b>Название :</b>описание</p>
+                  <p><b>Название :</b>описание</p>
+                  <p><b>Название :</b>описание</p>
+                  <p><b>Название :</b>описание</p>
+                </div>
               </div>
             </div>
           </div>

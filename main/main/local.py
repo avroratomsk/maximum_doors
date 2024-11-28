@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'allauth.account',
     # 'tinymce',
     "blog",
-    # "news",
+    "news",
 ]
 
 MIDDLEWARE = [

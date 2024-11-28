@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load carts_tag %}
+{% load thumbnail %}
+{% block title %}{{ home_page.meta_title }}{% endblock %}
+{% block description %}{{ home_page.meta_description }}{% endblock %}
+{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+
+{% block content %}
+<main class="page">
+  <section class="news section--padded">
+    <div class="container">
+      <h2 class="ews__title title-h2">Новости</h2>
+      <div class="news__inner">
+        <div class="category__filter filter">
+          <div class="filter__inner">
+            <div class="filter__item _active">
+              <a href="{% url 'blog' %}" class="filter__btn">
+                <span>Все категории</span>
+              </a>
+            </div>
+            {% for category in categorys%}
+            <div class="filter__item">
+              <a href="" class="filter__btn">
+                <span>{{ category.name }}</span>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="news__grid">
+          {% for post in posts%}
+          <article class="index-news__slide swiper-slide">
+            <div class="index-news__card card-news">
+              <a href="{{ post.get_absolute_url }}" class="card-news__image">
+                <img src="{% static 'theme/img/news.jpeg' %}" alt="">
+              </a>
+              <div class="card-news__content">
+                <h3 class="card-news__title">
+                  <a href="" class="">
+                    {{ post.name }}
+                  </a>
+                </h3>
+                <p class="card-news__descr">
+                  {{ post.description }}...
+                </p>
+                <p class="card-news__date">28 сентября</p>
+                <a href="#" class="card-news__link">
+                  <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+                </a>
+              </div>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

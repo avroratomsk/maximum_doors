@@ -227,9 +227,10 @@
     overflow: hidden;
   }
 
-  // .tabs-params__panel
+  // .tab-params__panel
 
   &__panel {
+    padding-top: 15px;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.4s ease, transform 0.4s ease;
@@ -242,6 +243,12 @@
       opacity: 1;
       transform: translateY(0);
       position: relative;
+    }
+
+    p{
+      color: rgba($color: #868686, $alpha: 1);
+      line-height: 140%;
+      padding: 5px 0px;
     }
   }
 }

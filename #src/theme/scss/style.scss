@@ -13,9 +13,12 @@
 
 @import "./includes/_header";
 @import "./includes/_footer";
+@import "./includes/_popup";
+
 @import "global";
 @import "./pages/home";
 @import "./pages/about";
+@import "./catalog/product";
 @import "./catalog/category-details";
 
 // Стили секций

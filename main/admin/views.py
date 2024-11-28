@@ -4,9 +4,9 @@ import zipfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from admin.forms import BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, ProductForm, ProductImageForm, ReviewsForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from admin.forms import BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, ReviewsForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
 from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock
-from blog.models import BlogSettings, Post
+from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
 from subdomain.models import Subdomain
 from service.models import Service, ServicePage
@@ -33,6 +33,7 @@ def unzip_archive():
 
 def import_products_from_excel(file_path):
     Product.objects.all().delete()
+    Properties.objects.all().delete()
 
     # Загружаем данные из Excel
     df = pd.read_excel(file_path)
@@ -59,10 +60,10 @@ def import_products_from_excel(file_path):
       price = row[7]
       installment = row[8]
       sale = 0
-      
-      
-      
-      
+
+
+
+
       new_product = Product.objects.create(
         article=article,
         name=name,
@@ -80,12 +81,12 @@ def import_products_from_excel(file_path):
 
 
       # Обработка характеристик
-#       if pd.notna(row['Характеристики']):
-#           properties = row['Характеристики'].split(';')
+#       if pd.notna(row[10]):
+#           properties = row[10].split(';')
 #           for prop in properties:
 #               key, value = prop.split(':')
-#               property_obj, _ = Properties.objects.get_or_create(name=key.strip(), value=value.strip())
-#               product.properties.add(property_obj)
+#               property_obj = Properties.objects.create(name=key.strip(), value=value.strip(), parent=new_product)
+#               new_product.properties.add(property_obj)
 
       print(f"Продукт '{name}' обработан.")
 
@@ -95,7 +96,7 @@ def import_products_from_excel(file_path):
 # @user_passes_test(lambda u: u.is_superuser)
 # def sidebar_show(request): 
    
-#     request.session['sidebar'] = 'True' 
+#     request.session['sidebar'] = 'True'
     
 #     return redirect('admin')
 
@@ -236,12 +237,12 @@ def blog_settings(request):
       
       return redirect('.')
     else:
-      return render(request, "blog/blog_settings.html", {"form": form})
+      return render(request, "blog/blog_post/blog_post.html", {"form": form})
   
   context = {
     "form": form,
   }  
-  return render(request, "blog/blog_settings.html", context)
+  return render(request, "blog/blog_post/blog_post.html", context)
 
 def gallery_settings(request):
   try:
@@ -982,4 +983,56 @@ def article_delete(request, pk):
   category = Category.objects.get(id=pk)
   category.delete()
   
+  return redirect('admin_category')
+
+def category_blog_settings(request):
+    return render(request, "blog/blog_category/blog_category.html", context)
+
+def category_blog(request):
+  items = BlogCategory.objects.all()
+
+  context ={
+    "items": items,
+  }
+  return render(request, "blog/blog_category/blog_category.html", context)
+
+def category_blog_add(request):
+  form = BlogCategoryForm()
+  if request.method == "POST":
+    form_new = BlogCategoryForm(request.POST, request.FILES)
+    if form_new.is_valid():
+      form_new.save()
+      return redirect("category_blog")
+    else:
+      return render(request, "blog/blog_category/blog_category_add.html", {"form": form_new})
+
+  context = {
+    "form": form
+  }
+
+  return render(request, "blog/blog_category/blog_category_add.html", context)
+
+def category_blog_edit(request, pk):
+  item = Post.objects.get(id=pk)
+  form = PostForm(request.POST, request.FILES, instance=item)
+
+  if request.method == "POST":
+
+    if form.is_valid():
+      form.save()
+      return redirect("article")
+    else:
+      return render(request, "blog/blog_category/blog_category_edit.html", {"form": form, 'image_path': image_path})
+
+  context = {
+    "form": PostForm(instance=item),
+    "item": item
+  }
+
+  return render(request, "blog/blog_category/blog_category_edit.html", context)
+
+def category_blog_remove(request, pk):
+  category = Category.objects.get(id=pk)
+  category.delete()
+
   return redirect('admin_category')
