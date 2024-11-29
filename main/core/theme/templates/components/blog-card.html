@@ -1,0 +1,23 @@
+{% load static %}
+{% load thumbnail %}
+<article class="index-news__slide swiper-slide">
+  <div class="index-news__card card-news">
+    <a href="{{ post.get_absolute_url }}" class="card-news__image">
+      <img src="{% static 'theme/img/news.jpeg' %}" alt="">
+    </a>
+    <div class="card-news__content">
+      <h3 class="card-news__title">
+        <a href="{{ post.get_absolute_url }}" class="">
+          {{ post.name }}
+        </a>
+      </h3>
+      <p class="card-news__descr">
+        {{ post.description|safe|truncatechars:25 }}
+      </p>
+      <p class="card-news__date">28 сентября</p>
+      <a href="#" class="card-news__link">
+        <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+      </a>
+    </div>
+  </div>
+</article>

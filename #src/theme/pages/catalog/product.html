@@ -89,10 +89,9 @@
               </div>
               <div class="tab-params__content">
                 <div class="tab-params__panel _active" data-tab="1">
-                  <p><b>Название :</b>описание</p>
-                  <p><b>Название :</b>описание</p>
-                  <p><b>Название :</b>описание</p>
-                  <p><b>Название :</b>описание</p>
+                  {% for prop in properties %}
+                  <p><b>{{ prop.name }} :</b>{{ prop.value }}</p>
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -102,83 +101,11 @@
       <div class="related-products">
         <h2 class="related-products__title">Товары для вас</h2>
         <div class="best-choice__grid products-list">
-          <div class="products-list__item card-product">
-            <div class="card-product__image">
-              <img src="{% static 'theme/mb/images/product/dm15-belenyi.png' %}" alt="" class="image">
-            </div>
-            <div class="card-product__colors">
-              <button class="card-product__color _active" style="background-color: #C2B46B"
-                data-image="{% static 'theme/mb/images/product/dm15-belenyi.png' %}"></button>
-              <button class="card-product__color" style="background-color: #E0CBCB"
-                data-image="{% static 'theme/mb/images/product/dm16-grey.png' %}"></button>
-              <button class="card-product__color" style="background-color: #C2B46B"
-                data-image="{% static 'theme/mb/images/product/dm17-blanko.png' %}"></button>
-              <button class="card-product__color" style="background-color: #7D7C56"
-                data-image="{% static 'theme/mb/images/product/dm18-moreny.png' %}"></button>
-              <button class="card-product__color" style="background-color: #E0CBCB"
-                data-image="{% static 'theme/mb/images/product/dm16-grey.png' %}"></button>
-              <div class="card-product__color-count">+5</div>
-            </div>
-            <h3 class="card-product__title">Guardian 1234</h3>
-            <p class="card-product__descr">Серый металл бежевый дуб</p>
-            <div class="card-product__bottom">
-              <div class="card-product__price">32990 ₽ <s>40990 ₽</s></div>
-              <button class="card-product__btn">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="products-list__item card-product">
-            <div class="card-product__image">
-              <img src="{% static 'theme/mb/images/product/dm16-grey.png' %}" alt="">
-            </div>
-            <div class="card-product__colors">
-              <button class="card-product__color _active" style="background-color: #C2B46B"></button>
-              <button class="card-product__color" style="background-color: #E0CBCB"></button>
-              <button class="card-product__color" style="background-color: #C2B46B"></button>
-              <button class="card-product__color" style="background-color: #7D7C56"></button>
-              <button class="card-product__color" style="background-color: #E0CBCB"></button>
-              <div class="card-product__color-count">+25</div>
-            </div>
-            <h3 class="card-product__title">Guardian 1234</h3>
-            <p class="card-product__descr">Серый металл бежевый дуб</p>
-            <div class="card-product__bottom">
-              <div class="card-product__price">32990 ₽ <s>40990 ₽</s></div>
-              <button class="card-product__btn">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="products-list__item card-product">
-            <div class="card-product__image">
-              <img src="{% static 'theme/mb/images/product/dm17-blanko.png' %}" alt="">
-            </div>
-            <div class="card-product__colors">
-              <button class="card-product__color _active" style="background-color: #C2B46B"></button>
-              <button class="card-product__color" style="background-color: #E0CBCB"></button>
-              <button class="card-product__color" style="background-color: #C2B46B"></button>
-            </div>
-            <h3 class="card-product__title">Guardian 1234</h3>
-            <p class="card-product__descr">Серый металл бежевый дуб</p>
-            <div class="card-product__bottom">
-              <div class="card-product__price">32990 ₽ <s>40990 ₽</s></div>
-              <button class="card-product__btn">Оставить заявку</button>
-            </div>
-          </div>
-          <div class="products-list__item card-product">
-            <div class="card-product__image">
-              <img src="{% static 'theme/mb/images/product/dm18-moreny.png' %}" alt="">
-            </div>
-            <div class="card-product__colors">
-              <button class="card-product__color _active" style="background-color: #C2B46B"></button>
-              <button class="card-product__color" style="background-color: #E0CBCB"></button>
-              <button class="card-product__color" style="background-color: #C2B46B"></button>
-              <button class="card-product__color" style="background-color: #7D7C56"></button>
-            </div>
-            <h3 class="card-product__title">Guardian 1234</h3>
-            <p class="card-product__descr">Серый металл бежевый дуб</p>
-            <div class="card-product__bottom">
-              <div class="card-product__price">32990 ₽ <s>40990 ₽</s></div>
-              <button class="card-product__btn">Оставить заявку</button>
-            </div>
-          </div>
+          {% for product in products %}
+          {% include "../../components/card.html" with product=product %}
+          {% endfor %}
         </div>
+
       </div>
     </div>
   </div>

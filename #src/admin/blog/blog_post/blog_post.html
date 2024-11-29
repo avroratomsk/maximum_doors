@@ -40,13 +40,6 @@
               <p class="">{{ category.name }}</p>
               {% endif %}
             </div>
-            <div class="body-table__name">
-              {% if category.parent %}
-              <p class="">{{ category.parent }}</p>
-              {% else %}
-              <p class="">Нет категории</p>
-              <p>{% endif %}</p>
-            </div>
 
             <div class="body-table__action">
               <a href="" target="_blank" class="info" title="Перейти в категорию">
@@ -71,7 +64,7 @@
               <a href="{% url 'article_edit' category.id %}" class="edit">
                 <img src="{% static 'theme/mb/images/admin/edit.svg' %}" alt="" />
               </a>
-              <a href="{% url 'category_delete' category.id %}" class="remove" title="Удалить категорию">
+              <a href="{% url 'article_delete' category.id %}" class="remove" title="Удалить категорию">
                 <?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <style>
@@ -151,7 +144,7 @@
                   />
                 </svg>
               </a>
-              <a href="{% url 'category_delete' subcategory.id %}" class="remove" title="Удалить категорию">
+              <a href="{% url 'article_delete' category.id %}" class="remove" title="Удалить категорию">
                 <?xml version="1.0" ?><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <style>

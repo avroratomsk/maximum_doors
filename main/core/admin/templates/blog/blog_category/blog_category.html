@@ -35,7 +35,7 @@
             </div>
             <div class="body-table__name">
               {% if category.slug %}
-              <a href="{% url 'article_edit' category.id %}" class="">{{ category.name }}</a>
+              <a href="{% url 'category_blog_edit' category.id %}" class="">{{ category.name }}</a>
               {% else %}
               <p class="">{{ category.name }}</p>
               {% endif %}
@@ -72,10 +72,10 @@
                   </g>
                 </svg>
               </a>
-              <a href="{% url 'article_edit' category.id %}" class="edit">
+              <a href="{% url 'category_blog_edit' category.id %}" class="edit">
                 <img src="{% static 'theme/mb/images/admin/edit.svg' %}" alt=""/>
               </a>
-              <a href="{% url 'category_delete' category.id %}" class="remove" title="Удалить категорию">
+              <a href="{% url 'category_blog_remove' category.id %}" class="remove" title="Удалить категорию">
                 <?xml version="1.0" ?>
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                   <defs>
@@ -115,7 +115,7 @@
             </div>
             <div class="body-table__name">
               {% if subcategory.slug %}
-              <a href="{% url 'category_edit' subcategory.id %}" class="">{{ subcategory.name }}</a>
+              <a href="{% url 'category_blog_edit' subcategory.id %}" class="">{{ subcategory.name }}</a>
               {% else %}
               <p class="">{{ subcategory.name }}</p>
               {% endif %}

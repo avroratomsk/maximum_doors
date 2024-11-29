@@ -60,6 +60,7 @@ def import_products_from_excel(file_path):
       price = row[7]
       installment = row[8]
       sale = 0
+      properties = row[10]
 
 
 
@@ -79,14 +80,17 @@ def import_products_from_excel(file_path):
       )
 
 
+      properties = properties.split(';')
+      for ch in properties:
+        try:
 
-      # Обработка характеристик
-#       if pd.notna(row[10]):
-#           properties = row[10].split(';')
-#           for prop in properties:
-#               key, value = prop.split(':')
-#               property_obj = Properties.objects.create(name=key.strip(), value=value.strip(), parent=new_product)
-#               new_product.properties.add(property_obj)
+          new_properties = Properties.objects.create(
+            parent = new_product,
+            name = ch.split(":")[0].strip(),
+            value = ch.split(":")[1].strip()
+          )
+        except Exception as e:
+            print(e)
 
       print(f"Продукт '{name}' обработан.")
 
@@ -104,7 +108,7 @@ def import_products_from_excel(file_path):
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-  import_products_from_excel(path_to_excel)
+  #import_products_from_excel(path_to_excel)
   
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
@@ -980,10 +984,10 @@ def article_edit(request, pk):
   return render(request, "blog/blog_post/post_edit.html", context)
 
 def article_delete(request, pk):
-  category = Category.objects.get(id=pk)
+  category = Post.objects.get(id=pk)
   category.delete()
   
-  return redirect('admin_category')
+  return redirect(request.META.get("HTTP_REFERER"))
 
 def category_blog_settings(request):
     return render(request, "blog/blog_category/blog_category.html", context)
@@ -1013,26 +1017,26 @@ def category_blog_add(request):
   return render(request, "blog/blog_category/blog_category_add.html", context)
 
 def category_blog_edit(request, pk):
-  item = Post.objects.get(id=pk)
-  form = PostForm(request.POST, request.FILES, instance=item)
+  item = BlogCategory.objects.get(id=pk)
+  form = BlogCategoryForm(request.POST, request.FILES, instance=item)
 
   if request.method == "POST":
 
     if form.is_valid():
       form.save()
-      return redirect("article")
+      return redirect(request.META.get('HTTP_REFERER'))
     else:
       return render(request, "blog/blog_category/blog_category_edit.html", {"form": form, 'image_path': image_path})
 
   context = {
-    "form": PostForm(instance=item),
+    "form": BlogCategoryForm(instance=item),
     "item": item
   }
 
   return render(request, "blog/blog_category/blog_category_edit.html", context)
 
 def category_blog_remove(request, pk):
-  category = Category.objects.get(id=pk)
+  category = BlogCategory.objects.get(id=pk)
   category.delete()
 
-  return redirect('admin_category')
+  return redirect(request.META.get('HTTP_REFERER'))

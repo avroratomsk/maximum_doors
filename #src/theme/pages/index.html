@@ -344,70 +344,19 @@
     <div class="container">
       <div class="index-news__inner">
         <h2 class="index-news__title title-h2">Новости</h2>
+        {% if posts %}
         <div class="index-news__slider swiper">
           <div class="index-news__wrapper swiper-wrapper">
-            <article class="index-news__slide swiper-slide">
-              <div class="index-news__card card-news">
-                <a href="" class="card-news__image">
-                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-                </a>
-                <div class="card-news__content">
-                  <h3 class="card-news__title"><a href="" class="">
-                    Первая запись блога
-                  </a>
-                  </h3>
-                  <p class="card-news__descr">
-                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
-                  </p>
-                  <p class="card-news__date">28 сентября</p>
-                  <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                  </a>
-                </div>
-              </div>
-            </article>
-            <article class="index-news__slide swiper-slide">
-              <div class="index-news__card card-news">
-                <a href="" class="card-news__image">
-                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-                </a>
-                <div class="card-news__content">
-                  <h3 class="card-news__title"><a href="" class="">
-                    Первая запись блога
-                  </a>
-                  </h3>
-                  <p class="card-news__descr">
-                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
-                  </p>
-                  <p class="card-news__date">28 сентября</p>
-                  <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                  </a>
-                </div>
-              </div>
-            </article>
-            <article class="index-news__slide swiper-slide">
-              <div class="index-news__card card-news">
-                <a href="" class="card-news__image">
-                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-                </a>
-                <div class="card-news__content">
-                  <h3 class="card-news__title"><a href="" class="">
-                    Первая запись блога
-                  </a>
-                  </h3>
-                  <p class="card-news__descr">
-                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
-                  </p>
-                  <p class="card-news__date">28 сентября</p>
-                  <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                  </a>
-                </div>
-              </div>
-            </article>
+            {% for post in posts %}
+            {% include "../components/blog-card.html" with post=post %}
+            {% endfor %}
           </div>
         </div>
+        {% else %}
+          <div class="empty-block">
+            <p>Тут пока пусто</p>
+          </div>
+        {% endif %}
       </div>
     </div>
   </section>

@@ -87,9 +87,13 @@ class Properties(models.Model):
     name = models.CharField(max_length=250, null=True, blank=True, verbose_name="Название характеристки")
     value = models.CharField(max_length=250, null=True, blank=True, verbose_name="Значение характеристки")
 
+    def __str__(self):
+      return self.name
+
 class ProductImage(models.Model):
     parent = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images", verbose_name="Привязка к продукту")
     src = models.ImageField(upload_to="product_iamge", null=True, blank=True, verbose_name="Дополнительны изображения")
+
     class Meta:
       verbose_name = 'Изображение'
 

@@ -21,7 +21,7 @@ class BlogCategory(models.Model):
   updated_at = models.DateTimeField(auto_now=True)  # Поле для даты последнего обновления
 
   def get_absolute_url(self):
-    return reverse("category_post", kwargs={"slug": self.slug})
+    return reverse("category_post", kwargs={"category_slug": self.slug})
 
   def __str__(self):
       return self.name

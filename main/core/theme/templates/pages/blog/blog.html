@@ -11,7 +11,20 @@
   <section class="news section--padded">
     <div class="container">
       <h2 class="ews__title title-h2">Новости</h2>
+      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <a href="/" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+           class="breadcrumbs__item">
+          Главная
+          <meta itemprop="position" content="1"/>
+        </a>
+        <span itemprop="itemListElement" itemscope=""
+              itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+          Новости
+          <meta itemprop="position" content="2"/>
+        </span>
+      </div>
       <div class="news__inner">
+        {% if categorys %}
         <div class="category__filter filter">
           <div class="filter__inner">
             <div class="filter__item _active">
@@ -19,40 +32,27 @@
                 <span>Все категории</span>
               </a>
             </div>
-            {% for category in categorys%}
+            {% for category in categorys %}
             <div class="filter__item">
-              <a href="" class="filter__btn">
+              <a href="{{ category.get_absolute_url }}" class="filter__btn">
                 <span>{{ category.name }}</span>
               </a>
             </div>
             {% endfor %}
           </div>
         </div>
+        {% endif %}
+        {% if posts %}
         <div class="news__grid">
-          {% for post in posts%}
-          <article class="index-news__slide swiper-slide">
-            <div class="index-news__card card-news">
-              <a href="{{ post.get_absolute_url }}" class="card-news__image">
-                <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-              </a>
-              <div class="card-news__content">
-                <h3 class="card-news__title">
-                  <a href="" class="">
-                    {{ post.name }}
-                  </a>
-                </h3>
-                <p class="card-news__descr">
-                  {{ post.description }}...
-                </p>
-                <p class="card-news__date">28 сентября</p>
-                <a href="#" class="card-news__link">
-                  <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                </a>
-              </div>
-            </div>
-          </article>
+          {% for post in posts %}
+            {% include "../../components/blog-card.html" with post=post %}
           {% endfor %}
         </div>
+        {% else %}
+        <div class="empty-block">
+          <p>Тут пока пусто</p>
+        </div>
+        {% endif %}
       </div>
     </div>
   </section>

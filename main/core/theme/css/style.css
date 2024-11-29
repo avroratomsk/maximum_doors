@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /*!
  * Bootstrap Grid v5.2.3 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -1544,7 +1546,7 @@ html._lock body::before {
   background-color: black;
 }
 
-.no-webp .header--white .logo {
+.no-webp .header--white .logo{
   background-image: url("../img/logo-dark.png"); }
 
 .header__inner {
@@ -1612,6 +1614,10 @@ html._lock body::before {
   transition: 0.5s;
 }
 
+.nav .close {
+  display: none;
+}
+
 .logo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1625,43 +1631,6 @@ html._lock body::before {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
-}
-
-.close {
-  display: none;
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 25px;
-  height: 25px;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.close::before,
-.close::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  margin-left: -50%;
-  height: 2px;
-  margin-top: -1px;
-  background-color: black;
-}
-
-.close::before {
-  -webkit-transform: rotate(-45deg);
-      -ms-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-
-.close::after {
-  -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-          transform: rotate(45deg);
 }
 
 .burger {
@@ -1887,6 +1856,10 @@ body._lock::after {
   pointer-events: none;
 }
 
+.popup .close {
+  top: 0;
+}
+
 .popup_show {
   z-index: 9999;
   visibility: visible;
@@ -1947,6 +1920,7 @@ body._lock::after {
 
 .popup__top {
   position: relative;
+  min-height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2010,6 +1984,41 @@ body._lock::after {
   height: 40px;
 }
 
+.popup__contact {
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  /* Webkit-браузеры */
+  /* Firefox */
+  /* IE (ограниченная поддержка) */
+}
+
+.popup__contact::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.popup__contact::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 5px;
+}
+
+.popup__contact::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.popup__contact::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.popup__contact * {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.popup__contact * {
+  -ms-overflow-style: auto;
+}
+
 .container {
   padding: 0px 15px;
 }
@@ -2047,6 +2056,61 @@ body._lock::after {
 
 .section--padded {
   padding: 60px 0px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 25px;
+  height: 25px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.close::before,
+.close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  margin-left: -50%;
+  height: 2px;
+  margin-top: -1px;
+  background-color: black;
+}
+
+.close::before {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.close::after {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.empty-block {
+  min-height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.empty-block p {
+  font-size: 34px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .page-text h1 {
@@ -2123,7 +2187,6 @@ body._lock::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 67px;
-  margin-bottom: 80px;
   width: 100%;
 }
 
@@ -2291,12 +2354,15 @@ body._lock::after {
   transition: 0.3s;
 }
 
+.post-banner {
+  margin-top: 90px;
+}
+
 .products-list {
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
   gap: 67px;
-  margin-bottom: 80px;
   width: 100%;
 }
 
@@ -2989,7 +3055,7 @@ body._lock::after {
   transition: 0.3s;
 }
 
-.card-news__descr {
+.card-news p {
   font-size: 22px;
   font-weight: 300;
   line-height: 120%;
@@ -3398,6 +3464,36 @@ body._lock::after {
 .contact-address {
   height: 430px;
   overflow-y: auto;
+  /* Webkit-браузеры */
+  /* Firefox */
+  /* IE (ограниченная поддержка) */
+}
+
+.contact-address::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.contact-address::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 5px;
+}
+
+.contact-address::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.contact-address::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.contact-address * {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+.contact-address * {
+  -ms-overflow-style: auto;
 }
 
 .contact-address__card {
@@ -3430,6 +3526,28 @@ body._lock::after {
   font-size: 14px;
   font-weight: 500;
   line-height: 140%;
+}
+
+.banner__inner {
+  min-height: 420px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.banner__title {
+  color: white;
+}
+
+.banner .breadcrumbs__item {
+  color: white;
 }
 
 .breadcrumbs {
@@ -7453,6 +7571,12 @@ body._lock::after {
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .post-text .container {
+    max-width: 1000px;
+  }
+}
+
 @media (min-width: 1400px) {
   .container-xxl,
   .container-xl,
@@ -8439,7 +8563,7 @@ body._lock::after {
     color: black;
   }
 
-  .close {
+  .nav .close {
     display: block;
   }
 
@@ -8652,14 +8776,14 @@ body._lock::after {
     color: #c2b46b;
   }
 
+  .footer-nav__item a:hover {
+    color: black;
+  }
+
   .close:hover {
     -webkit-transform: rotate(180deg);
         -ms-transform: rotate(180deg);
             transform: rotate(180deg);
-  }
-
-  .footer-nav__item a:hover {
-    color: black;
   }
 
   .page-nav a:hover {
@@ -8704,4 +8828,4 @@ body._lock::after {
   }
 }
 
-.webp .header--white .logo { background-image: url(../img/logo-dark.webp); }
+.webp .header--white .logo{ background-image: url(../img/logo-dark.webp); }

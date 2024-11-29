@@ -5,8 +5,6 @@ from blog.models import BlogSettings, Post, BlogCategory
 def blog(request):
   posts = Post.objects.all()
   category = BlogCategory.objects.all()
-  print(category)
-  print(posts)
 
   try:
     setup = BlogSettings.objects.get()
@@ -20,19 +18,26 @@ def blog(request):
   return render(request, "pages/blog/blog.html", context)
 
 def category_post(request, category_slug):
-  category = get_objects_or_404(BlogCategory, slug=category_slug)
-  return render(request, "pages/blog/blog_category.html")
+  category = BlogCategory.objects.get(slug=category_slug)
+  categorys = BlogCategory.objects.all()
+  post = Post.objects.filter(category=category)
+
+  context = {
+    "category": category,
+    "categorys": categorys,
+    "posts": post
+  }
+  return render(request, "pages/blog/blog_category.html", context)
 
 def post(request, category_slug, slug):
-    category = BlogCategory.objects.all()
-    post = Post.objects.filter(slug=slug, category=category)
+    post = Post.objects.get(slug=slug)
     viewed_articles = request.session.get('viewed_articles', [])
     
     # Проверяем, просматривал ли пользователь эту статью ранее.
     if slug not in viewed_articles:
       # Увеличиваем счетчик просмотров, если статья просматривается впервые.
-      article.view_count += 1
-      article.save()
+      post.view_count += 1
+      post.save()
 
       # Добавляем идентификатор статьи в список просмотренных.
       viewed_articles.append(slug)
@@ -42,7 +47,6 @@ def post(request, category_slug, slug):
 
 
     context = {
-        "categorys": category,
         "post": post,
     }
 

@@ -1,0 +1,23 @@
+
+.banner {
+
+  //.banner__inner
+
+  &__inner {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  //.banner__title
+
+  &__title {
+    color: rgba($color: $white, $alpha: 1.0);
+  }
+
+  .breadcrumbs__item{
+    color: rgba($color: $white, $alpha: 1.0);
+  }
+
+}
