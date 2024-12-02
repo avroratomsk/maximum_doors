@@ -44,6 +44,7 @@ def import_products_from_excel(file_path):
       slug = slugify(name)
       category = row[2]
       category_slug = slugify(category)
+
       try:
         category = Category.objects.get(slug=category_slug)
       except ObjectDoesNotExist:
@@ -69,7 +70,7 @@ def import_products_from_excel(file_path):
         article=article,
         name=name,
         slug=slug,
-        # category=category,
+        category=category,
         manufacturer=manufacturer,
         manufacturer_description=manufacturer_description,
         colors=colors,
@@ -108,7 +109,7 @@ def import_products_from_excel(file_path):
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-  #import_products_from_excel(path_to_excel)
+#   import_products_from_excel(path_to_excel)
   
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""

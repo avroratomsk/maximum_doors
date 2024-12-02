@@ -6,7 +6,15 @@
     display: flex;
     justify-content: space-between;
     gap: 10px;
-    margin-top: 80px;
+    margin-top: 40px;
+
+    @media screen and (min-width: 992px){
+      margin-top: 80px;
+    }
+
+    @media screen and (max-width: 992px){
+      flex-direction: column;
+    }
   }
 
   //.contact__top
@@ -37,12 +45,18 @@
   //.contact__map
 
   &__map {
+
+    @media screen and (max-width: 768px){
+      display: none;
+    }
   }
 
   //.contact__search
 
   &__search {
-    flex: 0 0 400px;
+    @media screen and (min-width: 992px){
+      flex: 0 0 400px;
+    }
   }
 
   //.contact__form

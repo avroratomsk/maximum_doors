@@ -6,14 +6,18 @@
       <img src="{% static 'theme/img/news.jpeg' %}" alt="">
     </a>
     <div class="card-news__content">
-      <h3 class="card-news__title">
-        <a href="{{ post.get_absolute_url }}" class="">
-          {{ post.name }}
-        </a>
-      </h3>
-      <p class="card-news__descr">
-        {{ post.description|safe|truncatechars:25 }}
-      </p>
+      {% if post.name %}
+        <h3 class="card-news__title">
+          <a href="{{ post.get_absolute_url }}" class="">
+            {{ post.name }}
+          </a>
+        </h3>
+      {% endif %}
+      {% if post.description %}
+        <p class="card-news__descr">
+          {{ post.description|safe|truncatechars:25 }}
+        </p>
+      {% endif %}
       <p class="card-news__date">28 сентября</p>
       <a href="#" class="card-news__link">
         <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">

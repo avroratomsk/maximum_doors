@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(10px, 2.5vw, 50px);
+    gap: 50px;
   }
 
   // .header__logo
@@ -60,7 +60,7 @@
       font-size: 14px;
     }
 
-    @media screen and (max-width: 520px) {
+    @media screen and (max-width: 768px) {
       display: none;
     }
   }
@@ -85,7 +85,7 @@
 .nav {
   position: relative;
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1200px) {
     position: fixed;
     top: 0;
     right: -150%;
@@ -106,14 +106,6 @@
   &__list {
     @include flex.flex-container(center, center);
     gap: 25px;
-
-    @media screen and (min-width: 992px) {
-      gap: clamp(10px, 2.5vw, 50px);
-    }
-
-    @media screen and (max-width: 992px) {
-      flex-direction: column;
-    }
   }
 
   // .nav__item
@@ -129,7 +121,8 @@
     &::before {
       content: '';
       position: absolute;
-      bottom: -5px;
+      margin-top: 7px;
+      top: 100%;
       right: 0;
       width: 0%;
       height: 2px;
@@ -225,7 +218,7 @@
     }
   }
 
-  @media screen and (max-width: 992px) {
+  @media screen and (max-width: 1200px) {
     display: block;
   }
 }

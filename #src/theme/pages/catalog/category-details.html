@@ -1,21 +1,9 @@
 {% extends "base.html" %} {% load shop_tags %} {% load thumbnail %}{% load static %}
 {% block title %}
-{% if category.meta_title %}
-{{ category.meta_title}}
-{% else %}
-Заказать {% filter lower %}{{ category.name }}{% endfilter %} памятников на могилу в Томске | Акрополь
-{% endif %}
+
 {% endblock %}
 
 {% block description %}
-{% if category.meta_description %}
-{{ category.meta_description }}
-{% else %}
-Купить {% filter lower %}{{ category.name }}{% endfilter %} на могилу по выгодной цене в Томске от компании Акрополь.
-Заказать памятники можно по номеру
-+7(900) 921-09-15 и +7(903) 955-40-18
-{% endif %}
-
 
 {% endblock %}
 {% block keywords %}

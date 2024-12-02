@@ -7,18 +7,18 @@ import '../js/modules/map.js';
 import '../js/modules/popup/popup.js';
 
 import Swiper from 'swiper';
-import {Navigation, Pagination} from 'swiper/modules';
+import {Navigation, Pagination, FreeMode} from 'swiper/modules';
 
 
 const swiper_reviews = new Swiper('.index-reviews__slider', {
-  modules: [Navigation, Pagination],
-  slidesPerView: 4.5,
-  spaceBetween: 30,
+  modules: [Navigation, Pagination, FreeMode],
+  freeMode: true,
 
   breakpoints: {
     320: {
-      slidesPerView: 1,
-      spaceBetween: 20
+      slidesPerView: 1.1,
+      spaceBetween: 20,
+
     },
     536: {
       slidesPerView: 2,

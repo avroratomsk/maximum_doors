@@ -252,7 +252,9 @@
           </div>
         </div>
       </div>
-      <a href="" class="index-reviews__btn btn btn--black">Посмотреть все отызывы</a>
+      <div class="container">
+        <a href="" class="index-reviews__btn btn">Посмотреть все отызывы</a>
+      </div>
     </div>
   </section>
 
@@ -269,7 +271,7 @@
       <div class="contact__inner">
         <div class="contact__search">
           <form action="#" class="contact__form form">
-            <input type="text" placeholder="Поиск адреса" name="search-city" class="form__input contact__input" >
+            <input type="text" placeholder="Поиск адреса" name="search-city" class="form__input contact__input">
           </form>
           <div class="contact__address contact-address">
             <div class="contact-address__card">
@@ -353,9 +355,9 @@
           </div>
         </div>
         {% else %}
-          <div class="empty-block">
-            <p>Тут пока пусто</p>
-          </div>
+        <div class="empty-block">
+          <p>Тут пока пусто</p>
+        </div>
         {% endif %}
       </div>
     </div>
