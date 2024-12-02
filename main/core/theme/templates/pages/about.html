@@ -41,7 +41,7 @@
         <div class="page-nav">
           <ul>
             <li class="active"><a href="{% url 'about' %}">О компании</a></li>
-            <li><a href="#">Доставка и оплата</a></li>
+            <li><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
             <li><a href="{% url 'blog' %}">Новости</a></li>
             <li><a href="#">Наши работы</a></li>
           </ul>
@@ -240,27 +240,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="index-news section--padded">
-    <div class="container">
-      <div class="index-news__inner">
-        <h2 class="index-news__title title-h2">Новости</h2>
-        {% if posts %}
-        <div class="index-news__slider swiper">
-          <div class="index-news__wrapper swiper-wrapper">
-            {% for post in posts %}
-            {% include "../components/blog-card.html" with post=post %}
-            {% endfor %}
-          </div>
-        </div>
-        {% else %}
-        <div class="empty-block">
-          <p>Тут пока пусто</p>
-        </div>
-        {% endif %}
       </div>
     </div>
   </section>

@@ -117,10 +117,8 @@ def gal_cat_detail(request, slug):
 
   
 def about(request):
-  posts = Post.objects.filter(status=True)
 
   context = {
-    "posts": posts
   }
 
   return render(request, "pages/about.html", context)
