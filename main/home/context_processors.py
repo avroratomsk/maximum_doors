@@ -5,7 +5,7 @@ def load_settings(request):
     return {'site_settings': BaseSettings.load()}
 
 def category_menu(request):
-    return {'category_menu': Category.objects.filter(add_menu=True)}
+    return {'category_menu': Category.objects.all()}
 
 def static_theme_path(request):
     from django.conf import settings

@@ -1702,7 +1702,11 @@ html._lock body::before {
   gap: 30px;
 }
 
+.no-webp .footer__logo{
+  background-image: url("../img/logo-dark.png"); }
+
 .footer__logo {
+  background-repeat: no-repeat;
   width: 230px;
   height: 102px;
   margin-bottom: 31px;
@@ -3598,6 +3602,10 @@ body._lock::after {
 .form__input:focus {
   outline: none;
   border-color: rgba(0, 0, 0, 0.8);
+}
+
+.form__input--hidden {
+  display: none;
 }
 
 .form__button {
@@ -8765,3 +8773,5 @@ body._lock::after {
 }
 
 .webp .header--white .logo{ background-image: url(../img/logo-dark.webp); }
+
+.webp .footer__logo{ background-image: url(../img/logo-dark.webp); }

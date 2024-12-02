@@ -87,44 +87,44 @@
     </div>
   </section>
 
-  <section class="index-work section--padded">
-    <div class="container">
-      <div class="index-work__inner">
-        <h2 class="index-work__title title-h2">Наши работы</h2>
-        <div class="index-work__slider swiper">
-          <div class="index-work__wrapper swiper-wrapper">
-            <div class="index-work__slide swiper-slide"
-                 style="background-image: url({% static 'theme/img/work-1.jpeg' %})">
-              <a href="" class="index-work__dot" style="top: 36%; left: 38%;">
-                <span></span>
-                <p>
-                  Какой то текст тут не большой чтобы понимать как сделать
-                </p>
-              </a>
-              <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>
-            </div>
-            <div class="index-work__slide swiper-slide"
-                 style="background-image: url({% static 'theme/img/work-2.jpeg' %})">
-              <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>
-            </div>
-            <div class="index-work__slide swiper-slide"
-                 style="background-image: url({% static 'theme/img/work-3.jpeg' %})">
-              <a href="" class="index-work__dot" style="top: 50%; left: 68%;"><span></span></a>
-            </div>
-          </div>
-        </div>
-        <div class="index-work__buttons">
-          <button class="index-work__prev">
-            <img src="{% static 'theme/img/icon/slider-prev.svg' %}" alt="">
-          </button>
-          <button class="index-work__next">
-            <img src="{% static 'theme/img/icon/slider-next.svg' %}" alt="">
-          </button>
-        </div>
-        <a href="" class="index-work__btn btn btn--shadow">Смотреть все</a>
-      </div>
-    </div>
-  </section>
+<!--  <section class="index-work section&#45;&#45;padded">-->
+<!--    <div class="container">-->
+<!--      <div class="index-work__inner">-->
+<!--        <h2 class="index-work__title title-h2">Наши работы</h2>-->
+<!--        <div class="index-work__slider swiper">-->
+<!--          <div class="index-work__wrapper swiper-wrapper">-->
+<!--            <div class="index-work__slide swiper-slide"-->
+<!--                 style="background-image: url({% static 'theme/img/work-1.jpeg' %})">-->
+<!--              <a href="" class="index-work__dot" style="top: 36%; left: 38%;">-->
+<!--                <span></span>-->
+<!--                <p>-->
+<!--                  Какой то текст тут не большой чтобы понимать как сделать-->
+<!--                </p>-->
+<!--              </a>-->
+<!--              <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>-->
+<!--            </div>-->
+<!--            <div class="index-work__slide swiper-slide"-->
+<!--                 style="background-image: url({% static 'theme/img/work-2.jpeg' %})">-->
+<!--              <a href="" class="index-work__dot" style="top: 51%; left: 54%;"><span></span></a>-->
+<!--            </div>-->
+<!--            <div class="index-work__slide swiper-slide"-->
+<!--                 style="background-image: url({% static 'theme/img/work-3.jpeg' %})">-->
+<!--              <a href="" class="index-work__dot" style="top: 50%; left: 68%;"><span></span></a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="index-work__buttons">-->
+<!--          <button class="index-work__prev">-->
+<!--            <img src="{% static 'theme/img/icon/slider-prev.svg' %}" alt="">-->
+<!--          </button>-->
+<!--          <button class="index-work__next">-->
+<!--            <img src="{% static 'theme/img/icon/slider-next.svg' %}" alt="">-->
+<!--          </button>-->
+<!--        </div>-->
+<!--        <a href="" class="index-work__btn btn btn&#45;&#45;shadow">Смотреть все</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
 
   <section class="index-reviews section--padded">
     <div class="index-reviews__inner">
@@ -324,12 +324,12 @@
             Закажите звонок или обратитесь в чат на нашем сайте, менеджеры помогут вам выбрать лучший вариант для вас
           </p>
           <div class="index-questions__buttons">
-            <button class="index-questions__btn index-questions--order">Оставить заявку</button>
-            <button class="index-questions__btn index-questions--callback">Заказать звонок</button>
+            <button class="index-questions__btn index-questions--order" data-popup="leave-request">Оставить заявку</button>
+            <button class="index-questions__btn index-questions--callback" data-popup="callback">Заказать звонок</button>
           </div>
           <div class="index-questions__social">
-            <a href=""><img src="{% static 'theme/img/icon/telegram.svg' %}" alt=""></a>
-            <a href=""><img src="{% static 'theme/img/icon/vk.svg' %}" alt=""></a>
+            <a href="https://vk.com/maximum2022" target="_blank"><img src="{% static 'theme/img/icon/telegram.svg' %}" alt="Двери Максимум вк" ></a>
+            <a href="" target="_blank"><img src="{% static 'theme/img/icon/vk.svg' %}" alt="Двери Максимум телеграмм"></a>
             <p>
               Подписывайтесь на нас, чтобы быть в курсе всех новостей и акций.
             </p>

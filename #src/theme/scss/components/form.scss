@@ -11,6 +11,10 @@
       outline: none;
       border-color: rgba($color: $mainColor, $alpha: .8);
     }
+
+    &--hidden{
+      display: none;
+    }
   }
 
   // .form__button

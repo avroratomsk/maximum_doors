@@ -3,9 +3,7 @@
   <div class="container">
     <div class="footer__row">
       <div class="footer__col">
-        <div class="footer__logo">
-          <img src="{% static 'theme/mb/images/logo-dark.png' %}" alt="">
-        </div>
+        <div class="footer__logo"></div>
         <div class="footer__contact-inner">
           <p class="footer__name">Салон дверей Максимум</p>
           <p class="footer__street">Самара, ул. Карла Маркса, 192</p>
@@ -24,15 +22,17 @@
           <nav class="footer__nav footer-nav">
             <p>О компании</p>
             <ul class="footer-nav__list">
-              <li class="footer-nav__item"><a href="">О нас</a></li>
+              <li class="footer-nav__item"><a href="{% url 'about' %}">О нас</a></li>
             </ul>
           </nav>
           <nav class="footer__nav footer-nav">
             <p>Каталог</p>
             <ul class="footer-nav__list">
-              <li class="footer-nav__item"><a href="">Металлические двери</a></li>
-              <li class="footer-nav__item"><a href="">Алюминиевые двери</a></li>
-              <li class="footer-nav__item"><a href="">Фурнитура</a></li>
+              {% if category_menu %}
+              {% for cat in category_menu %}
+              <li class="footer-nav__item"><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
             </ul>
           </nav>
           <nav class="footer__nav footer-nav">
