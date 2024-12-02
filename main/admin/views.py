@@ -93,11 +93,6 @@ def import_products_from_excel(file_path):
         except Exception as e:
             print(e)
 
-      print(f"Продукт '{name}' обработан.")
-
-    print("Импорт завершён!")
-    
-
 # @user_passes_test(lambda u: u.is_superuser)
 # def sidebar_show(request): 
    
