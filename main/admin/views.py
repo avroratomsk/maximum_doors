@@ -60,7 +60,7 @@ def import_products_from_excel(file_path):
       image = f"goods/{row[6]}"
       price = row[7]
       installment = row[8]
-      sale = 0
+#       sale = 0
       properties = row[10]
 
 
@@ -77,7 +77,7 @@ def import_products_from_excel(file_path):
         image=image,
         price=price,
         installment=installment,
-        sale=sale
+#         sale=sale
       )
 
 
