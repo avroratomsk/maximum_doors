@@ -11,12 +11,12 @@
   <section class="about section--padded">
     <div class="container">
       <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-        <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+        <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
            class="breadcrumbs__item">
-          Каталог
+          Главная
           <meta itemprop="position" content="1"/>
         </a>
-        <a href="" itemprop="itemListElement" itemscope=""
+        <a href="{% url 'about' %}" itemprop="itemListElement" itemscope=""
            itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
           О компании
           <meta itemprop="position" content="2"/>
@@ -24,31 +24,26 @@
       </div>
       <div class="page-top">
         <div class="page-text">
-          <h1>Компания по производству, <br> продаже и установке дверей</h1>
+          <h1>О Компании</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum
-            quae
-            quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-            quidem.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum
-            quae
-            quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-            quidem.
+            Ремонт любых помещений: жилых, офисных, коммерческих, как правило, начинают с установки входных дверей.
+            Компания «Maximum» предоставляет вашему вниманию большой выбор по доступной цене. Хотите заказать
+            в Самаре качественные двери недорого? Тогда наше предложение вас точно заинтересует.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum
-            quae
-            quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-            quidem.
+            Поставляемая продукция отличается прочностью, надежностью и долговечностью благодаря продуманной
+            конструкции, применению высококачественных материалов, запирающих механизмов и фурнитуры. Дверное полотно
+            состоит из листа стали (толщиной от 1,5 мм) с рельефной поверхностью, которую формируют методом холодной
+            штамповки. Листы прочно приварены к дверному каркасу при помощи лазерной сварки (не точечно, а по всему
+            периметру).
           </p>
         </div>
         <div class="page-nav">
           <ul>
-            <li class="active"><a href="#">О компании</a></li>
+            <li class="active"><a href="{% url 'about' %}">О компании</a></li>
             <li><a href="#">Доставка и оплата</a></li>
-            <li><a href="#">Новости</a></li>
+            <li><a href="{% url 'blog' %}">Новости</a></li>
             <li><a href="#">Наши работы</a></li>
-            <li><a href="#">Контакты</a></li>
           </ul>
         </div>
       </div>
@@ -57,47 +52,63 @@
     <div class="image-full-screen" style="background-image: url({% static 'theme/img/slider-3.jpeg'  %})"></div>
     <div class="container">
       <div class="page-text">
-        <h2>Aut cum harum inventore iusto</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
+          Наши двери успешно противостоят негативному воздействию атмосферных явлений благодаря специальному покрытию,
+          которое наносится в несколько слоев: грунтовка, краска с термической обработкой, обжиг в печи при температуре
+          в 1000 градусов, атмосфероустойчивый лак.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
-        </p>
-        <h3>Aspernatur dignissimos earum illum minus</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
+          Листая каталоги, представленные на сайте, вы сможете выбрать модель, подходящую по всем параметрам, и заказать
+          ее в Самаре по разумной цене. Покупая двери от «Maximum», вы делаете выбор в пользу высокого качества,
+          безопасности, надежности, а также стильного дизайна.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
-        </p>
-        <h3>Lorem ipsum dolor sit amet</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
+          Будучи производителями, мы гарантируем бескомпромиссное качество изделий и конкурентные цены на весь
+          ассортимент. Мы не работаем с посредниками, не используем дополнительные коммерческие наценки – поиски более
+          выгодного предложения в Самаре равносильны потере времени.
         </p>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cum harum inventore iusto, laborum nostrum quae
-          quo ullam veniam voluptate! Aspernatur dignissimos earum illum minus placeat quisquam, quos! Laudantium,
-          quidem.
+          Наша продукция оснащается 2-мя или 3-мя петлями на выбор, которые невозможно срезать при взломе. Замки разных
+          систем и качества.
+        </p>
+        <p>
+          Допустима перекодировка запирающего механизма. Она происходит автоматически после применения перекодирующего
+          ключа и проворачивания его на 2 оборота снаружи и с внутренней стороны. Каждый замок поставляется с 6 ключами
+          с лазерной обработкой, среди них: 5 — для пользователей, 2 — для монтажа, 1 – для перекодировки.
+        </p>
+        <p>
+          Прочные, надежные, взломостойкие двери «Maximum» — гарантия безопасности вашего жилого или рабочего
+          пространства.
+        </p>
+        <h2>Наполнение</h2>
+        <p>
+          Дверное полотно укреплено 3-мя ребрами жесткости в формы буквы П (толщина 2 мм). Заполнено 2-мя плитами
+          минеральной ваты, проложенными волокнистым слоем толщиной 5 мм. По периметру использованы специальные
+          уплотнители из резины. Один из них находится со стороны открытия двери, дополнен магнитной лентой. В
+          результате достигаются высокие показатели тепло- и звукоизоляции, пыле-, воздухонепроницаемости.
+        </p>
+        <h2>Производство компании «Maximum»</h2>
+        <p>
+          Мы поставляем высококачественные входные двери по цене производителя. Наша продукция отличается
+          многочисленными эксплуатационными преимуществами и актуальным дизайном. По запросу мы изготавливаем двери, как
+          наружного, так и внутреннего открывания, с 2-мя створками, фрамугой и/или полкой. Благодаря применению
+          передового гибочного оборудования мы способны реализовать дизайн-проект любой сложности. Изделия производятся
+          в соответствии с ГОСТом Р 51072—97 и ГОСТом 31173—2003.
+        </p>
+        <p><b>Основными достоинствами являются:</b></p>
+        <ul>
+          <li>толщина стали 2 мм</li>
+          <li>замки марки Guardian</li>
+          <li>утепление короба</li>
+          <li>внутренние панели толщиной 6-16 мм</li>
+          <li>противосъемные штыри</li>
+          <li>оформление, цветовое решение дверных полотен на выбор</li>
+          <li>многоступенчатый контроль ОТК</li>
+        </ul>
+        <br>
+        <br>
+        <p>
+          Мы предлагаем купить входные двери в Самаре недорого, оказываем услуги по установке дверных конструкций, а также отделке откосов.
         </p>
       </div>
     </div>
@@ -229,7 +240,6 @@
           </div>
         </div>
       </div>
-      <a href="" class="index-reviews__btn btn btn--black">Посмотреть все отызывы</a>
     </div>
   </section>
 
@@ -237,70 +247,19 @@
     <div class="container">
       <div class="index-news__inner">
         <h2 class="index-news__title title-h2">Новости</h2>
+        {% if posts %}
         <div class="index-news__slider swiper">
           <div class="index-news__wrapper swiper-wrapper">
-            <article class="index-news__slide swiper-slide">
-              <div class="index-news__card card-news">
-                <a href="" class="card-news__image">
-                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-                </a>
-                <div class="card-news__content">
-                  <h3 class="card-news__title"><a href="" class="">
-                    Первая запись блога
-                  </a>
-                  </h3>
-                  <p class="card-news__descr">
-                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
-                  </p>
-                  <p class="card-news__date">28 сентября</p>
-                  <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                  </a>
-                </div>
-              </div>
-            </article>
-            <article class="index-news__slide swiper-slide">
-              <div class="index-news__card card-news">
-                <a href="" class="card-news__image">
-                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-                </a>
-                <div class="card-news__content">
-                  <h3 class="card-news__title"><a href="" class="">
-                    Первая запись блога
-                  </a>
-                  </h3>
-                  <p class="card-news__descr">
-                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
-                  </p>
-                  <p class="card-news__date">28 сентября</p>
-                  <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                  </a>
-                </div>
-              </div>
-            </article>
-            <article class="index-news__slide swiper-slide">
-              <div class="index-news__card card-news">
-                <a href="" class="card-news__image">
-                  <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-                </a>
-                <div class="card-news__content">
-                  <h3 class="card-news__title"><a href="" class="">
-                    Первая запись блога
-                  </a>
-                  </h3>
-                  <p class="card-news__descr">
-                    Мы подготовили для нас новинку, надеемся вам понравится, оно того стоит...
-                  </p>
-                  <p class="card-news__date">28 сентября</p>
-                  <a href="#" class="card-news__link">
-                    <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                  </a>
-                </div>
-              </div>
-            </article>
+            {% for post in posts %}
+            {% include "../components/blog-card.html" with post=post %}
+            {% endfor %}
           </div>
         </div>
+        {% else %}
+        <div class="empty-block">
+          <p>Тут пока пусто</p>
+        </div>
+        {% endif %}
       </div>
     </div>
   </section>
