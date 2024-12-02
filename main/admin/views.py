@@ -36,7 +36,7 @@ def import_products_from_excel(file_path):
     Properties.objects.all().delete()
 
     # Загружаем данные из Excel
-    df = pd.read_excel(file_path)
+    df = pd.read_excel(file_path, engine='openpyxl')
 
     for _, row in df.iterrows():
       article=row[0]
