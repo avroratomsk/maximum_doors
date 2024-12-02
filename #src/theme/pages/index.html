@@ -343,6 +343,7 @@
     <div class="container">
       <div class="index-news__inner">
         <h2 class="index-news__title title-h2">Новости</h2>
+        {% if posts %}
         <div class="index-news__slider swiper">
           <div class="index-news__wrapper swiper-wrapper">
             {% for post in posts %}
@@ -350,6 +351,11 @@
             {% endfor %}
           </div>
         </div>
+        {% else %}
+        <div class="empty-block">
+          <p>Тут пока пусто</p>
+        </div>
+        {% endif %}
       </div>
     </div>
   </section>

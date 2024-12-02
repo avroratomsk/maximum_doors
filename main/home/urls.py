@@ -12,7 +12,6 @@ urlpatterns = [
     path('delivery/', views.delivery, name="delivery"),
     path('callback/', views.callback, name="callback"),
     path('contact-form/', views.contact_form, name="contact_form"),
-    path('reviews-form/', views.reviews_form, name="reviews_form"),
     path('service-form/', views.service_form, name="service_form"),
     path('consultation/', views.consultation, name="consultation"),
     path('stock-product/', views.stock_product, name="stock_product"),
