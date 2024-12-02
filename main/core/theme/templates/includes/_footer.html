@@ -36,11 +36,13 @@
             </ul>
           </nav>
           <nav class="footer__nav footer-nav">
-            <p>Доставка и установка</p>
+            <p>Новости</p>
             <ul class="footer-nav__list">
-              <li class="footer-nav__item"><a href="">Доставка от компании</a></li>
-              <li class="footer-nav__item"><a href="">Самовывоз</a></li>
-              <li class="footer-nav__item"><a href="">Установка</a></li>
+              {% if category_blog %}
+              {% for cat_blog in category_blog %}
+              <li class="footer-nav__item"><a href="{{ cat_blog.get_absolute_url }}">{{ cat_blog.name }}</a></li>
+              {% endfor %}
+              {% endif %}
             </ul>
           </nav>
           <nav class="footer__nav footer-nav">

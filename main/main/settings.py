@@ -65,6 +65,7 @@ TEMPLATES = [
                 "home.context_processors.category_menu",
                 "home.context_processors.static_theme_path",
                 "subdomain.context_processors.subdomain",
+                "home.context_processors.category_blog",
             ],
         },
     },
