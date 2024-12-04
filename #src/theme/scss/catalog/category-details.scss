@@ -12,11 +12,24 @@
     font-weight: 500;
     line-height: 150%;
     letter-spacing: -5%;
+
+    @media screen and (max-width: 992px){
+      font-size: 30px;
+    }
+    @media screen and (max-width: 425px){
+      font-size: 24px;
+    }
+
   }
 
   // .category__filter
 
-  &__filter {}
+  &__filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
 
   //.category__grid
   &__grid{
@@ -32,7 +45,11 @@
 
 
 .filter {
-  margin-top: 43px;
+  margin-top: 40px;
+
+  @media screen and (max-width: 992px){
+    margin-top: 20px;
+  }
 
   // .filter__inner 
 

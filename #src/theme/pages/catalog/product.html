@@ -11,22 +11,22 @@
 {% block content %}
 
 <main class="page">
-  <div class="product-details">
+  <div class="product-details section--padded">
     <div class="container">
       <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-        <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+        <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
           class="breadcrumbs__item">
-          Каталог
+          Главная
           <meta itemprop="position" content="1" />
         </a>
         <a href="{{ product.category.get_absolute_url }}" itemprop="itemListElement" itemscope=""
           itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
-          Категория 1
+          {{ product.category.name }}
           <meta itemprop="position" content="2" />
         </a>
-        <a href="{{ product.category.get_absolute_url }}" itemprop="itemListElement" itemscope=""
+        <a href="{{ product.get_absolute_url }}" itemprop="itemListElement" itemscope=""
           itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
-          Название товара 1
+          {{ product.name }}
           <meta itemprop="position" content="3" />
         </a>
       </div>
@@ -59,24 +59,24 @@
                 <button type="button" class="product-info__btn _btn" data-popup="leave-request">Оставить заявку</button>
                 <button type="button" class="product-info__btn _btn">Заказать звонок</button>
               </div>
-              <div class="product-info__properties">
-                <div class="product-info__properties-text">
-                  <span>Артикул</span>
-                  <span>1234</span>
-                </div>
-                <div class="product-info__properties-text">
-                  <span>Отделка</span>
-                  <span>Серый металл</span>
-                </div>
-                <div class="product-info__properties-text">
-                  <span>Вставка</span>
-                  <span>Бежевый дуб</span>
-                </div>
-                <div class="product-info__properties-text">
-                  <span>Портал</span>
-                  <span>Классика</span>
-                </div>
-              </div>
+<!--              <div class="product-info__properties">-->
+<!--                <div class="product-info__properties-text">-->
+<!--                  <span>Артикул</span>-->
+<!--                  <span>1234</span>-->
+<!--                </div>-->
+<!--                <div class="product-info__properties-text">-->
+<!--                  <span>Отделка</span>-->
+<!--                  <span>Серый металл</span>-->
+<!--                </div>-->
+<!--                <div class="product-info__properties-text">-->
+<!--                  <span>Вставка</span>-->
+<!--                  <span>Бежевый дуб</span>-->
+<!--                </div>-->
+<!--                <div class="product-info__properties-text">-->
+<!--                  <span>Портал</span>-->
+<!--                  <span>Классика</span>-->
+<!--                </div>-->
+<!--              </div>-->
             </div>
           </div>
           <div class="product-info__col">

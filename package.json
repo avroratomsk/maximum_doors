@@ -54,5 +54,6 @@
     "webp-converter": "2.2.3",
     "webpack": "^5.74.0",
     "webpack-stream": "^7.0.0"
-  }
+  },
+  "packageManager": "yarn@4.5.3"
 }

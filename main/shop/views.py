@@ -13,15 +13,17 @@ def category(request):
     shop_setup = ShopSettings.objects.get()
   except: 
     shop_setup = ShopSettings()
+  count = int(request.GET.get('count', 16))
   page = request.GET.get("page", 1)
   
           
-  paginator = Paginator(products, 16)
+  paginator = Paginator(products, count)
   current_page = paginator.page(int(page))
   context = {
     "title": "Название товара",
     "products": current_page,
-    "shop_setup": shop_setup
+    "shop_setup": shop_setup,
+    "count": count
   }
   
   return render(request, "pages/catalog/category.html", context)
@@ -30,16 +32,16 @@ def category(request):
 def category_detail(request, slug):
   page = request.GET.get("page", 1)
   category = Category.objects.get(slug=slug)
-  # chars = CharName.objects.filter(group=None)
-  products = Product.objects.filter(category=category).order_by('model')
-    
-  paginator = Paginator(products, 16)
+  products = Product.objects.filter(category=category)
+  count =  int(request.GET.get('count', 16))
+  paginator = Paginator(products, count)
   current_page = paginator.page(int(page))
   
   context = {
     "category": category,
     "title": "Название товара",
     "products": current_page,
+    "count": count
   }
   
   return render(request, "pages/catalog/category-details.html", context)

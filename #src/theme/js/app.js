@@ -5,6 +5,7 @@ functions.isWebp();
 import '../js/modules/menu/stickyMenu.js';
 import '../js/modules/map.js';
 import '../js/modules/popup/popup.js';
+import '../js/modules/searchCatalog.js';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination, FreeMode} from 'swiper/modules';
