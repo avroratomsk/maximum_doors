@@ -11,12 +11,20 @@
     color: rgb(134, 134, 134);
     font-size: 16px;
     line-height: 150%;
+    @media screen and (max-width: 570px){
+      font-size: 12px;
+      padding-right: 5px;
+    }
 
     & + &{
       &::before{
         content: "/";
         font-size: inherit;
         padding-right: 10px;
+
+        @media screen and (max-width: 570px){
+          padding-right: 5px;
+        }
       }
     }
   }

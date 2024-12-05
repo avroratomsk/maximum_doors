@@ -22,20 +22,23 @@
           <meta itemprop="position" content="2" />
         </a>
       </div>
-      <h1 class="category__title">Входные двери в Самаре</h1>
+      <h1 class="category__title">Каталог дверей</h1>
       <div class="category__filter filter">
         <form action="#" class="form form--search">
           <button type="submit" class="form__button"><i class="fa-solid fa-magnifying-glass"></i></button>
           <input type="search" class="form__input" name="catalog-search" id="catalog-search">
           
           <div class="search-result" id="search-result">
-            <div class="search-result__item">
-              <div class="search-result__image">
-                <img src="{% static 'theme/img/product/dm15-belenyi.png' %}" alt="">
-              </div>
-              <a href="" class="search-result__link">Название товара</a>
-              <p class="search-result__price">Цена ₽</p>
+            <div class="search-result__empty">
+              <p>Ничего не найдено</p>
             </div>
+<!--            <div class="search-result__item">-->
+<!--              <div class="search-result__image">-->
+<!--                <img src="{% static 'theme/img/product/dm15-belenyi.png' %}" alt="">-->
+<!--              </div>-->
+<!--              <a href="" class="search-result__link">Название товара</a>-->
+<!--              <p class="search-result__price">Цена ₽</p>-->
+<!--            </div>-->
           </div>
         </form>
         <form action="" class="form">
