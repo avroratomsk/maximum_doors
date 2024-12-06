@@ -6,6 +6,10 @@ import itertools
 from django.db.models import Count
 from .models import *
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 def category(request):
   products = Product.objects.filter(status=True)
   try:
@@ -25,7 +29,6 @@ def category(request):
   }
 
   return render(request, "pages/catalog/category.html", context)
-
 
 def category_detail(request, slug):
   page = request.GET.get("page", 1)
@@ -57,6 +60,15 @@ def product(request, slug):
 
   return render(request, "pages/catalog/product.html", context)
 
-
+@csrf_exempt
 def catalog_search(request):
-    return render(request, "pages/catalog/category.html")
+    if request.method == "POST":
+        try:
+            data.json_loads(request.body)
+            value = data.get("value")
+            print(value)
+
+            return JsonResponse({"value": value})
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    return JsonResponse({'error': 'Invalid JSON'}, status=400)
