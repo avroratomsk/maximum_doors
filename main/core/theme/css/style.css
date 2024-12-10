@@ -3689,6 +3689,34 @@ body._lock::after {
   border-color: rgba(0, 0, 0, 0.8);
 }
 
+.form input,
+.form select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.form input[type=number] {
+  -webkit-appearance: textfield;
+}
+
+.form input[type=number]::-webkit-inner-spin-button,
+.form input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .search-result {
   position: absolute;
   top: 100%;
