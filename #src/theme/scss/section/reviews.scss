@@ -75,6 +75,9 @@
   // .reviews__avatar
 
   &__avatar {
+    img{
+      border-radius: 50%;
+    }
   }
 
   //.reviews__name

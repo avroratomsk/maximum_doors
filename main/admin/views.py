@@ -4,13 +4,13 @@ import zipfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from admin.forms import BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, ReviewsForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from admin.forms import BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
 from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock
 from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
 from subdomain.models import Subdomain
 from service.models import Service, ServicePage
-from reviews.models import Reviews
+
 from shop.models import ColorProduct, Product, Category, ProductImage, Properties, ShopSettings
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
@@ -586,60 +586,13 @@ def admin_service_page(request):
   
   return render(request, "static/home_page.html", context)
 
-def admin_reviews(request):
-  reviews = Reviews.objects.all()
-  
-  context = {
-    "items": reviews
-  }
-  
-  return render(request, "reviews/reviews.html", context)
-
-def admin_reviews_edit(request, pk):
-  review = Reviews.objects.get(id=pk)
-  form = ReviewsForm(instance=review)
-  
-  if request.method == "POST":
-    form_new = ReviewsForm(request.POST, request.FILES, instance=review)
-    if form_new.is_valid():
-      form_new.save()
-      return redirect("admin_reviews")
-    else:
-      return render(request, "reviews/reviews_edit.html", {"form": form_new})
-  
-  context = {
-    "review":review,
-    "form": form
-  }
-  
-  return render(request, "reviews/reviews_edit.html", context)
-
-def admin_reviews_add(request):
-  form = ReviewsForm()
-  if request.method == "POST":
-    form_new = ReviewsForm(request.POST, request.FILES)
-    if form_new.is_valid():
-      form_new.save()
-      return redirect("admin_reviews")
-    else:
-      return render(request, "reviews/reviews_add.html", {"form": form_new})
-    
-  context = {
-    "form": form
-  }
-  
-  return render(request, "reviews/reviews_add.html", context)
-
-def admin_reviews_delete(request, pk):
-  pass
-
 def admin_stock(request):
   stocks = Stock.objects.all()
-  
+
   context = {
     "stocks": stocks
   }
-  
+
   return render(request, "stock/stock.html", context)
 
 def stock_add(request):

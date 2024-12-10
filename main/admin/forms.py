@@ -3,7 +3,6 @@ from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, Ro
 from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
-from reviews.models import Reviews
 from shop.models import Category, ColorProduct, Product, ProductImage, ShopSettings
 
 INPUT_CLASS = "form__controls"
@@ -406,70 +405,7 @@ class HomeTemplateForm(forms.ModelForm):
           }),
       }
            
-class ReviewsForm(forms.ModelForm):
-  """ Form, добавление и редактирование отзыва"""
-  # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
-  
-  class Meta:
-    model = Reviews
-    fields = [
-        'avatar',
-        'name',
-        'slug',
-        'date',
-        'text',
-        'status',
-        'meta_h1',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-    ]
-    labels = {
-        'avatar': 'Фотография пользователя',
-        'name':'ФИО пользователя',
-        'slug': 'URL',
-        'date':'Дата коментария',
-        'text':'Текст коментария',
-        'status':'Статус публикации',
-        'meta_h1':'Заголвок первого уровня',
-        'meta_title':'Meta title',
-        'untitle': 'Надзаголовок',
-        'meta_description':'Мета description',
-        'meta_keywords':'Meta keywords',
-    }
-    widgets = {
-      'name': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-        'id': 'name'
-      }),
-      'slug': forms.TextInput(attrs={
-        'class':INPUT_CLASS,
-        "id": "slug"
-      }),
-      'date': forms.DateInput(attrs={
-        'class':INPUT_CLASS,
-      }),
-      'text': forms.Textarea(attrs={
-        'class': INPUT_CLASS,
-        'rows': 5,
-      }),
-      'status': forms.CheckboxInput(attrs={
-        'class': 'form__controls-checkbox',
-      }),
-      'meta_h1': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-      }),
-      'meta_title': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-      }),
-      'meta_description': forms.Textarea(attrs={
-        'class': 'form-controls',
-        'rows': 5,
-      }),
-      'meta_keywords': forms.TextInput(attrs={
-        'class': INPUT_CLASS
-      })
-    }
+
     
 class StockForm(forms.ModelForm):
   """ Form, добавление и редактирование акций"""

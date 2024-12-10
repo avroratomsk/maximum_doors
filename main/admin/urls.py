@@ -1,6 +1,9 @@
 from django.urls import path
-
+from reviews.views import *
 from . import views
+
+from reviews import admin
+
 
 
 urlpatterns = [
@@ -29,12 +32,12 @@ urlpatterns = [
     path('product/add/', views.product_add, name='product_add'),
     path('product/edit/<int:pk>/', views.product_edit, name='product_edit'),
     path('product/delete/<int:pk>/', views.product_delete, name='product_delete'),
-    
+
     #URl - отвечающие за отображение отзывов, редактирование и удаление отзывов
-    path('admin-reviews/', views.admin_reviews, name='admin_reviews'),
-    path('admin-reviews/add/', views.admin_reviews_add, name='admin_reviews_add'),
-    path('admin-reviews/edit/<int:pk>/', views.admin_reviews_edit, name='admin_reviews_edit'),
-    path('admin_reviews/delete/<int:pk>/', views.admin_reviews_delete, name='admin_reviews_delete'),
+    path('admin-reviews/', admin.admin_reviews, name='admin_reviews'),
+    path('admin-reviews/add/', admin.admin_reviews_add, name='admin_reviews_add'),
+    path('admin-reviews/edit/<int:pk>/', admin.admin_reviews_edit, name='admin_reviews_edit'),
+    path('admin_reviews/delete/<int:pk>/', admin.admin_reviews_delete, name='admin_reviews_delete'),
     
     #URl - отвечающие за отображение акций, редактирование и удаление акций
     path('stock/', views.admin_stock, name='admin_stock'),
