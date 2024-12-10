@@ -3679,9 +3679,7 @@ body._lock::after {
   position: absolute;
   top: 100%;
   right: 0%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 30px;
@@ -3694,6 +3692,9 @@ body._lock::after {
 }
 
 .search-result__item {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -5,7 +5,6 @@ from django.db.models import Q
 import itertools
 from django.db.models import Count
 from .models import *
-
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -62,13 +61,30 @@ def product(request, slug):
 
 @csrf_exempt
 def catalog_search(request):
+
     if request.method == "POST":
         try:
-            data.json_loads(request.body)
-            value = data.get("value")
-            print(value)
+            result = request.body.decode("utf-8")
+            value = json.loads(result).get('value')
+            try:
+                products = Product.objects.filter(name__icontains=value)
+                data = []
+                for product in products:
 
-            return JsonResponse({"value": value})
+                    try:
+                        image  = product.image.url
+                    except:
+                        image = "/core/theme/mb/images/no-image.png"
+
+                    data.append({
+                      'name': product.name,
+                      'price': product.price,
+                      'url': product.get_absolute_url(),
+                      'image': image,
+                    })
+            except Exception as e:
+                print(e)
+            return JsonResponse({"value": data})
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     return JsonResponse({'error': 'Invalid JSON'}, status=400)

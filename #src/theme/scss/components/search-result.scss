@@ -2,7 +2,7 @@
   position: absolute;
   top: 100%;
   right: 0%;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 30px;
   background-color: #ffffff;
@@ -14,6 +14,7 @@
   //.search-result__item
 
   &__item {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
