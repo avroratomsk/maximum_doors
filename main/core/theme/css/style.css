@@ -3644,6 +3644,7 @@ body._lock::after {
 }
 
 .form--search input[type=search] {
+  height: 54px;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
@@ -3680,6 +3681,9 @@ body._lock::after {
 }
 
 .form__select {
+  height: 54px;
+  min-width: 54px;
+  text-align: center;
   padding: 15px 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
@@ -3694,8 +3698,7 @@ body._lock::after {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 10px;
 }
 
