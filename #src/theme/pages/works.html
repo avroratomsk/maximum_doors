@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load carts_tag %}
+{% load thumbnail %}
+{% block title %}{{ home_page.meta_title }}{% endblock %}
+{% block description %}{{ home_page.meta_description }}{% endblock %}
+{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+
+{% block content %}
+<main class="page">
+  <section class="works">
+    <div class="container">
+      <div class="works__inner">
+        <h2 class="works__title title-h2">Наши работы</h2>
+        <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+          <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+             class="breadcrumbs__item">
+            Главная
+            <meta itemprop="position" content="1"/>
+          </a>
+          <a href="{% url 'works' %}" itemprop="itemListElement" itemscope=""
+             itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+            Наши работы
+            <meta itemprop="position" content="2"/>
+          </a>
+        </div>
+        <div class="works__grid">
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/1.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/2.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/3.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/4.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/5.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/6.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/7.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/8.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/9.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/10.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/11.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/12.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/13.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/14.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/15.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/16.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/17.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/18.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/19.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/20.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/21.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/22.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/23.jpg' %})"></div>
+          <div class="works__item" style="background-image: url({% static 'theme/img/work/24.jpg' %})"></div>
+        </div>
+        <!--        <a href="" class="works__btn btn btn&#45;&#45;shadow">Смотреть все</a>-->
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

@@ -3120,7 +3120,11 @@ body._lock::after {
      object-fit: cover;
 }
 
-.index-work__inner {
+.works {
+  padding-top: 120px;
+}
+
+.works__inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3128,28 +3132,38 @@ body._lock::after {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
-.index-work__title {
-  text-align: center;
-  margin-bottom: clamp(30px, 3vw, 60px);
+.works__title {
+  margin-bottom: 30px;
 }
 
-.index-work__slider {
+.works__grid {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+}
+
+.works__item {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 550px;
+}
+
+.works__slider {
   width: 100%;
 }
 
-.index-work__slide {
+.works__slide {
   position: relative;
   height: clamp(490px, 35vw, 725px);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.index-work__dot {
+.works__dot {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -3169,7 +3183,7 @@ body._lock::after {
   transition: 0.5s;
 }
 
-.index-work__dot span {
+.works__dot span {
   display: block;
   width: 10px;
   height: 10px;
@@ -3182,7 +3196,7 @@ body._lock::after {
   transition: 0.2s;
 }
 
-.index-work__dot p {
+.works__dot p {
   position: absolute;
   left: 0%;
   top: 100%;
@@ -3203,7 +3217,7 @@ body._lock::after {
   transition: 0.5s;
 }
 
-.index-work__buttons {
+.works__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3216,8 +3230,8 @@ body._lock::after {
   gap: 10px;
 }
 
-.index-work__prev,
-.index-work__next {
+.works__prev,
+.works__next {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3237,7 +3251,7 @@ body._lock::after {
   margin-top: 20px;
 }
 
-.index-work__btn {
+.works__btn {
   margin-top: 40px;
 }
 
@@ -6631,7 +6645,7 @@ body._lock::after {
 }
 
 @media screen and (min-width: 1024px) {
-  .index-work__buttons {
+  .works__buttons {
     display: none;
   }
 }
@@ -8930,12 +8944,12 @@ body._lock::after {
             transform: translateX(10px);
   }
 
-  .index-work__dot:hover span {
+  .works__dot:hover span {
     width: 80%;
     height: 80%;
   }
 
-  .index-work__dot:hover P {
+  .works__dot:hover P {
     pointer-events: all;
     -webkit-transform: translateX(0px);
         -ms-transform: translateX(0px);
