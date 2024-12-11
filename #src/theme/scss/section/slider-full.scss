@@ -7,6 +7,7 @@
   // .slider-full__slide
 
   &__slide {
+    position: relative;
     width: 100%;
     height: 100vh;
     min-height: 500px;
@@ -15,6 +16,17 @@
     justify-content: flex-start;
     background-size: cover;
     background-position: center;
+    transition: .5s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+    }
   }
 
   // .slider-full__container
@@ -49,7 +61,7 @@
       font-size: 34px;
     }
 
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: 395px) {
       font-size: 29px;
     }
   }
@@ -96,7 +108,14 @@
   // .slider-full__pagination
 
   &__pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 70px !important;
+    z-index: 99;
 
     @media screen and (min-width: 620px) {
       width: auto !important;

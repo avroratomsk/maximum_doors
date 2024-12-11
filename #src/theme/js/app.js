@@ -6,9 +6,10 @@ import '../js/modules/menu/stickyMenu.js';
 import '../js/modules/map.js';
 import '../js/modules/popup/popup.js';
 import '../js/modules/searchCatalog.js';
+import '../js/modules/menu/mobileMenu.js';
 
 import Swiper from 'swiper';
-import {Navigation, Pagination, FreeMode} from 'swiper/modules';
+import {Navigation, Pagination, FreeMode, EffectFade, Autoplay} from 'swiper/modules';
 
 
 const swiper_reviews = new Swiper('.index-reviews__slider', {
@@ -59,6 +60,22 @@ const swiper_news = new Swiper('.index-news__slider', {
       spaceBetween: 30
     }
   }
+});
+
+const slider_full = new Swiper('.slider-full', {
+  modules: [Navigation, Pagination, EffectFade, Autoplay],
+  slidesPerView: 1,
+  spaceBetween: 30,
+  effect: "fade",
+  loop: true,
+
+  pagination: {
+    el: '.slider-full__pagination',
+  },
+
+  autoplay: {
+    delay: 5000,
+  },
 });
 
 const swiper_work = new Swiper('.index-work__slider', {

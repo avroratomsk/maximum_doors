@@ -8,7 +8,7 @@
 
 {% block content %}
 <main class="page">
-  <section class="about section--padded">
+  <section class="about">
     <div class="container">
       <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
         <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
@@ -43,7 +43,7 @@
             <li class="active"><a href="{% url 'about' %}">О компании</a></li>
             <li><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
             <li><a href="{% url 'blog' %}">Новости</a></li>
-            <li><a href="#">Наши работы</a></li>
+            <li><a href="{% url 'works' %}">Наши работы</a></li>
           </ul>
         </div>
       </div>

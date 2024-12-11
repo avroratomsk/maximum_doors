@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load carts_tag %}
+{% load thumbnail %}
+{% block title %}{{ home_page.meta_title }}{% endblock %}
+{% block description %}{{ home_page.meta_description }}{% endblock %}
+{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+
+{% block content %}
+<main class="page">
+  <section class="news">
+    <div class="container">
+      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <a href="/" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+           class="breadcrumbs__item">
+          Главная
+          <meta itemprop="position" content="1"/>
+        </a>
+        <span itemprop="itemListElement" itemscope=""
+              itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+          Услуги
+          <meta itemprop="position" content="2"/>
+        </span>
+      </div>
+      <h2 class="ews__title title-h2">Услуги</h2>
+      <div class="news__inner">
+        <div class="news__grid">
+          <article class="index-news__slide swiper-slide">
+            <div class="index-news__card card-news">
+              <a href="" class="card-news__image">
+                <img src="{% static 'theme/img/news.jpeg' %}" alt="">
+              </a>
+              <div class="card-news__content">
+                <h3 class="card-news__title">
+                  <a href="" class="">
+                    Установка пластиковых окон
+                  </a>
+                </h3>
+                <a href="#" class="card-news__link">
+                  <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="index-news__slide swiper-slide">
+            <div class="index-news__card card-news">
+              <a href="" class="card-news__image">
+                <img src="{% static 'theme/img/news.jpeg' %}" alt="">
+              </a>
+              <div class="card-news__content">
+                <h3 class="card-news__title">
+                  <a href="" class="">
+                    Застекление лоджий
+                  </a>
+                </h3>
+                <a href="#" class="card-news__link">
+                  <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!--        {% if posts %}-->
+        <!--        <div class="news__grid">-->
+        <!--          {% for post in posts %}-->
+        <!--            {% include "../../components/blog-card.html" with post=post %}-->
+        <!--          {% endfor %}-->
+        <!--        </div>-->
+        <!--        {% else %}-->
+        <!--        <div class="empty-block">-->
+        <!--          <p>Тут пока пусто</p>-->
+        <!--        </div>-->
+        <!--        {% endif %}-->
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

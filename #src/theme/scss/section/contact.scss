@@ -45,6 +45,9 @@
   //.contact__map
 
   &__map {
+    flex: 1 1 auto;
+    height: 500px;
+    overflow: hidden;
 
     @media screen and (max-width: 768px){
       display: none;
@@ -78,7 +81,7 @@
 }
 
 .contact-address {
-  height: calc(505px - 75px);
+  height: 500px;
   overflow-y: auto;
 
   /* Webkit-браузеры */

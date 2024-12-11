@@ -3,6 +3,10 @@
   margin-top: 60px;
   border-top: 1px solid rgb(203, 203, 203, .7);
 
+  @media screen and (max-width: 992px){
+    padding: 60px 0px 0px;
+  }
+
   // .footer__container
 
   &__container {

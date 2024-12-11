@@ -26,6 +26,12 @@
     .logo {
       background-image: url('../img/logo-dark.png')
     }
+
+    .burger{
+      span,&::before,&::after{
+        background-color: #000000;
+      }
+    }
   }
 
   // .header__container
@@ -93,7 +99,7 @@
     width: 290px;
     padding: 150px 0px 50px;
     transition: $animation_speed;
-    z-index: 99;
+    z-index: 999;
   }
 
   &._active {
@@ -105,6 +111,10 @@
   &__list {
     @include flex.flex-container(center, center);
     gap: 25px;
+
+    @media screen and (max-width: 1200px){
+      flex-direction: column;
+    }
   }
 
   // .nav__item

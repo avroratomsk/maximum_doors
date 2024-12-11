@@ -8,9 +8,8 @@
 
 {% block content %}
 <main class="page">
-  <section class="news section--padded">
+  <section class="news">
     <div class="container">
-      <h2 class="ews__title title-h2">Новости</h2>
       <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
         <a href="/" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
            class="breadcrumbs__item">
@@ -23,6 +22,7 @@
           <meta itemprop="position" content="2"/>
         </span>
       </div>
+      <h2 class="ews__title title-h2">Новости</h2>
       <div class="news__inner">
         {% if categorys %}
         <div class="category__filter filter">
