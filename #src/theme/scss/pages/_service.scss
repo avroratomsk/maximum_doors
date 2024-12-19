@@ -1,0 +1,92 @@
+.example-price {
+
+  &__title {
+    margin-bottom: 60px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__image {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__item-title {
+    font-size: 22px;
+    line-height: 150%;
+  }
+
+  &__item-char {
+    p {
+      line-height: 150%;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 100px;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgba(0, 0, 0, .14);
+    margin-top: 20px;
+  }
+}
+
+.tabs {
+  &__row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__item {
+    border: 1px solid rgba(0, 0, 0, .14);
+    padding: 20px 10px;
+    text-align: center;
+
+    p {
+      white-space: nowrap;
+      line-height: 120%;
+    }
+  }
+
+  &__image {
+    max-width: 100%;
+  }
+
+  &__btn {
+    border-radius: 0px;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 10px;
+  }
+}

@@ -24,55 +24,28 @@
       </div>
       <h2 class="ews__title title-h2">Услуги</h2>
       <div class="news__inner">
+        {% if services %}
         <div class="news__grid">
-          <article class="index-news__slide swiper-slide">
-            <div class="index-news__card card-news">
-              <a href="" class="card-news__image">
-                <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-              </a>
-              <div class="card-news__content">
-                <h3 class="card-news__title">
-                  <a href="" class="">
-                    Установка пластиковых окон
-                  </a>
-                </h3>
-                <a href="#" class="card-news__link">
-                  <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
+          {% for service in services%}
+          <div class="index-news__card card-news">
+            <a href="{{ service.get_absolute_url }}" class="card-news__image">
+              {% if  service.image %}
+              <img src="{{ service.image.url }}" alt="">
+              {% endif %}
+            </a>
+            <div class="card-news__content">
+              <h3 class="card-news__title">
+                <a href="{{ service.get_absolute_url }}" class="">
+                  {{ service.name }}
                 </a>
-              </div>
+              </h3>
             </div>
-          </article>
-          <article class="index-news__slide swiper-slide">
-            <div class="index-news__card card-news">
-              <a href="" class="card-news__image">
-                <img src="{% static 'theme/img/news.jpeg' %}" alt="">
-              </a>
-              <div class="card-news__content">
-                <h3 class="card-news__title">
-                  <a href="" class="">
-                    Застекление лоджий
-                  </a>
-                </h3>
-                <a href="#" class="card-news__link">
-                  <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
-                </a>
-              </div>
-            </div>
-          </article>
+            </article>
+          </div>
+          {% endfor %}
         </div>
-        <!--        {% if posts %}-->
-        <!--        <div class="news__grid">-->
-        <!--          {% for post in posts %}-->
-        <!--            {% include "../../components/blog-card.html" with post=post %}-->
-        <!--          {% endfor %}-->
-        <!--        </div>-->
-        <!--        {% else %}-->
-        <!--        <div class="empty-block">-->
-        <!--          <p>Тут пока пусто</p>-->
-        <!--        </div>-->
-        <!--        {% endif %}-->
+        {% endif %}
       </div>
-    </div>
   </section>
 </main>
 {% endblock %}

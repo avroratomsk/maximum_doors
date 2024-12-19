@@ -1,0 +1,17 @@
+.condition{
+
+  &__title{
+    margin-bottom: 60px;
+  }
+
+  &__row{
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__item{}
+}
