@@ -30,7 +30,7 @@
               {% if category.image %} {% thumbnail category.image "250x250" format="WEBP" crop="center" as im %}
               <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
               {% endthumbnail %} {% else%}
-              <img src="{% static 'theme/mb/images/no-image-1.png' %}" alt="" />
+              <img src="{% static 'admin/img/no-image.png' %}" alt="" />
               {% endif %}
             </div>
             <div class="body-table__name">

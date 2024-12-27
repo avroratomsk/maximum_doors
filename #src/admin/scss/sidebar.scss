@@ -61,7 +61,12 @@
 
   // .menu-sidebar__item
 
-  &__item {}
+  &__item {
+    i{
+      opacity: 0.8;
+      font-size: 14px;
+    }
+  }
 
   &__item+&__item {
     margin-top: 20px;
@@ -103,6 +108,9 @@
         }
       }
 
+      i {
+        opacity: .8;
+      }
     }
   }
 

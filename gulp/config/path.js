@@ -44,7 +44,7 @@ export const pathAdmin = {
   build: {
     js: `${buildFolderAdmin}/js/`,
     css: `${buildFolderAdmin}/css/`,
-    html: `${buildFolderAdmin}/templates`,
+    html: `${buildFolderAdmin}/`,
     images: `${buildFolderAdmin}/img/`,
     fonts: `${buildFolderAdmin}/fonts/`,
     files: `${buildFolderAdmin}/files/`,

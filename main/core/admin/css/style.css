@@ -105,6 +105,11 @@ ol {
   padding: 20px 30px;
 }
 
+.menu-sidebar__item i {
+  opacity: 0.8;
+  font-size: 14px;
+}
+
 .menu-sidebar__item + .menu-sidebar__item {
   margin-top: 20px;
 }
@@ -138,6 +143,10 @@ ol {
   -webkit-transform: rotate(180deg);
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.menu-sidebar__dropdown._active i {
+  opacity: 0.8;
 }
 
 .menu-sidebar__dropdown-title {

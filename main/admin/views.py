@@ -63,9 +63,6 @@ def import_products_from_excel(file_path):
 #       sale = 0
       properties = row[10]
 
-
-
-
       new_product = Product.objects.create(
         article=article,
         name=name,
@@ -273,14 +270,13 @@ def gallery_settings(request):
 def admin_product(request):
   """
   View, которая возвращаяет и отрисовывает все товары на странице
-  и разбивает их на пагинацию 
+  и разбивает их на пагинацию
   """
   page = request.GET.get('page', 1)
-  
   products = Product.objects.all()
   paginator = Paginator(products, 10)
   current_page = paginator.page(int(page))
-  
+
   context = {
     "items": current_page
   }
@@ -294,14 +290,14 @@ def product_edit(request, pk):
   product = Product.objects.get(id=pk)
   form = ProductForm(instance=product)
   image_form = ProductImageForm()
-  
-  form_new = ProductForm(request.POST, request.FILES, instance=product) 
+
+  form_new = ProductForm(request.POST, request.FILES, instance=product)
   if request.method == 'POST':
     if form_new.is_valid():
       form_new.save()
       product = Product.objects.get(slug=request.POST['slug'])
       images = request.FILES.getlist('src')
-     
+
       for image in images:
           img = ProductImage(parent=product, src=image)
           img.save()
@@ -316,7 +312,7 @@ def product_edit(request, pk):
 
 def product_add(request):
   form = ProductForm()
-  
+
   if request.method == "POST":
     form_new = ProductForm(request.POST, request.FILES)
     if form_new.is_valid():
@@ -324,17 +320,17 @@ def product_add(request):
       return redirect('admin_product')
     else:
       return render(request, "shop/product/product_add.html", {"form": form_new})
-    
+
   context = {
     "form": form
   }
-  
+
   return render(request, 'shop/product/product_add.html', context)
 
 def product_delete(request,pk):
   product = Product.objects.get(id=pk)
   product.delete()
-  
+
   return redirect('admin_product')
 
 def admin_attribute(request):
