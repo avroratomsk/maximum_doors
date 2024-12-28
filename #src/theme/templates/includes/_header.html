@@ -9,7 +9,15 @@
       </div>
       <nav class="header__right nav" id="nav">
         <ul class="nav__list">
-          <li class="nav__item"><a href="{% url 'category' %}" class="nav__link">Каталог</a></li>
+          <li class="nav__item">
+            <a href="{% url 'category' %}" class="nav__link">Каталог</a>
+            <ul class="submenu">
+              <li class="submenu__item"><a href="#">Межкомнатные двери</a></li>
+              <li class="submenu__item"><a href="#">Окна</a></li>
+              <li class="submenu__item"><a href="#">Балконы</a></li>
+              <li class="submenu__item"><a href="#">Лоджии</a></li>
+            </ul>
+          </li>
           <li class="nav__item"><a href="{% url 'about' %}" class="nav__link">О компании</a></li>
           <li class="nav__item"><a href="{% url 'works' %}" class="nav__link">Наши работы</a></li>
           <li class="nav__item">

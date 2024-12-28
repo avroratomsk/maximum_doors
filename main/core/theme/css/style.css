@@ -1599,15 +1599,20 @@ html._lock body::before {
   gap: 25px;
 }
 
+.nav__item {
+  position: relative;
+}
+
 .nav__link {
   display: block;
   position: relative;
+  line-height: 140%;
+  padding: 5px 0px;
 }
 
 .nav__link::before {
   content: "";
   position: absolute;
-  margin-top: 7px;
   top: 100%;
   right: 0;
   width: 0%;
@@ -1632,6 +1637,32 @@ html._lock body::before {
 }
 
 .phone {
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: #ffffff;
+  -webkit-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+          transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.submenu__item a {
+  display: block;
+  padding: 10px 10px;
+  color: #000000;
+  line-height: 140%;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
@@ -9113,6 +9144,19 @@ body._lock::after {
 }
 
 @media (hover: hover) {
+  .nav__item:hover .submenu {
+    -webkit-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+            transform: translateY(0px);
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  .nav__item:hover .nav__link:hover::before {
+    width: 100%;
+    left: 0%;
+  }
+
   .nav__link:hover::before {
     width: 100%;
     left: 0%;
@@ -9120,6 +9164,10 @@ body._lock::after {
 
   .phone:hover {
     color: #c2b46b;
+  }
+
+  .submenu__item a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
   .footer-nav__item a:hover {

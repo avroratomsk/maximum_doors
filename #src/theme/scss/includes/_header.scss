@@ -119,18 +119,38 @@
 
   // .nav__item
 
-  &__item {}
+  &__item {
+    position: relative;
+
+    @media(hover:hover) {
+      &:hover {
+        .submenu {
+          transform: translateY(0px);
+          pointer-events: all;
+          opacity: 1;
+        }
+
+        .nav__link:hover {
+          &::before {
+            width: 100%;
+            left: 0%;
+          }
+        }
+      }
+    }
+  }
 
   // .nav__link
 
   &__link {
     display: block;
     position: relative;
+    line-height: 140%;
+    padding: 5px 0px;
 
     &::before {
       content: '';
       position: absolute;
-      margin-top: 7px;
       top: 100%;
       right: 0;
       width: 0%;
@@ -179,6 +199,34 @@
   @media (hover: hover) {
     &:hover {
       color: rgba($color: #C2B46B, $alpha: 1.0);
+    }
+  }
+}
+
+.submenu{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: #ffffff;
+  transform: translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: $animation_speed;
+
+  &__item {
+    a{
+      display: block;
+      padding: 10px 10px;
+      color: #000000;
+      line-height: 140%;
+      transition: $animation_speed;
+
+      @media (hover:hover) {
+        &:hover {
+          background-color: rgba($color: $mainColor, $alpha: .05);
+        }
+      }
     }
   }
 }
