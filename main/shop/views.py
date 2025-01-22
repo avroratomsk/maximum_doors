@@ -17,7 +17,6 @@ def category(request):
     shop_setup = ShopSettings()
 
   category = Category.objects.all()
-  print(category)
 
   context = {
     "category":category,
