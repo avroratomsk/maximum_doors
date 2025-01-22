@@ -78,17 +78,17 @@ def import_products_from_excel(file_path):
       )
 
 
-      properties = properties.split(';')
-      for ch in properties:
-        try:
-
-          new_properties = Properties.objects.create(
-            parent = new_product,
-            name = ch.split(":")[0].strip(),
-            value = ch.split(":")[1].strip()
-          )
-        except Exception as e:
-            print(e)
+#       properties = properties.split(';')
+#       for ch in properties:
+#         try:
+#
+#           new_properties = Properties.objects.create(
+#             parent = new_product,
+#             name = ch.split(":")[0].strip(),
+#             value = ch.split(":")[1].strip()
+#           )
+#         except Exception as e:
+#             print(e)
 
 # @user_passes_test(lambda u: u.is_superuser)
 # def sidebar_show(request): 
