@@ -2387,6 +2387,43 @@ body._lock::after {
   padding: 20px 10px;
 }
 
+.category__grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.category__item {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.category__image {
+  display: block;
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.category__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .products-list {
   display: -ms-grid;
   display: grid;

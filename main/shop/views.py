@@ -15,16 +15,13 @@ def category(request):
     shop_setup = ShopSettings.objects.get()
   except: 
     shop_setup = ShopSettings()
-  count = int(request.GET.get('count', 16))
-  page = request.GET.get("page", 1)
 
-  paginator = Paginator(products, count)
-  current_page = paginator.page(int(page))
+  category = Category.objects.all()
+  print(category)
+
   context = {
-    "title": "Название товара",
-    "products": current_page,
+    "category":category,
     "shop_setup": shop_setup,
-    "count": count
   }
 
   return render(request, "pages/catalog/category.html", context)
