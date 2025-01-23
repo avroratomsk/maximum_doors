@@ -34,6 +34,7 @@ import numpy as np
 def import_products_from_excel(file_path):
     Product.objects.all().delete()
     Properties.objects.all().delete()
+    Category.objects.all().delete()
 
     # Загружаем данные из Excel
     df = pd.read_excel(file_path, engine='openpyxl')
@@ -102,8 +103,8 @@ def import_products_from_excel(file_path):
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-#   import_products_from_excel(path_to_excel)
-  
+  import_products_from_excel(path_to_excel)
+
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
   return render(request, "page/index.html")
