@@ -30,7 +30,7 @@ def unzip_archive():
   with zipfile.ZipFile(path, 'r') as zip_ref:
     zip_ref.extractall()
   
-
+import numpy as np
 def import_products_from_excel(file_path):
     Product.objects.all().delete()
     Properties.objects.all().delete()
@@ -60,8 +60,8 @@ def import_products_from_excel(file_path):
       image = f"goods/{row[6]}"
       price = row[7]
       installment = row[8]
-#       sale = 0
       properties = row[10]
+
 
       new_product = Product.objects.create(
         article=article,
@@ -77,18 +77,19 @@ def import_products_from_excel(file_path):
 #         sale=sale
       )
 
-
-#       properties = properties.split(';')
-#       for ch in properties:
-#         try:
-#
-#           new_properties = Properties.objects.create(
-#             parent = new_product,
-#             name = ch.split(":")[0].strip(),
-#             value = ch.split(":")[1].strip()
-#           )
-#         except Exception as e:
-#             print(e)
+      try:
+          properties = properties.split(';')
+          for ch in properties:
+            try:
+              new_properties = Properties.objects.create(
+                parent = new_product,
+                name = ch.split(":")[0].strip(),
+                value = ch.split(":")[1].strip()
+              )
+            except Exception as e:
+                print(e)
+      except:
+          pass
 
 # @user_passes_test(lambda u: u.is_superuser)
 # def sidebar_show(request): 
@@ -101,7 +102,7 @@ def import_products_from_excel(file_path):
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-#   import_products_from_excel(path_to_excel)
+  import_products_from_excel(path_to_excel)
   
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
