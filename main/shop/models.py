@@ -5,8 +5,8 @@ from django.conf import settings
 from admin.singleton_model import SingletonModel
 
 class ShopSettings(SingletonModel):
-  meta_h1 = models.CharField(max_length=350, null=True, blank=True, verbose_name="Заголовок первого уровня")
-  meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="META заголовок")
+  meta_h1 = models.CharField(max_length=250, null=True, blank=True, verbose_name="Заголовок первого уровня")
+  meta_title = models.CharField(max_length=250, null=True, blank=True, verbose_name="META заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="META описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="META keywords")
 
@@ -17,8 +17,8 @@ class Category(models.Model):
   description = models.TextField(null=True, blank=True,  verbose_name="Описание категории")
   image = models.ImageField(upload_to="category_image", blank=True, null=True, verbose_name="Изображение категории")
   parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE, null=True, blank=True, verbose_name="Дочерняя категория")
-  meta_h1 = models.CharField(max_length=350, null=True, blank=True, verbose_name="Заголовок первого уровня")
-  meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="META заголовок")
+  meta_h1 = models.CharField(max_length=250, null=True, blank=True, verbose_name="Заголовок первого уровня")
+  meta_title = models.CharField(max_length=250, null=True, blank=True, verbose_name="META заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="META описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="META keywords")
   add_menu = models.BooleanField(default=False, blank=True, null=True, verbose_name="Выводить в меню ? ")
@@ -51,8 +51,8 @@ class Product(models.Model):
   quantity = models.PositiveIntegerField(default=0, verbose_name="Количество")
   quantity_purchase = models.IntegerField(default=0, verbose_name="Количество купленных")
   status = models.BooleanField(default=True, verbose_name="Опубликовать ?")
-  meta_h1 = models.CharField(max_length=350, null=True, blank=True, verbose_name="Заголовок первого уровня")
-  meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
+  meta_h1 = models.CharField(max_length=250, null=True, blank=True, verbose_name="Заголовок первого уровня")
+  meta_title = models.CharField(max_length=250, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
   updated_at = models.DateTimeField(auto_now=True)  # Поле для даты последнего обновления
@@ -100,8 +100,8 @@ class ProductImage(models.Model):
 
         
 class ColorProduct(models.Model):
-  name = models.CharField(max_length=255, unique=True, null=True, blank=True, verbose_name="Название цвета")
-  code_color = models.CharField(max_length=255, unique=True, null=True, blank=True, verbose_name="Код цвета")
+  name = models.CharField(max_length=250, unique=True, null=True, blank=True, verbose_name="Название цвета")
+  code_color = models.CharField(max_length=250, unique=True, null=True, blank=True, verbose_name="Код цвета")
   image_color = models.ImageField(upload_to="product_color", null=True, blank=True, verbose_name="Изображение цвета")
   active = models.BooleanField(default=True, verbose_name="Выводить на сайте")
 
