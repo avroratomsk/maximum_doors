@@ -32,10 +32,6 @@
             </div>
             <div class="form__grid">
               <div class="form__group">
-                <label for="{{ form.model.id_for_label }}" class="form__controls-label">Модель: </label>
-                {{ form.model }} {{ form.model.errors }}
-              </div>
-              <div class="form__group">
                 <label for="{{ form.article.id_for_label }}" class="form__controls-label">Артикул: </label>
                 {{ form.article }} {{ form.article.errors }}
               </div>
@@ -45,6 +41,10 @@
                   Цена :
                 </label>
                 {{ form.price }} {{ form.price.errors }}
+              </div>
+              <div class="form__group">
+                <label for="{{ form.slug.id_for_label }}" class="form__controls-label"> Количество товара в наличии : </label>
+                {{ form.quantity }} {{ form.quantity.errors }}
               </div>
             </div>
 
@@ -59,29 +59,6 @@
             </div>
             <div class="product-field"></div>
             <div class="product-block__plus form__btn">Добавить изрбражение</div>
-            <div class="form__grid">
-              <div class="form__group">
-                <label for="{{ form.sale_price.id_for_label }}" class="form__controls-label">
-                  <span>*</span>
-                  Цена со скидкой :
-                </label>
-                {{ form.sale_price }} {{ form.sale_price.errors }}
-              </div>
-
-              <div class="form__group">
-                <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label"> Количество купленных : </label>
-                {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
-              </div>
-
-              <div class="form__group">
-                <label for="{{ form.discount.id_for_label }}" class="form__controls-label"> Скидка в (<span>% :</span>) </label>
-                {{ form.discount }} {{ form.discount.errors }}
-              </div>
-              <div class="form__group">
-                <label for="{{ form.slug.id_for_label }}" class="form__controls-label"> Количество товара в наличии : </label>
-                {{ form.quantity }} {{ form.quantity.errors }}
-              </div>
-            </div>
           </div>
           <div class="page-content__col">
             <div class="form__group">
@@ -104,19 +81,6 @@
               <img src="{{ form.instance.image.url }}" alt="Миниатюра изображения" style="max-width: 100px; max-height: 100px" />
             </a>
             {% endif %}
-            <div class="form__group-checkbox">
-              {{ form.latest }} {{ form.latest.errors }}
-              <label for="{{ form.latest.id_for_label }}" class="form__controls-label"> Новинка ? :</label>
-            </div>
-            <div class="form__group-checkbox">
-              {{ form.type_image }} {{ form.type_image.errors }}
-              <label for="{{ form.type_image.id_for_label }}" class="form__controls-label">Отображение картинки ? : </label>
-            </div>
-            <div class="form__group-checkbox">
-              {{ form.catalog }} {{ form.catalog.errors }}
-              <label for="{{ form.catalog.id_for_label }}" class="form__controls-label">Выводить в каталог ? : </label>
-            </div>
-
             <div class="form__group-checkbox">
               {{ form.status }} {{ form.status.errors }}
               <label for="{{ form.status.id_for_label }}" class="form__controls-label"> Опубликовать ? :</label>
