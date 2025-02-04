@@ -107,7 +107,16 @@ ol {
 
 .menu-sidebar__item i {
   opacity: 0.8;
-  font-size: 14px;
+  font-size: 13px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.menu-sidebar__item ._active .menu-sidebar__dropdown-title > i {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .menu-sidebar__item + .menu-sidebar__item {

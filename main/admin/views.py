@@ -29,8 +29,17 @@ folder = 'upload/'
 def unzip_archive():
   with zipfile.ZipFile(path, 'r') as zip_ref:
     zip_ref.extractall()
-  
+import uuid
 import numpy as np
+
+def get_unique_slug(model, base_slug):
+    slug = base_slug
+    counter = 1
+    while model.objects.filter(slug=slug).exists():
+        slug = f"{base_slug}-{counter}"
+        counter += 1
+    return slug
+
 def import_products_from_excel(file_path):
     Product.objects.all().delete()
     Properties.objects.all().delete()
@@ -40,9 +49,12 @@ def import_products_from_excel(file_path):
     df = pd.read_excel(file_path, engine='openpyxl')
 
     for _, row in df.iterrows():
-      article=row[0]
+      try:
+        article=row[0]
+      except:
+        article = uuid.uuid
       name = row[1]
-      slug = slugify(name)
+      slug = get_unique_slug(Product, slugify(name))
       category = row[2]
       category_slug = slugify(category)
 
@@ -62,21 +74,39 @@ def import_products_from_excel(file_path):
       price = row[7]
       installment = row[8]
       properties = row[10]
+      sale = 0
 
 
-      new_product = Product.objects.create(
-        article=article,
-        name=name,
-        slug=slug,
-        category=category,
-        manufacturer=manufacturer,
-        manufacturer_description=manufacturer_description,
-        colors=colors,
-        image=image,
-        price=price,
-        installment=installment,
-#         sale=sale
-      )
+      try:
+          new_product = Product.objects.create(
+              article=article,
+              name=name,
+              slug=slug,
+              category=category,
+              manufacturer=manufacturer,
+              manufacturer_description=manufacturer_description,
+              colors=colors,
+              image=image,
+              price=price,
+              installment=installment,
+              sale=sale,
+          )
+      except IntegrityError:
+          print(f"Duplicate slug detected: {slug}, generating a new one.")
+          slug = get_unique_slug(Product, slug)
+          new_product = Product.objects.create(
+              article=article,
+              name=name,
+              slug=slug,
+              category=category,
+              manufacturer=manufacturer,
+              manufacturer_description=manufacturer_description,
+              colors=colors,
+              image=image,
+              price=price,
+              installment=installment,
+              sale=sale,
+          )
 
       try:
           properties = properties.split(';')
@@ -103,7 +133,7 @@ def import_products_from_excel(file_path):
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-#   import_products_from_excel(path_to_excel)
+  import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""

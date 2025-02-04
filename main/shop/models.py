@@ -39,7 +39,7 @@ class Category(models.Model):
 class Product(models.Model):
   article = models.CharField(max_length=255, blank=True, null=True, verbose_name="Артикул")
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
-  slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
+  slug = models.SlugField(max_length=255, unique=True, blank=True, null=True, verbose_name="URL")
   category = models.ForeignKey("Category", on_delete=models.CASCADE, null=True, default=None, verbose_name='Категория')
   manufacturer = models.CharField(max_length=250, db_index=True, null=True, blank=True, verbose_name="Производитель")
   manufacturer_description = models.TextField(blank=True, null=True, verbose_name="Описание производителя")

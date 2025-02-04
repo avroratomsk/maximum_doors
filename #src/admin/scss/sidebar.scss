@@ -64,7 +64,14 @@
   &__item {
     i{
       opacity: 0.8;
-      font-size: 14px;
+      font-size: 13px;
+      transition: $animation_speed;
+    }
+
+    ._active{
+      .menu-sidebar__dropdown-title > i {
+        transform: rotate(180deg);
+      }
     }
   }
 

@@ -5,6 +5,8 @@ const saveState = (e) => {
   const idDropdownItem = e.currentTarget.getAttribute("id");
   if (localStorage.getItem("idDropdownItem") !== idDropdownItem) {
     localStorage.setItem("idDropdownItem", idDropdownItem);
+  }else {
+    localStorage.removeItem("idDropdownItem", idDropdownItem);
   }
 };
 

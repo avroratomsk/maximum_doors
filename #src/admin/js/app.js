@@ -83,67 +83,33 @@ const numberSymbols = {
   'description': 140
 }
 
-// const metaFields = document.querySelectorAll('.meta_field');
-// if (metaFields) {
-//   metaFields.forEach(item => {
-//     let parentItem = item.closest('.form__group').querySelector('.meta-lenght');
-//     if (item.value <= 0) {
-//       parentItem.innerText = 0;
-//     } else {
-//       parentItem.innerText = item.value.length;
-//     }
-//     item.addEventListener('input', function (e) {
-//       parentItem.innerText = item.value.length;
-//     })
-//   })
-// }
+const metaFields = document.querySelectorAll('.meta_field');
 
-// const metaFields = document.querySelectorAll('.meta_field');
-// if (metaFields) {
-//   metaFields.forEach(item => {
-//     let parentItem = item.closest('.form__group').querySelector('.meta-lenght');
-//     if (item.value <= 0) {
-//       parentItem.innerText = 0;
-//     } else {
-//       parentItem.innerText = item.value.length;
-//       checkLengthSymbol(item.value.length);
-//     }
-
-//     item.addEventListener('input', function (e) {
-//       parentItem.innerText = item.value.length;
-//       checkLengthSymbol(item.value.length, parentItem);
-//     })
-//   })
-// }
-
-function checkLengthSymbol(lenght, item) {
-  if (lenght > numberSymbols.title) {
-    item.style.color = 'red';
+metaFields?.forEach(item => {
+  let parentItem = item.closest('.form__group').querySelector('.meta-lenght');
+  if (item.value <= 0) {
+    parentItem.innerText = 0;
+  } else {
+    parentItem.innerText = item.value.length;
   }
-  if (lenght > numberSymbols.description) {
-    item.style.color = 'red';
+
+  item.addEventListener('input', (e) => {
+    checkLengthSymbol(numberSymbols, e.currentTarget);
+  })
+})
+
+
+function checkLengthSymbol(lengthSymbol, item) {
+  item.previousElementSibling.innerText = item.value.length;
+  if (item.value.length > numberSymbols.title) {
+    item.previousElementSibling.classList.add("_red");
+  }
+
+  if (item.value.length > numberSymbols.description) {
+    item.previousElementSibling.classList.add("_red");
   }
 };
 
-const dropdownButtons = document.querySelectorAll('.dropdownButton');
-
-if (dropdownButtons) {
-  dropdownButtons.forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      console.log(e.target);
-      let dropdownContent = this.querySelector('.dropdownContent');
-      if (dropdownContent.classList.contains('hidden')) {
-        dropdownContent.classList.remove('hidden');
-        dropdownContent.style.maxHeight = dropdownContent.scrollHeight + 'px';
-      } else {
-        dropdownContent.style.maxHeight = 0;
-        // setTimeout(function () {
-        dropdownContent.classList.add('hidden');
-        // }, 500); // transition duration
-      }
-    })
-  })
-}
 
 document.addEventListener('click', function (event) {
   if (event.target.classList.contains('form__plus')) {
