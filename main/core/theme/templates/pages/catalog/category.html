@@ -18,128 +18,11 @@
         </a>
         <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
            class="breadcrumbs__item">
-          Категории
+          Каталог
           <meta itemprop="position" content="2"/>
         </a>
       </div>
-      <h1 class="category__title">Категории</h1>
-      {% comment %}<div class="category__filter filter">
-        <form action="#" class="form form--search">
-          <button type="submit" class="form__button" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-          <input type="search" class="form__input" name="catalog-search" id="catalog-search">
-
-          <div class="search-result" id="search-result">
-
-          </div>
-        </form>
-        <form action="" class="form">
-          <select class="form__select form__select--small" name="count" id="count">
-            <option value="16" {% if count== 16 %}selected{% endif %} class="from__option">16</option>
-            <option value="32" {% if count== 32 %}selected{% endif %} class="from__option">32</option>
-            <option value="64" {% if count== 64 %}selected{% endif %} class="from__option">64</option>
-          </select>
-        </form>
-        <div class="filter__inner">
-          <div class="filter__item">
-            <button type="button" class="filter__btn">
-              <span class="filter__indicator"></span>
-              <span>Цена</span>
-              <svg width="9.003906" height="5.208984" viewBox="0 0 9.00391 5.20898" fill="none"
-                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path id="Vector 10" d="M0.5 0.5L4.5 4.5L8.5 0.5" stroke="" stroke-opacity="1.000000"
-                      stroke-width="1.000000" stroke-linecap="round"/>
-              </svg>
-
-            </button>
-            <div class="filter__content">
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">до 35 000</label>
-              </div>
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">от 35 000 до 50 000</label>
-              </div>
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">от 50 000 до 80 000</label>
-              </div>
-              <div class="filter__content-btn">
-                <button type="button" class="filter__reset">Сбросить</button>
-                <button type="button" class="filter__done">Готово</button>
-              </div>
-            </div>
-          </div>
-          <div class="filter__item">
-            <button type="button" class="filter__btn">
-              <span class="filter__indicator"></span>
-              <span>Цвет</span>
-              <svg width="9.003906" height="5.208984" viewBox="0 0 9.00391 5.20898" fill="none"
-                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path id="Vector 10" d="M0.5 0.5L4.5 4.5L8.5 0.5" stroke="" stroke-opacity="1.000000"
-                      stroke-width="1.000000" stroke-linecap="round"/>
-              </svg>
-
-            </button>
-            <div class="filter__content">
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">до 35 000</label>
-              </div>
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">от 35 000 до 50 000</label>
-              </div>
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">от 50 000 до 80 000</label>
-              </div>
-              <div class="filter__content-btn">
-                <button type="button" class="filter__reset">Сбросить</button>
-                <button type="button" class="filter__done">Готово</button>
-              </div>
-            </div>
-          </div>
-          <div class="filter__item">
-            <button type="button" class="filter__btn">
-              <span class="filter__indicator"></span>
-              <span>Форма</span>
-              <svg width="9.003906" height="5.208984" viewBox="0 0 9.00391 5.20898" fill="none"
-                   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <path id="Vector 10" d="M0.5 0.5L4.5 4.5L8.5 0.5" stroke="" stroke-opacity="1.000000"
-                      stroke-width="1.000000" stroke-linecap="round"/>
-              </svg>
-
-            </button>
-            <div class="filter__content">
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">до 35 000</label>
-              </div>
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">от 35 000 до 50 000</label>
-              </div>
-              <div class="filter__checkbox-wrap">
-                <input type="checkbox" class="filter__checkbox">
-                <label for="">от 50 000 до 80 000</label>
-              </div>
-              <div class="filter__content-btn">
-                <button type="button" class="filter__reset">Сбросить</button>
-                <button type="button" class="filter__done">Готово</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>{% endcomment %}
-      {% comment %}<div class="category__grid products-list">
-        <div class="best-choice__grid">
-          {% for product in products %}
-          {% include "../../components/card.html" with product=product %}
-          {% endfor %}
-        </div>
-      </div>{% endcomment %}
+      <h1 class="category__title">Каталог</h1>
       <div class="category__grid">
         {% if category %}
         {% for cat in category %}
@@ -154,10 +37,10 @@
         {% endfor %}
         {% endif %}
         <div class="category__item">
-          <a href="/service/" class="category__image">
+          <a href="{% url 'production' %}" class="category__image">
             <img src="{% static 'theme/img/lodzii.jpg' %}" alt="">
           </a>
-          <a href="/service/" class="category__name">Балконы,лоджии</a>
+          <a href="{% url 'production' %}" class="category__name">Балконы,лоджии</a>
         </div>
     </div>
 

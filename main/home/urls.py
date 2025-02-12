@@ -4,6 +4,7 @@ from home import views
 
 urlpatterns = [
     path("o-nas/", views.about, name="about"),
+    path("production/", views.production, name="production"),
     path("works/", views.works, name="works"),
 #     path('contacts/', views.contact, name="contact"),
 #     path('akcii/', views.stock, name="stock"),

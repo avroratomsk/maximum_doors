@@ -32,7 +32,6 @@
       </div>
       <div class="product-details__card product-info">
         <h1 class="product-info__title">{{ product.name }}</h1>
-<!--        <p class="product-info__subtitle">Guardian 1234. Серый металл бежевый дуб</p>-->
         <div class="product-info__row">
           <div class="product-info__col">
             <div class="product-info__image">
@@ -48,12 +47,12 @@
                   <span class="product-info__price-value">{{ product.price }} ₽</span>
                   {% endif %}
                 </div>
-                <div class="product-info__price-sale">
+                {% comment %}<div class="product-info__price-sale">
                   <span>Акция</span>
                   <p class="product-info__price-sale-info">
                     Скидка 20% на все товары в разделе "Входные двери"
                   </p>
-                </div>
+                </div>{% endcomment %}
               </div>
               <div class="product-info__actions">
                 <button type="button" class="product-info__btn _btn" data-popup="leave-request">Оставить заявку</button>
@@ -83,16 +82,31 @@
             <div class="product-info__param tab-params">
               <div class="tab-params__trigger">
                 <div class="tab-params__trigger-inner">
+                  {% if properties %}
                   <button type="button" data-tab="1" class="tab-params__tab _active">Характеристики</button>
+                  {% endif %}
+                  {% if product.colors %}
+                  <button type="button" data-tab="2" class="tab-params__tab {% if not properties %}_active{% endif %}">Цвета</button>
+                  {% endif %}
                 </div>
                 <div class="line-active"><span id="line"></span></div>
               </div>
               <div class="tab-params__content">
+                {% if properties %}
                 <div class="tab-params__panel _active" data-tab="1">
                   {% for prop in properties %}
                   <p><b>{{ prop.name }} :</b>{{ prop.value }}</p>
                   {% endfor %}
                 </div>
+                {% endif %}
+                {% if product.colors %}
+                <div class="tab-params__panel _active" data-tab="2">
+                  <p>{{ product.colors }}</p>
+<!--                  {% for prop in properties %}-->
+<!--                  <p><b>{{ prop.name }} :</b>{{ prop.value }}</p>-->
+<!--                  {% endfor %}-->
+                </div>
+                {% endif %}
               </div>
             </div>
           </div>

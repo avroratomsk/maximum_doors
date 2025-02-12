@@ -114,6 +114,14 @@ def about(request):
 
   return render(request, "pages/about.html", context)
 
+
+def production(request):
+
+  context = {
+  }
+
+  return render(request, "pages/production.html", context)
+
 def works(request):
 
     context = {}

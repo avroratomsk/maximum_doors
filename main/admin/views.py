@@ -70,19 +70,31 @@ def import_products_from_excel(file_path):
           print(f'{e} - color')
 
       manufacturer_description = row[4]
-      colors = row[5]
+
+      try:
+        colors = row[5]
+        if isinstance(colors, float) and math.isnan(colors):  # Проверяем, является ли значением NaN
+          colors = ""
+      except:
+        colors = ""
+
+      print(colors)
       image = f"goods/{row[6]}"
 
       try:
-          print(f'{row[7]} - price')
           price = row[7]
           if isinstance(price, float) and math.isnan(price):  # Проверяем, является ли значением NaN
             price = 0
       except:
-          print(f'{row[7]} - price')
           price = 0
 
-      installment = row[8]
+      try:
+        installment = row[8]
+        if isinstance(installment, float) and math.isnan(installment):  # Проверяем, является ли значением NaN
+          installment = ""
+      except:
+        installment = ""
+
       try:
           properties = row[10]
       except:
@@ -147,7 +159,7 @@ def import_products_from_excel(file_path):
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-#   import_products_from_excel(path_to_excel)
+  import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""

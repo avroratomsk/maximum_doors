@@ -105,6 +105,5 @@ class ColorProduct(models.Model):
   image_color = models.ImageField(upload_to="product_color", null=True, blank=True, verbose_name="Изображение цвета")
   active = models.BooleanField(default=True, verbose_name="Выводить на сайте")
 
-  
-  
-  
+
+
