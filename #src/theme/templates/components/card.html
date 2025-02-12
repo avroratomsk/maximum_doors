@@ -32,5 +32,7 @@
     </div>
     <button class="card-product__btn" data-popup="leave-request" data-name="{{ product.name }}">Оставить заявку</button>
   </div>
-  <p class="card-product__descr">{{ product.installment }}</p>
+  {% if product.installment %}
+    <p class="card-product__descr">{{ product.installment }}</p>
+  {% endif %}
 </div>
