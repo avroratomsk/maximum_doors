@@ -62,6 +62,7 @@ def catalog_search(request):
         try:
             result = request.body.decode("utf-8")
             value = json.loads(result).get('value')
+            print(value)
             try:
                 products = Product.objects.filter(name__icontains=value)
                 data = []

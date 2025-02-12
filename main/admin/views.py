@@ -39,7 +39,7 @@ def get_unique_slug(model, base_slug):
         slug = f"{base_slug}-{counter}"
         counter += 1
     return slug
-
+import math
 def import_products_from_excel(file_path):
     Product.objects.all().delete()
     Properties.objects.all().delete()
@@ -49,10 +49,7 @@ def import_products_from_excel(file_path):
     df = pd.read_excel(file_path, engine='openpyxl')
 
     for _, row in df.iterrows():
-      try:
-        article=row[0]
-      except:
-        article = uuid.uuid
+      article=row[0]
       name = row[1]
       slug = get_unique_slug(Product, slugify(name))
       category = row[2]
@@ -66,14 +63,31 @@ def import_products_from_excel(file_path):
             name=category,
             slug=category_slug
         )
-          
-      manufacturer = row[3]
+
+      try:
+        manufacturer = row[3]
+      except Exception as e:
+          print(f'{e} - color')
+
       manufacturer_description = row[4]
       colors = row[5]
       image = f"goods/{row[6]}"
-      price = row[7]
+
+      try:
+          print(f'{row[7]} - price')
+          price = row[7]
+          if isinstance(price, float) and math.isnan(price):  # Проверяем, является ли значением NaN
+            price = 0
+      except:
+          print(f'{row[7]} - price')
+          price = 0
+
       installment = row[8]
-      properties = row[10]
+      try:
+          properties = row[10]
+      except:
+          properties = ""
+
       sale = 0
 
 
@@ -133,7 +147,7 @@ def import_products_from_excel(file_path):
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-  import_products_from_excel(path_to_excel)
+#   import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""

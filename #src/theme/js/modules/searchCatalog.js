@@ -1,26 +1,29 @@
 document.addEventListener("click", (e) => {
   const form = document.querySelector(".form--search");
-  if(!form.contains(e.target)) {
-    document.getElementById("search-result").style.display = "none";
+  if(!form.contains(e.currentTarget)) {
+    console.log('Закрываем')
+    // document.getElementById("search-result").style.display = "none";
   }
 })
 
 const inputSearch = document.querySelector('input[name="catalog-search"]');
 inputSearch?.addEventListener("input", (e) => {
   if(e.currentTarget.value !== "") {
-    document.getElementById("search-result").style.display = "none";
+    // document.getElementById("search-result").style.display = "none";
+    sendDataSearch(e.currentTarget.value);
   }
 });
 
-// inputSearch?.addEventListener("focusout", (e) => {
-//   document.getElementById("search-result").style.display = "none";
-// })
+inputSearch?.addEventListener("focusout", (e) => {
+  // document.getElementById("search-result").style.display = "none";
+})
 
 const searchBtn = document.querySelector("#search-btn");
 searchBtn?.addEventListener("click", (e) => {
+
   e.preventDefault()
   const inputField = e.currentTarget.closest(".form--search")?.querySelector("input[type=search]");
-
+  console.log(inputField)
   if(inputField) {
     const inputvValue = inputField.value.trim();
 
