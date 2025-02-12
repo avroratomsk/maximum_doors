@@ -66,8 +66,8 @@ def import_products_from_excel(file_path):
 
       try:
         manufacturer = row[3]
-      except Exception as e:
-          print(f'{e} - color')
+      except:
+        pass
 
       manufacturer_description = row[4]
 
@@ -78,7 +78,6 @@ def import_products_from_excel(file_path):
       except:
         colors = ""
 
-      print(colors)
       image = f"goods/{row[6]}"
 
       try:
