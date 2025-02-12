@@ -74,7 +74,7 @@ const slider_full = new Swiper('.slider-full', {
   },
 
   autoplay: {
-    delay: 5000,
+    delay: 10000,
   },
 });
 
