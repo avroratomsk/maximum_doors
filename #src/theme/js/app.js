@@ -65,8 +65,8 @@ const swiper_news = new Swiper('.index-news__slider', {
 const slider_full = new Swiper('.slider-full', {
   modules: [Navigation, Pagination, EffectFade, Autoplay],
   slidesPerView: 1,
-  spaceBetween: 30,
-  effect: "fade",
+  spaceBetween: 0,
+  effect: "slide",
   loop: true,
 
   pagination: {
