@@ -18,9 +18,9 @@ import openpyxl
 import pandas as pd
 from django.core.files.images import ImageFile
 from django.contrib.auth.decorators import user_passes_test
-
-# from .upload_and_unzip import unzip_archive
-
+import uuid
+import numpy as np
+import math
 
 path = f"{BASE_DIR}/upload/upload.zip"
 path_to_excel = f"{BASE_DIR}/upload/upload.xlsx"
@@ -29,8 +29,7 @@ folder = 'upload/'
 def unzip_archive():
   with zipfile.ZipFile(path, 'r') as zip_ref:
     zip_ref.extractall()
-import uuid
-import numpy as np
+
 
 def get_unique_slug(model, base_slug):
     slug = base_slug
@@ -39,7 +38,7 @@ def get_unique_slug(model, base_slug):
         slug = f"{base_slug}-{counter}"
         counter += 1
     return slug
-import math
+
 def import_products_from_excel(file_path):
     Product.objects.all().delete()
     Properties.objects.all().delete()
@@ -496,50 +495,6 @@ def category_delete(request, pk):
   
   return redirect('admin_category')
 
-def day_product(request):
-  # pass
-  # days = Day.objects.all().exclude(slug="ezhednevno")
-  
-  # context = {
-  #   "days": days,
-  # }
-  
-  return render(request, "days/days.html")
-
-def day_edit(request, pk):
-  pass
-  # day = Day.objects.get(id=pk)
-  # form = DayForm(instance=day)
-  
-  # form_new = DayForm(request.POST, instance=day)
-  # if request.method == "POST":
-  #   if form_new.is_valid():
-  #     form_new.save()
-  #     return redirect("admin_day")
-  #   else:
-  #     return render(request, "days/days_edit.html", {"form": form_new})
-
-  # context = {
-  #   "form": form,
-  # }
-  
-  # return render(request, "days/days_edit.html", context)
-
-def day_add(request):
-  pass
-  # form = DayForm()
-  # if request.method == "POST":
-  #   form_new = DayForm(request.POST)
-  #   if form_new.is_valid():
-  #     form_new.save()
-  #     return redirect("admin_day")
-  #   else:
-  #     return render(request, "days/days_add.html", {"form": form_new})
-  # context = {
-  #   "form": form
-  # }
-  
-  # return render(request, "days/days_add.html", context)
 
 def admin_fillial(request):
   pass
@@ -734,59 +689,6 @@ def service_delete(request, pk):
   service = Service.objects.get(id=pk)
   service.delete()
   return redirect("admin_service")
-
-
-def admin_subdomain(request):
-  subdomains = Subdomain.objects.all()
-  
-  context = {
-    "subdomains": subdomains,  
-  }
-  
-  return render(request, "subdomain/subdomain.html", context)
-
-
-def subdomain_add(request):
-  form = SubdomainForm()
-  
-  if request.method == "POST":
-    form_new = SubdomainForm(request.POST, request.FILES)
-    if form_new.is_valid():
-      form_new.save()
-      return redirect('admin_subdomain')
-    else:
-      return render(request, "subdomain/subdomain_add.html", { "form": form_new })
-    
-  context = {
-    "form": form, 
-  }  
-    
-  return render(request, "subdomain/subdomain_add.html", context)
-
-def subdomain_edit(request, pk):
-  subdomain = Subdomain.objects.get(id=pk)
-  
-  if request.method == "POST":
-    form_new = SubdomainForm(request.POST, request.FILES, instance=subdomain)
-    
-    if form_new.is_valid():
-      form_new.save()
-      return redirect('admin_subdomain')
-    else:
-      return render(request, "subdomain/subdomain_edit.html", { "form": form_new })
-  
-  form = SubdomainForm(instance=subdomain)
-  context = {
-    "form": form,
-  }  
-    
-  return render(request, "subdomain/subdomain_edit.html", context)
-
-def subdomain_delete(request, pk):
-  subdomain = Subdomain.objects.get(id=pk)
-  subdomain.delete()
-  return redirect(request.META.get('HTTP_REFERER'))
-
 
 def admin_color(request):
   items = ColorProduct.objects.all()

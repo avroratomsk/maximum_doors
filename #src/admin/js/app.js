@@ -1,5 +1,6 @@
 import("./modules/dorpdownMenu.js");
 import("./modules/generateSlug.js");
+import("./modules/uploadFileInput.js");
 
 /**
  * Переключение вкладок на страницах продуктов, категорий

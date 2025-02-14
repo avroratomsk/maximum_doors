@@ -701,6 +701,25 @@ ol {
   position: relative;
 }
 
+.form__group-file {
+  border: 1px solid red;
+  position: relative;
+  width: 200px;
+  height: 100px;
+}
+
+.form__group-file input[type=file] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  opacity: 0;
+}
+
 .form__group-checkbox {
   display: -webkit-box;
   display: -ms-flexbox;

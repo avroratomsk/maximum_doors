@@ -4,6 +4,7 @@ from . import views
 
 from reviews import admin
 
+from .views_new.product_views import admin_product, product_edit, product_add
 
 
 urlpatterns = [
@@ -19,16 +20,10 @@ urlpatterns = [
     path('category/edit/<int:pk>/', views.category_edit, name='category_edit'),
     path('category/delete/<int:pk>/', views.category_delete, name='category_delete'),
 
-    #URl - отвечающие за отображение дня недели, редактирование и удаление дня недели
-    path('days/', views.day_product, name='admin_day'),
-    path('days/add/', views.day_add, name='days_add'),
-    path('days/edit/<int:pk>/', views.day_edit, name='days_edit'),
-    # path('days/delete/<int:pk>/', views.day_delete, name='days_delete'),
-    
     #URl - отвечающие за отображение товаров, редактирование и удаление товара
-    path('product/', views.admin_product, name='admin_product'),
-    path('product/add/', views.product_add, name='product_add'),
-    path('product/edit/<int:pk>/', views.product_edit, name='product_edit'),
+    path('product/', admin_product, name='admin_product'),
+    path('product/add/', product_add, name='product_add'),
+    path('product/edit/<int:pk>/', product_edit, name='product_edit'),
     path('product/delete/<int:pk>/', views.product_delete, name='product_delete'),
 
     #URl - отвечающие за отображение отзывов, редактирование и удаление отзывов
@@ -60,19 +55,13 @@ urlpatterns = [
     path('home-page/', views.admin_home_page, name='admin_home_page'),
     
     path('admin-shop/', views.admin_shop, name='admin_shop'),
-    
-    #URl - субдомены
-    path('subdomain/', views.admin_subdomain, name='admin_subdomain'),
-    path('subdomain/add/', views.subdomain_add, name='subdomain_add'),
-    path('subdomain/edit/<int:pk>/', views.subdomain_edit, name='subdomain_edit'),
-    # path('subdomain/delete/<int:pk>/', views.subdomain_delete, name='subdomain_delete'),
-    
+
     #URl - цвета памятников
     path('color-product/', views.admin_color, name='admin_color'),
     path('color-product/add/', views.admin_color_add, name='admin_color_add'),
     path('color-product/edit/<int:pk>/', views.admin_color_edit, name='admin_color_edit'),
     # path('subdomain/delete/<int:pk>/', views.subdomain_delete, name='subdomain_delete'),
-    
+
     #URl - цвета памятников
     path('gallery-settings/', views.gallery_settings, name='gallery_settings'),
     path('gallery/', views.admin_gallery, name='admin_gallery'),

@@ -1,8 +1,13 @@
+from services.product_service import get_all_products
+
 def admin_product(request):
   """
   View, которая возвращаяет и отрисовывает все товары на странице
   и разбивает их на пагинацию
   """
+
+  print(get_all_products())
+  print('ssssssss')
   page = request.GET.get('page', 1)
   products = Product.objects.all()
   paginator = Paginator(products, 10)
