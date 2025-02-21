@@ -238,8 +238,8 @@ def product_edit(request, pk):
     и изменяет данные внесенные данные товара в базе данных
   """
   product = Product.objects.get(id=pk)
+  product_image = ProductImage.objects.filter(parent=product)
   form = ProductForm(instance=product)
-  image_form = ProductImageForm()
 
   form_new = ProductForm(request.POST, request.FILES, instance=product)
   if request.method == 'POST':
@@ -251,12 +251,13 @@ def product_edit(request, pk):
       for image in images:
           img = ProductImage(parent=product, src=image)
           img.save()
+
       return redirect(request.META.get('HTTP_REFERER'))
     else:
       return render(request, 'shop/product/product_edit.html', {'form': form_new})
   context = {
     "form":form,
-    'image_form': image_form,
+    "product_image": product_image,
   }
   return render(request, "shop/product/product_edit.html", context)
 

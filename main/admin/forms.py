@@ -4,6 +4,7 @@ from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
 from shop.models import Category, ColorProduct, Product, ProductImage, ShopSettings
+from .widgets import CustomImageWidget
 
 INPUT_CLASS = "form__controls"
 
@@ -127,10 +128,6 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = "__all__"
         widgets = {
-            'model': forms.TextInput(attrs={
-                'class': INPUT_CLASS,
-                "id":"model"
-            }),
             'article': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
                 "id":"article"
@@ -146,32 +143,32 @@ class ProductForm(forms.ModelForm):
             'category': forms.Select(attrs={
                 'class': INPUT_CLASS, 
             }),
+            'manufacturer': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+            }),
+            'manufacturer_description': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+            }),
+             'manufacturer_description': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+            }),
             'price': forms.NumberInput(attrs={
                 'class': INPUT_CLASS,
             }),
-            'sale_price': forms.NumberInput(attrs={
+            'sale': forms.NumberInput(attrs={
                 'class': INPUT_CLASS,
             }),
-            'polished_sides': forms.NumberInput(attrs={
-                'class': INPUT_CLASS,
-            }),
-            'description': forms.Textarea(attrs={
+            'installment': forms.Textarea(attrs={
                 'class': INPUT_CLASS, 
-            }),
-            'delivery': forms.Textarea(attrs={
-                'class': INPUT_CLASS, 
-            }),
-            'discount': forms.TextInput(attrs={
-                'class': INPUT_CLASS,
             }),
             'quantity': forms.NumberInput(attrs={
                 'class': INPUT_CLASS,
             }),
-            'weight': forms.TextInput(attrs={
-                'class': INPUT_CLASS,
-            }),
             'quantity_purchase': forms.NumberInput(attrs={
                 'class': INPUT_CLASS,
+            }),
+            'status': forms.CheckboxInput(attrs={
+              'class': 'form__controls-checkbox',
             }),
             'meta_h1': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
@@ -186,6 +183,25 @@ class ProductForm(forms.ModelForm):
             'meta_keywords': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
             }),
+        }
+
+# Товар и опции товара
+class ProductImageForm(forms.ModelForm):
+    class Meta:
+        model = ProductImage
+
+        fields = [
+            'parent',
+            'src'
+        ]
+        labels = {
+            'src': 'Выбрать изображение'
+        }
+        widgets = {
+            'parent': forms.Select(attrs={
+                'class': INPUT_CLASS,
+            }),
+            'src': CustomImageWidget(),
         }
         
 class PostForm(forms.ModelForm):
@@ -224,23 +240,7 @@ class BlogCategoryForm(forms.ModelForm):
             }),
         }
 
-# Товар и опции товара
-class ProductImageForm(forms.ModelForm):
-    class Meta:
-        model = ProductImage
 
-        fields = [
-            'parent',
-            'src'
-        ]
-        labels = {
-            'src': 'Выбрать изображение'
-        }
-        widgets = {
-            'parent': forms.Select(attrs={
-                'class': INPUT_CLASS, 
-            })
-        }
 
 class CategoryForm(forms.ModelForm):
   """ Form, отвечает за создание категорий и редактирование категорий"""

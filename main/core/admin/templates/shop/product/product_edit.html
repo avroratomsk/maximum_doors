@@ -24,14 +24,15 @@
       </div>
       {% csrf_token %}
       <div class="page-content _show" id="basic">
+
         <div class="page-content__row">
           <div class="page-content__col">
-            <div class="form__group-file">
-              <input type="file" accept="images/*" id="id_src" class="form__controls-file" multiple>
-            </div>
-            <div class="form-images">
-              <img src="" alt="" id="imagePreview">
-            </div>
+<!--            <div class="form__group-file">-->
+<!--              <input type="file" accept="images/*" id="id_src" class="form__controls-file" multiple>-->
+<!--            </div>-->
+<!--            <div class="form-images">-->
+<!--              <img src="" alt="" id="imagePreview">-->
+<!--            </div>-->
             <div class="form__group">
               <label for="{{ form.name.id_for_label }}" class="form__controls-label">Наименование: </label>
               {{ form.name }} {{ form.name.errors }}
@@ -51,6 +52,10 @@
               <div class="form__group">
                 <label for="{{ form.slug.id_for_label }}" class="form__controls-label"> Количество товара в наличии : </label>
                 {{ form.quantity }} {{ form.quantity.errors }}
+              </div>
+              <div class="form__group">
+                <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label"> Количество купленных : </label>
+                {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
               </div>
             </div>
 
@@ -82,12 +87,21 @@
               <label for="{{ form.image.id_for_label }}" class="form__controls-label">Выбор изображения товара :</label>
               {{ form.image }} {{ form.image.errors }}
             </div>
+            {{ form.image }}
+            {% for im in product_image %}
+
+            <a href="{{ im.src.url }}" target="_blank">
+              <img src="{{ im.src.url }}" alt="Миниатюра изображения" style="max-width: 100px; max-height: 100px" />
+            </a>
+            {% endfor %}
+
 
             {% if form.instance.image %}
             <a href="{{ form.instance.image.url }}" target="_blank">
               <img src="{{ form.instance.image.url }}" alt="Миниатюра изображения" style="max-width: 100px; max-height: 100px" />
             </a>
             {% endif %}
+
             <div class="form__group-checkbox">
               {{ form.status }} {{ form.status.errors }}
               <label for="{{ form.status.id_for_label }}" class="form__controls-label"> Опубликовать ? :</label>
