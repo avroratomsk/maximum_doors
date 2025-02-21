@@ -9,6 +9,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
+
+
 def category(request):
   products = Product.objects.filter(status=True)
   try:

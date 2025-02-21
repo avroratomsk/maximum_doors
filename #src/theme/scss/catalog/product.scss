@@ -75,14 +75,33 @@
 
   &__image {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 550px;
+    gap: 30px;
+    //height: 550px;
 
     img {
-      width: 250px;
-      height: 100%;
+      width: 100%;
+      height: 550px;
     }
+  }
+
+  //.product-info__colors
+
+  &__colors{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    button {
+
+      &.active {
+        border: 1px solid rgba($color: red, $alpha: 1.0);
+      }
+    }
+
+    .color_btn{}
   }
 
   // .product-info__price-panel

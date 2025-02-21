@@ -10,11 +10,12 @@
     align-items: center;
     justify-content: center;
     background: rgb(230, 230, 230);
-    padding: 49px 74px;
+    padding: 20px 0px;
     position: relative;
 
     img {
-      width: 142px;
+      max-width: 100%;
+      //width: 142px;
       height: 302px;
     }
   }

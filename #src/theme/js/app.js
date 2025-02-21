@@ -4,6 +4,7 @@ functions.isWebp();
 
 import '../js/modules/menu/stickyMenu.js';
 import '../js/modules/map.js';
+import '../js/modules/switchImage.js';
 import '../js/modules/popup/popup.js';
 import '../js/modules/searchCatalog.js';
 import '../js/modules/menu/mobileMenu.js';

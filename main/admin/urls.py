@@ -4,7 +4,7 @@ from . import views
 
 from reviews import admin
 
-from .views_new.product_views import admin_product, product_edit, product_add
+# from .views_new.product_views import admin_product, product_edit, product_add,product_delete
 
 
 urlpatterns = [
@@ -21,9 +21,9 @@ urlpatterns = [
     path('category/delete/<int:pk>/', views.category_delete, name='category_delete'),
 
     #URl - отвечающие за отображение товаров, редактирование и удаление товара
-    path('product/', admin_product, name='admin_product'),
-    path('product/add/', product_add, name='product_add'),
-    path('product/edit/<int:pk>/', product_edit, name='product_edit'),
+    path('product/', views.admin_product, name='admin_product'),
+    path('product/add/', views.product_add, name='product_add'),
+    path('product/edit/<int:pk>/', views.product_edit, name='product_edit'),
     path('product/delete/<int:pk>/', views.product_delete, name='product_delete'),
 
     #URl - отвечающие за отображение отзывов, редактирование и удаление отзывов

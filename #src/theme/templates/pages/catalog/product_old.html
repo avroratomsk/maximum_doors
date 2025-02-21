@@ -35,15 +35,7 @@
         <div class="product-info__row">
           <div class="product-info__col">
             <div class="product-info__images">
-              <div class="product-info__image">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-              </div>
-              <div class="product-info__colors">
-                <div class="color_btn active" style="background: #626167; width: 50px; height: 50px;" data-src="{% static 'theme/img/product/11 см протерма багет букле антрацит.png 49800.png' %}"></div>
-                <div class="color_btn" style="background: #53443d; width: 50px; height: 50px;" data-src="{% static 'theme/img/product/11 см протерма букле шоколад.jpeg 39900.jpeg' %}"></div>
-                <div class="color_btn" style="background: #4d3d3a; width: 50px; height: 50px;" data-src="{% static 'theme/img/product/11 см протерма графит.jpeg 65600.jpeg' %}"></div>
-                <div class="color_btn" style="background: #59514d; width: 50px; height: 50px;" data-src="{% static 'theme/img/product/11 см протерма шоколад.png 65600.png' %}"></div>
-              </div>
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
             </div>
             <div class="product-info__price-panel">
               <div class="product-info__price">
@@ -52,7 +44,7 @@
                   <span class="product-info__price-value">{{ product.sell_price }} ₽</span>
                   <s class="product-info__price--old-price">{{ product.price }} ₽</s>
                   {% else %}
-                  <span class="product-info__price-value">12 000 ₽</span>
+                  <span class="product-info__price-value">{{ product.price }} ₽</span>
                   {% endif %}
                 </div>
                 {% comment %}<div class="product-info__price-sale">
@@ -90,7 +82,6 @@
             <div class="product-info__param tab-params">
               <div class="tab-params__trigger">
                 <div class="tab-params__trigger-inner">
-                  <button type="button" data-tab="1" class="tab-params__tab _active">Характеристики</button>
                   {% if properties %}
                   <button type="button" data-tab="1" class="tab-params__tab _active">Характеристики</button>
                   {% endif %}

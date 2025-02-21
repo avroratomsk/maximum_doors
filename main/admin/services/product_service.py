@@ -1,4 +1,5 @@
 from shop.models import Product
+from ..forms import ProductForm, ProductImageForm
 
 def get_all_products():
   return Product.objects.all()
@@ -22,6 +23,6 @@ def create_product(data, files):
   form = ProductForm(data, files)
 
   if form.is_valid():
-    return form.save()  # Возвращаем созданный объект
+    return form.save()
 
-  return None  # Если невалидно
+  return None

@@ -1,7 +1,8 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from ..forms import ProductForm, ProductImageForm
-from admin.services.product_service import get_all_products, get_product_by_id, update_product, save_image_product,create_product
+from shop.models import Product,ProductImage
+from ..services.product_service import get_all_products, get_product_by_id, update_product, save_image_product,create_product
 
 def admin_product(request):
     page = request.GET.get('page', 1)
@@ -16,18 +17,32 @@ def admin_product(request):
     return render(request, "shop/product/product.html", context)
 
 def product_edit(request, pk):
-  product = get_product_by_id(pk)
+  """
+    View, которая получает данные из формы редактирования товара
+    и изменяет данные внесенные данные товара в базе данных
+  """
+  product = Product.objects.get(id=pk)
   form = ProductForm(instance=product)
   image_form = ProductImageForm()
 
+  form_new = ProductForm(request.POST, request.FILES, instance=product)
   if request.method == 'POST':
-    update_product = update_product(request.POST, request.FILES, product)
-    if update_product:
+    if form_new.is_valid():
+      form_new.save()
+      product = Product.objects.get(slug=request.POST['slug'])
       images = request.FILES.getlist('src')
-      save_image_product(update_product, images)
+
+      for image in images:
+          img = ProductImage(parent=product, src=image)
+          img.save()
       return redirect(request.META.get('HTTP_REFERER'))
     else:
       return render(request, 'shop/product/product_edit.html', {'form': form_new})
+  context = {
+    "form":form,
+    'image_form': image_form,
+  }
+  return render(request, "shop/product/product_edit.html", context)
 
   context = {
   "form":form,
