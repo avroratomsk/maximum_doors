@@ -2600,6 +2600,10 @@ body._lock::after {
   cursor: pointer;
 }
 
+.product-info__colors .color_btn img {
+  max-width: 100%;
+}
+
 .product-info__colors .color_btn::before {
   content: "";
   position: absolute;
