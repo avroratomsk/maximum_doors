@@ -40,9 +40,13 @@ def get_unique_slug(model, base_slug):
     return slug
 
 def import_products_from_excel(file_path):
+    print("Всего товаров перед удалением:", Product.objects.count())
+    print("Всего свойств перед удалением:", Properties.objects.count())
+    print("Всего категорий перед удалением:", Category.objects.count())
     Product.objects.all().delete()
     Properties.objects.all().delete()
     Category.objects.all().delete()
+    print("Всего категорий после удаления:", Category.objects.count())
 
     # Загружаем данные из Excel
     df = pd.read_excel(file_path, engine='openpyxl')
@@ -159,7 +163,7 @@ import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-  import_products_from_excel(path_to_excel)
+#   import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
