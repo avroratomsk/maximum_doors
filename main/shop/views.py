@@ -36,7 +36,7 @@ def category_detail(request, slug):
 
   for product in products:
       if product.image:
-        product.image_url = urllib.parse.unquote(product.image.url)
+        product.image_url = urllib.parse.quote(product.image.url, safe="/:")
 
   context = {
     "category": category,
