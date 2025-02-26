@@ -2236,7 +2236,7 @@ body._lock::after {
 .best-choice__grid {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 67px;
   width: 100%;
 }

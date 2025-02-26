@@ -79,6 +79,7 @@ def import_products_from_excel(file_path):
 
       image = f"goods/{row[6]}"
 
+
       try:
           price = row[7]
           if isinstance(price, float) and math.isnan(price):  # Проверяем, является ли значением NaN
@@ -154,10 +155,11 @@ def import_products_from_excel(file_path):
 #     return redirect('admin')
 
 # @user_passes_test(lambda u: u.is_superuser)
+import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-  #import_products_from_excel(path_to_excel)
+  import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""

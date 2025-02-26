@@ -12,7 +12,6 @@ import json
 
 
 def category(request):
-  products = Product.objects.filter(status=True)
   try:
     shop_setup = ShopSettings.objects.get()
   except: 
@@ -26,7 +25,7 @@ def category(request):
   }
 
   return render(request, "pages/catalog/category.html", context)
-
+import urllib.parse
 def category_detail(request, slug):
   page = request.GET.get("page", 1)
   category = Category.objects.get(slug=slug)
@@ -34,6 +33,10 @@ def category_detail(request, slug):
   count =  int(request.GET.get('count', 16))
   paginator = Paginator(products, count)
   current_page = paginator.page(int(page))
+
+  for product in products:
+      if product.image:
+        product.image_url = urllib.parse.unquote(product.image.url)
 
   context = {
     "category": category,
