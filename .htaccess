@@ -1,3 +1,4 @@
+AddDefaultCharset UTF-8
 PassengerEnabled On
 PassengerAppRoot /home/a/avroraweb/maximum063.ru//public_html/main/main
 PassengerPython /home/a/avroraweb/maximum063.ru/public_html/venv/bin/python
