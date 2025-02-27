@@ -40,14 +40,14 @@ def get_unique_slug(model, base_slug):
     return slug
 
 def import_products_from_excel(file_path):
-    print("Всего товаров перед удалением:", Product.objects.count())
-    print("Всего свойств перед удалением:", Properties.objects.count())
-    print("Всего категорий перед удалением:", Category.objects.count())
+    print(Product.objects.count())
+    print(Properties.objects.count())
+    print(Category.objects.count())
     Product.objects.all().delete()
     Properties.objects.all().delete()
     Category.objects.all().delete()
-    print("Всего категорий после удаления:", Category.objects.count())
-    print("Всего товаров после удаления:", Category.objects.count())
+    print(Category.objects.count())
+    print(Category.objects.count())
 
     # Загружаем данные из Excel
 #     df = pd.read_excel(file_path, engine='openpyxl')
