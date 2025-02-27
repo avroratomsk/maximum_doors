@@ -48,10 +48,11 @@ def import_products_from_excel(file_path):
     df = pd.read_excel(file_path, engine='openpyxl')
 
     for _, row in df.iterrows():
-      article=row.iloc[0]
-      name = row.iloc[1]
+      article=row[0]
+      name = row[1].strip()
+      print(name)
       slug = get_unique_slug(Product, slugify(name))
-      category = row.iloc[2]
+      category = row[2]
       category_slug = slugify(category)
 
       try:
@@ -64,38 +65,38 @@ def import_products_from_excel(file_path):
         )
 
       try:
-        manufacturer = row.iloc[3]
+        manufacturer = row[3]
       except:
         pass
 
-      manufacturer_description = row.iloc[4]
+      manufacturer_description = row[4]
 
       try:
-        colors = row.iloc[5]
+        colors = row[5]
         if isinstance(colors, float) and math.isnan(colors):  # Проверяем, является ли значением NaN
           colors = ""
       except:
         colors = ""
 
-      image = f"goods/{row.iloc[6]}"
+      image = f"goods/{row[6]}"
 
 
       try:
-          price = row.iloc[7]
+          price = row[7]
           if isinstance(price, float) and math.isnan(price):  # Проверяем, является ли значением NaN
             price = 0
       except:
           price = 0
 
       try:
-        installment = row.iloc[8]
+        installment = row[8]
         if isinstance(installment, float) and math.isnan(installment):  # Проверяем, является ли значением NaN
           installment = ""
       except:
         installment = ""
 
       try:
-          properties = row.iloc[10]
+          properties = row[10]
       except:
           properties = ""
 
