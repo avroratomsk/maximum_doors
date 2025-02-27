@@ -50,7 +50,7 @@ def import_products_from_excel(file_path):
     for _, row in df.iterrows():
       article=row[0]
       name = row[1].strip()
-      print(name)
+#       print(name)
       slug = get_unique_slug(Product, slugify(name))
       category = row[2]
       category_slug = slugify(category)
