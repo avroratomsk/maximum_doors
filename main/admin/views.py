@@ -40,117 +40,112 @@ def get_unique_slug(model, base_slug):
     return slug
 
 def import_products_from_excel(file_path):
-    print(Product.objects.count())
-    print(Properties.objects.count())
-    print(Category.objects.count())
     Product.objects.all().delete()
     Properties.objects.all().delete()
     Category.objects.all().delete()
-    print(Category.objects.count())
-    print(Category.objects.count())
 
     # Загружаем данные из Excel
-#     df = pd.read_excel(file_path, engine='openpyxl')
-#
-#     for _, row in df.iterrows():
-#       article=row.iloc[0]
-#       name = row.iloc[1]
-#       slug = get_unique_slug(Product, slugify(name))
-#       category = row.iloc[2]
-#       category_slug = slugify(category)
-#
-#       try:
-#         category = Category.objects.get(slug=category_slug)
-#       except ObjectDoesNotExist:
-#         if not Category.objects.filter(name=category).exists():
-#           category = Category.objects.create(
-#             name=category,
-#             slug=category_slug
-#         )
-#
-#       try:
-#         manufacturer = row.iloc[3]
-#       except:
-#         pass
-#
-#       manufacturer_description = row.iloc[4]
-#
-#       try:
-#         colors = row.iloc[5]
-#         if isinstance(colors, float) and math.isnan(colors):  # Проверяем, является ли значением NaN
-#           colors = ""
-#       except:
-#         colors = ""
-#
-#       image = f"goods/{row.iloc[6]}"
-#
-#
-#       try:
-#           price = row.iloc[7]
-#           if isinstance(price, float) and math.isnan(price):  # Проверяем, является ли значением NaN
-#             price = 0
-#       except:
-#           price = 0
-#
-#       try:
-#         installment = row.iloc[8]
-#         if isinstance(installment, float) and math.isnan(installment):  # Проверяем, является ли значением NaN
-#           installment = ""
-#       except:
-#         installment = ""
-#
-#       try:
-#           properties = row.iloc[10]
-#       except:
-#           properties = ""
-#
-#       sale = 0
-#
-#
-#       try:
-#           new_product = Product.objects.create(
-#               article=article,
-#               name=name,
-#               slug=slug,
-#               category=category,
-#               manufacturer=manufacturer,
-#               manufacturer_description=manufacturer_description,
-#               colors=colors,
-#               image=image,
-#               price=price,
-#               installment=installment,
-#               sale=sale,
-#           )
-#       except IntegrityError:
-#           print(f"Duplicate slug detected: {slug}, generating a new one.")
-#           slug = get_unique_slug(Product, slug)
-#           new_product = Product.objects.create(
-#               article=article,
-#               name=name,
-#               slug=slug,
-#               category=category,
-#               manufacturer=manufacturer,
-#               manufacturer_description=manufacturer_description,
-#               colors=colors,
-#               image=image,
-#               price=price,
-#               installment=installment,
-#               sale=sale,
-#           )
-#
-#       try:
-#           properties = properties.split(';')
-#           for ch in properties:
-#             try:
-#               new_properties = Properties.objects.create(
-#                 parent = new_product,
-#                 name = ch.split(":")[0].strip(),
-#                 value = ch.split(":")[1].strip()
-#               )
-#             except Exception as e:
-#                 print(e)
-#       except:
-#           pass
+    df = pd.read_excel(file_path, engine='openpyxl')
+
+    for _, row in df.iterrows():
+      article=row.iloc[0]
+      name = row.iloc[1]
+      slug = get_unique_slug(Product, slugify(name))
+      category = row.iloc[2]
+      category_slug = slugify(category)
+
+      try:
+        category = Category.objects.get(slug=category_slug)
+      except ObjectDoesNotExist:
+        if not Category.objects.filter(name=category).exists():
+          category = Category.objects.create(
+            name=category,
+            slug=category_slug
+        )
+
+      try:
+        manufacturer = row.iloc[3]
+      except:
+        pass
+
+      manufacturer_description = row.iloc[4]
+
+      try:
+        colors = row.iloc[5]
+        if isinstance(colors, float) and math.isnan(colors):  # Проверяем, является ли значением NaN
+          colors = ""
+      except:
+        colors = ""
+
+      image = f"goods/{row.iloc[6]}"
+
+
+      try:
+          price = row.iloc[7]
+          if isinstance(price, float) and math.isnan(price):  # Проверяем, является ли значением NaN
+            price = 0
+      except:
+          price = 0
+
+      try:
+        installment = row.iloc[8]
+        if isinstance(installment, float) and math.isnan(installment):  # Проверяем, является ли значением NaN
+          installment = ""
+      except:
+        installment = ""
+
+      try:
+          properties = row.iloc[10]
+      except:
+          properties = ""
+
+      sale = 0
+
+
+      try:
+          new_product = Product.objects.create(
+              article=article,
+              name=name,
+              slug=slug,
+              category=category,
+              manufacturer=manufacturer,
+              manufacturer_description=manufacturer_description,
+              colors=colors,
+              image=image,
+              price=price,
+              installment=installment,
+              sale=sale,
+          )
+      except IntegrityError:
+          print(f"Duplicate slug detected: {slug}, generating a new one.")
+          slug = get_unique_slug(Product, slug)
+          new_product = Product.objects.create(
+              article=article,
+              name=name,
+              slug=slug,
+              category=category,
+              manufacturer=manufacturer,
+              manufacturer_description=manufacturer_description,
+              colors=colors,
+              image=image,
+              price=price,
+              installment=installment,
+              sale=sale,
+          )
+
+      try:
+          properties = properties.split(';')
+          for ch in properties:
+            try:
+              new_properties = Properties.objects.create(
+                parent = new_product,
+                name = ch.split(":")[0].strip(),
+                value = ch.split(":")[1].strip()
+              )
+            except Exception as e:
+                print(e)
+      except:
+          pass
 
 # @user_passes_test(lambda u: u.is_superuser)
 # def sidebar_show(request): 
