@@ -31,29 +31,11 @@
         </a>
       </div>
       <div class="product-details__card product-info">
+        <h1 class="product-info__title">{{ product.name }}</h1>
         <div class="product-info__row">
           <div class="product-info__col">
             <div class="product-info__images">
-              <div class="product-info__image">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" clas="swtch-image">
-              </div>
-              <div class="product-info__colors">
-                <div class="color_btn active" data-src="{% static 'theme/img/product/11 см протерма багет букле антрацит.png 49800.png' %}">
-                  <img src="{% static 'theme/img/colors/bukle-atracit.jpg' %}" alt="">
-                </div>
-                <div class="color_btn" data-src="{% static 'theme/img/product/11 см протерма букле шоколад.jpeg 39900.jpeg' %}">
-                  <img src="{% static 'theme/img/colors/bukle-shokolad.jpg' %}" alt="">
-                </div>
-                <div class="color_btn" data-src="{% static 'theme/img/product/11 см протерма графит.jpeg 65600.jpeg' %}">
-                  <img src="{% static 'theme/img/colors/proterma-astana.jpg' %}" alt="">
-                </div>
-                <div class="color_btn" data-src="{% static 'theme/img/product/11 см протерма шоколад.png 65600.png' %}">
-                  <img src="{% static 'theme/img/colors/proterma-gaphit.jpg' %}" alt="">
-                </div>
-                <div class="color_btn" data-src="{% static 'theme/img/product/11 см протерма шоколад.png 65600.png' %}">
-                  <img src="{% static 'theme/img/colors/proterma-shokolad.jpg' %}" alt="">
-                </div>
-              </div>
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
             </div>
             <div class="product-info__price-panel">
               <div class="product-info__price">
@@ -62,7 +44,7 @@
                   <span class="product-info__price-value">{{ product.sell_price }} ₽</span>
                   <s class="product-info__price--old-price">{{ product.price }} ₽</s>
                   {% else %}
-                  <span class="product-info__price-value">12 000 ₽</span>
+                  <span class="product-info__price-value">{{ product.price }} ₽</span>
                   {% endif %}
                 </div>
                 {% comment %}<div class="product-info__price-sale">
@@ -97,11 +79,9 @@
             </div>
           </div>
           <div class="product-info__col">
-            <h1 class="product-info__title">{{ product.name }}</h1>
             <div class="product-info__param tab-params">
               <div class="tab-params__trigger">
                 <div class="tab-params__trigger-inner">
-                  <button type="button" data-tab="1" class="tab-params__tab _active">Характеристики</button>
                   {% if properties %}
                   <button type="button" data-tab="1" class="tab-params__tab _active">Характеристики</button>
                   {% endif %}
