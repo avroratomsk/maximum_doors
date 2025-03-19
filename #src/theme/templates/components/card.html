@@ -1,8 +1,13 @@
 {% load static %} {% load thumbnail %}
 <div class="best-choice__item card-product">
   <a href="{{ product.get_absolute_url }}" class="card-product__image">
+    {{ product.image }}
     {% if product.image %}
-    <img src="{{ product.image.url }}" alt="" class="image">
+    {% thumbnail product.image "x334" format="WEBP" crop="center" as im %}
+    <img src="{{ im.url }}"  class="image" />
+    {% endthumbnail %}
+    {% else %}
+    <img src="{{ product.image.url }}" class="image" />
     {% endif %}
   </a>
   <!--  <div class="card-product__colors">-->

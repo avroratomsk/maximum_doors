@@ -79,6 +79,9 @@ def import_products_from_excel(file_path):
 
       image = f"goods/{row[6]}"
 
+      if name == "Прадо ваниль глухое":
+        print(image)
+
 
       try:
           price = row[7]
@@ -143,7 +146,7 @@ def import_products_from_excel(file_path):
                 value = ch.split(":")[1].strip()
               )
             except Exception as e:
-                print(e)
+                pass
       except:
           pass
 
