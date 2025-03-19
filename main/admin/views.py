@@ -79,9 +79,6 @@ def import_products_from_excel(file_path):
 
       image = f"goods/{row[6]}"
 
-      if name == "Прадо ваниль глухое":
-        print(image)
-
 
       try:
           price = row[7]
@@ -103,7 +100,6 @@ def import_products_from_excel(file_path):
           properties = ""
 
       sale = 0
-
 
       try:
           new_product = Product.objects.create(
@@ -162,7 +158,7 @@ import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-  import_products_from_excel(path_to_excel)
+#   import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""

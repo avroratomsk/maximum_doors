@@ -35,7 +35,9 @@
         <div class="product-info__row">
           <div class="product-info__col">
             <div class="product-info__images">
-              <img src="{{ product.image.url }}" alt="{{ product.name }}">
+              {% thumbnail product.image "x550" format="WEBP" crop="center" as im %}
+              <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ product.name }}" />
+              {% endthumbnail %}
             </div>
             <div class="product-info__price-panel">
               <div class="product-info__price">
