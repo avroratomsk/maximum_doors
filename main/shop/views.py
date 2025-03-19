@@ -26,6 +26,7 @@ def category(request):
 
   return render(request, "pages/catalog/category.html", context)
 import urllib.parse
+
 def category_detail(request, slug):
   page = request.GET.get("page", 1)
   category = Category.objects.get(slug=slug)
@@ -67,7 +68,6 @@ def catalog_search(request):
         try:
             result = request.body.decode("utf-8")
             value = json.loads(result).get('value')
-            print(value)
             try:
                 products = Product.objects.filter(name__icontains=value)
                 data = []
