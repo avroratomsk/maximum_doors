@@ -62,7 +62,7 @@ def import_products_from_excel(file_path):
             name=category,
             slug=category_slug
         )
-
+      print(category)
       try:
         manufacturer = row[3]
       except:
