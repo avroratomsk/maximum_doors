@@ -5,7 +5,22 @@
 {% block title %}{{ shop_setup.meta_title }}{% endblock %}
 {% block description %}{{ shop_setup.meta_description }}{% endblock %}
 {% block keywords %}{{ shop_setup.meta_keywords }}{% endblock %}
+{% block pixels code %}
+<!-- Pixel -->
+<script type="text/javascript">
+  (function (d, w) {
+    var n = d.getElementsByTagName("script")[0],
+      s = d.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://qoopler.ru/index.php?ref="+d.referrer+"&page=" + encodeURIComponent(w.location.href);
+    n.parentNode.insertBefore(s, n);
+  })(document, window);
+</script>
+<!-- /Pixel -->
+{% endblock %}
 {% block content %}
+
 <main>
   <section class="category">
     <div class="container">
