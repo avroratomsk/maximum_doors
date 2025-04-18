@@ -4,104 +4,147 @@
 
 <head>
   <title>{% block title %}{% endblock %}</title>
-  <meta name="description" content="{% block description %}{% endblock %}" />
-  <meta name="keywords" content="{% block keywords %}{% endblock %}" />
-  <link rel="canonical" href="" />
-  <meta charset="UTF-8" />
-  <meta name="format-detection" content="telephone=no" />
-  <link rel="stylesheet" href="{% static 'theme/css/style.min.css' %}" />
-  <link rel="shortcut icon" href="{% if site_settings.favicon %} {{ site_settings.favicon.url }} {% endif%}" />
-  <link rel="apple-touch-icon" href="{% static 'images/logo.png' %}" sizes="120x120" />
-  <meta name="robots" content="all" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{% block description %}{% endblock %}"/>
+  <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+  <link rel="canonical" href=""/>
+  <meta charset="UTF-8"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <link rel="stylesheet" href="{% static 'theme/css/style.min.css' %}"/>
+  <link rel="shortcut icon" href="{% if site_settings.favicon %} {{ site_settings.favicon.url }} {% endif%}"/>
+  <link rel="apple-touch-icon" href="{% static 'images/logo.png' %}" sizes="120x120"/>
+  <meta name="robots" content="all"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link
     href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet"/>
   <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css?_v=20240126172157" />
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css?_v=20240126172157"/>
 
-  <script src="https://api-maps.yandex.ru/2.1/?apikey=aeafb882-e871-4da0-a97b-c7b2e5718d45&lang=ru_RU" type="text/javascript"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=aeafb882-e871-4da0-a97b-c7b2e5718d45&lang=ru_RU"
+          type="text/javascript"></script>
+
+  <!-- Yandex.Metrika counter -->
+
+  <script type="text/javascript">
+
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () {
+        (m[i].a = m[i].a || []).push(arguments)
+      };
+
+      m[i].l = 1 * new Date();
+
+      for (var j = 0; j < document.scripts.length; j++) {
+        if (document.scripts[j].src === r) {
+          return;
+        }
+      }
+
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+
+    ym(100980272, "init", {
+
+      clickmap: true,
+
+      trackLinks: true,
+
+      accurateTrackBounce: true
+
+    });
+
+  </script>
+
+  <noscript>
+    <div><picture><source srcset="https://mc.yandex.ru/watch/100980272" type="image/webp"><img src="https://mc.yandex.ru/watch/100980272" style="position:absolute; left:-9999px;" alt=""/></picture></div>
+  </noscript>
+
+  <!-- /Yandex.Metrika counter -->
+
   {% block pixels_code %}{% endblock %}
 </head>
 
 <body>
-  <div class="wrapper">
-    {% include "./includes/_header.html" %}
-    {% block content %} {% endblock %}
-    {% include "./includes/_footer.html" %}
-    {% comment %}{% include "./components/notification/modal.html" %}{% endcomment %}
-    {% comment %}{% include "./components/mini-cart.html" %}{% endcomment %}
-    {% include "./includes/_popup.html" %}
-  </div>
+<div class="wrapper">
+  {% include "./includes/_header.html" %}
+  {% block content %} {% endblock %}
+  {% include "./includes/_footer.html" %}
+  {% comment %}{% include "./components/notification/modal.html" %}{% endcomment %}
+  {% comment %}{% include "./components/mini-cart.html" %}{% endcomment %}
+  {% include "./includes/_popup.html" %}
+</div>
 
-  <!-- <script>
-    // Теперь + - количества товара
-    // Обработчик события для уменьшения значения
-    $(document).on("click", ".decrement", function () {
-      // Берем ссылку на контроллер django из атрибута data-cart-change-url
-      var url = $(this).data("cart-change-url");
-      // Берем id корзины из атрибута data-cart-id
-      var cartID = $(this).data("cart-id");
-      // Ищем ближайшеий input с количеством
-      var $input = $(this).closest(".mini-cart__counter").find(".number");
-      // Берем значение количества товара
-      var currentValue = parseInt($input.val());
-      // Если количества больше одного, то только тогда делаем -1
-      if (currentValue > 1) {
-        $input.val(currentValue - 1);
-        // Запускаем функцию определенную ниже
-        // с аргументами (id карты, новое количество, количество уменьшилось или прибавилось, url)
-        updateCart(cartID, currentValue - 1, -1, url);
-      }
-    });
-
-    // Обработчик события для увеличения значения
-    $(document).on("click", ".increment", function () {
-      // Берем ссылку на контроллер django из атрибута data-cart-change-url
-      var url = $(this).data("cart-change-url");
-      // Берем id корзины из атрибута data-cart-id
-      var cartID = $(this).data("cart-id");
-      // Ищем ближайшеий input с количеством
-      var $input = $(this).closest(".mini-cart__counter").find(".number");
-      // Берем значение количества товара
-      var currentValue = parseInt($input.val());
-
-      $input.val(currentValue + 1);
-
+<!-- <script>
+  // Теперь + - количества товара
+  // Обработчик события для уменьшения значения
+  $(document).on("click", ".decrement", function () {
+    // Берем ссылку на контроллер django из атрибута data-cart-change-url
+    var url = $(this).data("cart-change-url");
+    // Берем id корзины из атрибута data-cart-id
+    var cartID = $(this).data("cart-id");
+    // Ищем ближайшеий input с количеством
+    var $input = $(this).closest(".mini-cart__counter").find(".number");
+    // Берем значение количества товара
+    var currentValue = parseInt($input.val());
+    // Если количества больше одного, то только тогда делаем -1
+    if (currentValue > 1) {
+      $input.val(currentValue - 1);
       // Запускаем функцию определенную ниже
       // с аргументами (id карты, новое количество, количество уменьшилось или прибавилось, url)
-      updateCart(cartID, currentValue + 1, 1, url);
-    });
-
-    function updateCart(cartID, quantity, change, url) {
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: {
-          cart_id: cartID,
-          quantity: quantity,
-          csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
-        },
-
-        success: function (data) {
-          // Изменяем количество товаров в корзине
-          var goodsInCartCount = $("#mini-cart-count");
-          var cartCount = parseInt(goodsInCartCount.text() || 0);
-          cartCount += change;
-          goodsInCartCount.text(cartCount);
-
-          // Меняем содержимое корзины
-          var cartItemsContainer = $("#cart-item");
-          cartItemsContainer.html(data.cart_items_html);
-        },
-        error: function (data) {
-          console.log("Ошибка при добавлении товара в корзину");
-        },
-      });
+      updateCart(cartID, currentValue - 1, -1, url);
     }
-  </script> -->
+  });
 
-  <script type="module" src="{% static 'theme/js/app.min.js' %}"></script>
+  // Обработчик события для увеличения значения
+  $(document).on("click", ".increment", function () {
+    // Берем ссылку на контроллер django из атрибута data-cart-change-url
+    var url = $(this).data("cart-change-url");
+    // Берем id корзины из атрибута data-cart-id
+    var cartID = $(this).data("cart-id");
+    // Ищем ближайшеий input с количеством
+    var $input = $(this).closest(".mini-cart__counter").find(".number");
+    // Берем значение количества товара
+    var currentValue = parseInt($input.val());
+
+    $input.val(currentValue + 1);
+
+    // Запускаем функцию определенную ниже
+    // с аргументами (id карты, новое количество, количество уменьшилось или прибавилось, url)
+    updateCart(cartID, currentValue + 1, 1, url);
+  });
+
+  function updateCart(cartID, quantity, change, url) {
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: {
+        cart_id: cartID,
+        quantity: quantity,
+        csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+      },
+
+      success: function (data) {
+        // Изменяем количество товаров в корзине
+        var goodsInCartCount = $("#mini-cart-count");
+        var cartCount = parseInt(goodsInCartCount.text() || 0);
+        cartCount += change;
+        goodsInCartCount.text(cartCount);
+
+        // Меняем содержимое корзины
+        var cartItemsContainer = $("#cart-item");
+        cartItemsContainer.html(data.cart_items_html);
+      },
+      error: function (data) {
+        console.log("Ошибка при добавлении товара в корзину");
+      },
+    });
+  }
+</script> -->
+
+<script type="module" src="{% static 'theme/js/app.min.js' %}"></script>
 </body>
 
 </html>
