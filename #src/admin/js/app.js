@@ -99,10 +99,10 @@ metaFields?.forEach(item => {
   })
 })
 
-document.querySelector('.product-block__plus').addEventListener('click', function (event) {
-  var image = '<div class="form__group  form__group-image"><input type="file" multiple="multiple" name="src" accept="image/*" required="" id="id_src"><div class="product-block__minus form__remove">Удалить</div></div>';
-  document.querySelector('.product-field').insertAdjacentHTML('beforeend', image);
-})
+// document.querySelector('.product-block__plus').addEventListener('click', function (event) {
+//   var image = '<div class="form__group  form__group-image"><input type="file" multiple="multiple" name="src" accept="image/*" required="" id="id_src"><div class="product-block__minus form__remove">Удалить</div></div>';
+//   document.querySelector('.product-field').insertAdjacentHTML('beforeend', image);
+// })
 
 
 function checkLengthSymbol(lengthSymbol, item) {

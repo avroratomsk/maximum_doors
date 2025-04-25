@@ -224,7 +224,7 @@ def admin_product(request):
   """
   page = request.GET.get('page', 1)
   products = Product.objects.all()
-  paginator = Paginator(products, 10)
+  paginator = Paginator(products, 20)
   current_page = paginator.page(int(page))
 
   context = {
@@ -453,7 +453,7 @@ def admin_category(request):
   categorys = Category.objects.all()
   
   context ={
-    "categorys": categorys,
+    "items": categorys,
   }
   return render(request, "shop/category/category.html", context)
 

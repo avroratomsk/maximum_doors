@@ -10,19 +10,7 @@
       </ul>
     </div>
     <div class="page__content content-page">
-      <div class="content-page__action">
-        <div class="content-page__showing showing">
-          <p>Показано</p>
-          <select name="view-elem" id="view-elem">
-            <option value="15">15</option>
-            <option value="30">30</option>
-            <option value="60">60</option>
-            <option value="120">120</option>
-          </select>
-          <p>элементов</p>
-        </div>
-        <a href="{% url 'product_add' %}" class="action-button">Добавить новый</a>
-      </div>
+      {% include 'common/_actions-page.html' with button_url='product_add' %}
       <div class="grid-items">
         {% for item in items %}
         <div class="grid-item">
@@ -34,12 +22,9 @@
             {% endif %}
           </div>
           <div class="grid-item__content">
-            <a href="{{ item.get_absolute_url }}" class="grid-item__title">{{ item.name }}</a>
+            <a href="{% url 'product_edit' item.pk %}" class="grid-item__title">{{ item.name }}</a>
             <p>{{ item.price }} ₽</p>
-            <div class="grid-item__action">
-              <a href="{% url 'product_edit' item.pk %}">Изменить</a>
-              <a href="{% url 'product_delete' item.pk %}">Удалить</a>
-            </div>
+            {% include 'common/_edit-block.html' with edit_url='product_edit' delete_url='product_delete' %}
           </div>
         </div>
         {% endfor %}

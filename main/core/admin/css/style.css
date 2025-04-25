@@ -562,28 +562,46 @@ ol {
 .grid-items {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
 .grid-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   border: 1px solid rgba(38, 53, 61, 0.1);
   padding: 10px;
+  gap: 40px;
   border-radius: 8px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.grid-item__image {
+  width: 50px;
+  height: 50px;
 }
 
 .grid-item__image img {
   width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .grid-item__content {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
 }
 
 .grid-item__content a:first-child {
@@ -593,9 +611,8 @@ ol {
 }
 
 .grid-item__title {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 150%;
-  margin-bottom: 10px;
 }
 
 .grid-item__action {
@@ -609,7 +626,7 @@ ol {
       -ms-flex-pack: center;
           justify-content: center;
   gap: 20px;
-  margin-top: 10px;
+  margin-left: 100px;
 }
 
 .grid-item__action a {
@@ -623,11 +640,16 @@ ol {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
+  padding: 10px 10px;
   height: 30px;
   border-radius: 4px;
-  font-size: 15px;
+  font-size: 14px;
+  white-space: nowrap;
   letter-spacing: 0.5px;
   border: 1px solid rgba(38, 53, 61, 0.1);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .grid-item__action a:first-child {
@@ -1415,5 +1437,14 @@ ol {
 @media (hover: hover) {
   .menu-sidebar__dropdown-title:hover {
     cursor: pointer;
+  }
+
+  .grid-item:hover {
+    background-color: rgba(38, 53, 61, 0.01);
+    border-color: rgba(38, 53, 61, 0.2);
+  }
+
+  .grid-item__action a:hover {
+    border-color: rgba(38, 53, 61, 0.5);
   }
 }

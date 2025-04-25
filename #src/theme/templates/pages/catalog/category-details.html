@@ -1,19 +1,19 @@
 {% extends "base.html" %} {% load shop_tags %} {% load thumbnail %}{% load static %}
+
 {% block title %}
   {{ category.meta_title }}
 {% endblock %}
-
 {% block description %}
   {{ category.meta_description }}
 {% endblock %}
 {% block keywords %}
 {{ category.meta_keywords }}
 {% endblock %}
+
 {% block content %}
 <main class="page">
   <section class="category">
     <div class="container">
-
       <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
         <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
            class="breadcrumbs__item">
@@ -31,7 +31,11 @@
           <meta itemprop="position" content="3" />
         </a>
       </div>
+      {% if category.meta_title %}
+      <h1 class="category__title">{{ category.meta_title }}</h1>
+      {% else %}
       <h1 class="category__title">{{ category.name }}</h1>
+      {% endif %}
       <div class="category__filter filter">
         <form action="#" class="form form--search">
           <button type="submit" class="form__button"><i class="fa-solid fa-magnifying-glass"></i></button>
