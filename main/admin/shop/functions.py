@@ -1,6 +1,3 @@
-from services.product_service import get_all_products
-from admin.forms import ProductForm, ProductImageForm
-
 def admin_product(request):
   """
   View, которая возвращаяет и отрисовывает все товары на странице
@@ -8,7 +5,7 @@ def admin_product(request):
   """
   page = request.GET.get('page', 1)
   products = Product.objects.all()
-  paginator = Paginator(products, 10)
+  paginator = Paginator(products, 20)
   current_page = paginator.page(int(page))
 
   context = {
@@ -22,8 +19,8 @@ def product_edit(request, pk):
     и изменяет данные внесенные данные товара в базе данных
   """
   product = Product.objects.get(id=pk)
+  product_image = ProductImage.objects.filter(parent=product)
   form = ProductForm(instance=product)
-  image_form = ProductImageForm()
 
   form_new = ProductForm(request.POST, request.FILES, instance=product)
   if request.method == 'POST':
@@ -35,12 +32,13 @@ def product_edit(request, pk):
       for image in images:
           img = ProductImage(parent=product, src=image)
           img.save()
+
       return redirect(request.META.get('HTTP_REFERER'))
     else:
       return render(request, 'shop/product/product_edit.html', {'form': form_new})
   context = {
     "form":form,
-    'image_form': image_form,
+    "product_image": product_image,
   }
   return render(request, "shop/product/product_edit.html", context)
 
