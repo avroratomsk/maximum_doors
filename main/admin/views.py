@@ -497,53 +497,6 @@ def category_delete(request, pk):
   
   return redirect('admin_category')
 
-
-def admin_fillial(request):
-  pass
-  # fillials = Subsidiary.objects.all()
-  
-  # context = {
-  #   "fillials": fillials
-  # }
-  
-  # return render(request, "fillials/fillial.html", context)
-
-def fillial_edit(request, pk):
-  pass
-  # fillial = Subsidiary.objects.get(id=pk)
-  # form = FillialForm(instance=fillial)
-  
-  # if request.method == "POST":
-  #   form_new = FillialForm(request.POST, request.FILES, instance=fillial)
-  #   if form_new.is_valid():
-  #     form_new.save()
-  #     return redirect("admin_fillial")
-  #   else:
-  #     return render(request, "fillials/fillial_edit.html", {"form": form_new})
-  
-  # context = {
-  #   "form": form,
-  # }
-  
-  # return render(request, "fillials/fillial_edit.html", context)
-
-def fillial_add(request):
-  pass
-  # form = FillialForm()
-  # if request.method == "POST":
-  #   form_new = FillialForm(request.POST, request.FILES)
-  #   if form_new.is_valid():
-  #     form_new.save()
-  #     return redirect("admin_fillial")
-  #   else:
-  #     return render(request, "fillials/fillial_add.html", {"form": form_new})
-    
-  # context = {
-  #   "form": form
-  # }
-  
-  return render(request, "fillials/fillial_add.html", context)
-
 def admin_home(request):
   try:
     home_page = HomeTemplate.objects.get()

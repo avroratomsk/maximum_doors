@@ -1,47 +1,46 @@
-def admin_category(request):
-  categorys = Category.objects.all()
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Category
+from .forms import CategoryForm
 
-  context ={
-    "items": categorys,
-  }
-  return render(request, "shop/category/category.html", context)
+def admin_category(request):
+    categorys = Category.objects.all()
+    context = {
+        "items": categorys,
+    }
+    return render(request, "shop/category/category.html", context)
 
 def category_add(request):
-  form = CategoryForm()
-  if request.method == "POST":
-    form_new = CategoryForm(request.POST, request.FILES)
-    if form_new.is_valid():
-      form_new.save()
-      return redirect("admin_category")
+    if request.method == "POST":
+        form = CategoryForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("admin_category")
     else:
-      return render(request, "shop/category/category_add.html", {"form": form_new})
+        form = CategoryForm()
 
-  context = {
-    "form": form
-  }
-  return render(request, "shop/category/category_add.html", context)
+    context = {
+        "form": form
+    }
+    return render(request, "shop/category/category_add.html", context)
 
 def category_edit(request, pk):
-  categorys = Category.objects.get(id=pk)
-  form = CategoryForm(request.POST, request.FILES, instance=categorys)
+    category = get_object_or_404(Category, id=pk)
 
-  if request.method == "POST":
-
-    if form.is_valid():
-      form.save()
-      return redirect("admin_category")
+    if request.method == "POST":
+        form = CategoryForm(request.POST, request.FILES, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect("admin_category")
     else:
-      return render(request, "shop/category/category_edit.html", {"form": form, 'image_path': image_path})
+        form = CategoryForm(instance=category)
 
-  context = {
-    "form": CategoryForm(instance=categorys),
-    "categorys": categorys
-  }
-
-  return render(request, "shop/category/category_edit.html", context)
+    context = {
+        "form": form,
+        "category": category
+    }
+    return render(request, "shop/category/category_edit.html", context)
 
 def category_delete(request, pk):
-  category = Category.objects.get(id=pk)
-  category.delete()
-
-  return redirect('admin_category')
+    category = get_object_or_404(Category, id=pk)
+    category.delete()
+    return redirect("admin_category")
