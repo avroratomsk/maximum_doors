@@ -5,15 +5,6 @@ def admin_service_page(request):
     service_page = ServicePage()
     service_page.save()
 
-  if request.method == "POST":
-    form_new = ServicePage(request.POST, request.FILES, instance=service_page)
-    if form_new.is_valid():
-      form_new.save()
-      return redirect("admin")
-    else:
-      return render(request, "serv/serv_settings.html", {"form": form_new})
-
-  service_page = HomeTemplate.objects.get()
 
   form = HomeTemplateForm(instance=service_page)
   context = {
