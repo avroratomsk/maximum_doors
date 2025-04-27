@@ -3381,6 +3381,11 @@ body._lock::after {
   line-height: 140%;
 }
 
+.advantages__title-h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .advantages__row {
   display: -webkit-box;
   display: -ms-flexbox;

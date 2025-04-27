@@ -14,6 +14,7 @@ def blog(request):
   context = {
     "posts": posts,
     "categorys": category,
+    "setup_blog": setup
   }
   return render(request, "pages/blog/blog.html", context)
 

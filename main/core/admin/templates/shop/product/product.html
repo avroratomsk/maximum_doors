@@ -132,7 +132,7 @@
         </div>
         {% endfor %}
       </div>
-    </div>
+    </div>-->
     <div class="pagging">
       <a href="{% if products.has_previous %}?{% chenge_params page=products.previous_page_number %}{% else %}#{% endif %}"
         class="pagging__arrow {% if not products.has_previous%}disabled{% endif %}">«</a>
@@ -146,7 +146,7 @@
       </ul>
       <a href="{% if products.has_next %}?{% chenge_params page=products.next_page_number %}{% else %}#{% endif %}"
         class="pagging__arrow">»</a>
-    </div> -->
+    </div>
   </div>
 </div>
 
