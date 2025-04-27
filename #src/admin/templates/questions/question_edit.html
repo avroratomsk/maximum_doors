@@ -9,7 +9,10 @@
           <button type="button" data-name="seo" class="page__head-btn">SEO</button>
           <button type="button" data-name="char" class="page__head-btn">Характеристики</button>
         </div>
-        <button type="submit" class="form__btn">Сохранить</button>
+        <button type="submit" class="form__btn">
+          <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+          Сохранить
+        </button>
       </div>
       {% csrf_token %}
       <div class="page-content show" id="basic">

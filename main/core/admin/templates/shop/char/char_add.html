@@ -6,7 +6,10 @@
         <div class="page__head-inner">
           <h1 class="page__title">Добавить характеристику</h1>
         </div>
-        <button type="submit" class="form__btn">Сохранить</button>
+        <button type="submit" class="form__btn">
+          <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+          Сохранить
+        </button>
       </div>
       {% csrf_token %}
       <div class="page-content _show" id="basic">

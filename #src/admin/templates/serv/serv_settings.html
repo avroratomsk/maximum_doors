@@ -14,7 +14,10 @@
 <div class="page">
   <form action="" class="form" method="post" enctype="multipart/form-data">
     {% csrf_token %} {{ form.as_p }} {{ form.media }}
-    <button class="btn btn--primary">Сохранить</button>
+    <button class="btn btn--primary">
+      <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+      Сохранить
+    </button>
   </form>
 </div>
 
