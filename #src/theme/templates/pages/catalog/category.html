@@ -37,7 +37,7 @@
           <meta itemprop="position" content="2"/>
         </a>
       </div>
-      {% if shop_setup.meta_h1 %}<h1 class="category__title">{% shop_setup.meta_h1 %}</h1>{% else %} <h1 class="category__title">Каталог</h1>{% endif %}
+      {% if shop_setup.meta_h1 %}<h1 class="category__title">{{ shop_setup.meta_h1 }}</h1>{% else %} <h1 class="category__title">Каталог</h1>{% endif %}
       <div class="category__grid">
         {% if category %}
         {% for cat in category %}
