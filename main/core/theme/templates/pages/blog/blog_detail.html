@@ -2,9 +2,9 @@
 {% load static %}
 {% load carts_tag %}
 {% load thumbnail %}
-{% block title %}{{ home_page.meta_title }}{% endblock %}
-{% block description %}{{ home_page.meta_description }}{% endblock %}
-{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+{% block title %}{{ post.meta_title }}{% endblock %}
+{% block description %}{{ post.meta_description }}{% endblock %}
+{% block keywords %}{{ post.meta_keywords }}{% endblock %}
 
 {% block content %}
 <main class="page">
@@ -34,7 +34,7 @@
           <meta itemprop="position" content="4"/>
         </span>
         </div>
-        <h2 class="banner__title title-h2">{{ post.name }}</h2>
+        <h1 class="banner__title title-h2">{% if post.meta_h1 %}{{ post.meta_h1 }}{% else %} {{ post.name }}{% endif %}</h1>
       </div>
     </div>
   </section>
