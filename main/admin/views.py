@@ -357,12 +357,12 @@ def blog_settings(request):
       
       return redirect('.')
     else:
-      return render(request, "blog/blog_post/blog_post.html", {"form": form})
+      return render(request, "blog/settings.html", {"form": form})
   
   context = {
     "form": form,
   }  
-  return render(request, "blog/blog_post/blog_post.html", context)
+  return render(request, "blog/settings.html", context)
 
 def gallery_settings(request):
   try:
