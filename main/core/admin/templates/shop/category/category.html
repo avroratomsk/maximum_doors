@@ -22,9 +22,15 @@
             <img src="{% static 'admin/img/no-image.webp' %}" alt=""/>
             {% endif %}
           </div>
+          <div class="body-table__name">
+            {% if item.parent %}
+            <p class="">{{ item.parent.name }}</p>
+            {% else %}
+            <p class="">Нет категории</p>
+            <p>{% endif %}</p>
+          </div>
           <div class="grid-item__content">
             <a href="{% url 'product_edit' item.pk %}" class="grid-item__title">{{ item.name }}</a>
-            {% if category.parent %}<p>{{ category.parent }}</p> {% endif %}
             {% if item.price %}<p>{{ item.price }} ₽</p>{% endif %}
 
             {% include 'common/_edit-block.html' with edit_url='category_edit' delete_url='category_delete' %}

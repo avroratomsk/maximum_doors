@@ -246,28 +246,7 @@ class CategoryForm(forms.ModelForm):
   """ Form, отвечает за создание категорий и редактирование категорий"""
   class Meta:
     model = Category
-    fields = [
-      "name",
-      "slug",
-      "add_menu",
-      "description",
-      "image",
-      "meta_h1",
-      "meta_title",
-      "meta_description",
-      "meta_keywords"
-    ]
-    labels = {
-      "name": "Назване категории",
-      "slug": "URL",
-      "add_menu": "Добавить в меню",
-      "description": "Описание категории",
-      "image": "Изображение",
-      "meta_h1": "Заголовок H1",
-      "meta_title": "Meta заголовок",
-      "meta_description": "Meta описание",
-      "meta_keyword": "Meta keywords",
-    }
+    fields = "__all__"
     widgets = {
       "name": forms.TextInput(attrs={
           "class": "form__controls",
