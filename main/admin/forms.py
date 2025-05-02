@@ -141,8 +141,10 @@ class ProductForm(forms.ModelForm):
                 "id": "slug"
             }),
             'category': forms.Select(attrs={
-                'class': INPUT_CLASS, 
+                'class': INPUT_CLASS,
             }),
+            'categories': forms.CheckboxSelectMultiple,
+            'category': forms.CheckboxSelectMultiple,
             'manufacturer': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
             }),
