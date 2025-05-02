@@ -17,7 +17,7 @@ def category(request):
   except: 
     shop_setup = ShopSettings()
 
-  category = Category.objects.all()
+  category = Category.objects.filter(parent__isnull=True)
 
   context = {
     "category":category,
