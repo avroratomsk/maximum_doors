@@ -2493,6 +2493,11 @@ body._lock::after {
   border-radius: 20px;
 }
 
+.category__item--subcategory {
+  min-height: 40px;
+  border-radius: 10px;
+}
+
 .category__image {
   display: block;
   width: 100px;

@@ -578,6 +578,20 @@ ol {
   transition: 0.5s;
 }
 
+.grid-item--subcategory {
+  padding: 5px;
+  margin-left: 20px;
+}
+
+.grid-item--subcategory .grid-item__image {
+  width: 40px;
+  height: 40px;
+}
+
+.grid-item--subcategory .grid-item__title {
+  font-size: 15px;
+}
+
 .grid-item__image {
   width: 50px;
   height: 50px;

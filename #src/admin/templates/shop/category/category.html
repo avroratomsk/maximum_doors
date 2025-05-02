@@ -22,20 +22,34 @@
             <img src="{% static 'admin/img/no-image.webp' %}" alt=""/>
             {% endif %}
           </div>
-          <div class="body-table__name">
-            {% if item.parent %}
-            <p class="">{{ item.parent.name }}</p>
-            {% else %}
-            <p class="">Нет категории</p>
-            <p>{% endif %}</p>
-          </div>
           <div class="grid-item__content">
-            <a href="{% url 'product_edit' item.pk %}" class="grid-item__title">{{ item.name }}</a>
+            <a href="{% url 'category_edit' item.pk %}" class="grid-item__title">{{ item.name }}</a>
             {% if item.price %}<p>{{ item.price }} ₽</p>{% endif %}
 
             {% include 'common/_edit-block.html' with edit_url='category_edit' delete_url='category_delete' %}
           </div>
         </div>
+        {% if item.children.all %}
+          {% for item in item.children.all %}
+            <div class="grid-item grid-item--subcategory">
+              <div class="grid-item__image">
+                {% if item.image %}
+                {% thumbnail item.image "250x250" format="WEBP" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"/>
+                {% endthumbnail %}
+                {% else%}
+                <img src="{% static 'admin/img/no-image.webp' %}" alt=""/>
+                {% endif %}
+              </div>
+              <div class="grid-item__content">
+                <a href="{% url 'category_edit' item.pk %}" class="grid-item__title">{{ item.name }}</a>
+                {% if item.price %}<p>{{ item.price }} ₽</p>{% endif %}
+
+                {% include 'common/_edit-block.html' with edit_url='category_edit' delete_url='category_delete' %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
         {% endfor %}
       </div>
     </div>

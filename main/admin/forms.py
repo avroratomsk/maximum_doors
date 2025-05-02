@@ -287,6 +287,12 @@ class CategoryForm(forms.ModelForm):
         # "placeholder": "Meta keywords"
       }),  
     }
+
+    def __init__(self, *args, **kwargs):
+      super().__init__(*args, **kwargs)
+
+      # Показывать только корневые категории
+      self.fields['parent'].queryset = Category.objects.filter(parent__isnull=True).exclude(id=self.instance.id if self.instance.pk else None)
     
 # class DayForm(forms.ModelForm):
 #   """ Form, отвечает за создание дней и редактирование дней"""

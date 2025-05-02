@@ -31,10 +31,19 @@
           <meta itemprop="position" content="3" />
         </a>
       </div>
-      {% if category.meta_title %}
+      {% if category.meta_h1 %}
       <h1 class="category__title">{{ category.meta_h1}}</h1>
       {% else %}
       <h1 class="category__title">{{ category.name }}</h1>
+      {% endif %}
+      {% if category.children.all %}
+        <div class="category__grid">
+            {% for cat in category.children.all  %}
+              <div class="category__item category__item--subcategory">
+                <a href="{{ cat.get_absolute_url }}" class="category__name">{{ cat.name }}</a>
+              </div>
+            {% endfor %}
+        </div>
       {% endif %}
       <div class="category__filter filter">
         <form action="#" class="form form--search">

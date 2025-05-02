@@ -450,7 +450,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 
 def admin_category(request):
-  categorys = Category.objects.all()
+  categorys = Category.objects.filter(parent__isnull=True)
   
   context ={
     "items": categorys,
