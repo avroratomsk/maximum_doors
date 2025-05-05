@@ -3,12 +3,17 @@ from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 from django.db.models import Q
 
-from service.models import Service
+from service.models import Service,ServicePage
 
 def service(request):
   services = Service.objects.filter(status=True)
+  try:
+    service_settings = ServicePage.objects.get()
+  except:
+    service_settings = ServicePage()
   
   context = {
+    "service_settings": service_settings,
     "services": services
   }
   return render(request, "pages/service/service.html", context)
@@ -20,7 +25,7 @@ def service_detail(request, slug):
     "service": service
   }
   
-  return render(request, "pages/service/service_detail.html", context)
+  return render(request, "pages/service/services.html", context)
 
 
 def service_new(request):

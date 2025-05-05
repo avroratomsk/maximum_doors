@@ -41,7 +41,7 @@ class Product(models.Model):
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
   slug = models.SlugField(max_length=255, unique=True, blank=True, null=True, verbose_name="URL")
   category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='main_products', null=True, blank=True)
-  categories = models.ManyToManyField(Category, related_name='related_products', blank=True, verbose_name="Категории")
+#   categories = models.ManyToManyField(Category, related_name='related_products', blank=True, verbose_name="Категории")
   manufacturer = models.CharField(max_length=250, db_index=True, null=True, blank=True, verbose_name="Производитель")
   manufacturer_description = models.TextField(blank=True, null=True, verbose_name="Описание производителя")
   colors = models.CharField(max_length=250, null=True, blank=True, verbose_name="Цветовая схема")
@@ -56,7 +56,7 @@ class Product(models.Model):
   meta_title = models.CharField(max_length=250, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
-  updated_at = models.DateTimeField(auto_now=True)  # Поле для даты последнего обновления
+  updated_at = models.DateTimeField(auto_now=True)
 
 
   class Meta:

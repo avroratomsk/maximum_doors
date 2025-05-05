@@ -23,8 +23,8 @@
               {{ form.slug }} {{ form.slug.errors }}
             </div>
             <div class="form__group">
-              <label for="{{ form.subtitle.id_for_label }}" class="form__controls-label"> Текст под заголовком <span>:</span> </label>
-              {{ form.subtitle }} {{ form.subtitle.errors }}
+              <label for="{{ form.description.id_for_label }}" class="form__controls-label"> Текст на странице<span>:</span> </label>
+              {{ form.description }} {{ form.description.errors }}
             </div>
             <div class="form__group">
               <label for="{{ form.image.id_for_label }}" class="form__controls-label"> Изображение <span>:</span> </label>
@@ -39,6 +39,10 @@
         <!-- SEO страницы -->
         <div class="page-edit__item _show" id="seo">
           <div class="page-edit__form">
+            <div class="form__group">
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__controls-label"> Заголовок H1 </label>
+              {{ form.meta_h1 }} {{ form.meta_h1.errors }}
+            </div>
             <div class="form__group">
               <label for="{{ form.meta_title.id_for_label }}" class="form__controls-label"> Мета заголовок </label>
               {{ form.meta_title }} {{ form.meta_title.errors }}

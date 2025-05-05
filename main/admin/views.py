@@ -532,22 +532,22 @@ def admin_service_page(request):
     service_page.save()
     
   if request.method == "POST":
-    form_new = ServicePage(request.POST, request.FILES, instance=service_page)
+    form_new = ServicePageForm(request.POST, request.FILES, instance=service_page)
     if form_new.is_valid():
       form_new.save()
       return redirect("admin")
     else:
       return render(request, "serv/serv_settings.html", {"form": form_new})
   
-  service_page = HomeTemplate.objects.get()
+  service_page = ServicePage.objects.get()
   
-  form = HomeTemplateForm(instance=service_page)
+  form = ServicePageForm(instance=service_page)
   context = {
     "form": form,
     "service_page":service_page
   }  
   
-  return render(request, "static/home_page.html", context)
+  return render(request, "serv/serv_settings.html", context)
 
 def admin_stock(request):
   stocks = Stock.objects.all()
@@ -601,7 +601,7 @@ def admin_service(request):
   services = Service.objects.all()
   
   context = {
-    "services": services
+    "items": services
   }
   
   return render(request, "serv/admin_serv.html", context)

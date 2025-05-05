@@ -143,8 +143,7 @@ class ProductForm(forms.ModelForm):
             'category': forms.Select(attrs={
                 'class': INPUT_CLASS,
             }),
-            'categories': forms.CheckboxSelectMultiple,
-            'category': forms.CheckboxSelectMultiple,
+#             'categories': forms.CheckboxSelectMultiple,
             'manufacturer': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
             }),
@@ -220,7 +219,23 @@ class PostForm(forms.ModelForm):
             }),
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASS,
-                
+            }),
+            "meta_h1": forms.TextInput(attrs={
+              "class":INPUT_CLASS,
+            }),
+            "meta_h1": forms.TextInput(attrs={
+              "class":INPUT_CLASS,
+            }),
+            "meta_title": forms.TextInput(attrs={
+              "class":"form__controls meta_field",
+              "id": "meta_title"
+            }),
+            "meta_description": forms.Textarea(attrs={
+              "class":"form__controls meta_field",
+              "rows": "5"
+            }),
+            "meta_keywords": forms.TextInput(attrs={
+              "class":INPUT_CLASS,
             }),
         }
 
@@ -465,20 +480,7 @@ class ServicePageForm(forms.ModelForm):
   
   class Meta:
     model = Service
-    fields = [
-        'name',
-        'slug',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-    ]
-    labels = {
-        'name':'Название',
-        'slug': 'URL',
-        'meta_title':'Meta title',
-        'meta_description':'Мета description',
-        'meta_keywords':'Meta keywords',
-    }
+    fields = "__all__"
     widgets = {
       'name': forms.TextInput(attrs={
         'class': INPUT_CLASS,
@@ -488,11 +490,14 @@ class ServicePageForm(forms.ModelForm):
         'class':INPUT_CLASS,
         "id": "slug"
       }),
-      'meta_title': forms.TextInput(attrs={
+      'meta_h1': forms.TextInput(attrs={
         'class': INPUT_CLASS,
       }),
+      'meta_title': forms.TextInput(attrs={
+              'class': INPUT_CLASS,
+            }),
       'meta_description': forms.Textarea(attrs={
-        'class': 'form-controls',
+        'class': INPUT_CLASS,
       }),
       'meta_keywords': forms.TextInput(attrs={
         'class': INPUT_CLASS
@@ -505,27 +510,7 @@ class ServiceForm(forms.ModelForm):
   
   class Meta:
     model = Service
-    fields = [
-        'name',
-        'slug',
-        'subtitle',
-        'status',
-        'image',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-    ]
-    labels = {
-        'name':'Название',
-        'slug': 'URL',
-        'subtitle':'Текст под заголовком',
-        'status':'Статус публикации',
-        'image': 'Изображение акции',
-        'meta_title':'Meta title',
-        'untitle': 'Надзаголовок',
-        'meta_description':'Мета description',
-        'meta_keywords':'Meta keywords',
-    }
+    fields = '__all__'
     widgets = {
       'name': forms.TextInput(attrs={
         'class': INPUT_CLASS,
@@ -535,11 +520,14 @@ class ServiceForm(forms.ModelForm):
         'class':INPUT_CLASS,
         "id": "slug"
       }),
-      'subtitle': forms.Textarea(attrs={
-        'class':INPUT_CLASS,
+      'description': forms.Textarea(attrs={
+          'class': INPUT_CLASS,
       }),
       'status': forms.CheckboxInput(attrs={
         'class': 'form__controls-checkbox',
+      }),
+      'meta_h1': forms.TextInput(attrs={
+        'class': INPUT_CLASS,
       }),
       'meta_title': forms.TextInput(attrs={
         'class': INPUT_CLASS,

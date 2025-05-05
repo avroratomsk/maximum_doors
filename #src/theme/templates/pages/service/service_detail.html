@@ -2,9 +2,9 @@
 {% load static %}
 {% load carts_tag %}
 {% load thumbnail %}
-{% block title %}{{ home_page.meta_title }}{% endblock %}
-{% block description %}{{ home_page.meta_description }}{% endblock %}
-{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+{% block title %}{{ service.meta_title }}{% endblock %}
+{% block description %}{{ service.meta_description }}{% endblock %}
+{% block keywords %}{{ service.meta_keywords }}{% endblock %}
 
 {% block content %}
 <main class="page">
@@ -28,7 +28,7 @@
           <meta itemprop="position" content="4"/>
         </span>
         </div>
-        <h1 class="banner__title title-h2">{{ service.name }}</h1>
+        <h1 class="banner__title title-h2">{% if service.meta_h1 %}{{ service.meta_h1}} {% else %} {{ service.name }}{% endif %}</h1>
       </div>
     </div>
   </section>
