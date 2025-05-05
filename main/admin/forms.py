@@ -479,7 +479,7 @@ class ServicePageForm(forms.ModelForm):
   # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
   
   class Meta:
-    model = Service
+    model = ServicePage
     fields = "__all__"
     widgets = {
       'name': forms.TextInput(attrs={

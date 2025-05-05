@@ -23,7 +23,7 @@
           <meta itemprop="position" content="2"/>
         </span>
         </div>
-        <h1 class="banner__title title-h2">Услуги</h1>
+        <h1 class="banner__title title-h2">{% if service_settings.meta_h1 %}{{ service_settings.meta_h1 }}{%else%}Услуги{% endif %}</h1>
       </div>
     </div>
   </section>

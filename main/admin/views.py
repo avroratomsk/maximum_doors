@@ -526,26 +526,28 @@ def admin_home(request):
 
 def admin_service_page(request):
   try:
-    service_page = ServicePage.objects.get()
+     serv_page = ServicePage.objects.get()
   except:
-    service_page = ServicePage()
-    service_page.save()
-    
+     serv_page = ServicePage()
+     serv_page.save()
+
   if request.method == "POST":
-    form_new = ServicePageForm(request.POST, request.FILES, instance=service_page)
-    if form_new.is_valid():
-      form_new.save()
-      return redirect("admin")
-    else:
-      return render(request, "serv/serv_settings.html", {"form": form_new})
-  
-  service_page = ServicePage.objects.get()
-  
-  form = ServicePageForm(instance=service_page)
+     form_new = ServicePageForm(request.POST, request.FILES, instance=serv_page)
+     if form_new.is_valid():
+       form_new.save()
+
+       # subprocess.call(["touch", RESET_FILE])
+       return redirect("admin_settings")
+     else:
+       return render(request, "serv/serv_settings.html", {"form": form_new})
+
+  serv_page = ServicePage.objects.get()
+
+  form = ServicePageForm(instance=serv_page)
   context = {
-    "form": form,
-    "service_page":service_page
-  }  
+     "form": form,
+     "serv_page":serv_page
+  }
   
   return render(request, "serv/serv_settings.html", context)
 

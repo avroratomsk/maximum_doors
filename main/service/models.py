@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-
 class ServicePage(models.Model):
   name = models.CharField(max_length=255, blank=True, null=True, verbose_name="Название услуги")
   slug = models.SlugField(max_length=150, unique=True, blank=True, null=True, verbose_name="URL")

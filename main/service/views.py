@@ -11,6 +11,8 @@ def service(request):
     service_settings = ServicePage.objects.get()
   except:
     service_settings = ServicePage()
+
+  print(service_settings)
   
   context = {
     "service_settings": service_settings,
