@@ -103,9 +103,15 @@
         {% for post in services %}
         <article class="index-news__slide swiper-slide">
           <div class="index-news__card card-news">
+            {% if post.image %}
             <a href="{{ post.get_absolute_url }}" class="card-news__image">
-              <img src="{% static 'theme/img/news.jpeg' %}" alt="">
+              <img src="{{ post.image.url }}" alt="{{ post.name }}" title="{{ post.name }}">
             </a>
+            {% else %}
+            <a href="{{ post.get_absolute_url }}" class="card-news__image">
+              <img src="{% static 'theme/img/news.jpeg' %}" alt="{{ post.name }}" title="{{ post.name }}">
+            </a>
+            {% endif %}
             <div class="card-news__content">
               {% if post.name %}
               <h3 class="card-news__title">
