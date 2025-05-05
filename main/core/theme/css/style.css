@@ -2292,6 +2292,9 @@ body._lock::after {
 
 .post-banner {
   margin-top: 90px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .service__inner {
