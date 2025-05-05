@@ -537,7 +537,7 @@ def admin_service_page(request):
        form_new.save()
 
        # subprocess.call(["touch", RESET_FILE])
-       return redirect("admin_settings")
+       return redirect("admin_service")
      else:
        return render(request, "serv/serv_settings.html", {"form": form_new})
 
