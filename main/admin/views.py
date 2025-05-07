@@ -4,8 +4,8 @@ import zipfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from admin.forms import AboutTemplateForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About
+from admin.forms import AboutTemplateForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery
 from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
 from subdomain.models import Subdomain
@@ -337,6 +337,33 @@ def admin_about_page(request):
   }
 
   return render(request, "template-page/about_page.html", context)
+
+def admin_delivery_page(request):
+  try:
+    settings = Delivery.objects.get()
+  except:
+    settings = Delivery()
+    settings.save()
+
+  if request.method == "POST":
+    form_new = DeliveryForm(request.POST, request.FILES, instance=settings)
+    if form_new.is_valid():
+      form_new.save()
+
+      # subprocess.call(["touch", RESET_FILE])
+      return redirect(request.META.get('HTTP_REFERER'))
+    else:
+      return render(request, "template-page/delivery_page.html", {"form": form_new})
+
+  settings = Delivery.objects.get()
+
+  form = DeliveryForm(instance=settings)
+  context = {
+    "form": form,
+    "settings":settings
+  }
+
+  return render(request, "template-page/delivery_page.html", context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin_shop(request):

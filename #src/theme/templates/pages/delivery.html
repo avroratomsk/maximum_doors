@@ -2,9 +2,9 @@
 {% load static %}
 {% load carts_tag %}
 {% load thumbnail %}
-{% block title %}{{ home_page.meta_title }}{% endblock %}
-{% block description %}{{ home_page.meta_description }}{% endblock %}
-{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+{% block title %}{{ delivery_page.meta_title }}{% endblock %}
+{% block description %}{{ delivery_page.meta_description }}{% endblock %}
+{% block keywords %}{{ delivery_page.meta_keywords }}{% endblock %}
 
 {% block content %}
 <main class="page">
@@ -24,11 +24,8 @@
       </div>
       <div class="page-top">
         <div class="page-text">
-          <h1>Доставка и оплата</h1>
-          <p>
-            Предлагаем воспользоваться услугами автопарка компании «Максимум Двери» для своевременной доставки готовой
-            входной двери к месту ее монтажа.
-          </p>
+          {% if delivery_page.meta_h1 %}<h1>{{ delivery_page.meta_h1 }}</h1>{% endif %}
+          {{ delivery_page.description|safe }}
 
         </div>
         <div class="page-nav">
@@ -36,7 +33,7 @@
             <li><a href="{% url 'about' %}">О компании</a></li>
             <li class="active"><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
             <li><a href="{% url 'blog' %}">Новости</a></li>
-            <li><a href="#">Наши работы</a></li>
+            <li><a href="{% url 'works' %}">Наши работы</a></li>
           </ul>
         </div>
       </div>
@@ -44,30 +41,7 @@
     </div>
     <div class="container">
       <div class="page-text">
-        <p>
-          <b>Преимущества доставки нашими силами</b>
-        </p>
-        <ul>
-          <li>Аккуратная упаковка двери обеспечивает ее транспортировку без риска механических повреждений</li>
-          <li>
-            погрузо-разгрузочные работы в цеху и на месте установки осуществляются нашими работниками. Это гарантирует
-            аккуратность и отсутствие каких-либо проблем для вас
-          </li>
-          <li>
-            Строгое соблюдение сроков доставки. Даже в сложных дорожных условиях мы стремимся максимально быстро
-            привезти дверь, чтобы не заставлять вас ждать. Доставка нашими силами – экономия вашего времени и нервов
-          </li>
-          <li>
-            Доставка всех необходимых компонентов. Огромный опыт работ наших специалистов исключает случаи приостановки
-            работ из-за отсутствия каких-либо комплектующих.
-          </li>
-        </ul>
-        <br><br>
-        <p>
-          И главное: на все выполненные нами работы мы предоставляем гарантию качества. А значит, сотрудничая с
-          «Максимум Двери», вы получаете не только качественную дверь, но и гарантированно аккуратную доставку +
-          профессиональную установку.
-        </p>
+        {{ delivery_page.description_two|safe }}
       </div>
     </div>
   </section>

@@ -54,6 +54,7 @@ urlpatterns = [
     
     path('home-page/', views.admin_home_page, name='admin_home_page'),
     path('about-page/', views.admin_about_page, name='admin_about_page'),
+    path('delivery-page/', views.admin_delivery_page, name='admin_delivery_page'),
 
     path('admin-shop/', views.admin_shop, name='admin_shop'),
 

@@ -5,7 +5,7 @@
       <h1 class="page__title">Старница о компании</h1>
       <ul class="admin-breadcrumbs">
         <li><a href="{% url 'admin' %}">Панель управления</a></li>
-        <li><a href="{% url 'admin_settings' %}">Шаблон страницы о нас</a></li>
+        <li><a href="{% url 'admin_about_page' %}">Шаблон страницы о нас</a></li>
       </ul>
     </div>
     <form action="." method="POST" class="form" enctype="multipart/form-data">
@@ -14,7 +14,6 @@
           <button type="button" data-name="basic" class="page__head-btn _active">Основные</button>
           <button type="button" data-name="seo" class="page__head-btn">Поля SEO</button>
         </div>
-        <a href="{% url 'product_add' %}">Добавить новый</a>
         <button type="submit" class="form__btn">
           <img src="{% static 'admin/img/save.svg' %}" alt=""/>
           Сохранить

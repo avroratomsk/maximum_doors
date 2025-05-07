@@ -1,5 +1,5 @@
 from django import forms
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About
+from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery
 from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
@@ -665,19 +665,34 @@ class GalleryCategoryForm(forms.ModelForm):
         }),
         'meta_h1': forms.TextInput(attrs={
           'class': INPUT_CLASS,
-          "id": "slug"
         }),
         'meta_title': forms.TextInput(attrs={
           'class': INPUT_CLASS,
-          "id": "slug"
         }),
         'meta_description': forms.Textarea(attrs={
           'class': INPUT_CLASS,
-          "id": "slug"
         }),
         'meta_keywords': forms.TextInput(attrs={
           'class': INPUT_CLASS,
-          "id": "slug"
+        }),
+    }
+
+class DeliveryForm(forms.ModelForm):
+  class Meta:
+    model = Delivery
+    fields = "__all__"
+    widgets = {
+        'meta_h1': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+        }),
+        'meta_title': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+        }),
+        'meta_description': forms.Textarea(attrs={
+          'class': INPUT_CLASS,
+        }),
+        'meta_keywords': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
         }),
     }
     
