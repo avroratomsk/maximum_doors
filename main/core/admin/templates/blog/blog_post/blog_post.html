@@ -33,7 +33,7 @@
             {% endif %}
           </div>
           <div class="grid-item__content">
-            <a href="{% url 'article_edit' item.pk %}" class="grid-item__title">{{ item.name }}</a>
+            <a href="{% url 'category_blog_edit' item.pk %}" class="grid-item__title">{{ item.name }}</a>
             {% include 'common/_edit-block.html' with edit_url='article_edit' delete_url='article_delete' %}
           </div>
         </div>

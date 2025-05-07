@@ -22,6 +22,9 @@ tabButton?.forEach(btn => {
 })
 
 
+
+
+
 // const ctx = document.getElementById('myChart');
 
 // const no_register = document.getElementById('no_register');

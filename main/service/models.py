@@ -15,6 +15,7 @@ class Service(models.Model):
   image = models.ImageField(upload_to="services", blank=True, null=True, verbose_name="Изображение услуги")
   description = models.TextField(null=True, blank=True, verbose_name="Содержимое статьи")
   status = models.BooleanField(default=True, verbose_name="Статус публикации")
+  footer_view = models.BooleanField(default=True, verbose_name="Выводить в футер")
   meta_h1 = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета h1")
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")

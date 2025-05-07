@@ -1,5 +1,5 @@
 from django import forms
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery
+from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery,SalesOffices
 from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
@@ -692,6 +692,25 @@ class DeliveryForm(forms.ModelForm):
           'class': INPUT_CLASS,
         }),
         'meta_keywords': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+        }),
+    }
+
+class OfficeForm(forms.ModelForm):
+  class Meta:
+    model = SalesOffices
+    fields = "__all__"
+    widgets = {
+        'name': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+        }),
+        'address': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+        }),
+        'phone': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+        }),
+        'time_work': forms.TextInput(attrs={
           'class': INPUT_CLASS,
         }),
     }

@@ -6,15 +6,19 @@
         <div class="footer__logo"></div>
         <div class="footer__contact-inner">
           <p class="footer__name">Офис продаж Максимум</p>
-          <p class="footer__street">Самара, ул. Карла Маркса, 192, офис 321</p>
+          {% if site_settings.address %}<p class="footer__street">{{ site_settings.address }}</p>{% endif %}
+          {% if site_settings.phone %}
           <div class="footer__contact">
             <span>Номер менеджера :</span>
-            <a href="">+7 (987) 955-10-22</a>
+            <a href="tel:{{ site_settings.phone }}">{{ site_settings.phone }}</a>
           </div>
+          {% endif %}
+          {% if site_settings.email %}
           <div class="footer__contact">
             <span>Почта для связи :</span>
-            <a href="mailto:">maximumsila@yandex.ru</a>
+            <a href="mailto:site_settings.email">{{ site_settings.email }}</a>
           </div>
+          {% endif %}
         </div>
       </div>
       <div class="footer__col">
@@ -47,7 +51,7 @@
           </nav>
           {% if services %}
           <nav class="footer__nav footer-nav">
-            <p>Для вас</p>
+            <p>Услуги</p>
             {% for service in services %}
             <ul class="footer-nav__list">
               <li class="footer-nav__item"><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></li>

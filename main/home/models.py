@@ -86,3 +86,9 @@ class Delivery(models.Model):
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
+
+class SalesOffices(models.Model):
+  name = models.CharField(max_length=250, null=True, blank=True, verbose_name="Наименование", default="Офис продаж Максимум")
+  address = models.CharField(max_length=250, null=True, blank=True, verbose_name="Адрес")
+  phone = models.CharField(max_length=250, null=True, blank=True, verbose_name="Номер телефона")
+  time_work = models.CharField(max_length=250, null=True, blank=True, verbose_name="Режим работы", default="Вт-сб 09:00-18:00, Вс-пн выходной")

@@ -4,8 +4,8 @@ import zipfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from admin.forms import AboutTemplateForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery
+from admin.forms import AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery, SalesOffices
 from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
 from subdomain.models import Subdomain
@@ -955,5 +955,54 @@ def category_blog_edit(request, pk):
 def category_blog_remove(request, pk):
   category = BlogCategory.objects.get(id=pk)
   category.delete()
+
+  return redirect(request.META.get('HTTP_REFERER'))
+
+def admin_office(request):
+  items = SalesOffices.objects.all()
+  context ={
+    "items": items,
+  }
+  return render(request, "template-page/office_page.html", context)
+
+
+def admin_office_add(request):
+  form = OfficeForm()
+  if request.method == "POST":
+    form_new = OfficeForm(request.POST, request.FILES)
+    if form_new.is_valid():
+      form_new.save()
+      return redirect("admin_office")
+    else:
+      return render(request, "template-page/office_page_add.html", {"form": form_new})
+
+  context = {
+    "form": form
+  }
+
+  return render(request, "template-page/office_page_add.html", context)
+
+def admin_office_edit(request, pk):
+  item = SalesOffices.objects.get(id=pk)
+  form = OfficeForm(request.POST, request.FILES, instance=item)
+
+  if request.method == "POST":
+
+    if form.is_valid():
+      form.save()
+      return redirect(request.META.get('HTTP_REFERER'))
+    else:
+      return render(request, "template-page/office_page_edit.html", {"form": form})
+
+  context = {
+    "form": OfficeForm(instance=item),
+    "item": item
+  }
+
+  return render(request, "template-page/office_page_edit.html", context)
+
+def admin_office_delete(request, pk):
+  office = SalesOffices.objects.get(id=pk)
+  office.delete()
 
   return redirect(request.META.get('HTTP_REFERER'))

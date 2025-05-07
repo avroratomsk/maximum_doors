@@ -5,18 +5,22 @@
       <div class="header__left">
         <a href="/" class="header__logo logo"> </a>
         <p class="header__city">г.Самара</p>
-        <a href="tel:+79999999999" class="header__phone phone">+7 (987) 955-10-22</a>
+        {% if site_settings.phone %}
+          <a href="tel:{{ site_settings.phone }}" class="header__phone phone">
+            {{ site_settings.phone }}
+          </a>
+        {% endif %}
       </div>
       <nav class="header__right nav" id="nav">
         <ul class="nav__list">
           <li class="nav__item">
             <a href="{% url 'category' %}" class="nav__link">Каталог</a>
-<!--            <ul class="submenu">-->
-<!--              <li class="submenu__item"><a href="#">Межкомнатные двери</a></li>-->
-<!--              <li class="submenu__item"><a href="#">Окна</a></li>-->
-<!--              <li class="submenu__item"><a href="#">Балконы</a></li>-->
-<!--              <li class="submenu__item"><a href="#">Лоджии</a></li>-->
-<!--            </ul>-->
+            <!--            <ul class="submenu">-->
+            <!--              <li class="submenu__item"><a href="#">Межкомнатные двери</a></li>-->
+            <!--              <li class="submenu__item"><a href="#">Окна</a></li>-->
+            <!--              <li class="submenu__item"><a href="#">Балконы</a></li>-->
+            <!--              <li class="submenu__item"><a href="#">Лоджии</a></li>-->
+            <!--            </ul>-->
           </li>
           <li class="nav__item"><a href="{% url 'about' %}" class="nav__link">О компании</a></li>
           <li class="nav__item"><a href="{% url 'works' %}" class="nav__link">Наши работы</a></li>
