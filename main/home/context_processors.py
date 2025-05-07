@@ -1,6 +1,7 @@
 from home.models import BaseSettings
 from shop.models import Category
 from blog.models import BlogCategory
+from service.models import Service
  
 def load_settings(request):
     return {'site_settings': BaseSettings.load()}
@@ -10,6 +11,9 @@ def category_menu(request):
 
 def category_blog(request):
     return {'category_blog': BlogCategory.objects.all()}
+
+def services(request):
+    return {'services': Service.objects.filter(status=True)}
 
 def static_theme_path(request):
     from django.conf import settings
