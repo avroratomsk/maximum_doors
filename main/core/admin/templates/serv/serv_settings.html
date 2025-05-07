@@ -3,13 +3,11 @@
   <div class="page__inner">
     <form action="." method="POST" class="form" enctype="multipart/form-data">
       <div class="page__head">
-        <div class="page__head-save">
-          <h1 class="page__title">Настройки страницы услуги</h1>
-          <button type="submit" class="form__btn">
-            <img src="{% static 'admin/img/save.svg' %}" alt=""/>
-            Сохранить
-          </button>
-        </div>
+        <h1 class="page__title">Настройки страницы услуги</h1>
+        <button type="submit" class="form__btn">
+          <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+          Сохранить
+        </button>
       </div>
       {% csrf_token %}
       <div class="page-content _show" id="seo">

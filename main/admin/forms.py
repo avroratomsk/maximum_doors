@@ -84,18 +84,19 @@ class BlogSettingsForm(forms.ModelForm):
       model = BlogSettings
       fields = "__all__"
       widgets = {
+
           'meta_h1': forms.TextInput(attrs={
-              'class': 'form__controls',
+              'class': INPUT_CLASS
           }),
           'meta_title': forms.TextInput(attrs={
-              'class': 'form__controls',
+              'class': INPUT_CLASS
           }),
           'meta_description': forms.Textarea(attrs={
-              'class': 'form__controls',
+              'class': INPUT_CLASS,
               "id": "meta_description"
           }),
           'meta_keywords': forms.TextInput(attrs={
-              'class': 'form__controls',
+              'class': INPUT_CLASS
           }),
       }
       
@@ -215,7 +216,16 @@ class PostForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
-                "id":"name"
+                "id":"name",
+                "required": "true"
+            }),
+            'slug': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+                "id":"slug",
+                "required": "true"
+            }),
+            'category': forms.Select(attrs={
+                'class': INPUT_CLASS,
             }),
             'description': forms.Textarea(attrs={
                 'class': INPUT_CLASS,
@@ -249,11 +259,23 @@ class BlogCategoryForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
-                "id":"name"
+                'id':'name'
             }),
-            'description': forms.Textarea(attrs={
+            'slug': forms.TextInput(attrs={
+              'class': INPUT_CLASS,
+              "id": 'slug'
+            }),
+            'meta_h1': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
-
+            }),
+            'meta_title': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+            }),
+            'meta_description': forms.Textarea(attrs={
+                'class': INPUT_CLASS,
+            }),
+            'meta_keywords': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
             }),
         }
 
@@ -533,7 +555,7 @@ class ServiceForm(forms.ModelForm):
         'class': INPUT_CLASS,
       }),
       'meta_description': forms.Textarea(attrs={
-        'class': 'form-controls',
+        'class': INPUT_CLASS,
         'rows': 5,
       }),
       'meta_keywords': forms.TextInput(attrs={
