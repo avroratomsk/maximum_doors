@@ -70,3 +70,14 @@ class RobotsTxt(models.Model):
     
   def __str__(self):
     return "robots.txt"
+
+
+
+class About(models.Model):
+  description = models.TextField(blank=True, null=True, verbose_name="Первый текст")
+  description_two = models.TextField(blank=True, null=True, verbose_name="Второй текст")
+  image = models.ImageField(upload_to="about", null=True, blank=True, verbose_name="Изображение")
+  meta_h1 = models.CharField(max_length=350, null=True, blank=True, verbose_name="Заголовок первого уровня")
+  meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
+  meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
+  meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")

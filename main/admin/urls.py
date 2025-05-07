@@ -53,7 +53,8 @@ urlpatterns = [
     path('robots/', views.robots, name='robots'),
     
     path('home-page/', views.admin_home_page, name='admin_home_page'),
-    
+    path('about-page/', views.admin_about_page, name='admin_about_page'),
+
     path('admin-shop/', views.admin_shop, name='admin_shop'),
 
     #URl - цвета памятников

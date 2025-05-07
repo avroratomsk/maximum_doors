@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock
+from home.models import BaseSettings,About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock
 from cart.models import Cart
 from home.forms import CallbackForm, ContactForm, OrderSericeForm, ReviewsPopupForm
 from home.callback_send import email_callback
@@ -108,8 +108,14 @@ def index(request):
   return render(request, 'pages/index.html', context)
 
 def about(request):
+  try:
+    about_page = About.objects.get()
+  except:
+    about_page = About()
+
 
   context = {
+    "about_page": about_page
   }
 
   return render(request, "pages/about.html", context)

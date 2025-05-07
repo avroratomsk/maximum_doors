@@ -4,8 +4,8 @@ import zipfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from admin.forms import BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock
+from admin.forms import AboutTemplateForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About
 from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
 from subdomain.models import Subdomain
@@ -310,6 +310,33 @@ def admin_home_page(request):
   }  
 
   return render(request, "home-page/home-page.html", context)
+
+def admin_about_page(request):
+  try:
+    settings = About.objects.get()
+  except:
+    settings = About()
+    settings.save()
+
+  if request.method == "POST":
+    form_new = AboutTemplateForm(request.POST, request.FILES, instance=settings)
+    if form_new.is_valid():
+      form_new.save()
+
+      # subprocess.call(["touch", RESET_FILE])
+      return redirect(request.META.get('HTTP_REFERER'))
+    else:
+      return render(request, "template-page/about_page.html", {"form": form_new})
+
+  settings = About.objects.get()
+
+  form = AboutTemplateForm(instance=settings)
+  context = {
+    "form": form,
+    "settings":settings
+  }
+
+  return render(request, "template-page/about_page.html", context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin_shop(request):
