@@ -2,9 +2,9 @@
 {% load static %}
 {% load carts_tag %}
 {% load thumbnail %}
-{% block title %}{{ home_page.meta_title }}{% endblock %}
-{% block description %}{{ home_page.meta_description }}{% endblock %}
-{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+{% block title %}{{ work_page.meta_title }}{% endblock %}
+{% block description %}{{ work_page.meta_description }}{% endblock %}
+{% block keywords %}{{ work_page.meta_keywords }}{% endblock %}
 
 {% block content %}
 <main class="page">
@@ -23,7 +23,7 @@
             <meta itemprop="position" content="2"/>
           </a>
         </div>
-        <h2 class="works__title title-h2">Наше производство</h2>
+        <h1 class="works__title title-h2">{% if work_page.meta_h1 %}{{ work_page.meta_h1 }}{% else %}Наше производство{% endif %}</h1>
         <div class="works__production production">
           <div class="production__item">
             <div class="production__image">
@@ -74,33 +74,14 @@
             </div>
           </div>
         </div>
+        {% if works %}
         <h2 class="works__title title-h2">Наши работы</h2>
         <div class="works__grid">
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/1.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/2.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/3.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/4.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/5.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/6.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/7.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/8.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/9.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/10.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/11.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/12.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/14.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/15.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/16.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/17.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/18.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/19.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/20.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/21.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/22.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/23.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/24.jpg' %})"></div>
-          <div class="works__item" style="background-image: url({% static 'theme/img/work/25.jpg' %})"></div>
+          {% for work in works %}
+          <div class="works__item" style="background-image: url({{ work.image.url }})"></div>
+          {% endfor %}
         </div>
+        {% endif %}
         <!--        <a href="" class="works__btn btn btn&#45;&#45;shadow">Смотреть все</a>-->
       </div>
     </div>

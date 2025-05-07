@@ -663,6 +663,22 @@ class GalleryCategoryForm(forms.ModelForm):
           'class': INPUT_CLASS,
           "id": "slug"
         }),
+        'meta_h1': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+          "id": "slug"
+        }),
+        'meta_title': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+          "id": "slug"
+        }),
+        'meta_description': forms.Textarea(attrs={
+          'class': INPUT_CLASS,
+          "id": "slug"
+        }),
+        'meta_keywords': forms.TextInput(attrs={
+          'class': INPUT_CLASS,
+          "id": "slug"
+        }),
     }
     
     

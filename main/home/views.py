@@ -129,8 +129,16 @@ def production(request):
   return render(request, "pages/production.html", context)
 
 def works(request):
+    try:
+      work_page = GalleryCategory.objects.get()
+    except:
+      work_page = GalleryCategory()
 
-    context = {}
+    works = Gallery.objects.filter(is_active=True)
+    context = {
+      "work_page": work_page,
+      "works": works
+    }
 
     return render(request, "pages/works.html", context)
 

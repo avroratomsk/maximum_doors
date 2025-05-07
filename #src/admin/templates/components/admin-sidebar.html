@@ -55,22 +55,22 @@
           </ul>
         </div>
       </div>
-      <div class="menu-sidebar__dropdown" id="attribute">
-        <div class="menu-sidebar__dropdown-title">
-          <div class="menu-sidebar__dropdow-inner">
-            <i class="fas fa-sliders-h"></i>
-            <span>Атрибуты товаров</span>
-          </div>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="menu-sidebar__dropdown-content">
-          <ul>
-            <li><a href="">Список атрибутов</a></li>
-            <li><a href="">Добавить группу атрибутов</a></li>
-            <li><a href="">Добавить атрибут</a></li>
-          </ul>
-        </div>
-      </div>
+<!--      <div class="menu-sidebar__dropdown" id="attribute">-->
+<!--        <div class="menu-sidebar__dropdown-title">-->
+<!--          <div class="menu-sidebar__dropdow-inner">-->
+<!--            <i class="fas fa-sliders-h"></i>-->
+<!--            <span>Атрибуты товаров</span>-->
+<!--          </div>-->
+<!--          <i class="fas fa-chevron-down"></i>-->
+<!--        </div>-->
+<!--        <div class="menu-sidebar__dropdown-content">-->
+<!--          <ul>-->
+<!--            <li><a href="">Список атрибутов</a></li>-->
+<!--            <li><a href="">Добавить группу атрибутов</a></li>-->
+<!--            <li><a href="">Добавить атрибут</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
       <a href="{% url 'upload_goods' %}" class="menu-sidebar__link-general">
         <i class="fas fa-sliders-h"></i>
         <span>Загрузка csv/Excel</span>
@@ -100,17 +100,14 @@
         <div class="menu-sidebar__dropdown-title">
           <div class="menu-sidebar__dropdow-inner">
             <i class="fas fa-images"></i>
-            <span>Галлерея</span>
+            <span>Наши работы</span>
           </div>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="menu-sidebar__dropdown-content">
           <ul>
-            <li><a href="{% url 'gallery_settings' %}">Настройки галереи</a></li>
-            <li><a href="{% url 'admin_gallery_category' %}">Список категорий</a></li>
-            <li><a href="{% url 'admin_reviews_add' %}">Добавить категорию</a></li>
+            <li><a href="{% url 'gallery_settings' %}">Настройки страницы</a></li>
             <li><a href="{% url 'admin_gallery' %}">Список фотографий</a></li>
-            <li><a href="{% url 'admin_gallery_add' %}">Добавить фотографию</a></li>
           </ul>
         </div>
       </div>

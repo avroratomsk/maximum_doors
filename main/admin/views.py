@@ -393,29 +393,31 @@ def blog_settings(request):
 
 def gallery_settings(request):
   try:
-    setup = GalleryCategory.objects.get()
-    form = GalleryCategorySettingsForm(instance=setup)
+    home_page = GalleryCategory.objects.get()
   except:
-    form = GalleryCategorySettingsForm()
-    
+    home_page = GalleryCategory()
+    home_page.save()
+
   if request.method == "POST":
-    try:
-      setup = BlogSettings.objects.get()
-    except BlogSettings.DoesNotExist:
-      setup = None
-    form_new = GalleryCategorySettingsForm(request.POST, request.FILES, instance=setup)
-    
-    if form_new.is_valid:
+    form_new = GalleryCategoryForm(request.POST, request.FILES, instance=home_page)
+    if form_new.is_valid():
       form_new.save()
-      
-      return redirect('.')
+
+      # subprocess.call(["touch", RESET_FILE])
+      return redirect(".")
     else:
-      return render(request, "gallery/gallery_settings.html", {"form": form})
-  
+      return render(request, "gallery/gallery_settings.html", {"form": form_new})
+
+  home_page = GalleryCategory.objects.get()
+
+  form = GalleryCategoryForm(instance=home_page)
   context = {
     "form": form,
-  }  
+    "home_page":home_page
+  }
+
   return render(request, "gallery/gallery_settings.html", context)
+
 
 
 def admin_attribute(request):

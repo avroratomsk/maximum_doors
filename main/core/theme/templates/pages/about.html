@@ -38,7 +38,7 @@
       </div>
 
     </div>
-    <div class="image-full-screen" style="background-image: url({% static 'theme/img/slider-3.jpeg'  %})"></div>
+    <div class="image-full-screen" style="background-image: url({% if about_page.image %}{{ about_page.image.url }}{% else %}{% static 'theme/img/slider-3.jpeg' %}{% endif %})"></div>
     <div class="container">
       <div class="page-text">
         {{ about_page.description_two|safe }}
