@@ -14,60 +14,16 @@
         <!--            <input type="text" placeholder="Поиск адреса" name="search-city" class="form__input contact__input">-->
         <!--          </form>-->
         <div class="contact__address contact-address">
+          {% if offices %}
+          {% for office in offices %}
           <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Самара, ул.Карла Маркса, 192, головной офис</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7 (987) 955-10-22</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
+            <p class="contact-address__name">{{ office.name }}</p>
+            <p class="contact-address__address">{{ office.address }}</p>
+            <a href="tel:{{ office.phone }}" class="contact-address__phone">{{ office.phone }}</a>
+            <p class="contact-address__work-time">{{ office.time_work }}</p>
           </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Г. Тольятти</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7 (987) 955-10-22</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Г. Кинель</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7(987)944-94-17</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Г. Нефтегорск</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7(917)012-05-30</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Пос. Суходол</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7(917)819-95-85</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Г. Новокуйбышевск</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7(987)955-10-22</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Г. Отрадный</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7(987)944-94-17</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Г. Чапаевск</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7(917)819-95-85</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
-          <div class="contact-address__card">
-            <p class="contact-address__name">Офис продаж Максимум</p>
-            <p class="contact-address__address">Г. Безенчук</p>
-            <a href="tel:+79998765543" class="contact-address__phone">+7(917)819-95-85</a>
-            <p class="contact-address__work-time">Вт-сб 09:00-18:00, Вс-пн выходной</p>
-          </div>
+          {% endfor %}
+          {% endif %}
         </div>
       </div>
       <div class="contact__map">
