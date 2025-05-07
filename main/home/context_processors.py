@@ -1,4 +1,4 @@
-from home.models import BaseSettings
+from home.models import BaseSettings, SalesOffices
 from shop.models import Category
 from blog.models import BlogCategory
 from service.models import Service
@@ -14,6 +14,9 @@ def category_blog(request):
 
 def services(request):
     return {'services': Service.objects.filter(footer_view=True).order_by('-id')[:4]}
+
+def offices(request):
+    return {'offices': SalesOffices.objects.all()}
 
 def static_theme_path(request):
     from django.conf import settings

@@ -67,6 +67,7 @@ TEMPLATES = [
                 "subdomain.context_processors.subdomain",
                 "home.context_processors.category_blog",
                 "home.context_processors.services",
+                "home.context_processors.offices",
             ],
         },
     },
