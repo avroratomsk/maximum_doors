@@ -16,6 +16,11 @@ body._lock::after {
   opacity: 1;
 }
 
+._lock {
+  overflow: hidden;
+}
+
+
 .popup {
   position: fixed;
   top: 0;
