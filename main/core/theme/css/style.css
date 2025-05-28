@@ -2215,6 +2215,15 @@ body._lock::after {
   line-height: 150%;
 }
 
+.text {
+  padding: 120px 0px;
+  line-height: 130%;
+}
+
+.text h1 {
+  font-size: 35px;
+}
+
 .best-choice__container {
   max-width: 1365px;
 }

@@ -153,6 +153,12 @@ def delivery(request):
   }
   return render(request, "pages/delivery.html", context)
 
+def politika(request):
+  return render(request, "pages/politika.html")
+
+def cookie(request):
+  return render(request, "pages/cookie.html")
+
 def robots_txt(request):
   try:
       robots_txt = RobotsTxt.objects.first()  # Получаем первую запись, т.к. нам нужен только один robots.txt
