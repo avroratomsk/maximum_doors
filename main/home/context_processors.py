@@ -19,7 +19,10 @@ def offices(request):
     return {'offices': SalesOffices.objects.all()}
 
 def activate_page(request):
-    contact_settings = ContactTemplate.objects.get()
+    try:
+      contact_settings = ContactTemplate.objects.get()
+    except:
+      contact_settings = ContactTemplate()
     return {'activate_page': contact_settings.activate_page}
 
 def static_theme_path(request):
