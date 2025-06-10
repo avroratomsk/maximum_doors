@@ -3912,6 +3912,10 @@ body._lock::after {
   line-height: 140%;
 }
 
+.contact__page {
+  padding: 200px 0px 0px;
+}
+
 .banner__inner {
   min-height: 320px;
   display: -webkit-box;

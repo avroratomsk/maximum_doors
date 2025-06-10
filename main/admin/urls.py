@@ -53,6 +53,7 @@ urlpatterns = [
     path('robots/', views.robots, name='robots'),
     
     path('home-page/', views.admin_home_page, name='admin_home_page'),
+    path('admin-contact/', views.admin_contact, name='admin_contact'),
     path('about-page/', views.admin_about_page, name='admin_about_page'),
     path('delivery-page/', views.admin_delivery_page, name='admin_delivery_page'),
     path('office-page/', views.admin_office, name='admin_office'),

@@ -1,5 +1,5 @@
 from django import forms
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery,SalesOffices
+from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery,SalesOffices, ContactTemplate
 from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
@@ -303,10 +303,6 @@ class CategoryForm(forms.ModelForm):
       "description": forms.Textarea(attrs={
         "class":"form__controls",
       }),
-      # 'image': forms.FileInput(attrs={
-      #     'class': 'submit-file',
-      #     'accept': 'image/*'
-      # }),
       "meta_h1": forms.TextInput(attrs={
         "class":"form__controls",
         # "placeholder": "Заголовок H1"
@@ -332,63 +328,7 @@ class CategoryForm(forms.ModelForm):
 
       # Показывать только корневые категории
       self.fields['parent'].queryset = Category.objects.filter(parent__isnull=True).exclude(id=self.instance.id if self.instance.pk else None)
-    
-# class DayForm(forms.ModelForm):
-#   """ Form, отвечает за создание дней и редактирование дней"""
-#   class Meta:
-#     model = Day
-#     fields = [
-#       "name",
-#       "slug"
-#     ]
-#     labels = {
-#       "name": "Назване категории",
-#       "slug": "URL",
-#     }
-#     widgets = {
-#       "name": forms.TextInput(attrs={
-#           "class": "form__controls",
-#           "id":"name"
-#           # "placeholder": "Название  категории"
-#       }),
-#       "slug": forms.TextInput(attrs={
-#         "class":"form__controls",
-#         "id": "slug"
-#         # "placeholder": "Название категори"
-#       })
-#     }
-    
-# class FillialForm(forms.ModelForm):
-#   """ Form, отвечает за добавление филлиала и редактирование филлиала"""
-#   class Meta:
-#     model = Subsidiary
-#     fields = [
-#       "name",
-#       "address_fillial",
-#       "image",
-#       "slug"
-#     ]
-#     labels = {
-#       "name": "Название филлиала",
-#       "address_fillial": "Адрес филлиала",
-#       "image": "Фотография зала",
-#       "slug": "URL",
-#     }
-#     widgets = {
-#       "name": forms.TextInput(attrs={
-#           "class": "form__controls",
-#           "id":"name"
-#       }),
-#       "address_fillial": forms.TextInput(attrs={
-#           "class": "form__controls",
-#           "id":"name",
-#           "placeholder": "г.Томск, ул.Ленина 111"
-#       }),
-#       "slug": forms.TextInput(attrs={
-#         "class":"form__controls",
-#         "id": "slug"
-#       })
-#     }
+
     
 class HomeTemplateForm(forms.ModelForm):
   """ Form, редактирование главной страницы"""
@@ -428,6 +368,35 @@ class HomeTemplateForm(forms.ModelForm):
               'class': INPUT_CLASS,
           }),
       }
+
+
+class ContactTemplateForm(forms.ModelForm):
+  """ Form, редактирование страницы контакты"""
+  # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
+
+  class Meta:
+      model = ContactTemplate
+      fields = "__all__"
+      widgets = {
+          'meta_h1': forms.TextInput(attrs={
+              'class': INPUT_CLASS,
+          }),
+          'meta_title': forms.TextInput(attrs={
+              'class': f"{INPUT_CLASS} meta_field",
+          }),
+          'meta_description': forms.Textarea(attrs={
+              'class': f"{INPUT_CLASS} meta_field",
+              'rows': 5
+          }),
+          'meta_keywords': forms.TextInput(attrs={
+              'class': INPUT_CLASS,
+          }),
+          'activate_page': forms.CheckboxInput(attrs={
+            'class': 'form__controls-checkbox',
+          }),
+      }
+
+
 
 class AboutTemplateForm(forms.ModelForm):
   """ Form, редактирование главной страницы"""

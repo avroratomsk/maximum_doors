@@ -31,7 +31,7 @@
             </ul>
           </li>
           <li class="nav__item"><a href="{% url 'blog' %}" class="nav__link">Новости</a></li>
-          <li class="nav__item"><a href="#" data-popup="contact" class="nav__link">Контакты</a></li>
+          <li class="nav__item"><a href="{% if activate_page %} {% url 'contact' %}{% else %}#{% endif %}" {% if not activate_page %} data-popup="contact" {% endif %} class="nav__link">Контакты</a></li>
         </ul>
         <button class="header__close close" id="menu-close"></button>
       </nav>

@@ -89,8 +89,8 @@
         </div>
         <div class="menu-sidebar__dropdown-content">
           <ul>
+            <li><a href="{% url 'admin_contact' %}">Страница контактов</a></li>
             <li><a href="{% url 'admin_office' %}">Офисы продаж</a></li>
-            {% comment %}<li><a href="{% url 'admin_contact' %}">Страница контактов</a></li>{% endcomment %}
             <li><a href="">Соц. сети</a></li>
           </ul>
         </div>
@@ -197,7 +197,11 @@
       <p class="menu-sidebar__item-title">Шаблоны страниц</p>
       <a href="{% url 'admin_home_page' %}" class="menu-sidebar__link-general">
         <i class="fas fa-home"></i>
-        <span>Главная страница</span>
+        <span>Главная</span>
+      </a>
+      <a href="{% url 'admin_home_page' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-home"></i>
+        <span>Контакты</span>
       </a>
     </div>
     <div class="menu-sidebar__item">

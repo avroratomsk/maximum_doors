@@ -1,4 +1,4 @@
-from home.models import BaseSettings, SalesOffices
+from home.models import BaseSettings, SalesOffices, ContactTemplate
 from shop.models import Category
 from blog.models import BlogCategory
 from service.models import Service
@@ -17,6 +17,10 @@ def services(request):
 
 def offices(request):
     return {'offices': SalesOffices.objects.all()}
+
+def activate_page(request):
+    contact_settings = ContactTemplate.objects.get()
+    return {'activate_page': contact_settings.activate_page}
 
 def static_theme_path(request):
     from django.conf import settings

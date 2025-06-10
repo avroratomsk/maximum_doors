@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from home.models import BaseSettings,About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery
+from home.models import BaseSettings,About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery, ContactTemplate
 from cart.models import Cart
 from home.forms import CallbackForm, ContactForm, OrderSericeForm, ReviewsPopupForm
 from home.callback_send import email_callback
@@ -119,6 +119,20 @@ def about(request):
   }
 
   return render(request, "pages/about.html", context)
+
+
+def contact(request):
+  try:
+    contact_page = ContactTemplate.objects.get()
+  except:
+    contact_page = ContactTemplate()
+
+
+  context = {
+    "contact_page": contact_page
+  }
+
+  return render(request, "pages/contact.html", context)
 
 
 def production(request):

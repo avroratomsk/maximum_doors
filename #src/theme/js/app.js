@@ -14,51 +14,34 @@ import {Navigation, Pagination, FreeMode, EffectFade, Autoplay} from 'swiper/mod
 
 
 const swiper_reviews = new Swiper('.index-reviews__slider', {
-  modules: [Navigation, Pagination, FreeMode],
-  freeMode: true,
+  modules: [Navigation, Pagination, FreeMode], freeMode: true,
 
   breakpoints: {
     320: {
-      slidesPerView: 1.1,
-      spaceBetween: 20,
+      slidesPerView: 1.1, spaceBetween: 20,
 
-    },
-    536: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    },
-    1200: {
-      slidesPerView: 3,
-      spaceBetween: 30
-    },
-    1500: {
-      slidesPerView: 4.5,
-      spaceBetween: 30
+    }, 536: {
+      slidesPerView: 2, spaceBetween: 20
+    }, 1200: {
+      slidesPerView: 3, spaceBetween: 30
+    }, 1500: {
+      slidesPerView: 4.5, spaceBetween: 30
     }
   }
 });
 
 const swiper_news = new Swiper('.index-news__slider', {
-  modules: [Navigation, Pagination],
-  slidesPerView: 3,
-  spaceBetween: 30,
+  modules: [Navigation, Pagination], slidesPerView: 3, spaceBetween: 30,
 
   breakpoints: {
     320: {
-      slidesPerView: 1,
-      spaceBetween: 20
-    },
-    536: {
-      slidesPerView: 2,
-      spaceBetween: 20
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 30
-    },
-    1200: {
-      slidesPerView: 3,
-      spaceBetween: 30
+      slidesPerView: 1, spaceBetween: 20
+    }, 536: {
+      slidesPerView: 2, spaceBetween: 20
+    }, 768: {
+      slidesPerView: 2, spaceBetween: 30
+    }, 1200: {
+      slidesPerView: 3, spaceBetween: 30
     }
   }
 });
@@ -80,9 +63,7 @@ const slider_full = new Swiper('.slider-full', {
 });
 
 const swiper_work = new Swiper('.index-work__slider', {
-  modules: [Navigation, Pagination],
-  slidesPerView: 3,
-  spaceBetween: 30,
+  modules: [Navigation, Pagination], slidesPerView: 3, spaceBetween: 30,
 });
 
 
@@ -123,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 // Обработчик для кнопки согласия
-  document.getElementById('accept-cookies').addEventListener('click', function() {
+  document.getElementById('accept-cookies').addEventListener('click', function () {
     console.log('click')
     // Устанавливаем куки на 1 год
     document.cookie = "cookie_consent=true; max-age=" + 60 * 60 * 24 * 365 + "; path=/";

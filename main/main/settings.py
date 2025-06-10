@@ -68,6 +68,7 @@ TEMPLATES = [
                 "home.context_processors.category_blog",
                 "home.context_processors.services",
                 "home.context_processors.offices",
+                "home.context_processors.activate_page",
             ],
         },
     },
