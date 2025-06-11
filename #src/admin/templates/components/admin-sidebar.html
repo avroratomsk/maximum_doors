@@ -76,7 +76,10 @@
         <span>Загрузка csv/Excel</span>
       </a>
     </div>
-
+    <a href="{% url 'gallery_settings' %}" class="menu-sidebar__link-general">
+      <i class="fas fa-images"></i>
+      <span>Наши работы</span>
+    </a>
     <div class="menu-sidebar__item">
       <p class="menu-sidebar__item-title">Остальные страницы</p>
       <div class="menu-sidebar__dropdown" id="attr">
@@ -92,20 +95,6 @@
             <li><a href="{% url 'admin_contact' %}">Страница контактов</a></li>
             <li><a href="{% url 'admin_office' %}">Офисы продаж</a></li>
             <li><a href="">Соц. сети</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="menu-sidebar__dropdown" id="attr">
-        <div class="menu-sidebar__dropdown-title">
-          <div class="menu-sidebar__dropdow-inner">
-            <i class="fas fa-images"></i>
-            <span>Наши работы</span>
-          </div>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="menu-sidebar__dropdown-content">
-          <ul>
-            <li><a href="{% url 'gallery_settings' %}">Настройки страницы</a></li>
           </ul>
         </div>
       </div>
