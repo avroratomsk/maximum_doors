@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from home.models import BaseSettings,Works, About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery, ContactTemplate
+from home.models import BaseSettings, Production, Works, About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery, ContactTemplate
 from cart.models import Cart
 from home.forms import CallbackForm, ContactForm, OrderSericeForm, ReviewsPopupForm
 from home.callback_send import email_callback
@@ -134,8 +134,13 @@ def contact(request):
 
 
 def production(request):
+  try:
+    settings = Production.objects.get()
+  except:
+    settings = Production()
 
   context = {
+    "settings": settings,
   }
 
   return render(request, "pages/production.html", context)

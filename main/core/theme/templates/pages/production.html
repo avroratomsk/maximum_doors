@@ -2,9 +2,9 @@
 {% load static %}
 {% load carts_tag %}
 {% load thumbnail %}
-{% block title %}{{ home_page.meta_title }}{% endblock %}
-{% block description %}{{ home_page.meta_description }}{% endblock %}
-{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+{% block title %}{{ settings.meta_title }}{% endblock %}
+{% block description %}{{ settings.meta_description }}{% endblock %}
+{% block keywords %}{{ settings.meta_keywords }}{% endblock %}
 
 {% block content %}
 <main class="page">
@@ -23,7 +23,7 @@
           <meta itemprop="position" content="2"/>
         </span>
         </div>
-        <h1 class="banner__title title-h2">Производство пластиковых окон, лоджий, балконов</h1>
+        <h1 class="banner__title title-h2">{% if settings.meta_h1 %}{{ settings.meta_h1 }}{% else %}Производство пластиковых окон, лоджий, балконов{%endif%}</h1>
       </div>
     </div>
   </section>

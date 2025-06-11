@@ -1,5 +1,5 @@
 from django import forms
-from home.models import BaseSettings, Works, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery,SalesOffices, ContactTemplate
+from home.models import BaseSettings, Works, Production, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery,SalesOffices, ContactTemplate
 from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
@@ -354,6 +354,26 @@ class HomeTemplateForm(forms.ModelForm):
           'name': forms.TextInput(attrs={
               'class': INPUT_CLASS
           }),
+          'meta_h1': forms.TextInput(attrs={
+              'class': INPUT_CLASS,
+          }),
+          'meta_title': forms.TextInput(attrs={
+              'class': f"{INPUT_CLASS} meta_field",
+          }),
+          'meta_description': forms.Textarea(attrs={
+              'class': f"{INPUT_CLASS} meta_field",
+              'rows': 5
+          }),
+          'meta_keywords': forms.TextInput(attrs={
+              'class': INPUT_CLASS,
+          }),
+      }
+
+class ProductionForm(forms.ModelForm):
+  class Meta:
+      model = Production
+      fields = "__all__"
+      widgets = {
           'meta_h1': forms.TextInput(attrs={
               'class': INPUT_CLASS,
           }),

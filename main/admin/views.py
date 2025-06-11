@@ -5,8 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib import messages
-from admin.forms import ContactTemplateForm, WorksForm, AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery, SalesOffices, ContactTemplate, Works
+from admin.forms import ContactTemplateForm,ProductionForm, WorksForm, AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from home.models import BaseSettings,Production, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery, SalesOffices, ContactTemplate, Works
 from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
 from subdomain.models import Subdomain
@@ -311,6 +311,33 @@ def admin_home_page(request):
   }  
 
   return render(request, "home-page/home-page.html", context)
+
+def admin_prod_page(request):
+  try:
+    settings = Production.objects.get()
+  except:
+    settings = Production()
+    settings.save()
+
+  if request.method == "POST":
+    form_new = ProductionForm(request.POST, request.FILES, instance=settings)
+    if form_new.is_valid():
+      form_new.save()
+
+      # subprocess.call(["touch", RESET_FILE])
+      return redirect(request.META.get('HTTP_REFERER'))
+    else:
+      return render(request, "page/production.html", {"form": form_new})
+
+  settings = Production.objects.get()
+
+  form = ProductionForm(instance=settings)
+  context = {
+    "form": form,
+    "settings":settings
+  }
+
+  return render(request, "page/production.html", context)
 
 def admin_contact(request):
   try:
