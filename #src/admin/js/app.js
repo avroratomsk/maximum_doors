@@ -5,8 +5,24 @@ import("./modules/uploadFileInput.js");
 /**
  * Переключение вкладок на страницах продуктов, категорий
  */
+
+// const pageEditButton = document.querySelectorAll('.page-content');
+//
+// tabButton?.forEach(btn => {
+//   btn.addEventListener('click', function (e) {
+//     tabButton.forEach(item => item.classList.remove('_active'));
+//     pageEditButton.forEach(item => item.classList.remove('_show'));
+//
+//
+//     let bodyTabBody = document.getElementById(this.dataset.name);
+//
+//     btn.classList.add('_active');
+//     bodyTabBody.classList.add('_show');
+//   })
+// })
+
 const tabButton = document.querySelectorAll('[data-name]');
-const pageEditButton = document.querySelectorAll('.page-content');
+const pageEditButton = document.querySelectorAll('.tab-content');
 
 tabButton?.forEach(btn => {
   btn.addEventListener('click', function (e) {
@@ -18,8 +34,23 @@ tabButton?.forEach(btn => {
 
     btn.classList.add('_active');
     bodyTabBody.classList.add('_show');
+
+    const newUrl = window.location.pathname + '?tab=' + this.dataset.name;
+    window.history.pushState({}, '', newUrl);
   })
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const activeTab = urlParams.get('tab');
+  if(activeTab && btn.dataset.name === activeTab) {
+    btn.click();
+  }
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+  const newUrl = window.location.pathname + '?tab=' + this.dataset.name;
+  window.history.pushState({}, '', newUrl);
+})
+
 
 
 

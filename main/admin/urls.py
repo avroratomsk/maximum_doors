@@ -40,7 +40,6 @@ urlpatterns = [
     
     #URl - отвечающие за отображение услуг, редактирование и удаление услуг
     path('service-page/', views.admin_service_page, name='admin_service_page'),
-    path('serv/', views.admin_service, name='admin_service'),
     path('serv/add/', views.service_add, name='service_add'),
     path('serv/edit/<int:pk>/', views.service_edit, name='service_edit'),
     path('serv/delete/<int:pk>/', views.service_delete, name='service_delete'),

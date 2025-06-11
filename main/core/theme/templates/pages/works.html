@@ -78,7 +78,7 @@
         <h2 class="works__title title-h2">Наши работы</h2>
         <div class="works__grid">
           {% for work in works %}
-          <div class="works__item" style="background-image: url({{ work.image.url }})"></div>
+          <div class="works__item" style="background-image: url({% if work.image %}{{ work.image.url }}{% endif %})"></div>
           {% endfor %}
         </div>
         {% endif %}

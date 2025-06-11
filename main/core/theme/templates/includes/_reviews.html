@@ -1,28 +1,30 @@
 {% load static %}
-<section class="index-reviews section--padded">
-  <div class="index-reviews__inner">
-    <h2 class="index-reviews__title title-h2">Люди выбирают нас</h2>
-    <div class="index-reviews__slider swiper">
-      <div class="index-reviews__wrapper swiper-wrapper">
-        {% for review in reviews %}
-        <div class="index-reviews__slide swiper-slide">
-          <div class="index-reviews__item reviews">
-            <div class="reviews__top">
-              <div class="reviews__info">
-                <img src="{{ review.avatar.url }}" class="reviews__avatar">
-                <p class="reviews__name">{{ review.name }}</p>
+{% if reviews %}
+  <section class="index-reviews section--padded">
+    <div class="index-reviews__inner">
+      <h2 class="index-reviews__title title-h2">Люди выбирают нас</h2>
+      <div class="index-reviews__slider swiper">
+        <div class="index-reviews__wrapper swiper-wrapper">
+          {% for review in reviews %}
+          <div class="index-reviews__slide swiper-slide">
+            <div class="index-reviews__item reviews">
+              <div class="reviews__top">
+                <div class="reviews__info">
+                  <img src="{{ review.avatar.url }}" class="reviews__avatar">
+                  <p class="reviews__name">{{ review.name }}</p>
+                </div>
+                <div class="reviews__logo">
+                  <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
+                </div>
               </div>
-              <div class="reviews__logo">
-                <img src="{% static 'theme/img/icon/2gis.svg' %}" alt="">
-              </div>
+              <p>
+                {{ review.text }}
+              </p>
             </div>
-            <p>
-              {{ review.text }}
-            </p>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
-  </div>
-</section>
+  </section>
+{% endif %}

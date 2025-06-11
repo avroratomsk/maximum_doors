@@ -97,12 +97,10 @@ def index(request):
 
   products = Product.objects.filter(status=True)[:4]
   posts = Post.objects.filter(status=True)
-  reviews = Reviews.objects.filter(status=True)[:10]
 
   context = {
     "home_page": home_page,
     "products": products,
-    "reviews": reviews,
     "posts": posts
   }
   return render(request, 'pages/index.html', context)

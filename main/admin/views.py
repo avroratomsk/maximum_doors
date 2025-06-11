@@ -3,6 +3,7 @@ import os
 import zipfile
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.contrib import messages
 from admin.forms import ContactTemplateForm, AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
 from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery, SalesOffices, ContactTemplate
@@ -614,13 +615,17 @@ def admin_service_page(request):
      serv_page = ServicePage()
      serv_page.save()
 
+  try:
+    items = Service.objects.all()
+  except:
+    items = Service()
+
   if request.method == "POST":
      form_new = ServicePageForm(request.POST, request.FILES, instance=serv_page)
      if form_new.is_valid():
        form_new.save()
 
-       # subprocess.call(["touch", RESET_FILE])
-       return redirect("admin_service")
+       return redirect(request.META.get('HTTP_REFERER'))
      else:
        return render(request, "serv/serv_settings.html", {"form": form_new})
 
@@ -629,7 +634,8 @@ def admin_service_page(request):
   form = ServicePageForm(instance=serv_page)
   context = {
      "form": form,
-     "serv_page":serv_page
+     "serv_page":serv_page,
+     "items": items
   }
   
   return render(request, "serv/serv_settings.html", context)
@@ -682,15 +688,6 @@ def stock_delete(request, pk):
   stock.delete()
   return redirect("admin_stock")
 
-def admin_service(request):
-  services = Service.objects.all()
-  
-  context = {
-    "items": services
-  }
-  
-  return render(request, "serv/admin_serv.html", context)
-
 def service_add(request):
   form = ServiceForm()
   
@@ -698,7 +695,8 @@ def service_add(request):
     form_new = ServiceForm(request.POST, request.FILES)
     if form_new.is_valid():
       form_new.save()
-      return redirect("admin_service")
+      url = reverse("admin_service_page") + "?tab=list"
+      return redirect(url)
     else: 
       return render(request, "serv/serv_add.html", {"form": form_new})
   
@@ -715,7 +713,8 @@ def service_edit(request, pk):
     form_new = ServiceForm(request.POST, request.FILES, instance=services)
     if form_new.is_valid():
       form_new.save()
-      return redirect("admin_service")
+      url = reverse("admin_service_page") + "?tab=list"
+      return redirect(url)
     else:
       return render(request, "serv/stock_edit.html", {"form": form_new})
   
@@ -728,7 +727,8 @@ def service_edit(request, pk):
 def service_delete(request, pk):
   service = Service.objects.get(id=pk)
   service.delete()
-  return redirect("admin_service")
+  url = reverse("admin_service_page") + "?tab=list"
+  return redirect(url)
 
 def admin_color(request):
   items = ColorProduct.objects.all()

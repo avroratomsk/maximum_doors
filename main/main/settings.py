@@ -69,6 +69,7 @@ TEMPLATES = [
                 "home.context_processors.services",
                 "home.context_processors.offices",
                 "home.context_processors.activate_page",
+                "home.context_processors.reviews",
             ],
         },
     },

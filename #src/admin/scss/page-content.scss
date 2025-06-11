@@ -67,3 +67,23 @@
     gap: 20px;
   }
 }
+
+.tab-content {
+  display: none;
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 30px;
+
+  .action-button {
+    align-self: flex-end;
+  }
+}
+form._show {
+  display: flex!important;
+}
+
+div._show {
+  display: flex!important;
+  flex-direction: column;
+  gap: 20px;
+}

@@ -53,6 +53,8 @@ def admin_reviews_add(request):
   return render(request, "reviews/reviews_add.html", context)
 
 def admin_reviews_delete(request, pk):
-  pass
+  review = Reviews.objects.get(id=pk)
+  review.delete()
+  return redirect("admin_reviews")
 
 

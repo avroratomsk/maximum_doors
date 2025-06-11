@@ -2,6 +2,7 @@ from home.models import BaseSettings, SalesOffices, ContactTemplate
 from shop.models import Category
 from blog.models import BlogCategory
 from service.models import Service
+from reviews.models import Reviews
  
 def load_settings(request):
     return {'site_settings': BaseSettings.load()}
@@ -17,6 +18,9 @@ def services(request):
 
 def offices(request):
     return {'offices': SalesOffices.objects.all()}
+
+def reviews(request):
+    return {'reviews': Reviews.objects.filter(status=True)}
 
 def activate_page(request):
     try:

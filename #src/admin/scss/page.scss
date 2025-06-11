@@ -1,5 +1,5 @@
 .page {
-  padding: 0px 0px 0px 280px;
+  padding: 30px 0px 0px 280px;
 
   // .page__inner
 
@@ -16,6 +16,7 @@
     background: rgba($color: $white, $alpha: 1.0);
     padding: 15px 20px;
     border-radius: 6px;
+    margin-top: 30px;
     box-shadow: 0px 0px 4px rgba(38, 53, 61, 0.1);
   }
 
@@ -115,6 +116,7 @@
 }
 
 .grid-item {
+  background: #FFFFFF;
   display: flex;
   border: 1px solid rgba($color: $mainColor, $alpha: .1);
   padding: 10px;

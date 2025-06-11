@@ -435,7 +435,7 @@ ol {
 }
 
 .page {
-  padding: 0px 0px 0px 280px;
+  padding: 30px 0px 0px 280px;
 }
 
 .page__inner {
@@ -455,6 +455,7 @@ ol {
   background: white;
   padding: 15px 20px;
   border-radius: 6px;
+  margin-top: 30px;
   -webkit-box-shadow: 0px 0px 4px rgba(38, 53, 61, 0.1);
           box-shadow: 0px 0px 4px rgba(38, 53, 61, 0.1);
 }
@@ -566,6 +567,7 @@ ol {
 }
 
 .grid-item {
+  background: #FFFFFF;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -683,7 +685,7 @@ ol {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 30px;
+  gap: 20px;
 }
 
 .form__btn {
@@ -1326,6 +1328,35 @@ ol {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 30px;
+}
+
+.tab-content .action-button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+form._show {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+div._show {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
