@@ -72,7 +72,13 @@ class Gallery(models.Model):
   
   def __str__(self):
     return self.name
-  
+
+class Works(models.Model):
+  image = models.ImageField(upload_to="gallery-image", null=True, blank=True, verbose_name="Фотография")
+  name = models.CharField(max_length=255, null=True, blank=True, verbose_name="Название")
+  text = models.TextField( null=True, blank=True, verbose_name="Минимальный текст")
+  is_active = models.BooleanField(default=True, verbose_name="Выводить на сайт ?")
+
 class RobotsTxt(models.Model):
   content = models.TextField(default="User-agent: *\nDisallow: /admin/")
     

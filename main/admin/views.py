@@ -5,8 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib import messages
-from admin.forms import ContactTemplateForm, AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery, SalesOffices, ContactTemplate
+from admin.forms import ContactTemplateForm, WorksForm, AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery, SalesOffices, ContactTemplate, Works
 from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
 from subdomain.models import Subdomain
@@ -464,11 +464,14 @@ def gallery_settings(request):
       return render(request, "gallery/gallery_settings.html", {"form": form_new})
 
   home_page = GalleryCategory.objects.get()
-
+  works = Gallery.objects.all()
+  work_list = Works.objects.all()
   form = GalleryCategoryForm(instance=home_page)
   context = {
     "form": form,
-    "home_page":home_page
+    "home_page":home_page,
+    "items":works,
+    "works": work_list
   }
 
   return render(request, "gallery/gallery_settings.html", context)
@@ -798,7 +801,8 @@ def admin_gallery_add(request):
     form_new = GalleryForm(request.POST, request.FILES)
     if form_new.is_valid():
       form_new.save()
-      return redirect('admin_gallery')
+      url = reverse("gallery_settings") + "?tab=list"
+      return redirect(url)
     else:
       return render(request, "gallery/gallery_add.html", { "form": form_new })
     
@@ -816,7 +820,8 @@ def admin_gallery_edit(request, pk):
     
     if form_new.is_valid():
       form_new.save()
-      return redirect('admin_gallery')
+      url = reverse("gallery_settings") + "?tab=list"
+      return redirect(url)
     else:
       return render(request, "gallery/gallery_edit.html", { "form": form_new })
   
@@ -826,6 +831,51 @@ def admin_gallery_edit(request, pk):
   }  
     
   return render(request, "gallery/gallery_edit.html", context)
+
+def admin_gallery_delete(request, pk):
+  pass
+
+
+def admin_work_add(request):
+  form = WorksForm()
+
+  if request.method == "POST":
+    form_new = WorksForm(request.POST, request.FILES)
+    if form_new.is_valid():
+      form_new.save()
+      url = reverse("gallery_settings") + "?tab=works"
+      return redirect(url)
+    else:
+      return render(request, "works/works_add.html", { "form": form_new })
+
+  context = {
+    "form": form,
+  }
+
+  return render(request, "works/works_add.html", context)
+
+def admin_work_edit(request, pk):
+  item = Works.objects.get(id=pk)
+
+  if request.method == "POST":
+    form_new = WorksForm(request.POST, request.FILES, instance=item)
+
+    if form_new.is_valid():
+      form_new.save()
+      url = reverse("gallery_settings") + "?tab=works"
+      return redirect(url)
+    else:
+      return render(request, "works/works_edit.html", { "form": form_new })
+
+  form = WorksForm(instance=item)
+  context = {
+    "form": form,
+  }
+
+  return render(request, "works/works_edit.html", context)
+
+def admin_work_delete(request, pk):
+  pass
 
 def admin_color_delete(request, pk):
   subdomain = Subdomain.objects.get(id=pk)

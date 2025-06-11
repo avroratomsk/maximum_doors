@@ -24,56 +24,24 @@
           </a>
         </div>
         <h1 class="works__title title-h2">{% if work_page.meta_h1 %}{{ work_page.meta_h1 }}{% else %}Наше производство{% endif %}</h1>
+        {% if works_list %}
         <div class="works__production production">
+          {% for item in works_list %}
           <div class="production__item">
             <div class="production__image">
-              <img src="{% static 'theme/img/scale_1200.jpg' %}" alt="">
+              <img src="{{ item.image.url }}" alt="">
             </div>
             <div class="production__cotent">
-              <p class="production__title">Монтаж металлоконструкции</p>
+              <p class="production__title">{{ item.name }}</p>
               <p class="production__text">
-                Из стального профиля собирается дверная коробка и полотно. Для усиления привариваются ребра жесткости,
-                внутри полотна прокладывается утеплитель.
+               {{ item.text }}
               </p>
             </div>
+
           </div>
-          <div class="production__item">
-            <div class="production__image">
-              <img src="{% static 'theme/img/poroshok.jpg' %}" alt="">
-            </div>
-            <div class="production__cotent">
-              <p class="production__title">Покрасочные работы</p>
-              <p class="production__text">
-                Дверь очищается, обезжиривается, грунтуется.На поверхность наносят нитроэмаль или производится
-                порошковое напыление в специальных камерах.
-              </p>
-            </div>
-          </div>
-          <div class="production__item">
-            <div class="production__image">
-              <img src="{% static 'theme/img/BBGO3HM9a4ugC42GtlaH.jpg' %}" alt="">
-            </div>
-            <div class="production__cotent">
-              <p class="production__title">Отделка</p>
-              <p class="production__text">
-                Дверное полотно декорируется выбранным заказчиком типом отделки, предусмотренным проектом
-                (ламинат, МДВ, массив и т.п.). Монтируются элементы стекла, витражи, ковка.
-              </p>
-            </div>
-          </div>
-          <div class="production__item">
-            <div class="production__image">
-              <img src="{% static 'theme/img/ustanovka-dverey.jpg' %}" alt="">
-            </div>
-            <div class="production__cotent">
-              <p class="production__title">Окончательная сборка готового изделия</p>
-              <p class="production__text">
-                Устанавливается фурнитура, прокладывается утиплитель. Изделие проходит контроль качества перед отправкой
-                заказчику.
-              </p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
+        {% endif %}
         {% if works %}
         <h2 class="works__title title-h2">Наши работы</h2>
         <div class="works__grid">
@@ -87,4 +55,55 @@
     </div>
   </section>
 </main>
+
+{% comment %}
+<div class="production__item">
+  <div class="production__image">
+    <img src="{% static 'theme/img/scale_1200.jpg' %}" alt="">
+  </div>
+  <div class="production__cotent">
+    <p class="production__title">Монтаж металлоконструкции</p>
+    <p class="production__text">
+      Из стального профиля собирается дверная коробка и полотно. Для усиления привариваются ребра жесткости,
+      внутри полотна прокладывается утеплитель.
+    </p>
+  </div>
+</div>
+<div class="production__item">
+  <div class="production__image">
+    <img src="{% static 'theme/img/poroshok.jpg' %}" alt="">
+  </div>
+  <div class="production__cotent">
+    <p class="production__title">Покрасочные работы</p>
+    <p class="production__text">
+      Дверь очищается, обезжиривается, грунтуется.На поверхность наносят нитроэмаль или производится
+      порошковое напыление в специальных камерах.
+    </p>
+  </div>
+</div>
+<div class="production__item">
+  <div class="production__image">
+    <img src="{% static 'theme/img/BBGO3HM9a4ugC42GtlaH.jpg' %}" alt="">
+  </div>
+  <div class="production__cotent">
+    <p class="production__title">Отделка</p>
+    <p class="production__text">
+      Дверное полотно декорируется выбранным заказчиком типом отделки, предусмотренным проектом
+      (ламинат, МДВ, массив и т.п.). Монтируются элементы стекла, витражи, ковка.
+    </p>
+  </div>
+</div>
+<div class="production__item">
+  <div class="production__image">
+    <img src="{% static 'theme/img/ustanovka-dverey.jpg' %}" alt="">
+  </div>
+  <div class="production__cotent">
+    <p class="production__title">Окончательная сборка готового изделия</p>
+    <p class="production__text">
+      Устанавливается фурнитура, прокладывается утиплитель. Изделие проходит контроль качества перед отправкой
+      заказчику.
+    </p>
+  </div>
+</div>
+{% endcomment %}
 {% endblock %}

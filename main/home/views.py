@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from home.models import BaseSettings,About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery, ContactTemplate
+from home.models import BaseSettings,Works, About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery, ContactTemplate
 from cart.models import Cart
 from home.forms import CallbackForm, ContactForm, OrderSericeForm, ReviewsPopupForm
 from home.callback_send import email_callback
@@ -147,9 +147,11 @@ def works(request):
       work_page = GalleryCategory()
 
     works = Gallery.objects.filter(is_active=True)
+    works_list = Works.objects.filter(is_active=True)
     context = {
       "work_page": work_page,
-      "works": works
+      "works": works,
+      "works_list":works_list
     }
 
     return render(request, "pages/works.html", context)

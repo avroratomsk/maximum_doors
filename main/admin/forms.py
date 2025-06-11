@@ -1,5 +1,5 @@
 from django import forms
-from home.models import BaseSettings, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery,SalesOffices, ContactTemplate
+from home.models import BaseSettings, Works, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery,SalesOffices, ContactTemplate
 from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
@@ -618,6 +618,16 @@ class GalleryForm(forms.ModelForm):
         'name': forms.TextInput(attrs={
           'class': INPUT_CLASS
         }),
+    }
+
+class WorksForm(forms.ModelForm):
+  class Meta:
+    model = Works
+    fields = "__all__"
+    widgets = {
+#         'name': forms.TextInput(attrs={
+#           'class': INPUT_CLASS
+#         }),
     }
     
 class GalleryCategoryForm(forms.ModelForm):
