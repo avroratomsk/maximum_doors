@@ -11,6 +11,7 @@
       </ul>
     </div>
     <form action="." method="POST" class="form" enctype="multipart/form-data">
+      {% csrf_token %}
       <div class="page__head">
         <div class="page__head-tab">
           <button type="button" data-name="basic" class="page__head-btn _active">Основные</button>
@@ -21,7 +22,7 @@
           Сохранить
         </button>
       </div>
-      {% csrf_token %}
+
       <div class="page-content _show" id="basic">
         <!-- Основные настройки -->
         <div class="page-content__row">
