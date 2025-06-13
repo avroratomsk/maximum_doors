@@ -31,6 +31,18 @@
           <meta itemprop="position" content="3" />
         </a>
       </div>
+      {% if popup_type == "mezhkomnatnyie-dveri" %}
+      <div class="popup-ad">
+        <button type="button" data-popup="okna">Заполни форму и получи скидку 10%</button>
+        <button type="button" class="close" id="close-ad"><span></span></button>
+      </div>
+      {% endif %}
+      {% if popup_type == "vhodnyie-dveri" %}
+      <div class="popup-ad">
+        <button type="button" data-popup="okna">Заполни форму и получи скидку 10%</button>
+        <button type="button" class="close" id="close-ad"><span></span></button>
+      </div>
+      {% endif %}
       {% if category.meta_h1 %}
       <h1 class="category__title">{{ category.meta_h1}}</h1>
       {% else %}

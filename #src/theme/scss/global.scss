@@ -177,3 +177,32 @@
     font-size: 35px;
   }
 }
+
+.popup-ad {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  max-width: 330px;
+  padding: 20px;
+  bottom: 100px;
+  right: 20px;
+  width: 100%;
+  background: red;
+  color: white;
+  font-size: 14px;
+  border-radius: 15px;
+
+  .close {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+
+    &::after,
+    &::before {
+      background-color: #ffffff;
+    }
+  }
+}

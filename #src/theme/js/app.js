@@ -112,3 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cookie-notice').style.display = 'none';
   });
 })
+
+
+const closeAdBtn = document.getElementById("close-ad");
+
+closeAdBtn.addEventListener("click", () => {
+  document.querySelector('.popup-ad').style.display = 'none';
+})

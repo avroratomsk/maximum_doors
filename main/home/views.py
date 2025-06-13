@@ -141,6 +141,7 @@ def production(request):
 
   context = {
     "settings": settings,
+    "popup_type": "okna"
   }
 
   return render(request, "pages/production.html", context)

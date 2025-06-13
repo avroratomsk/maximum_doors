@@ -43,7 +43,8 @@ def category_detail(request, slug):
     "category": category,
     "title": "Название товара",
     "products": current_page,
-    "count": count
+    "count": count,
+    "popup_type": category.slug
   }
 
   return render(request, "pages/catalog/category-details.html", context)

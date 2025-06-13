@@ -8,6 +8,12 @@
 
 {% block content %}
 <main class="page">
+  {% if popup_type == "okna" %}
+  <div class="popup-ad">
+    <button type="button" data-popup="okna">Заполни форму и получи скидку 20%</button>
+    <button type="button" class="close" id="close-ad"><span></span></button>
+  </div>
+  {% endif %}
   <section class="banner post-banner" style="background-image: url({% static 'theme/img/slider-3.jpeg' %});">
     <div class="container">
       <div class="banner__inner">
@@ -23,7 +29,8 @@
           <meta itemprop="position" content="2"/>
         </span>
         </div>
-        <h1 class="banner__title title-h2">{% if settings.meta_h1 %}{{ settings.meta_h1 }}{% else %}Производство пластиковых окон, лоджий, балконов{%endif%}</h1>
+        <h1 class="banner__title title-h2">{% if settings.meta_h1 %}{{ settings.meta_h1 }}{% else %}Производство
+          пластиковых окон, лоджий, балконов{%endif%}</h1>
       </div>
     </div>
   </section>
@@ -59,7 +66,7 @@
               <p><b>Цена:</b> <span class="example-price__price">от 14 300 ₽</span></p>
             </div>
           </div>
-          <button type="button" data-popup="callback"  class="example-price__btn btn">Заказать расчет окна</button>
+          <button type="button" data-popup="callback" class="example-price__btn btn">Заказать расчет окна</button>
         </div>
         <div class="example-price__item">
           <div class="example-price__image">
@@ -74,7 +81,7 @@
               <p><b>Цена:</b> <span class="example-price__price">от 17 900 ₽</span></p>
             </div>
           </div>
-          <button type="button" data-popup="callback"  class="example-price__btn btn">Заказать расчет окна</button>
+          <button type="button" data-popup="callback" class="example-price__btn btn">Заказать расчет окна</button>
         </div>
         <div class="example-price__item">
           <div class="example-price__image">
@@ -89,7 +96,7 @@
               <p><b>Цена:</b> <span class="example-price__price">от 20 100 ₽</span></p>
             </div>
           </div>
-          <button type="button" data-popup="callback"  class="example-price__btn btn">Заказать расчет окна</button>
+          <button type="button" data-popup="callback" class="example-price__btn btn">Заказать расчет окна</button>
         </div>
   </section>
   <div class="tabs section--padded">

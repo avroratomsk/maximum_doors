@@ -1,10 +1,9 @@
-document.addEventListener("click", (e) => {
-  const form = document.querySelector(".form--search");
-  if(!form.contains(e.currentTarget)) {
-    console.log('Закрываем')
-    // document.getElementById("search-result").style.display = "none";
-  }
-})
+// document.addEventListener("click", (e) => {
+//   const form = document.querySelector(".form--search");
+//   if(!form.contains(e.currentTarget)) {
+//     console.log('Закрываем')
+//   }
+// })
 
 const inputSearch = document.querySelector('input[name="catalog-search"]');
 inputSearch?.addEventListener("input", (e) => {
