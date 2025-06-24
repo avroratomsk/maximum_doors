@@ -3699,6 +3699,8 @@ body._lock::after {
       -ms-flex-align: center;
           align-items: center;
   gap: 50px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border: 2px solid rgba(0, 0, 0, 0.03);
   padding: 30px;
 }
