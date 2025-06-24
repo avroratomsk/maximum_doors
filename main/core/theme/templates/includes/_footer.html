@@ -27,6 +27,11 @@
             <p>О компании</p>
             <ul class="footer-nav__list">
               <li class="footer-nav__item"><a href="{% url 'about' %}">О нас</a></li>
+              <li class="footer-nav__item">
+                <a href="{% if activate_page %} {% url 'contact' %}{% else %}#{% endif %}" {% if not activate_page %} data-popup="contact" {% endif %}>
+                  Контакты
+                </a>
+              </li>
             </ul>
           </nav>
           <nav class="footer__nav footer-nav">
