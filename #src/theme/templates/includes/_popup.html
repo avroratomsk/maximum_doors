@@ -14,13 +14,17 @@
         <input type="text" name="name" class="form__input" placeholder="Ваше имя" required/>
         <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input/>
         <input type="text" name="product" id="order-product" class="form__input form__input--hidden"/>
+        <div class="form__agreement">
+          <input type="checkbox" name="agreement" id="agreement" required>
+          <label for="agreement">Я согласен(а) с <a href="{% url 'politika' %}">политикой конфиденциальности</a></label>
+        </div>
         <button type="submit" class="form__button">Отправить</button>
       </form>
     </div>
   </div>
 </div>
 
-<div id="callback" class="popup">
+<div id="callback" class="popup ">
   <div class="popup__wrapper">
     <div class="popup__content">
       <div class="popup__top">
@@ -34,6 +38,10 @@
         {% csrf_token %}
         <input type="text" name="name" class="form__input" placeholder="Ваше имя" required/>
         <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input/>
+        <div class="form__agreement">
+          <input type="checkbox" name="agreement" id="agreement" required>
+          <label for="agreement">Я согласен(а) с <a href="{% url 'politika' %}">политикой конфиденциальности</a></label>
+        </div>
         <button type="submit" class="form__button">Отправить</button>
       </form>
     </div>

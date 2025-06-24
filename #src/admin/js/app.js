@@ -6,20 +6,20 @@ import("./modules/uploadFileInput.js");
  * Переключение вкладок на страницах продуктов, категорий
  */
 
-// const pageEditButton = document.querySelectorAll('.page-content');
-//
-// tabButton?.forEach(btn => {
-//   btn.addEventListener('click', function (e) {
-//     tabButton.forEach(item => item.classList.remove('_active'));
-//     pageEditButton.forEach(item => item.classList.remove('_show'));
-//
-//
-//     let bodyTabBody = document.getElementById(this.dataset.name);
-//
-//     btn.classList.add('_active');
-//     bodyTabBody.classList.add('_show');
-//   })
-// })
+const pageEditButton1 = document.querySelectorAll('.page-content');
+const tabButton1 = document.querySelectorAll('[data-tab]');
+tabButton1?.forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    tabButton1.forEach(item => item.classList.remove('_active'));
+    pageEditButton1.forEach(item => item.classList.remove('_show'));
+
+
+    let bodyTabBody = document.getElementById(this.dataset.tab);
+
+    btn.classList.add('_active');
+    bodyTabBody.classList.add('_show');
+  })
+})
 
 const tabButton = document.querySelectorAll('[data-name]');
 const pageEditButton = document.querySelectorAll('.tab-content');

@@ -44,7 +44,7 @@
         <div class="category__item">
           <a href="{{ cat.get_absolute_url }}" class="category__image">
             {% if cat.image %}
-            <img src="{{ cat.image.url }}" alt="{{ cat.name }}">
+            <img src="{{ cat.image.url }}" alt="{{ cat.name }}" title="{{ cat.name }}">
             {% endif %}
           </a>
           <a href="{{ cat.get_absolute_url }}" class="category__name">{{ cat.name }}</a>

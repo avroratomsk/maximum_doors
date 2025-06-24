@@ -43,6 +43,44 @@
     }
   }
 
+  //.form__agreement
+  &__agreement {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 0px;
+
+
+    input[type="checkbox"] {
+      position: relative;
+      appearance: initial;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+
+      &::before {
+        content: "";
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        background: $accent;
+      }
+
+      &:checked {
+
+        &::before {
+          display: block;
+        }
+
+      }
+    }
+  }
+
+
   // .form__button
 
   &__button {

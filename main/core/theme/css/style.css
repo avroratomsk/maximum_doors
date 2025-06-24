@@ -2944,6 +2944,8 @@ body._lock::after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -4188,6 +4190,45 @@ body._lock::after {
 
 .form__input--hidden {
   display: none;
+}
+
+.form__agreement {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 7px;
+  padding: 10px 0px;
+}
+
+.form__agreement input[type=checkbox] {
+  position: relative;
+  -webkit-appearance: initial;
+     -moz-appearance: initial;
+          appearance: initial;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+
+.form__agreement input[type=checkbox]::before {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #000000;
+}
+
+.form__agreement input[type=checkbox]:checked::before {
+  display: block;
 }
 
 .form__button {

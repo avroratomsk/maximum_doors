@@ -240,7 +240,12 @@ def product_edit(request, pk):
   """
   product = Product.objects.get(id=pk)
   product_image = ProductImage.objects.filter(parent=product)
+  all_chars = Properties.objects.filter(parent=product)
+
   form = ProductForm(instance=product)
+
+#   for ch in all_chars:
+#     print(f'{ch.name} - {ch.value}')
 
   form_new = ProductForm(request.POST, request.FILES, instance=product)
   if request.method == 'POST':
@@ -258,6 +263,7 @@ def product_edit(request, pk):
       return render(request, 'shop/product/product_edit.html', {'form': form_new})
   context = {
     "form":form,
+    "all_chars": all_chars,
     "product_image": product_image,
   }
   return render(request, "shop/product/product_edit.html", context)

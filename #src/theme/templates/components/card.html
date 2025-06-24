@@ -3,7 +3,7 @@
   <a href="{{ product.get_absolute_url }}" class="card-product__image">
     {% if product.image %}
     {% thumbnail product.image "x334" format="WEBP" crop="center" as im %}
-    <img src="{{ im.url }}"  class="image" />
+    <img src="{{ im.url }}"  class="image" alt="{{ product.name }} - {{ product.category }}" />
     {% endthumbnail %}
     {% endif %}
   </a>

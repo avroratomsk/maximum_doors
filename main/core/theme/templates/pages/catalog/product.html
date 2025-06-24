@@ -38,7 +38,7 @@
           <div class="product-info__col">
             <div class="product-info__images">
               {% thumbnail product.image "x400" format="WEBP" crop="center" as im %}
-              <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ product.name }}" />
+              <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ product.name }} {{ product.category }}" title="{{ product.name }} {{ product.category }}" />
               {% endthumbnail %}
             </div>
             <div class="product-info__price-panel">
@@ -60,7 +60,7 @@
               </div>
               <div class="product-info__actions">
                 <button type="button" class="product-info__btn _btn" data-popup="leave-request">Оставить заявку</button>
-                <button type="button" class="product-info__btn _btn">Заказать звонок</button>
+                <button type="button" class="product-info__btn _btn" data-popup="callback">Заказать звонок</button>
               </div>
 <!--              <div class="product-info__properties">-->
 <!--                <div class="product-info__properties-text">-->
