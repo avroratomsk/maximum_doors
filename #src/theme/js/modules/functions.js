@@ -1,3 +1,7 @@
+
+
+
+
 /* Проверка поддержки webp, добавление класса webp или no-webp для HTML */
 import events from "events";
 

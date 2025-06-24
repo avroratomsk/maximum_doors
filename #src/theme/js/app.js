@@ -8,6 +8,8 @@ import '../js/modules/switchImage.js';
 import '../js/modules/popup/popup.js';
 import '../js/modules/searchCatalog.js';
 import '../js/modules/menu/mobileMenu.js';
+import '../js/modules/mask.js';
+import '../js/modules/sendForm.js';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination, FreeMode, EffectFade, Autoplay} from 'swiper/modules';
@@ -116,6 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const closeAdBtn = document.getElementById("close-ad");
 
-closeAdBtn.addEventListener("click", () => {
+closeAdBtn?.addEventListener("click", () => {
   document.querySelector('.popup-ad').style.display = 'none';
 })

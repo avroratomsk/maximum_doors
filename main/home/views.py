@@ -11,42 +11,42 @@ from reviews.models import Reviews
 from django.http import JsonResponse
 from django.db.models import Q
 
-# def callback(request):
-#   if request.method == "POST":
-#     form = CallbackForm(request.POST)
-#     if form.is_valid():
-#       name  = form.cleaned_data['name']
-#       phone = form.cleaned_data['phone']
-#       title = 'Заказ обратного звонка'
-#       messages = "Заказ обратного звонка:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n"
-#
-#       email_callback(messages, title)
-#
-#       return JsonResponse({"success": "success"})
-#   else:
-#     return JsonResponse({'status': "error", 'errors': form.errors})
-#
-#   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
-#
-# def contact_form(request):
-#   if request.method == "POST":
-#     form = ContactForm(request.POST)
-#     if form.is_valid():
-#       name  = form.cleaned_data['name']
-#       phone = form.cleaned_data['phone']
-#       social = form.cleaned_data['social']
-#       title = 'Заказ обратного звонка'
-#       messages = "Заказ обратного звонка:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n" + "\n" + "Способ связи: " + str(social) + "\n"
-#
-#       email_callback(messages, title)
-#
-#       return JsonResponse({"success": "success"})
-#     else:
-#       print(form)
-#   else:
-#     return JsonResponse({'status': "error", 'errors': form.errors})
-#
-#   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+def callback(request):
+  if request.method == "POST":
+    form = CallbackForm(request.POST)
+    if form.is_valid():
+      name  = form.cleaned_data['name']
+      phone = form.cleaned_data['phone']
+      print(f'{name} - {phone}')
+      title = 'Заказ обратного звонка'
+      messages = "Заказ обратного звонка:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n"
+
+      email_callback(messages, title)
+
+      return JsonResponse({"success": "success"})
+  else:
+    return JsonResponse({'status': "error", 'errors': form.errors})
+
+  return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+def contact_form(request):
+  if request.method == "POST":
+    form = ContactForm(request.POST)
+    if form.is_valid():
+      name  = form.cleaned_data['name']
+      phone = form.cleaned_data['phone']
+      title = 'Заказ обратного звонка'
+      messages = "Заказ обратного звонка:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n"
+
+      email_callback(messages, title)
+
+      return JsonResponse({"success": "success"})
+    else:
+      print(form)
+  else:
+    return JsonResponse({'status': "error", 'errors': form.errors})
+
+  return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 #
 # def service_form(request):
 #   if request.method == "POST":
