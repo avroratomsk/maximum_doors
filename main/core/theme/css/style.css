@@ -2244,6 +2244,7 @@ body._lock::after {
   color: white;
   font-size: 14px;
   border-radius: 15px;
+  z-index: 99;
 }
 
 .popup-ad .close {
