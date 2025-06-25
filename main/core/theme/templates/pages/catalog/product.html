@@ -1,9 +1,14 @@
 {% extends "base.html" %} {% load static %} {% load thumbnail %}
 {% block title %}
-{{ product.meta_title}}
+{% if product.meta_title %}{{ product.meta_title }}{% else %}Купить {{ product.name }} в Самаре | Магазин “Максимум”{% endif %}
 {% endblock %}
 {% block description %}
+{% if product.description %}
 {{ product.meta_description}}
+{% else %}
+Купить {{ product.category }} - {{ product.name }} в Самаре в магазине “Максимум”. {{ product.name }} по лучшим ценам с
+установкой и доставкой по городу. Закажите {{ product.name }} в {{ product.category }}  на официальном сайте “Максимум”
+{% endif %}
 {% endblock %}
 
 {% block keywords %}
