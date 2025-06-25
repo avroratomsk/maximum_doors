@@ -122,7 +122,7 @@ const metaFields = document.querySelectorAll('.meta_field');
 
 metaFields?.forEach(item => {
   let parentItem = item.closest('.form__group').querySelector('.meta-lenght');
-  if (item.value <= 0) {
+  if (item.value <= 0 && parentItem) {
     parentItem.innerText = 0;
   } else {
     parentItem.innerText = item.value.length;

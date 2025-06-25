@@ -8,7 +8,7 @@ try:
   email_clients = BaseSettings.objects.get().email
   print(email_clients)
 except:
-  email_clients = 'saniagolovanev@gmail.com1'
+  email_clients = 'saniagolovanev@gmail.com'
   print(email_clients)
   
 
