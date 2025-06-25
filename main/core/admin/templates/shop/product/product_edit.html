@@ -43,6 +43,13 @@
                 {{ form.price }} {{ form.price.errors }}
               </div>
               <div class="form__group">
+                <label for="{{ form.sale.id_for_label }}" class="form__controls-label">
+                  <span>*</span>
+                  Скидка :
+                </label>
+                {{ form.sale }} {{ form.sale.errors }}
+              </div>
+              <div class="form__group">
                 <label for="{{ form.manufacturer.id_for_label }}" class="form__controls-label">
                   Производитель:
                 </label>
@@ -50,18 +57,56 @@
               </div>
               <div class="form__group">
                 <label for="{{ form.manufacturer_description.id_for_label }}" class="form__controls-label">
-                  Производитель:
+                  Описание производителя:
                 </label>
                 {{ form.manufacturer_description }} {{ form.manufacturer_description.errors }}
               </div>
               <div class="form__group">
                 <label for="{{ form.installment.id_for_label }}" class="form__controls-label">
-                  Описание производитель:
+                  Рассрочка:
                 </label>
                 {{ form.installment }} {{ form.installment.errors }}
               </div>
-            </div>
+              <div class="form__group">
+                <label for="{{ form.colors.id_for_label }}" class="form__controls-label">
+                  Цветовая схема:
+                </label>
+                {{ form.colors }} {{ form.colors.errors }}
+              </div>
+              <div class="form__group">
+                <label for="{{ form.quantity.id_for_label }}" class="form__controls-label">
+                  Количество :
+                </label>
+                {{ form.quantity }} {{ form.quantity.errors }}
+              </div>
+              <div class="form__group">
+                <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label">
+                  Количество купленных :
+                </label>
+                {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
+              </div>
+              <div class="form__group">
+                <label for="{{ form.sale.id_for_label }}" class="form__controls-label">
+                  <span>*</span>
+                  Цена со скидкой :
+                </label>
+                {{ form.sale }} {{ form.sale.errors }}
+              </div>
 
+              <div class="form__group">
+                <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label">
+                  Количество купленных :
+                </label>
+                {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
+              </div>
+
+              <div class="form__group">
+                <label for="{{ form.quantity.id_for_label }}" class="form__controls-label">
+                  Количество товара в наличии :
+                </label>
+                {{ form.quantity }} {{ form.quantity.errors }}
+              </div>
+            </div>
             <div class="form__group">
               <label for="{{ form.description.id_for_label }}" class="form__controls-label"> Полное описание : </label>
               {{ form.description }} {{ form.description.errors }}
@@ -74,28 +119,8 @@
             </div>
             <div class="product-field"></div>
             <div class="product-block__plus form__btn">Добавить изрбражение</div>
-            <div class="form__grid">
-              <div class="form__group">
-                <label for="{{ form.sale.id_for_label }}" class="form__controls-label">
-                  <span>*</span>
-                  Цена со скидкой :
-                </label>
-                {{ form.sale }} {{ form.sale.errors }}
-              </div>
-
-              <div class="form__group">
-                <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label"> Количество
-                  купленных : </label>
-                {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
-              </div>
-
-              <div class="form__group">
-                <label for="{{ form.quantity.id_for_label }}" class="form__controls-label"> Количество товара в наличии
-                  : </label>
-                {{ form.quantity }} {{ form.quantity.errors }}
-              </div>
-            </div>
           </div>
+
           <div class="page-content__col">
             <div class="form__group">
               <label for="{{ form.slug.id_for_label }}" class="form__controls-label">
@@ -108,10 +133,10 @@
               <label for="{{ form.category.id_for_label }}" class="form__controls-label">Выбор категории :</label>
               {{ form.category }} {{ form.category.errors }}
             </div>
-<!--            <div class="form__group">-->
-<!--              <label for="{{ form.categories.id_for_label }}" class="form__controls-label">Выбор категории :</label>-->
-<!--              {{ form.categories }} {{ form.categories.errors }}-->
-<!--            </div>-->
+            <!--            <div class="form__group">-->
+            <!--              <label for="{{ form.categories.id_for_label }}" class="form__controls-label">Выбор категории :</label>-->
+            <!--              {{ form.categories }} {{ form.categories.errors }}-->
+            <!--            </div>-->
             <div class="form__group form__group-image">
               <label for="{{ form.image.id_for_label }}" class="form__controls-label">Выбор изображения товара :</label>
               {{ form.image }} {{ form.image.errors }}
@@ -171,7 +196,6 @@
         <div class="page-content__row">
           <div class="page-content__onecol">
             <div class="page-content__char" id="paste-char">
-
               {% for char in all_chars %}
               <div class="form__group-char">
                 <input type="text" name="old_char_id" value="{{ char.id }}" hidden/>

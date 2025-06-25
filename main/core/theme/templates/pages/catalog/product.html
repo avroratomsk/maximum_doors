@@ -121,6 +121,14 @@
           </div>
         </div>
       </div>
+      {% if product.manufacturer_description %}
+      <div class="text">
+        <h2>Описание производителя</h2>
+        <p>
+          {{ product.manufacturer_description }}
+        </p>
+      </div>
+      {% endif %}
       <div class="related-products">
         <h2 class="related-products__title">Товары для вас</h2>
         <div class="best-choice__grid products-list">

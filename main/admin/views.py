@@ -260,13 +260,13 @@ def product_edit(request, pk):
 
       return redirect(request.META.get('HTTP_REFERER'))
     else:
-      return render(request, 'shop/product/product_edit.html', {'form': form_new})
+      return render(request, 'common-template/template-edit-add-page.html', {'form': form_new})
   context = {
     "form":form,
     "all_chars": all_chars,
     "product_image": product_image,
   }
-  return render(request, "shop/product/product_edit.html", context)
+  return render(request, "common-template/template-edit-add-page.html", context)
 
 def product_add(request):
   form = ProductForm()
@@ -1101,15 +1101,14 @@ def admin_office_edit(request, pk):
     if form.is_valid():
       form.save()
       return redirect(request.META.get('HTTP_REFERER'))
-    else:
-      return render(request, "template-page/office_page_edit.html", {"form": form})
+    else:return render(request, "common-template/template-edit-add-page.html", {"form": form})
 
   context = {
     "form": OfficeForm(instance=item),
     "item": item
   }
 
-  return render(request, "template-page/office_page_edit.html", context)
+  return render(request, "common-template/template-edit-add-page.html", context)
 
 def admin_office_delete(request, pk):
   office = SalesOffices.objects.get(id=pk)

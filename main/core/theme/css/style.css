@@ -2220,8 +2220,30 @@ body._lock::after {
   line-height: 130%;
 }
 
+.text h1,
+.text h2,
+.text h3,
+.text h4,
+.text h5,
+.text h6 {
+  line-height: 120%;
+  margin-bottom: 10px;
+}
+
 .text h1 {
   font-size: 35px;
+}
+
+.text h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.text p {
+  line-height: 150%;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
 }
 
 .popup-ad {

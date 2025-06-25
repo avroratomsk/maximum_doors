@@ -31,10 +31,15 @@
               {{ form.name }} {{ form.name.errors }}
             </div>
             <div class="form__grid">
+
+              {% if form.article %}
               <div class="form__group">
                 <label for="{{ form.article.id_for_label }}" class="form__controls-label">Артикул: </label>
                 {{ form.article }} {{ form.article.errors }}
               </div>
+              {% endif %}
+
+              {% if form.price %}
               <div class="form__group">
                 <label for="{{ form.price.id_for_label }}" class="form__controls-label">
                   <span>*</span>
@@ -42,6 +47,9 @@
                 </label>
                 {{ form.price }} {{ form.price.errors }}
               </div>
+              {% endif %}
+
+              {% if form.sale %}
               <div class="form__group">
                 <label for="{{ form.sale.id_for_label }}" class="form__controls-label">
                   <span>*</span>
@@ -49,42 +57,54 @@
                 </label>
                 {{ form.sale }} {{ form.sale.errors }}
               </div>
+              {% endif %}
+
+              {% if form.manufacturer %}
               <div class="form__group">
                 <label for="{{ form.manufacturer.id_for_label }}" class="form__controls-label">
                   Производитель:
                 </label>
                 {{ form.manufacturer }} {{ form.manufacturer.errors }}
               </div>
+              {% endif %}
+
+              {% if form.manufacturer_description %}
               <div class="form__group">
                 <label for="{{ form.manufacturer_description.id_for_label }}" class="form__controls-label">
                   Описание производителя:
                 </label>
                 {{ form.manufacturer_description }} {{ form.manufacturer_description.errors }}
               </div>
+              {% endif %}
+
+              {% if form.installment %}
               <div class="form__group">
                 <label for="{{ form.installment.id_for_label }}" class="form__controls-label">
                   Рассрочка:
                 </label>
                 {{ form.installment }} {{ form.installment.errors }}
               </div>
+              {% endif %}
+
+              {% if form.colors %}
               <div class="form__group">
                 <label for="{{ form.colors.id_for_label }}" class="form__controls-label">
                   Цветовая схема:
                 </label>
                 {{ form.colors }} {{ form.colors.errors }}
               </div>
-              <div class="form__group">
-                <label for="{{ form.quantity.id_for_label }}" class="form__controls-label">
-                  Количество :
-                </label>
-                {{ form.quantity }} {{ form.quantity.errors }}
-              </div>
+              {% endif %}
+
+              {% if form.quantity_purchase %}
               <div class="form__group">
                 <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label">
                   Количество купленных :
                 </label>
                 {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
               </div>
+              {% endif %}
+
+              {% if form.sale %}
               <div class="form__group">
                 <label for="{{ form.sale.id_for_label }}" class="form__controls-label">
                   <span>*</span>
@@ -92,26 +112,54 @@
                 </label>
                 {{ form.sale }} {{ form.sale.errors }}
               </div>
+              {% endif %}
 
-              <div class="form__group">
-                <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label">
-                  Количество купленных :
-                </label>
-                {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
-              </div>
-
+              {% if form.quantity %}
               <div class="form__group">
                 <label for="{{ form.quantity.id_for_label }}" class="form__controls-label">
                   Количество товара в наличии :
                 </label>
                 {{ form.quantity }} {{ form.quantity.errors }}
               </div>
+              {% endif %}
+
+              {% if form.address %}
+              <div class="form__group">
+                <label for="{{ form.address.id_for_label }}" class="form__controls-label">
+                  Адрес :
+                </label>
+                {{ form.address }} {{ form.address.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.phone %}
+              <div class="form__group">
+                <label for="{{ form.phone.id_for_label }}" class="form__controls-label">
+                  Номер телефона :
+                </label>
+                {{ form.phone }} {{ form.phone.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.time_work %}
+              <div class="form__group">
+                <label for="{{ form.time_work.id_for_label }}" class="form__controls-label">
+                  Режим работы :
+                </label>
+                {{ form.time_work }} {{ form.time_work.errors }}
+              </div>
+              {% endif %}
+
             </div>
+
+            {% if form.description %}
             <div class="form__group">
               <label for="{{ form.description.id_for_label }}" class="form__controls-label"> Полное описание : </label>
               {{ form.description }} {{ form.description.errors }}
             </div>
+            {% endif %}
 
+            {% if image_form %}
             <div class="form__group form__group-image">
               <label for="{{ image_form.src.id_for_label }}" class="form__controls-label"> Дополнительные изображения
                 : </label>
@@ -119,6 +167,7 @@
             </div>
             <div class="product-field"></div>
             <div class="product-block__plus form__btn">Добавить изрбражение</div>
+            {% endif %}
           </div>
 
           <div class="page-content__col">

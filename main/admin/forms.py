@@ -124,7 +124,7 @@ class GalleryCategorySettingsForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
     """ Form, отвечает за создание товара и редактирование товара"""
     # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
-    
+
     class Meta:
         model = Product
         fields = "__all__"
@@ -161,7 +161,7 @@ class ProductForm(forms.ModelForm):
                 'class': INPUT_CLASS,
             }),
             'installment': forms.Textarea(attrs={
-                'class': INPUT_CLASS, 
+                'class': INPUT_CLASS,
             }),
             'quantity': forms.NumberInput(attrs={
                 'class': INPUT_CLASS,
@@ -205,7 +205,7 @@ class ProductImageForm(forms.ModelForm):
             }),
             'src': CustomImageWidget(),
         }
-        
+
 class PostForm(forms.ModelForm):
     """ Form, отвечает за создание товара и редактирование товара"""
     # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
