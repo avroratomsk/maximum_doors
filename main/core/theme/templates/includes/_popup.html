@@ -40,7 +40,8 @@
         <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input/>
         <div class="form__agreement">
           <input type="checkbox" name="agreement" id="agreement-con" required>
-          <label for="agreement-con">Я согласен(а) с <a href="{% url 'politika' %}">политикой конфиденциальности</a></label>
+          <label for="agreement-con">Я согласен(а) с <a href="{% url 'politika' %}">политикой
+            конфиденциальности</a></label>
         </div>
         <button type="submit" class="form__button">Отправить</button>
       </form>
@@ -107,5 +108,32 @@
       <img src="{% static 'theme/mb/images/tick.png' %}" alt="Обратный звонок" title="Обратный звонок"/>
     </div>
     <p class="notification__success-text">Успешно</p>
+  </div>
+</div>
+
+
+<div id="test-okna" class="popup">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <div class="popup__top">
+        <button data-close type="button" class="popup__close close"></button>
+      </div>
+      {% if popup_type == "okna" %}
+      <h2 class="popup__title">Заполни форму и получи скидку 20%</h2>
+      {% endif %}
+      {% if popup_type == "mezhkomnatnyie-dveri" %}
+      <h2 class="popup__title">Заполни форму и получи скидку 10%</h2>
+      {% endif %}
+      {% if popup_type == "vhodnye-dveri" %}
+      <h2 class="popup__title">Заполни форму и получи скидку 10%</h2>
+      {% endif %}
+      <form action="" class="popup__form form" method="POST" id="okna-form">
+        {% csrf_token %}
+        <input type="text" name="name" class="form__input" placeholder="Ваше имя" required/>
+        <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input/>
+        <input type="hidden" name="page-name" value="">
+        <button type="submit" class="form__button">Отправить</button>
+      </form>
+    </div>
   </div>
 </div>
