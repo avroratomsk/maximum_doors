@@ -23,6 +23,8 @@ import uuid
 import numpy as np
 import math
 
+general_url_product = "/admin/product/"
+
 path = f"{BASE_DIR}/upload/upload.zip"
 path_to_excel = f"{BASE_DIR}/upload/upload.xlsx"
 folder = 'upload/'
@@ -242,6 +244,8 @@ def product_edit(request, pk):
   product_image = ProductImage.objects.filter(parent=product)
   all_chars = Properties.objects.filter(parent=product)
 
+
+
   form = ProductForm(instance=product)
 
 #   for ch in all_chars:
@@ -264,6 +268,8 @@ def product_edit(request, pk):
   context = {
     "form":form,
     "all_chars": all_chars,
+    "title": "Страница редактирования",
+    "url": general_url_product,
     "product_image": product_image,
   }
   return render(request, "common-template/template-edit-add-page.html", context)
@@ -277,13 +283,15 @@ def product_add(request):
       form_new.save()
       return redirect('admin_product')
     else:
-      return render(request, "shop/product/product_add.html", {"form": form_new})
+      return render(request, "common-template/template-edit-add-page.html", {"form": form_new})
 
   context = {
-    "form": form
+   "title": "Страница добавление",
+   "url": general_url_product,
+   "form": form
   }
 
-  return render(request, 'shop/product/product_add.html', context)
+  return render(request, 'common-template/template-edit-add-page.html', context)
 
 def product_delete(request,pk):
   product = Product.objects.get(id=pk)
@@ -593,8 +601,9 @@ def category_add(request):
   return render(request, "shop/category/category_add.html", context)
 
 def category_edit(request, pk):
-  categorys = Category.objects.get(id=pk)
-  form = CategoryForm(request.POST, request.FILES, instance=categorys)
+  category = Category.objects.get(id=pk)
+
+  form = CategoryForm(request.POST, request.FILES, instance=category)
   
   if request.method == "POST":
     
@@ -605,8 +614,8 @@ def category_edit(request, pk):
       return render(request, "shop/category/category_edit.html", {"form": form, 'image_path': image_path})
   
   context = {
-    "form": CategoryForm(instance=categorys),
-    "categorys": categorys
+    "form": CategoryForm(instance=category),
+    "categorys": category
   }
 
   return render(request, "shop/category/category_edit.html", context)

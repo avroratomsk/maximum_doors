@@ -13,6 +13,7 @@ import '../js/modules/sendForm.js';
 
 import Swiper from 'swiper';
 import {Navigation, Pagination, FreeMode, EffectFade, Autoplay} from 'swiper/modules';
+import {bodyLock, bodyUnLock} from "./modules/functions.js";
 
 
 const swiper_reviews = new Swiper('.index-reviews__slider', {
@@ -120,4 +121,29 @@ const closeAdBtn = document.getElementById("close-ad");
 
 closeAdBtn?.addEventListener("click", () => {
   document.querySelector('.popup-ad').style.display = 'none';
+})
+
+document.addEventListener("DOMContentLoaded", () => {
+  const timedCallbackForm = document.querySelector(".popup-centered");
+  const dataPopupId = timedCallbackForm.dataset.popupId;
+  const isPopupClosed = sessionStorage.getItem(`data-popup-id-${dataPopupId}`) === "true";
+
+
+  if (!isPopupClosed) {
+    setTimeout(() => {
+      bodyLock();
+      timedCallbackForm.classList.add("popup_show");
+    }, 2000);
+  }
+
+
+  const closeBtnTime = document.getElementById("close-btn-timeout");
+
+  const closePopupSetCookie = (e) => {
+    bodyUnLock();
+    timedCallbackForm.classList.remove("popup_show");
+    sessionStorage.setItem(`data-popup-id-${dataPopupId}`, "true");
+  }
+
+  closeBtnTime.addEventListener("click", closePopupSetCookie);
 })

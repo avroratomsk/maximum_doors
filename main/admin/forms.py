@@ -336,13 +336,7 @@ class HomeTemplateForm(forms.ModelForm):
   
   class Meta:
       model = HomeTemplate
-      fields = [
-          'banner',
-          'meta_h1',
-          'meta_title',
-          'meta_description',
-          'meta_keywords',
-      ]
+      fields = "__all__"
       labels = {
           'banner': 'Изображение банера',
           'meta_h1':'Заголвок первого уровня',

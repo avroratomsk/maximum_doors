@@ -31,9 +31,48 @@ body._lock::after {
   visibility: hidden;
   pointer-events: none;
 
-  .close{
+  .close {
     top: 0;
   }
+}
+
+.popup-centered {
+
+  .popup__wrapper {
+    justify-content: center;
+  }
+
+
+  //.popup-centered__content
+  &__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    padding: 20px;
+    background: #FFFFFF;
+  }
+
+  //.popup-centered__left
+  &__left {
+    flex: 0 0 50%;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  //.popup-centered__right
+  &__right {
+  }
+
+  .close {
+    top: 20px;
+    left: 90%;
+  }
+
 }
 
 .popup_show {
@@ -131,7 +170,7 @@ body._lock::after {
   }
 }
 
-.popup__contact{
+.popup__contact {
   height: calc(100vh - 100px);
   overflow-y: auto;
 

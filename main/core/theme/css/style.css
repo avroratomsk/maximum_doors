@@ -1911,6 +1911,44 @@ body._lock::after {
   top: 0;
 }
 
+.popup-centered .popup__wrapper {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.popup-centered__content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+  max-width: 1000px;
+  padding: 20px;
+  background: #FFFFFF;
+}
+
+.popup-centered__left {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+}
+
+.popup-centered__left img {
+  max-width: 100%;
+}
+
+.popup-centered .close {
+  top: 20px;
+  left: 90%;
+}
+
 .popup_show {
   z-index: 9999;
   visibility: visible;

@@ -6,6 +6,7 @@
 {% block description %}{{ shop_setup.meta_description }}{% endblock %}
 {% block keywords %}{{ shop_setup.meta_keywords }}{% endblock %}
 {% block pixels_code %}
+
 <!-- Pixel -->
 <script type="text/javascript">
   (function (d, w) {
@@ -18,6 +19,7 @@
   })(document, window);
 </script>
 <!-- /Pixel -->
+
 {% endblock %}
 {% block content %}
 
@@ -49,6 +51,17 @@
           </a>
           <a href="{{ cat.get_absolute_url }}" class="category__name">{{ cat.name }}</a>
         </div>
+
+        {% for c in cat.children.all %}
+        <div class="category__item">
+          <a href="{{ c.get_absolute_url }}" class="category__image">
+            {% if cat.image %}
+            <img src="{{ c.image.url }}" alt="{{ c.name }}" title="{{ c.name }}">
+            {% endif %}
+          </a>
+          <a href="{{ c.get_absolute_url }}" class="category__name">{{ c.name }}</a>
+        </div>
+        {% endfor %}
         {% endfor %}
         {% endif %}
         <div class="category__item">

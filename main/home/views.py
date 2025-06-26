@@ -97,12 +97,18 @@ def index(request):
 
   products = Product.objects.filter(status=True)[:4]
   posts = Post.objects.filter(status=True)
+  text_sale = home_page.sale_text
 
   context = {
     "home_page": home_page,
     "products": products,
-    "posts": posts
+    "posts": posts,
   }
+
+  if text_sale:
+    context["page_name"] = "home"
+    context["text_sale"] = text_sale
+
   return render(request, 'pages/index.html', context)
 
 def about(request):
@@ -139,10 +145,15 @@ def production(request):
   except:
     settings = Production()
 
+  text_sale = settings.sale_text
+
   context = {
     "settings": settings,
-    "popup_type": "okna"
   }
+
+  if text_sale:
+    context["page_name"] = "okna"
+    context["text_sale"] = text_sale
 
   return render(request, "pages/production.html", context)
 

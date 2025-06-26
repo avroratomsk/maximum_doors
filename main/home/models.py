@@ -22,6 +22,7 @@ class HomeTemplate(SingletonModel):
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
+  sale_text = models.CharField(max_length=250, blank=True, null=True, verbose_name="Текст скидки в всплывающем окне")
 
 class ContactTemplate(SingletonModel):
   activate_page = models.BooleanField(default=False, verbose_name="Включить страницу")
@@ -99,6 +100,7 @@ class Production(models.Model):
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
+  sale_text = models.CharField(max_length=250, blank=True, null=True, verbose_name="Текст скидки в всплывающем окне")
 
 class Delivery(models.Model):
   description = models.TextField(blank=True, null=True, verbose_name="Текст на странице")
