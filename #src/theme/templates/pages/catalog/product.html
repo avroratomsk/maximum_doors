@@ -12,7 +12,12 @@
 {% endblock %}
 
 {% block keywords %}
+{% if product.meta_keywords %}
 {{ product.meta_keywords}}
+{% else %}
+{{ product.name }},{{ product.category }}
+{% endif %}
+
 {% endblock %}
 
 {% block content %}
