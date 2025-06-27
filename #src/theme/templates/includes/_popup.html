@@ -72,39 +72,6 @@
 </div>
 
 
-<div id="okna" class="popup">
-  <div class="popup__wrapper">
-    <div class="popup__content">
-      <div class="popup__top">
-        <button data-close type="button" class="popup__close close"></button>
-      </div>
-      <div class="popup__loading">
-        <img src="{% static 'theme/mb/images/loading.gif' %}" alt="Загрузка" title="Загрузка"/>
-      </div>
-      {% if popup_type == "okna" %}
-      <h2 class="popup__title">Заполни форму и получи скидку 20%</h2>
-      {% endif %}
-
-      {% if popup_type == "mezhkomnatnyie-dveri" %}
-      <h2 class="popup__title">Заполни форму и получи скидку 10%</h2>
-      {% endif %}
-
-      {% if popup_type == "vhodnye-dveri" %}
-      <h2 class="popup__title">Заполни форму и получи скидку 10%</h2>
-      {% endif %}
-
-      <form action="" class="popup__form form" method="POST" id="okna-form">
-        {% csrf_token %}
-        <input type="text" name="name" class="form__input" placeholder="Ваше имя" required/>
-        <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input/>
-        <input type="hidden" name="page-name" value="">
-        <button type="submit" class="form__button">Отправить</button>
-      </form>
-    </div>
-  </div>
-</div>
-
-
 <div id="success" class="notification">
   <div class="notification__content">
     <div class="notification__success-image">
