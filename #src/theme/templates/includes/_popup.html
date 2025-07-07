@@ -105,3 +105,14 @@
 </div>
 {% endif %}
 
+{% if page_name %}
+<div id="stock" class="notice notice--offer" data-popup-id="{{ page_name }}">
+  <div class="notice__wrapper">
+    <div class="notice__content">
+      <p class="notice__percent">%</p>
+      <p class="notice__text">{{ text_sale }}</p>
+    </div>
+  </div>
+</div>
+{% endif %}
+

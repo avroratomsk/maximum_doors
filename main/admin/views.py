@@ -244,12 +244,7 @@ def product_edit(request, pk):
   product_image = ProductImage.objects.filter(parent=product)
   all_chars = Properties.objects.filter(parent=product)
 
-
-
   form = ProductForm(instance=product)
-
-#   for ch in all_chars:
-#     print(f'{ch.name} - {ch.value}')
 
   form_new = ProductForm(request.POST, request.FILES, instance=product)
   if request.method == 'POST':

@@ -147,3 +147,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   closeBtnTime.addEventListener("click", closePopupSetCookie);
 })
+
+const stockBtn = document.getElementById("stock");
+
+stockBtn?.addEventListener("click", () => {
+  bodyLock();
+  document.getElementById('test').classList.add('popup_show');
+})
