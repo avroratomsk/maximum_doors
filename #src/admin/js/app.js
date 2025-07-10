@@ -151,25 +151,23 @@ function checkLengthSymbol(lengthSymbol, item) {
 };
 
 
-document.addEventListener('click', function (event) {
-  if (event.target.classList.contains('form__plus')) {
-    const blockPasteChar = document.getElementById('paste-char');
-    let char_name_id = document.getElementById('id_char_name').innerHTML;
-    console.log(char_name_id);
-    blockPasteChar.innerHTML += `
-    <div class="form__group-char">
-      <label for="{{ product_char_form.char_name.id_for_label }}" class="form__controls-label">
-        Название характеристики <span>:</span>
-      </label>
-      <select name="text_name" class="form__controls" placeholder="Название характеристики" id="id_name">${char_name_id}</select>
-    
-    <label for="id_char_value">Значение:</label>
-    <input type="text" name="char_value" class="form__controls" placeholder="Значение" required="" id="id_char_value">
-    <div class="form__remove">
-      Удалить
-    </div>
-    </div>`
-  }
-});
+const addPropertyBtn = document.getElementById("add-property");
+addPropertyBtn?.addEventListener("click", (e) => {
+  const blockPasteChar = document.getElementById('paste-char');
+
+  let newCharGroup = document.createElement("div");
+  newCharGroup.classList.add("form__group-char");
+  newCharGroup.innerHTML = `
+      <label for="id_new_name" class="form__controls-label">Название характеристики <span>:</span></label>
+      <input name="new_name" class="form__controls" id="id_new_name" value="">
+
+      <label for="">Значение:</label>
+      <input type="text" name="new_value" class="form__controls" required id="" />
+
+      <button type="button" class="form__remove">Удалить</button>
+  `;
+
+  blockPasteChar.appendChild(newCharGroup)
+})
 
 

@@ -3,7 +3,7 @@ from home.models import BaseSettings, Works, Production, Gallery, GalleryCategor
 from blog.models import BlogSettings, Post, BlogCategory
 from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
-from shop.models import Category, ColorProduct, Product, ProductImage, ShopSettings
+from shop.models import Category, ColorProduct, Product, ProductImage, ShopSettings,Properties
 from .widgets import CustomImageWidget
 
 INPUT_CLASS = "form__controls"
@@ -184,6 +184,24 @@ class ProductForm(forms.ModelForm):
             }),
             'meta_keywords': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
+            }),
+        }
+
+class ProductPropertiesForm(forms.ModelForm):
+    class Meta:
+        model = Properties
+        fields = "__all__"
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+                'placeholder': 'Название характеристики',
+                'id': 'id_char_name',
+
+            }),
+            'value': forms.TextInput(attrs={
+                'class': INPUT_CLASS,
+                'placeholder': 'Значение',
+                'id': 'id_char_value'
             }),
         }
 

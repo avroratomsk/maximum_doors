@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib import messages
-from admin.forms import ContactTemplateForm,ProductionForm, WorksForm, AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
+from admin.forms import ContactTemplateForm, ProductPropertiesForm, ProductionForm, WorksForm, AboutTemplateForm, OfficeForm, DeliveryForm, BlogSettingsForm, CategoryForm, ColorProductForm, GalleryCategoryForm, GalleryCategorySettingsForm, GalleryForm, GlobalSettingsForm, HomeTemplateForm, PostForm, BlogCategoryForm, ProductForm, ProductImageForm, RobotsForm, ServiceForm, ServicePageForm, ShopSettingsForm, StockForm, SubdomainForm, UploadFileForm
 from home.models import BaseSettings,Production, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, About, Delivery, SalesOffices, ContactTemplate, Works
 from blog.models import BlogSettings, Post, BlogCategory
 from main.settings import BASE_DIR
@@ -243,28 +243,55 @@ def product_edit(request, pk):
   product = Product.objects.get(id=pk)
   product_image = ProductImage.objects.filter(parent=product)
   all_chars = Properties.objects.filter(parent=product)
+  properties_form = ProductPropertiesForm()
 
   form = ProductForm(instance=product)
 
   form_new = ProductForm(request.POST, request.FILES, instance=product)
+
   if request.method == 'POST':
-    if form_new.is_valid():
-      form_new.save()
-      product = Product.objects.get(slug=request.POST['slug'])
-      images = request.FILES.getlist('src')
+      if form_new.is_valid():
+          form_new.save()
+          product = Product.objects.get(id=pk)
 
-      for image in images:
-          img = ProductImage(parent=product, src=image)
-          img.save()
+          # Добавление новых характеристик
+          prop_names = request.POST.getlist('new_name')
+          prop_values = request.POST.getlist('new_value')
 
-      return redirect(request.META.get('HTTP_REFERER'))
-    else:
-      return render(request, 'common-template/template-edit-add-page.html', {'form': form_new})
+          for i in range(min(len(prop_names), len(prop_values))):
+            Properties.objects.create(
+                name=prop_names[i].strip(),
+                value=prop_values[i].strip(),
+                parent=product
+            )
+
+          # Обновление старых характеристик
+          old_ids = request.POST.getlist('old_id')
+          old_names = request.POST.getlist('old_name')
+          old_values = request.POST.getlist('old_value')
+
+          for i in range(min(len(old_ids), len(old_names), len(old_values))):
+              prop = Properties.objects.get(id=old_ids[i])
+              prop.name = old_names[i]
+              prop.value = old_values[i]
+              prop.save()
+
+
+          images = request.FILES.getlist('src')
+
+          for image in images:
+              img = ProductImage(parent=product, src=image)
+              img.save()
+
+          return redirect(request.META.get('HTTP_REFERER'))
+      else:
+          return render(request, 'common-template/template-edit-add-page.html', {'form': form_new})
   context = {
     "form":form,
     "all_chars": all_chars,
     "title": "Страница редактирования",
     "url": general_url_product,
+    "properties_form":properties_form,
     "product_image": product_image,
   }
   return render(request, "common-template/template-edit-add-page.html", context)
