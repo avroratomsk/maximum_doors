@@ -26,6 +26,8 @@ urlpatterns = [
     path('product/edit/<int:pk>/', views.product_edit, name='product_edit'),
     path('product/delete/<int:pk>/', views.product_delete, name='product_delete'),
 
+    path('product/delete_properties/<int:pk>/', views.delete_properties, name='delete_properties'),
+
     #URl - отвечающие за отображение отзывов, редактирование и удаление отзывов
     path('admin-reviews/', admin.admin_reviews, name='admin_reviews'),
     path('admin-reviews/add/', admin.admin_reviews_add, name='admin_reviews_add'),

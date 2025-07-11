@@ -321,6 +321,12 @@ def product_delete(request,pk):
 
   return redirect('admin_product')
 
+def delete_properties(request,pk):
+  propertie = Properties.objects.get(id=pk)
+  propertie.delete()
+
+  return redirect(request.META.get('HTTP_REFERER'))
+
 def admin_home_page(request):
   try:
     settings = HomeTemplate.objects.get()
