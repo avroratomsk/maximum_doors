@@ -80,6 +80,11 @@ if (oknaTest) {
   sendForm(oknaTest, "test");
 }
 
+const orderForm = document.getElementById("order-form");
+if (orderForm) {
+  sendForm(orderForm, "leave-request");
+}
+
 const contactForm = document.getElementById("contact");
 if (contactForm) {
   sendForm(contactForm);

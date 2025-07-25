@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from home.models import BaseSettings, Production, Works, About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery, ContactTemplate
 from cart.models import Cart
-from home.forms import CallbackForm,OknaForm, ContactForm, OrderSericeForm, ReviewsPopupForm
+from home.forms import CallbackForm,OknaForm, ContactForm, OrderForm, ReviewsPopupForm
 from home.callback_send import email_callback
 from blog.models import Post
 from shop.models import Category, Product
@@ -17,16 +17,37 @@ def callback(request):
     if form.is_valid():
       name  = form.cleaned_data['name']
       phone = form.cleaned_data['phone']
+
       title = 'Заказ обратного звонка'
       messages = "Заказ обратного звонка:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n"
 
       email_callback(messages, title)
 
       return JsonResponse({"success": "success"})
-  else:
-    return JsonResponse({'status': "error", 'errors': form.errors})
+    else:
+      return JsonResponse({'status': "error", 'errors': form.errors})
 
   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+def order_form(request):
+  if request.method == "POST":
+    form = OrderForm(request.POST)
+    if form.is_valid():
+      name  = form.cleaned_data['name']
+      phone = form.cleaned_data['phone']
+      product = form.cleaned_data['product']
+
+      title = 'Заявка с заказом'
+      messages = "Заявка с заказом:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n" + "Товар: " + str(product) + "\n"
+
+      email_callback(messages, title)
+
+      return JsonResponse({"success": "success"})
+    else:
+      return JsonResponse({'status': "error", 'errors': form.errors})
+
+  return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
 
 def contact_form(request):
   if request.method == "POST":
@@ -41,9 +62,7 @@ def contact_form(request):
 
       return JsonResponse({"success": "success"})
     else:
-      print(form)
-  else:
-    return JsonResponse({'status': "error", 'errors': form.errors})
+      return JsonResponse({'status': "error", 'errors': form.errors})
 
   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 

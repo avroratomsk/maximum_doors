@@ -61,7 +61,7 @@ class ContactForm(forms.Form):
       }
   ))
   
-class OrderSericeForm(forms.Form):
+class OrderForm(forms.Form):
   name = forms.CharField(widget=forms.TextInput(
     attrs={
       'placeholder': 'Ваше имя',
@@ -77,7 +77,7 @@ class OrderSericeForm(forms.Form):
       }
   ))
   
-  service = forms.CharField()
+  product = forms.CharField()
   
 class ConsultationForm(forms.Form):
   name = forms.CharField(widget=forms.TextInput(
