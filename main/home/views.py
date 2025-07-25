@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from home.models import BaseSettings, Production, Works, About, Gallery, GalleryCategory, HomeTemplate, RobotsTxt, Stock, Delivery, ContactTemplate
 from cart.models import Cart
-from home.forms import CallbackForm, ContactForm, OrderSericeForm, ReviewsPopupForm
+from home.forms import CallbackForm,OknaForm, ContactForm, OrderSericeForm, ReviewsPopupForm
 from home.callback_send import email_callback
 from blog.models import Post
 from shop.models import Category, Product
@@ -17,7 +17,6 @@ def callback(request):
     if form.is_valid():
       name  = form.cleaned_data['name']
       phone = form.cleaned_data['phone']
-      print(f'{name} - {phone}')
       title = 'Заказ обратного звонка'
       messages = "Заказ обратного звонка:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n"
 
@@ -47,46 +46,24 @@ def contact_form(request):
     return JsonResponse({'status': "error", 'errors': form.errors})
 
   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
-#
-# def service_form(request):
-#   if request.method == "POST":
-#     form = OrderSericeForm(request.POST)
-#     if form.is_valid():
-#       name  = form.cleaned_data['name']
-#       phone = form.cleaned_data['phone']
-#       pagename = form.cleaned_data['service']
-#       title = 'Заказ обратного звонка'
-#       messages = "Заказ обратного звонка:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефон: " + str(phone) + "\n" + "Заказ услуги: " + str(pagename) + "\n"
-#
-#       email_callback(messages, title)
-#
-#       return JsonResponse({"success": "success"})
-#     else:
-#       print(form)
-#   else:
-#     return JsonResponse({'status': "error", 'errors': form.errors})
-#
-#   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
-#
-# def consultation(request):
-#   if request.method == "POST":
-#     form = OrderSericeForm(request.POST)
-#     if form.is_valid():
-#       name  = form.cleaned_data['name']
-#       phone = form.cleaned_data['phone']
-#       pagename = form.cleaned_data['service']
-#       title = 'Консультация'
-#       messages = "Консультация:" + "\n" + "Имя: " +str(name) + "\n" + "Телефон: " + str(phone) + "\n" + "Проконсультировать по : " + str(pagename) + "\n"
-#
-#       email_callback(messages, title)
-#
-#       return JsonResponse({"success": "success"})
-#     else:
-#       print(form)
-#   else:
-#     return JsonResponse({'status': "error", 'errors': form.errors})
-#
-#   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+
+def okna_form(request):
+   if request.method == "POST":
+      form = OknaForm(request.POST)
+      if form.is_valid():
+        name  = form.cleaned_data['name']
+        phone = form.cleaned_data['phone']
+        page_name = form.cleaned_data['page_name']
+        title = 'Форма получения скидки'
+        messages = "Форма получения скидки:" + "\n" + "Имя: " +str(name) + "\n" + "Номер телефона: " + str(phone) + "\n" + "Скидка: " + str(page_name)
+
+        email_callback(messages, title)
+
+        return JsonResponse({"success": "success"})
+      else:
+        return JsonResponse({'status': "error", 'errors': form.errors})
+
+   return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
 
 
 def index(request):

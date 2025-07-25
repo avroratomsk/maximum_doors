@@ -1,4 +1,5 @@
 import "./functions.js"
+import {bodyUnLock} from "./functions.js";
 
 // Функция для поиска английских букв в поле ввода
 function containsEnglishLetters(str) {
@@ -33,7 +34,6 @@ function sendForm(form, popupName = "default") {
     const eventForm = event.target;
     const formData = new FormData(eventForm);
     const csrfToken = eventForm.querySelector("[name=csrfmiddlewaretoken]").value;
-
     let dataObj = {};
     for (let [key, value] of formData.entries()) {
       dataObj[key] = value;
@@ -50,10 +50,14 @@ function sendForm(form, popupName = "default") {
         .then(response => response.json())
         .then(data => {
           form.reset();
+
           if (popupName !== "default") {
-            document.documentElement.classList.remove("popup-show");
-            // bodyUnLock();
+            console.log(popupName)
+            // document.documentElement.classList.remove("popup-show");
+            bodyUnLock();
+            console.log(document.getElementById(popupName))
             document.getElementById(popupName).classList.remove("popup_show");
+            alert("Форма успешно отправлена")
           }
           // document.getElementById("success").classList.add("notification_show");
         })
@@ -65,12 +69,18 @@ function sendForm(form, popupName = "default") {
 }
 
 const callBackForm = document.getElementById("callback-form");
-console.log(callBackForm)
+
 if (callBackForm) {
-  sendForm(callBackForm, "leave-request");
+  sendForm(callBackForm, "callback");
 }
 
-const contactForm = document.getElementById("contact-form");
+const oknaTest = document.getElementById("okna-form-test");
+
+if (oknaTest) {
+  sendForm(oknaTest, "test");
+}
+
+const contactForm = document.getElementById("contact");
 if (contactForm) {
   sendForm(contactForm);
 }

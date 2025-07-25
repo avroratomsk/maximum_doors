@@ -17,6 +17,24 @@ class CallbackForm(forms.Form):
       "data-input"
       }
   ))
+
+class OknaForm(forms.Form):
+  name = forms.CharField(widget=forms.TextInput(
+    attrs={
+      'placeholder': 'Ваше имя',
+      'class': 'form__controls'
+      }
+  ))
+
+  phone = forms.CharField(widget=forms.TextInput(
+    attrs={
+      'placeholder': 'Ваш номер телефона',
+      'class': 'form__controls'
+      "data-input"
+      }
+  ))
+  page_name = forms.CharField(widget=forms.TextInput())
+
   
   
 class ContactForm(forms.Form):
