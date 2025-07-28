@@ -56,6 +56,10 @@ body._lock::after {
     max-width: 1000px;
     padding: 20px;
     background: #FFFFFF;
+
+    @media screen and (max-width: 670px) {
+      flex-direction: column;
+    }
   }
 
   //.popup-centered__left

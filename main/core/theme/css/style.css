@@ -9732,6 +9732,15 @@ body._lock::after {
   }
 }
 
+@media screen and (max-width: 670px) {
+  .popup-centered__content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 620px) {
   .footer__row {
     -webkit-box-orient: vertical;
