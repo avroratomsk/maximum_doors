@@ -12,6 +12,7 @@
     </div>
     <form action="." method="POST" class="form" enctype="multipart/form-data">
       {% csrf_token %}
+      {{ form.media }}
       <div class="page__head">
         <div class="page__head-tab">
           <button type="button" data-name="basic" class="page__head-btn _active">Основные</button>

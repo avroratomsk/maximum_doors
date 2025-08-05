@@ -46,7 +46,11 @@ class GlobalSettingsForm(forms.ModelForm):
         }),
         'meta_keywords': forms.TextInput(attrs={
             'class': INPUT_CLASS
-        })
+        }),
+        'description':CKEditor5Widget(
+            attrs={'class': 'django_ckeditor_5'},
+            config_name='extends'
+        )
     }
     
 class RobotsForm(forms.ModelForm):
@@ -80,7 +84,6 @@ class ShopSettingsForm(forms.ModelForm):
       }
       
 class BlogSettingsForm(forms.ModelForm):
-  
   class Meta:
       model = BlogSettings
       fields = "__all__"
@@ -99,6 +102,11 @@ class BlogSettingsForm(forms.ModelForm):
           'meta_keywords': forms.TextInput(attrs={
               'class': INPUT_CLASS
           }),
+          'text':CKEditor5Widget(
+              attrs={'class': 'django_ckeditor_5'},
+              config_name='extends'
+          )
+
       }
       
 class GalleryCategorySettingsForm(forms.ModelForm):
@@ -186,6 +194,7 @@ class ProductForm(forms.ModelForm):
             'meta_keywords': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
             }),
+
         }
 
 class ProductPropertiesForm(forms.ModelForm):
@@ -266,6 +275,10 @@ class PostForm(forms.ModelForm):
             "meta_keywords": forms.TextInput(attrs={
               "class":INPUT_CLASS,
             }),
+            'description': CKEditor5Widget(
+                attrs={'class': 'django_ckeditor_5'},
+                config_name='extends'
+            )
         }
 
 class BlogCategoryForm(forms.ModelForm):
@@ -342,9 +355,9 @@ class CategoryForm(forms.ModelForm):
         # "placeholder": "Meta keywords"
       }),
       'description':CKEditor5Widget(
-                      attrs={'class': 'django_ckeditor_5'},
-                      config_name='extends'  # используем расширенную конфигурацию
-                  )
+          attrs={'class': 'django_ckeditor_5'},
+          config_name='extends'
+      )
     }
 
     def __init__(self, *args, **kwargs):
@@ -361,13 +374,6 @@ class HomeTemplateForm(forms.ModelForm):
   class Meta:
       model = HomeTemplate
       fields = "__all__"
-      labels = {
-          'banner': 'Изображение банера',
-          'meta_h1':'Заголвок первого уровня',
-          'meta_title':'Meta title',
-          'meta_description':'Мета description',
-          'meta_keywords':'Meta keywords',
-      }
       widgets = {
           'name': forms.TextInput(attrs={
               'class': INPUT_CLASS
@@ -403,6 +409,9 @@ class ProductionForm(forms.ModelForm):
               'rows': 5
           }),
           'meta_keywords': forms.TextInput(attrs={
+              'class': INPUT_CLASS,
+          }),
+          'text_sale': forms.TextInput(attrs={
               'class': INPUT_CLASS,
           }),
       }
@@ -460,6 +469,14 @@ class AboutTemplateForm(forms.ModelForm):
           'meta_keywords': forms.TextInput(attrs={
               'class': INPUT_CLASS,
           }),
+          'description': CKEditor5Widget(
+             attrs={'class': 'django_ckeditor_5'},
+             config_name='extends'
+         ),
+         'description_two': CKEditor5Widget(
+            attrs={'class': 'django_ckeditor_5'},
+            config_name='extends'
+        )
       }
            
 
@@ -470,31 +487,7 @@ class StockForm(forms.ModelForm):
   
   class Meta:
     model = Stock
-    fields = [
-        'title',
-        'slug',
-        'description',
-        'validity',
-        'status',
-        'slider_status',
-        'image',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-    ]
-    labels = {
-        'title':'Название акции',
-        'slug': 'URL',
-        'validity':'Срок действия акции',
-        'description':'Текст коментария',
-        'status':'Статус публикации',
-        'slider_status':'Вывод на главный слайдер',
-        'image': 'Изображение акции',
-        'meta_title':'Meta title',
-        'untitle': 'Надзаголовок',
-        'meta_description':'Мета description',
-        'meta_keywords':'Meta keywords',
-    }
+    fields = "__all__"
     widgets = {
       'title': forms.TextInput(attrs={
         'class': INPUT_CLASS,
@@ -526,7 +519,11 @@ class StockForm(forms.ModelForm):
       }),
       'meta_keywords': forms.TextInput(attrs={
         'class': INPUT_CLASS
-      })
+      }),
+      'description': CKEditor5Widget(
+          attrs={'class': 'django_ckeditor_5'},
+          config_name='extends'
+      )
     }
 
 class ServicePageForm(forms.ModelForm):
@@ -593,7 +590,11 @@ class ServiceForm(forms.ModelForm):
       }),
       'meta_keywords': forms.TextInput(attrs={
         'class': INPUT_CLASS
-      })
+      }),
+      'description':CKEditor5Widget(
+         attrs={'class': 'django_ckeditor_5'},
+         config_name='extends'
+      )
     }
     
 class SubdomainForm(forms.ModelForm):
@@ -663,9 +664,13 @@ class WorksForm(forms.ModelForm):
     model = Works
     fields = "__all__"
     widgets = {
-#         'name': forms.TextInput(attrs={
-#           'class': INPUT_CLASS
-#         }),
+        'name': forms.TextInput(attrs={
+          'class': INPUT_CLASS
+        }),
+        'text': CKEditor5Widget(
+            attrs={'class': 'django_ckeditor_5'},
+            config_name='extends'
+        )
     }
     
 class GalleryCategoryForm(forms.ModelForm):
@@ -711,6 +716,14 @@ class DeliveryForm(forms.ModelForm):
         'meta_keywords': forms.TextInput(attrs={
           'class': INPUT_CLASS,
         }),
+        'description':CKEditor5Widget(
+            attrs={'class': 'django_ckeditor_5'},
+            config_name='extends'
+        ),
+        'description_two':CKEditor5Widget(
+            attrs={'class': 'django_ckeditor_5'},
+            config_name='extends'
+        )
     }
 
 class OfficeForm(forms.ModelForm):

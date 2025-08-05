@@ -48,6 +48,11 @@ ol {
   text-align: center;
 }
 
+.ck-editor-container .ck-content a {
+  text-decoration: underline;
+  color: #0a58ca;
+}
+
 .sidebar {
   position: fixed;
   top: 0;

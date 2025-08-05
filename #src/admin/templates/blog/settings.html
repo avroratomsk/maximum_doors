@@ -10,6 +10,7 @@
         </button>
       </div>
       {% csrf_token %}
+      {{ form.media }}
       <div class="page-content _show" id="seo">
         <!-- SEO страницы -->
         <div class="page-content__row">
@@ -33,6 +34,11 @@
               <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label"> Мета keywords :
               </label>
               {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.text.id_for_label }}" class="form__controls-label"> Текст на странице :
+              </label>
+              {{ form.text }} {{ form.text.errors }}
             </div>
           </div>
         </div>
