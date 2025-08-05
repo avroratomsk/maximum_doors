@@ -1457,6 +1457,10 @@ div._show {
   font-weight: 500;
 }
 
+.ck-editor {
+  max-width: 1200px;
+}
+
 @media screen and (max-width: 600px) {
   .table-row {
     display: -ms-grid;
