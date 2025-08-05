@@ -2307,6 +2307,10 @@ body._lock::after {
   margin-bottom: 25px;
 }
 
+.page-text a {
+  color: #0a58ca;
+}
+
 .page-text ul,
 .page-text ol {
   display: -webkit-box;
