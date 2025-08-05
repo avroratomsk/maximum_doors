@@ -47,7 +47,7 @@ class Product(models.Model):
   manufacturer_description = models.TextField(blank=True, null=True, verbose_name="Описание производителя")
   colors = models.CharField(max_length=250, null=True, blank=True, verbose_name="Цветовая схема")
   image = models.ImageField(upload_to="product_iamge", blank=True, null=True, verbose_name="Изображение товара")
-  price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Цена")
+  price = models.CharField(max_length=250, db_index=True, null=True, blank=True, verbose_name="Цена")
   installment = models.CharField(max_length=50, blank=True, null=True, verbose_name="Рассрочка")
   sale = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Скидка")
   quantity = models.PositiveIntegerField(default=0, verbose_name="Количество")

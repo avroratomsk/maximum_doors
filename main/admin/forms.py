@@ -163,7 +163,7 @@ class ProductForm(forms.ModelForm):
              'manufacturer_description': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
             }),
-            'price': forms.NumberInput(attrs={
+            'price': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
             }),
             'sale': forms.NumberInput(attrs={
