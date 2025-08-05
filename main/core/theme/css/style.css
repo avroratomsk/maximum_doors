@@ -2309,6 +2309,7 @@ body._lock::after {
 
 .page-text a {
   color: #0a58ca;
+  text-decoration: underline;
 }
 
 .page-text ul,
