@@ -2327,6 +2327,10 @@ body._lock::after {
   line-height: 150%;
 }
 
+.page-text strong {
+  font-weight: bold;
+}
+
 .text {
   padding: 120px 0px;
   line-height: 130%;

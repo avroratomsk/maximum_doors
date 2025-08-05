@@ -104,14 +104,15 @@
     </div>
     {% endif %}
 
-<!--    <div style="margin-top: 80px;">-->
-<!--      <div class="container">-->
-<!--        <div class="page-text">-->
-<!--          {{ category.description }}-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
+    {% if category.description %}
+    <div style="margin-top: 80px;">
+      <div class="container">
+        <div class="page-text">
+          {{ category.description|safe }}
+        </div>
+      </div>
     </div>
+    {% endif %}
   </section>
 </main>
 {% endblock content %}

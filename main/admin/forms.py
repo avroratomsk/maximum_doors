@@ -5,6 +5,7 @@ from subdomain.models import Subdomain, SubdomainContact
 from service.models import Service, ServicePage
 from shop.models import Category, ColorProduct, Product, ProductImage, ShopSettings,Properties
 from .widgets import CustomImageWidget
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 INPUT_CLASS = "form__controls"
 
@@ -295,6 +296,7 @@ class BlogCategoryForm(forms.ModelForm):
             'meta_keywords': forms.TextInput(attrs={
                 'class': INPUT_CLASS,
             }),
+
         }
 
 
@@ -338,7 +340,11 @@ class CategoryForm(forms.ModelForm):
       "meta_keywords": forms.TextInput(attrs={
         "class":"form__controls",
         # "placeholder": "Meta keywords"
-      }),  
+      }),
+      'description':CKEditor5Widget(
+                      attrs={'class': 'django_ckeditor_5'},
+                      config_name='extends'  # используем расширенную конфигурацию
+                  )
     }
 
     def __init__(self, *args, **kwargs):
