@@ -2335,6 +2335,10 @@ body._lock::after {
   max-width: 100%;
 }
 
+.text-category .page-text p {
+  margin-bottom: 0px;
+}
+
 .text {
   padding: 120px 0px;
   line-height: 130%;
