@@ -2331,6 +2331,10 @@ body._lock::after {
   font-weight: bold;
 }
 
+.page-text img {
+  max-width: 100%;
+}
+
 .text {
   padding: 120px 0px;
   line-height: 130%;
