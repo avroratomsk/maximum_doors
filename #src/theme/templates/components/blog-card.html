@@ -25,7 +25,7 @@
         </p>
       {% endif %}
       <p class="card-news__date">28 сентября</p>
-      <a href="#" class="card-news__link">
+      <a href="{{ post.get_absolute_url }}" class="card-news__link">
         <img src="{% static 'theme/img/icon/arrow-long.svg' %}" alt="">
       </a>
     </div>
