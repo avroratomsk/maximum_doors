@@ -132,33 +132,91 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 CKEDITOR_5_CONFIGS = {
     'default': {
+        'language': 'ru',
         'toolbar': [
             'heading', '|',
             'bold', 'italic', 'underline', 'strikethrough', '|',
-            'link', 'blockQuote', 'imageUpload', '|',
+            'link', 'blockQuote', 'imageUpload', 'mediaEmbed', '|',
             'bulletedList', 'numberedList', '|',
-            'undo', 'redo'
+            'undo', 'redo', '|',
+            'sourceEditing'
         ],
-        'language': 'ru',
+        'htmlSupport': {
+            'allow': [
+                {
+                    'name': 'video',
+                    'attributes': True,
+                    'classes': True,
+                    'styles': True,
+                },
+                {
+                    'name': 'source',
+                    'attributes': True,
+                    'classes': True,
+                    'styles': True,
+                },
+                {
+                    'name': 'div',
+                    'attributes': True,
+                    'classes': True,
+                    'styles': True,
+                }
+            ]
+        },
+        'mediaEmbed': {
+            'previewsInData': True,
+        }
     },
     'extends': {
         'language': 'ru',
         'toolbar': [
             'heading', '|',
             'bold', 'italic', 'underline', 'strikethrough', '|',
-            'link', 'blockQuote', 'imageUpload', '|',
+            'link', 'blockQuote', 'imageUpload', 'mediaEmbed', '|',
             'bulletedList', 'numberedList', '|',
             'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
             'alignment', 'indent', 'outdent', '|',
             'code', 'codeBlock', '|',
-            'undo', 'redo'
+            'undo', 'redo', '|',
+            'sourceEditing'
         ],
         'image': {
-            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
+            'toolbar': [
+                'imageTextAlternative', '|',
+                'imageStyle:alignLeft',
+                'imageStyle:full',
+                'imageStyle:alignRight'
+            ],
             'styles': ['full', 'alignLeft', 'alignRight']
+        },
+        'htmlSupport': {
+            'allow': [
+                {
+                    'name': 'video',
+                    'attributes': True,
+                    'classes': True,
+                    'styles': True,
+                },
+                {
+                    'name': 'source',
+                    'attributes': True,
+                    'classes': True,
+                    'styles': True,
+                },
+                {
+                    'name': 'div',
+                    'attributes': True,
+                    'classes': True,
+                    'styles': True,
+                }
+            ]
+        },
+        'mediaEmbed': {
+            'previewsInData': True,
         }
     }
 }
+
 
 INTERNAL_IPS = [
     "127.0.0.1",
