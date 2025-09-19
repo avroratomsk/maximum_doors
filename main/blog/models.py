@@ -31,10 +31,10 @@ class Post(models.Model):
   slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
   subtitle_text = models.TextField(null=True, blank=True, verbose_name="Текст под заголовком")
   description = models.TextField(null=True, blank=True, verbose_name="Содержимое статьи")
-  category = models.ForeignKey("BlogCategory", on_delete=models.CASCADE, null=True, blank=True, default=None, verbose_name='Категория')
+  category = models.ForeignKey("BlogCategory", on_delete=models.CASCADE, verbose_name='Категория')
   date_creation = models.DateField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)  # Поле для даты последнего обновления
-  image = models.ImageField(upload_to="blog", blank=True, null=True, verbose_name="Изображение статьи")
+  image = models.ImageField(upload_to="blog", verbose_name="Изображение статьи")
   meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
   meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")

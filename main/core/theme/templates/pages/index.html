@@ -57,17 +57,6 @@
               </p>
             </div>
           </div>
-          <div class="advantages__col">
-            <div class="advantages__item item-advantages">
-              <div class="item-advantages__icon">
-                <img src="{% static 'theme/img/icon/charity-day_18799026.png' %}" alt="">
-              </div>
-              <p class="item-advantages__title">Благотворительность</p>
-              <p class="item-advantages__text">
-                Поможем детям, которые борются за жизнь вместе! Часть средств c продаж идет на помощь онкобольным детям.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -154,32 +143,5 @@
     </div>
   </section>
   {% endif %}
-  <!-- видео -->
-<section class="selection section--padded" style="padding: 0;">
-    <div class="selection__inner">
-      <div class="selection__body">
-        <div class="container">
-          <div class="selection__content" style="-webkit-box-align: end;-ms-flex-align: start;align-items: end;">
-            <h2 class="selection__title" data-heading-tag="H2">Поможем детям, которые борются за жизнь вместе!</h2>
-            <!-- <a href="/category/" class="selection__btn btn btn--shadow">Перейти в каталог</a> -->
-          </div>
-        </div>
-      </div>
-      <div class="selection__image" style="padding: 0;">
-        <video id="myVideo" controls="" loop="" muted="" src="/video/video.mp4" poster="/core/theme/img/logo1.png" width="320" height="440"></video>
-        <source src="/video.mp4" type="video/mp4">
-        <!-- <img src="/core/theme/img/dveri-seichas.jpeg" alt=""> -->
-      </div>
-    </div>
-  </section>
-  <script>
-  setTimeout(function() {
-    const video = document.getElementById('myVideo');
-    if (video) {
-      video.play(); // Воспроизвести видео
-    }
-  }, 5000); // 5000 миллисекунд = 5 секунд
-</script> 
-<!-- /видео -->
 </main>
 {% endblock %}
