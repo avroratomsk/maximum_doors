@@ -1,23 +1,14 @@
-from .settings import BASE_DIR
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 INSTALLED_APPS = [
     # "django.contrib.admin",
     "admin",
-    'accounts',
+    "accounts",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django_ckeditor_5',
-    "debug_toolbar",
+    # "debug_toolbar",
     # "corsheaders",
     'sorl.thumbnail',
     'django.contrib.sitemaps',
@@ -47,7 +38,16 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
-    'allauth.account.middleware.AccountMiddleware',
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
 ]
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'avroraweb_maxim',
+        'USER': 'avroraweb_maxim',
+        'PASSWORD': 'EC%qwzizE4xd',
+        'HOST': 'localhost',
+    }
+}
