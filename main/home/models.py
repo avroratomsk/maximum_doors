@@ -4,7 +4,10 @@ from django.urls import reverse
 from admin.singleton_model import SingletonModel
 
 class BaseSettings(SingletonModel):
-  logo  = models.ImageField(upload_to="base-settings", blank=True, null=True, verbose_name="Логотип")
+  logo = models.ImageField(upload_to="base-settings", blank=True, null=True, verbose_name="Логотип")
+  logo_dark = models.ImageField(upload_to="base-settings", blank=True, null=True, verbose_name="Логотип Темный")
+  logo_width = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Ширина")
+  logo_height = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Высота")
   phone = models.CharField(max_length=50, blank=True, null=True, db_index=True, verbose_name="Номер телефона")
   time_work = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Время работы")
   email = models.EmailField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Email")

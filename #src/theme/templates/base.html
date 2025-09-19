@@ -23,6 +23,16 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css?_v=20240126172157"/>
 
+  <style>
+      .logo {
+          background-image: url('{{ site_settings.logo.url }}');
+      }
+
+      .header--white .logo {
+          background-image: url('{{ site_settings.logo_dark.url }}');
+      }
+  </style>
+
   <script src="https://api-maps.yandex.ru/2.1/?apikey=aeafb882-e871-4da0-a97b-c7b2e5718d45&lang=ru_RU"
           type="text/javascript"></script>
 
@@ -81,7 +91,7 @@
 
       s.async = true;
 
-      s.src = "https://qoopler.ru/index.php?ref="+d.referrer+"&page=" + encodeURIComponent(w.location.href);
+      s.src = "https://qoopler.ru/index.php?ref=" + d.referrer + "&page=" + encodeURIComponent(w.location.href);
 
       n.parentNode.insertBefore(s, n);
 

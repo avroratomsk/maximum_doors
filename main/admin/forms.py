@@ -47,6 +47,12 @@ class GlobalSettingsForm(forms.ModelForm):
         'meta_keywords': forms.TextInput(attrs={
             'class': INPUT_CLASS
         }),
+        'logo_width': forms.TextInput(attrs={
+            'class': INPUT_CLASS
+        }),
+        'logo_height': forms.TextInput(attrs={
+            'class': INPUT_CLASS
+        }),
         'description':CKEditor5Widget(
             attrs={'class': 'django_ckeditor_5'},
             config_name='extends'

@@ -23,9 +23,7 @@
       }
     }
 
-    .logo {
-      background-image: url('../img/logo-dark.png')
-    }
+
 
     .burger{
       span,&::before,&::after{
@@ -190,7 +188,6 @@
   display: flex;
   width: 198px;
   height: 85px;
-  background-image: url('../img/logo.webp');
 }
 
 .phone {

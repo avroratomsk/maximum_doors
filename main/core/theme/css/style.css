@@ -1543,9 +1543,6 @@ html._lock body::before {
   background-color: black;
 }
 
-.no-webp .header--white .logo{
-  background-image: url("../img/logo-dark.png"); }
-
 .header--white .burger span,
 .header--white .burger::before,
 .header--white .burger::after {
@@ -1633,7 +1630,6 @@ html._lock body::before {
   display: flex;
   width: 198px;
   height: 85px;
-  background-image: url("../img/logo.webp");
 }
 
 .phone {
@@ -10048,7 +10044,5 @@ body._lock::after {
             transform: translateX(-10px);
   }
 }
-
-.webp .header--white .logo{ background-image: url(../img/logo-dark.webp); }
 
 .webp .footer__logo{ background-image: url(../img/logo-dark.webp); }
