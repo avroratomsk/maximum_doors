@@ -43,5 +43,34 @@
       {{ post.description|safe }}
     </div>
   </div>
+    <section class="index-questions" style="background-image: url({% static 'theme/img/questions.jpeg' %})">
+    <div class="container">
+      <div class="index-questions__inner">
+        <div class="index-questions__body">
+          <h2 class="index-questions__title">Остались <br>вопросы ?</h2>
+          <p class="index-questions__subtitle">
+            Закажите звонок или обратитесь в чат на нашем сайте, менеджеры помогут вам выбрать лучший вариант для вас
+          </p>
+          <div class="index-questions__buttons">
+            <button class="index-questions__btn index-questions--order" data-popup="leave-request">Оставить заявку
+            </button>
+            <button class="index-questions__btn index-questions--callback" data-popup="callback">Заказать звонок
+            </button>
+          </div>
+          <div class="index-questions__social">
+            <a href=" https://t.me/+79879826810" target="_blank"><img src="{% static 'theme/img/icon/telegram.svg' %}"
+                                                                      alt="Двери Максимум телеграмм"></a>
+            <a href="https://vk.com/maximum2022" target="_blank"><img src="{% static 'theme/img/icon/vk.svg' %}"
+                                                                      alt="Двери Максимум вк"></a>
+            <a href="https://rutube.ru/channel/6578546/" target="_blank"><img src="https://static.rutube.ru/static/img/favicon-icons/v3/icon.svg"
+                                                                      alt="Двери Максимум rutube" style="max-width: 35px;"></a>                             
+            <p>
+              Подписывайтесь на нас, чтобы быть в курсе всех новостей и акций.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 {% endblock %}

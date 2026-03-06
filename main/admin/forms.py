@@ -356,6 +356,12 @@ class CategoryForm(forms.ModelForm):
         # "placeholder": "Meta Описание",
         "rows": "5"
       }),
+      "name_btn": forms.Select(attrs={
+        "class":"form__controls-select",
+      }),
+      "view_price": forms.Select(attrs={
+        "class":"form__controls-select",
+      }),
       "meta_keywords": forms.TextInput(attrs={
         "class":"form__controls",
         # "placeholder": "Meta keywords"

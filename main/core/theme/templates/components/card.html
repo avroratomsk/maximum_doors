@@ -11,7 +11,9 @@
     <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
   </h3>
   <div class="card-product__bottom">
+    
     <div class="card-product__price">
+      {% if product.category.view_price != "no" %}
       {% if product.sale %}
       {{ product.sell_price }} ₽
       {% else %}
@@ -20,10 +22,16 @@
         {% endif %}
       {% endif %}
       {% if product.sale %}<s>{{ product.price }} ₽</s>{% endif %}
+      {% endif %}
     </div>
+    
+    {% if product.category.name_btn == "more" %}
     <button class="card-product__btn" data-popup="leave-request" data-name="{{ product.name }}">Оставить заявку</button>
+    {% else %}
+    <button class="card-product__btn" data-popup="leave-request" data-name="{{ product.name }}">Узнать цену</button>
+    {% endif %}
   </div>
-  {% if product.installment %}
-    <p class="card-product__descr">{{ product.installment }}</p>
-  {% endif %}
+    {% comment %}{% if product.category.view_price != "no" %}
+      <p class="card-product__descr">кредит на 4/6/10 месяцев</p>
+    {% endif %}{% endcomment %}
 </div>

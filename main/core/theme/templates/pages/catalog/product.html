@@ -55,6 +55,7 @@
             </div>
             <div class="product-info__price-panel">
               <div class="product-info__price">
+                 {% if product.category.view_price != "no" %}
                 <div class="product-info__price-inner">
                   {% if product.sale %}
                   <span class="product-info__price-value">{{ product.sell_price }} ₽</span>
@@ -63,6 +64,7 @@
                   <span class="product-info__price-value">{{ product.price }} ₽</span>
                   {% endif %}
                 </div>
+                {% endif %}
                 {% comment %}<div class="product-info__price-sale">
                   <span>Акция</span>
                   <p class="product-info__price-sale-info">
@@ -71,7 +73,12 @@
                 </div>{% endcomment %}
               </div>
               <div class="product-info__actions">
+                {% if product.category.name_btn == "more" %}
                 <button type="button" class="product-info__btn _btn" data-popup="leave-request">Оставить заявку</button>
+                {% else %}
+                <button type="button" class="product-info__btn _btn" data-popup="leave-request">Узнать цену</button>
+                {% endif %}
+                
                 <button type="button" class="product-info__btn _btn" data-popup="callback">Заказать звонок</button>
               </div>
 <!--              <div class="product-info__properties">-->
@@ -128,6 +135,26 @@
           </div>
         </div>
       </div>
+      <div class="utp">
+	<div class="item">
+		<img src="/main/media/icon1.jpg" alt="Замер двери" class="icon">
+		<div class="txt">
+		<strong>Замер двери - </strong>мы принимаем Ваши заявки ежедневно с 9:00 до 20:00!        </div>
+	</div>
+	<div class="item">
+		<img src="/main/media/icon2.jpg" alt="Установка двери" class="icon">
+		<div class="txt">
+		<strong>Установка - </strong>минимальная цена услуги составляет 500 рублей.        </div>
+	</div><div class="item">
+		<img src="/main/media/icon3.jpg" alt="Оплата" class="icon">
+		<div class="txt">
+			<strong>Оплата - </strong>наличный и безналичный расчёт по&nbsp;карте</div>
+	</div>
+    	<div class="item">
+		<img src="/main/media/icon4.jpg" alt="" class="icon">
+		<div class="txt"><strong>Салон с выставкой: </strong><br>Самара, ул. Карла Маркса, 192, офис 321</div>
+	</div>
+    </div>
       {% if product.manufacturer_description %}
       <div class="text">
         <h2>Описание производителя</h2>

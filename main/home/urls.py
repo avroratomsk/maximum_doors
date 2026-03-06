@@ -20,6 +20,7 @@ urlpatterns = [
     path('order-form/', views.order_form, name="order_form"),
 #     path('consultation/', views.consultation, name="consultation"),
 #     path('stock-product/', views.stock_product, name="stock_product"),
+    path('detyam/', views.detyam, name="detyam"),
     path('robots.txt', views.robots_txt),
     # path('uslugi/', views.about, name="about"),
     # path('valancy/', views.about, name="about"),

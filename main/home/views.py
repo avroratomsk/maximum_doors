@@ -107,6 +107,9 @@ def index(request):
 
   return render(request, 'pages/index.html', context)
 
+def detyam(request):
+  return render(request, 'pages/detyam.html')
+
 def about(request):
   try:
     about_page = About.objects.get()

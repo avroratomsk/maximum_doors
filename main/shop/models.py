@@ -12,6 +12,16 @@ class ShopSettings(SingletonModel):
 
 # Категория
 class Category(models.Model):
+  STATUS_CHOICES = [
+    ('price', 'Узнать цену'),
+    ('more', 'Оставить заявку'),
+  ]
+  
+  STATUS_PRICE = [
+    ('view', 'Показать цену'),
+    ('no', 'Не показывать цену'),
+  ]
+  
   name = models.CharField(max_length=150, db_index=True, unique=True, verbose_name="Название категории")
   slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
   description = models.TextField(null=True, blank=True,  verbose_name="Описание категории")
@@ -23,6 +33,18 @@ class Category(models.Model):
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="META keywords")
   add_menu = models.BooleanField(default=False, blank=True, null=True, verbose_name="Выводить в меню ? ")
   sale_text = models.CharField(max_length=250, blank=True, null=True, verbose_name="Текст скидки в всплывающем окне")
+  name_btn = models.CharField(
+    max_length=20,
+    choices=STATUS_CHOICES,
+    default='more',
+    verbose_name="Текст кнопки в карточке товара"
+  )
+  view_price = models.CharField(
+    max_length=20,
+    choices=STATUS_PRICE,
+    default='view',
+    verbose_name="Показывать цену в карточке товара"
+  )
   updated_at = models.DateTimeField(auto_now=True)
   
   class Meta:
