@@ -88,12 +88,14 @@ def okna_form(request):
 def index(request):
   try: 
     home_page = HomeTemplate.objects.get()
+    text_sale = home_page.sale_text
   except:
     home_page = HomeTemplate.objects.all()
+    text_sale = None
 
   products = Product.objects.filter(status=True)[:4]
   posts = Post.objects.filter(status=True)
-  text_sale = home_page.sale_text
+
 
   context = {
     "home_page": home_page,
@@ -141,10 +143,11 @@ def contact(request):
 def production(request):
   try:
     settings = Production.objects.get()
+    text_sale = settings.sale_text
   except:
     settings = Production()
+    text_sale = None
 
-  text_sale = settings.sale_text
 
   context = {
     "settings": settings,

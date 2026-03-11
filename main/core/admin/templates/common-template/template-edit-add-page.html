@@ -40,7 +40,7 @@
                 {{ form.article }} {{ form.article.errors }}
               </div>
               {% endif %}
-              
+
               {% if form.installment %}
               <div class="form__group">
                 <label for="{{ form.installment.id_for_label }}" class="form__controls-label">Текст рассрочки: </label>
@@ -189,10 +189,12 @@
               {{ form.slug }} {{ form.slug.errors }}
             </div>
             {% endif %}
+            {% if form.category %}
             <div class="form__group">
-              <label for="{{ form.category.id_for_label }}" class="form__controls-label">Выбор категории :</label>
+              <label for="{{ form.category.id_for_label }}" class="form__controls-label">Выбор категории:</label>
               {{ form.category }} {{ form.category.errors }}
             </div>
+            {% endif %}
             <!--            <div class="form__group">-->
             <!--              <label for="{{ form.categories.id_for_label }}" class="form__controls-label">Выбор категории :</label>-->
             <!--              {{ form.categories }} {{ form.categories.errors }}-->

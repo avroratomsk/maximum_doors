@@ -25,13 +25,17 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css?_v=20240126172157"/>
 
   <style>
+      {% if site_settings.logo %}
       .logo {
           background-image: url('{{ site_settings.logo.url }}');
       }
+      {% endif %}
 
+      {% if site_settings.logo_dark %}
       .header--white .logo {
           background-image: url('{{ site_settings.logo_dark.url }}');
       }
+      {% endif %}
   </style>
 
   <script src="https://api-maps.yandex.ru/2.1/?apikey=aeafb882-e871-4da0-a97b-c7b2e5718d45&lang=ru_RU"

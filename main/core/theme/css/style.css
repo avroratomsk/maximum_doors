@@ -2407,6 +2407,15 @@ body._lock::after {
   background-color: #ffffff;
 }
 
+.container-video-text {
+  display: -ms-grid;
+  display: grid;
+}
+
+.container-text {
+  max-width: 100%;
+}
+
 .best-choice__container {
   max-width: 1365px;
 }
@@ -9794,8 +9803,6 @@ body._lock::after {
   .index-questions {
     padding: 95px 0px;
   }
-  .container-video-text {display: grid;}
-.container-text {max-width:100%;}
 
   .index-questions__body {
     padding: 36px 47px;
