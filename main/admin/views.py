@@ -51,11 +51,48 @@ def import_products_from_excel(file_path):
     df = pd.read_excel(file_path, engine='openpyxl')
 
     for _, row in df.iterrows():
-      article=row[0]
-      name = row[1].strip()
+      name = row[0].strip()
       slug = get_unique_slug(Product, slugify(name))
-      category = row[2]
+      category = row[1]
       category_slug = slugify(category)
+      parent_category = row[2]
+      parent_category_slug = slugify(parent_category)
+
+      category_image = None if pd.isna(row[17]) else str(row[17]).strip()
+      if category_image:
+          category_image = category_image.lstrip('/')
+          if category_image.startswith('media/'):
+              category_image = category_image[6:]
+
+      category_description = row[18]
+      category_meta_h1=row[19]
+      category_meta_title=row[20]
+      category_meta_description=row[21]
+      category_meta_keywords=row[22]
+      category_add_menu=row[23]
+
+      if category_add_menu == 'Да':
+        category_add_menu = True
+      else:
+        category_add_menu = False
+
+
+      category_sale_text=row[24],
+      category_name_btn=row[25],
+
+      if category_name_btn == 'Узнать цену':
+        category_name_btn = 'price'
+
+      if category_name_btn == 'Оставить заявку':
+        category_name_btn = 'more'
+
+      category_view_price=row[26],
+
+      if category_view_price == 'Показать цену':
+        category_view_price='view'
+
+      if category_view_price == 'Не показывать цену':
+        category_view_price='no'
 
       try:
         category = Category.objects.get(slug=category_slug)
@@ -63,25 +100,38 @@ def import_products_from_excel(file_path):
         if not Category.objects.filter(name=category).exists():
           category = Category.objects.create(
             name=category,
-            slug=category_slug
+            slug=category_slug,
+            image=category_image,
+            description=category_description,
+            meta_h1=category_meta_h1,
+            meta_title=category_meta_title,
+            meta_description=category_meta_description,
+            meta_keywords=category_meta_keywords,
+            add_menu=category_add_menu,
+            sale_text=category_sale_text,
+            name_btn=category_name_btn,
+            view_price=category_view_price
         )
+
       try:
-        manufacturer = row[3]
+        manufacturer = row[2]
       except:
         pass
 
-      manufacturer_description = row[4]
+      manufacturer_description = row[3]
 
       try:
-        colors = row[5]
+        colors = row[4]
         if isinstance(colors, float) and math.isnan(colors):  # Проверяем, является ли значением NaN
           colors = ""
       except:
         colors = ""
 
-      image = f"goods/{row[6]}"
-
-
+      image = None if pd.isna(row[6]) else str(row[6]).strip()
+      if image:
+          image = image.lstrip('/')
+          if image.startswith('media/'):
+              image = image[6:]
       try:
           price = row[7]
           if isinstance(price, float) and math.isnan(price):  # Проверяем, является ли значением NaN
@@ -97,6 +147,32 @@ def import_products_from_excel(file_path):
         installment = ""
 
       try:
+        sale = row[9]
+        if isinstance(sale, float) and math.isnan(sale):  # Проверяем, является ли значением NaN
+          sale = ""
+      except:
+        sale = ""
+
+      quantity = row[10]
+      quantity_purchase = row[11]
+      status_row = row[12]
+
+      if status_row == 'Да':
+        status = True
+      else:
+        status = False
+
+      if status_row == 'Нет':
+        status = False
+
+      meta_h1=row[13]
+      meta_title=row[14]
+      meta_description=row[15]
+      meta_keywords=row[16]
+
+
+
+      try:
           properties = row[10]
       except:
           properties = ""
@@ -105,10 +181,8 @@ def import_products_from_excel(file_path):
 
       try:
           new_product = Product.objects.create(
-              article=article,
               name=name,
               slug=slug,
-              category=category,
               manufacturer=manufacturer,
               manufacturer_description=manufacturer_description,
               colors=colors,
@@ -116,15 +190,17 @@ def import_products_from_excel(file_path):
               price=price,
               installment=installment,
               sale=sale,
+              meta_h1=meta_h1,
+              meta_title=meta_title,
+              meta_description=meta_description,
+              meta_keywords=meta_keywords
           )
       except IntegrityError:
           print(f"Duplicate slug detected: {slug}, generating a new one.")
           slug = get_unique_slug(Product, slug)
           new_product = Product.objects.create(
-              article=article,
               name=name,
               slug=slug,
-              category=category,
               manufacturer=manufacturer,
               manufacturer_description=manufacturer_description,
               colors=colors,
@@ -132,8 +208,12 @@ def import_products_from_excel(file_path):
               price=price,
               installment=installment,
               sale=sale,
+              meta_h1=meta_h1,
+              meta_title=meta_title,
+              meta_description=meta_description,
+              meta_keywords=meta_keywords
           )
-
+      new_product.category.add(category)
       try:
           properties = properties.split(';')
           for ch in properties:
@@ -567,35 +647,35 @@ def upload_goods(request):
       form = UploadFileForm(request.POST, request.FILES)
       if form.is_valid():
           file = request.FILES['file']
-          
-          destination = open(os.path.join('upload/', file.name), 'wb+')
-          for chunk in file.chunks():
-              destination.write(chunk)
-          destination.close()
-              
-          # Распаковка архива
-          with zipfile.ZipFile('upload/upload.zip', 'r') as zip_ref:
-              zip_ref.extractall('media/')
-              
-          # Удаление загруженного архива
-          os.remove('upload/upload.zip')
-          
-          # Сжатие фотографий
-          for filename in os.listdir('media/upload'):
-            
-            if filename.endswith('.jpg') or filename.endswith('.png') or filename.endswith('.JPG') or filename.endswith('.JPEG') or filename.endswith('.jpeg'):
-              with Image.open(os.path.join('media/upload', filename)) as img:
-                temp = filename.replace('.jpeg', '')
-                temp_one = temp.replace('№', '')
-                temp_b = temp_one.replace('В', 'B')
-                temp_e = temp_one.replace('Э', 'E')
-                img.save(os.path.join('media/goods', temp_e), quality=60)  # quality=60 для JPEG файла
-                
-          # Очистка временной папки
-          os.system('rm -rf media/upload')
-          return redirect('upload-succes')
-      else:
-        form = UploadFileForm()
+          import_products_from_excel(file)
+#           destination = open(os.path.join('upload/', file.name), 'wb+')
+#           for chunk in file.chunks():
+#               destination.write(chunk)
+#           destination.close()
+#
+#           # Распаковка архива
+#           with zipfile.ZipFile('upload/upload.zip', 'r') as zip_ref:
+#               zip_ref.extractall('media/')
+#
+#           # Удаление загруженного архива
+#           os.remove('upload/upload.zip')
+#
+#           # Сжатие фотографий
+#           for filename in os.listdir('media/upload'):
+#
+#             if filename.endswith('.jpg') or filename.endswith('.png') or filename.endswith('.JPG') or filename.endswith('.JPEG') or filename.endswith('.jpeg'):
+#               with Image.open(os.path.join('media/upload', filename)) as img:
+#                 temp = filename.replace('.jpeg', '')
+#                 temp_one = temp.replace('№', '')
+#                 temp_b = temp_one.replace('В', 'B')
+#                 temp_e = temp_one.replace('Э', 'E')
+#                 img.save(os.path.join('media/goods', temp_e), quality=60)  # quality=60 для JPEG файла
+#
+#           # Очистка временной папки
+#           os.system('rm -rf media/upload')
+#           return redirect('upload-succes')
+#       else:
+#         form = UploadFileForm()
     return render(request, 'upload/upload.html', {'form': form})
 
 def upload_succes(request):
